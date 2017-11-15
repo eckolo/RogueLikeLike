@@ -110,6 +110,9 @@
 <node COLOR="#669900" CREATED="1509978471688" ID="ID_5622928" MODIFIED="1509978493762" STYLE="fork" TEXT="&#x6240;&#x6301;&#x30b9;&#x30ad;&#x30eb;&#x3068;&#x6027;&#x683c;&#x3092;&#x30d9;&#x30fc;&#x30b9;&#x306b;&#x884c;&#x52d5;&#x6c7a;&#x5b9a;">
 <font NAME="&#x3086;&#x305f;&#x307d;&#x3093;&#xff08;&#x30b3;&#x30fc;&#x30c7;&#x30a3;&#x30f3;&#x30b0;&#xff09;" SIZE="12"/>
 </node>
+<node COLOR="#006633" CREATED="1510785734994" ID="ID_21137009" MODIFIED="1510785756783" STYLE="bubble" TEXT="&#x91ce;&#x826f;NPC&#x306e;&#x884c;&#x52d5;&#x5236;&#x5fa1;&#x30fb;&#x72b6;&#x614b;&#x8a18;&#x9332;">
+<font NAME="&#x3086;&#x305f;&#x307d;&#x3093;&#xff08;&#x30b3;&#x30fc;&#x30c7;&#x30a3;&#x30f3;&#x30b0;&#xff09;Bold" SIZE="12"/>
+</node>
 </node>
 <node COLOR="#006633" CREATED="1510182194729" ID="ID_545903865" LINK="#ID_1824258254" MODIFIED="1510182220690" STYLE="bubble" TEXT="&#x30a2;&#x30a4;&#x30c6;&#x30e0;&#x306e;&#x6240;&#x6301;&#x95a2;&#x9023;">
 <font NAME="&#x3086;&#x305f;&#x307d;&#x3093;&#xff08;&#x30b3;&#x30fc;&#x30c7;&#x30a3;&#x30f3;&#x30b0;&#xff09;Bold" SIZE="12"/>
