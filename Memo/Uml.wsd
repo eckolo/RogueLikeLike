@@ -1,0 +1,50 @@
+@startuml 全体概要図
+
+skinparam packageStyle Frame
+
+object 属性
+
+object アビリティ雛形
+namespace アビリティ{
+	object アビリティ.属性
+
+	属性 *-- .属性
+}
+アビリティ o-- アビリティ雛形
+
+object アイテム雛形
+namespace アイテム{
+	object アイテム.属性
+
+	属性 *-- .属性
+}
+アイテム o-- アイテム雛形
+namespace スキル{
+	object スキル.属性
+
+	属性 *-- .属性
+}
+
+object 地域雛形
+object 地形
+namespace 地域{
+	object 地域.属性
+
+	属性 *-- .属性
+}
+地域 o-- 地域雛形
+地域 +-- .地形
+
+namespace キャラクタ{
+	object キャラクタ.属性リスト
+	object キャラクタ.スキルツリー
+	object キャラクタ.アビリティリスト
+	object キャラクタ.アイテムリスト
+
+	属性リスト +-- .属性
+	スキルツリー +-- スキル
+	アビリティリスト +-- アビリティ
+	アイテムリスト +-- アイテム
+}
+
+@enduml
