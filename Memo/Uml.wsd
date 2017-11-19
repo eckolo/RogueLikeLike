@@ -2,7 +2,7 @@
 
 skinparam packageStyle Frame
 
-interface ベースオブジェクト{
+abstract ベースオブジェクト{
 	名称
 	説明
 	..
