@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-namespace Src.Interfaces
+namespace Assets.Src.Stationery
 {
-    public interface INamedObject
+    public interface INamed
     {
         string name { get; }
         string description { get; }
