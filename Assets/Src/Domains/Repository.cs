@@ -9,7 +9,6 @@ namespace Assets.Src.Domains
 {
     abstract class Repository<Resource> where Resource : ScriptableObject
     {
-        abstract protected string directory { get; }
         abstract public Resource GetResource(string name);
     }
 }
