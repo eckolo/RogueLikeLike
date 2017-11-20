@@ -10,6 +10,6 @@ namespace Assets.Src.Stationery
     interface IAdhered
     {
         List<Adjective> adjectives { get; set; }
-        Adjective mainAdjective { get; set; }
+        Adjective mainAdjective { get; }
     }
 }
