@@ -12,17 +12,11 @@ namespace Assets.Src.Infrastructure
     /// <summary>
     /// 形容詞リポジトリ
     /// </summary>
-    class AdjectiveRepository : Repository<Adjective>
+    class AdjectiveRepository : ResourceRepository<Adjective>
     {
         /// <summary>
         /// データ格納ディレクトリ
         /// </summary>
-        const string DIRECTORY = "Adjective/";
-        /// <summary>
-        /// 格納データ読み出し関数
-        /// </summary>
-        /// <param name="name">読み出しデータ名称</param>
-        /// <returns>読みだされたデータ</returns>
-        public override Adjective GetResource(string name) => Resources.Load<Adjective>($"{DIRECTORY}{name}");
+        protected override string directory => "Adjective/";
     }
 }
