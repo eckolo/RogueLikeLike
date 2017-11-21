@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-namespace Assets.Src.Models
+namespace Assets.Src.Models.Values
 {
     /// <summary>
     /// 形容詞オブジェクト
     /// </summary>
-    public class Adjective : ScriptableObject, Stationery.INamed
+    public class Adjective : ScriptableObject, INamed
     {
         /// <summary>
         /// 形容詞名称

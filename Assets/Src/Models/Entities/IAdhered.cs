@@ -1,11 +1,11 @@
-﻿using Assets.Src.Models;
+﻿using Assets.Src.Models.Values;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Src.Stationery
+namespace Assets.Src.Models.Entities
 {
     /// <summary>
     /// 形容されたオブジェクトの雛形

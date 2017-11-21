@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Src.Models
+namespace Assets.Src.Models.Value
 {
     /// <summary>
     /// スキルオブジェクト
     /// </summary>
-    class Skill : ScriptableObject, Stationery.INamed
+    class Skill : ScriptableObject, INamed
     {
         /// <summary>
         /// スキル名称

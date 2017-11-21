@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-namespace Assets.Src.Stationery
+namespace Assets.Src.Models
 {
     /// <summary>
     /// 名前付きオブジェクトの雛形
