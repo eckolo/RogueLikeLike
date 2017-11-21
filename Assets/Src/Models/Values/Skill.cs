@@ -10,7 +10,7 @@ namespace Assets.Src.Models.Value
     /// <summary>
     /// スキルオブジェクト
     /// </summary>
-    class Skill : Named
+    public class Skill : Named
     {
     }
 }

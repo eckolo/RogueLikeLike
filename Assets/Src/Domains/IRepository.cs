@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Src.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace Assets.Src.Domains
     /// データ格納リポジトリの雛形
     /// </summary>
     /// <typeparam name="Contests">格納されたデータの種別</typeparam>
-    interface IRepository<Contests, Key> where Contests : ScriptableObject
+    public interface IRepository<Contests, Key> where Contests : Named
     {
         /// <summary>
         /// 格納データ読み出し関数

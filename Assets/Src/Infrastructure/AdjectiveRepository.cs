@@ -11,7 +11,7 @@ namespace Assets.Src.Infrastructure
     /// <summary>
     /// 形容詞リポジトリ
     /// </summary>
-    class AdjectiveRepository : ResourceRepository<Adjective>
+    public class AdjectiveRepository : ResourceRepository<Adjective>
     {
         /// <summary>
         /// データ格納ディレクトリ

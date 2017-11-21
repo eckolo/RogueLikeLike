@@ -10,7 +10,7 @@ namespace Assets.Src.Models.Entities
     /// <summary>
     /// 形容されたオブジェクトの雛形
     /// </summary>
-    interface IAdhered
+    public interface IAdhered
     {
         /// <summary>
         /// 形容詞リスト

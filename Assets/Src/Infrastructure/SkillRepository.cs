@@ -12,7 +12,7 @@ namespace Assets.Src.Infrastructure
     /// <summary>
     /// スキルリポジトリ
     /// </summary>
-    class SkillRepository : MonoBehaviour, IRepository<Skill, int>
+    public class SkillRepository : MonoBehaviour, IRepository<Skill, int>
     {
         /// <summary>
         /// 格納データ読み出し関数

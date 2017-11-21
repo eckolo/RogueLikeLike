@@ -1,4 +1,5 @@
 ﻿using Assets.Src.Domains;
+using Assets.Src.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace Assets.Src.Infrastructure
     /// Resourceからの読み出し処理ラッパー
     /// </summary>
     /// <typeparam name="Resource"></typeparam>
-    abstract class ResourceRepository<Resource> : IRepository<Resource, string> where Resource : ScriptableObject
+    public abstract class ResourceRepository<Resource> : IRepository<Resource, string> where Resource : Named
     {
         /// <summary>
         /// データ格納ディレクトリ

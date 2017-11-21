@@ -9,7 +9,7 @@ namespace Assets.Src.Models.Value
     /// <summary>
     /// スキルに対して各エンティティが所持するスキル値のオブジェクト
     /// </summary>
-    class SkillParameter
+    public class SkillParameter
     {
         /// <summary>
         /// 対応スキル
