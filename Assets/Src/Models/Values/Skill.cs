@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Src.Models.Value
+namespace Assets.Src.Models.Values
 {
     /// <summary>
     /// スキルオブジェクト

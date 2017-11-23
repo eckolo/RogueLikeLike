@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Src.Models.Value
+namespace Assets.Src.Models.Values
 {
     /// <summary>
     /// スキルに対して各エンティティが所持するスキル値のオブジェクト

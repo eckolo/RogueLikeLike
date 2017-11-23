@@ -1,5 +1,5 @@
 ﻿using Assets.Src.Domains;
-using Assets.Src.Models.Value;
+using Assets.Src.Models.Values;
 using System;
 using System.Collections.Generic;
 using System.Linq;
