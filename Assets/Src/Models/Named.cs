@@ -16,7 +16,7 @@ namespace Assets.Src.Models
         /// 名称設定箇所
         /// </summary>
         [SerializeField]
-        string _name;
+        string _name = null;
 
         /// <summary>
         /// 説明
@@ -26,6 +26,6 @@ namespace Assets.Src.Models
         /// 説明文章設定箇所
         /// </summary>
         [SerializeField]
-        string _description;
+        string _description = null;
     }
 }
