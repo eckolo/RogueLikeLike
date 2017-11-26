@@ -19,6 +19,6 @@ namespace Assets.Src.Domains
         /// </summary>
         /// <param name="name">読み出しデータキー</param>
         /// <returns>読みだされたデータ</returns>
-        Contests GetResource(Key key);
+        Contests GetContests(Key key);
     }
 }

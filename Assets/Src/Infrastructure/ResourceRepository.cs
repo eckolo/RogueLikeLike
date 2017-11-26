@@ -24,6 +24,6 @@ namespace Assets.Src.Infrastructure
         /// </summary>
         /// <param name="name">読み出しデータ名称</param>
         /// <returns>読みだされたデータ</returns>
-        public Resource GetResource(string name) => Resources.Load<Resource>($"{directory}{name}");
+        public Resource GetContests(string name) => Resources.Load<Resource>($"{directory}{name}");
     }
 }

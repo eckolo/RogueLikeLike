@@ -18,10 +18,10 @@ namespace Assets.Src.Models
         /// </summary>
         /// <param name="key">読み出しデータキー</param>
         /// <returns>読みだされたデータ</returns>
-        public Skill GetResource(int key)
+        public Skill GetContests(int key)
         {
-            if(key < 0) throw new IndexOutOfRangeException();
-            if(key > _allSkillList.Count) throw new IndexOutOfRangeException();
+            if(key < 0) return default(Skill);
+            if(key > _allSkillList.Count) return default(Skill);
             return _allSkillList[key];
         }
 

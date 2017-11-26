@@ -19,7 +19,7 @@ namespace Assets.Src.Models.Area
         /// <summary>
         /// 接続先地域
         /// </summary>
-        public AreaRoot connectArea { get; set; }
+        public WorldMap.Index connectArea { get; set; }
         /// <summary>
         /// 接続先地域の接続座標
         /// </summary>
