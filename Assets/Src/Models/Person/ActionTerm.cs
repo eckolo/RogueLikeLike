@@ -18,5 +18,9 @@ namespace Assets.Src.Models.Person
         /// </summary>
         [SerializeField]
         ActionPattern _actionPattern = default(ActionPattern);
+        /// <summary>
+        /// 該当行動パターン
+        /// </summary>
+        public ActionPattern actionPattern => _actionPattern;
     }
 }
