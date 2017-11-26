@@ -60,7 +60,7 @@ namespace Assets.Src.Models.Person
         /// <summary>
         /// 習得ジョブリスト
         /// </summary>
-        public List<Job> hadJobList { get; }
+        public List<Job> hadJobList { get; protected set; }
 
         /// <summary>
         /// 行動アルゴリズム
