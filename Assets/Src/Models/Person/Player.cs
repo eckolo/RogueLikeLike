@@ -10,16 +10,7 @@ namespace Assets.Src.Models
     /// <summary>
     /// プレイヤーオブジェクト
     /// </summary>
-    public class Player : PersonStationery, IAdhered
+    public class Player : Npc
     {
-        /// <summary>
-        /// 形容詞リスト
-        /// </summary>
-        public List<Adjective> adjectives { get; set; }
-
-        /// <summary>
-        /// 主要形容詞
-        /// </summary>
-        public Adjective mainAdjective => adjectives.First();
     }
 }

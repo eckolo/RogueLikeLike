@@ -167,9 +167,6 @@ namespace キャラクタ{
 	(キャラクタ雛形,.部位) *- 装備枠
 	装備枠 *-- アイテム
 
-	entity Player
-	.Player #..^ キャラクタ雛形
-
 	entity NPC{
 		..
 		追加習得アビリティリスト
@@ -178,6 +175,9 @@ namespace キャラクタ{
 	}
 	.NPC #..^ .形容詞付き
 	.NPC #..^ キャラクタ雛形
+
+	entity Player
+	.Player #.^ .NPC
 
 	enum キャラクタ雛形リスト
 	キャラクタ雛形リスト +-> キャラクタ雛形
