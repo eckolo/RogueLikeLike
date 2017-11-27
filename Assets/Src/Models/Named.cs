@@ -11,12 +11,7 @@ namespace Assets.Src.Models
         /// <summary>
         /// 名称
         /// </summary>
-        public new string name => _name;
-        /// <summary>
-        /// 名称設定箇所
-        /// </summary>
-        [SerializeField]
-        string _name = null;
+        public new string name => base.name;
 
         /// <summary>
         /// 説明
