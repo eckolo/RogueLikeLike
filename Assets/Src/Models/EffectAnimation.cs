@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Src.Models.Ability
+namespace Assets.Src.Models
 {
     /// <summary>
-    /// アビリティの具体的動作を示すデータ群
+    /// 戦闘エフェクトなどを表すデータクラス
     /// </summary>
-    public class Motion : Named
+    [Serializable]
+    public class EffectAnimation
     {
     }
 }

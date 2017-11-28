@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +9,7 @@ namespace Assets.Src.Models.Ability
     /// <summary>
     /// アビリティ雛形オブジェクト
     /// </summary>
-    public class AbilityStationery : Named
+    public partial class AbilityStationery : Named
     {
         /// <summary>
         /// ベースとなるスキル値リスト
@@ -35,12 +34,7 @@ namespace Assets.Src.Models.Ability
         /// <summary>
         /// 挙動定義リスト
         /// </summary>
-        [SerializeField]
-        List<Motion> _motionList = new List<Motion>();
-        /// <summary>
-        /// 挙動定義リスト
-        /// </summary>
-        public List<Motion> motionList => _motionList;
+        public List<Motion> motionList => _behaviorDefinition.motionList;
 
         /// <summary>
         /// 使用条件ジョブリスト
@@ -51,5 +45,11 @@ namespace Assets.Src.Models.Ability
         /// 使用条件ジョブリスト
         /// </summary>
         public List<Job> useablejobList => _useablejobs;
+
+        /// <summary>
+        /// 挙動定義パラメータ
+        /// </summary>
+        [SerializeField]
+        BehaviorDefinition _behaviorDefinition = new BehaviorDefinition();
     }
 }
