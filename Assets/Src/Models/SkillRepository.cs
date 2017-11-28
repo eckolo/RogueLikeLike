@@ -1,4 +1,4 @@
-﻿using Assets.Src.Domains;
+﻿using Assets.Src.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,24 +11,11 @@ namespace Assets.Src.Models
     /// <summary>
     /// スキルリポジトリ
     /// </summary>
-    public class SkillRepository : MonoBehaviour, IRepository<Skill, int>
+    public class SkillRepository : ResourceRepository<Skill>
     {
         /// <summary>
-        /// 格納データ読み出し関数
+        /// データ格納ディレクトリ
         /// </summary>
-        /// <param name="key">読み出しデータキー</param>
-        /// <returns>読みだされたデータ</returns>
-        public Skill GetContests(int key)
-        {
-            if(key < 0) return default(Skill);
-            if(key > _allSkillList.Count) return default(Skill);
-            return _allSkillList[key];
-        }
-
-        /// <summary>
-        /// 全スキルリスト
-        /// </summary>
-        [SerializeField]
-        List<Skill> _allSkillList = new List<Skill>();
+        protected override string directory => "Skill/";
     }
 }
