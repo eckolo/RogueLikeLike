@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 namespace Assets.Src.Domains
 {
     /// <summary>
-    /// 管理系サービスの雛形
+    /// 生成・変更系サービスの雛形
     /// </summary>
     /// <typeparam name="Entity">管理対象オブジェクトの型</typeparam>
     /// <typeparam name="Stationery">管理対象オブジェクトの雛形となる型</typeparam>
-    public interface IManagerStationery<Entity, Stationery> where Entity : Stationery, IAdhered where Stationery : Named
+    public interface IFactoryStationery<Entity, Stationery> where Entity : Stationery, IAdhered where Stationery : Named
     {
         /// <summary>
         /// オブジェクトの新規生成関数

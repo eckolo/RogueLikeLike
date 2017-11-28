@@ -1,5 +1,5 @@
 ﻿using Assets.Src.Models;
-using Assets.Src.Models.Item;
+using Assets.Src.Models.Person;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 namespace Assets.Src.Domains
 {
     /// <summary>
-    /// アイテム系管理サービス
+    /// NPC系オブジェクト生成・変更サービス
     /// </summary>
-    public class ItemManager : IManagerStationery<ItemRoot, ItemStationery>
+    public class NpcFactory : IFactoryStationery<Npc, PersonStationery>
     {
         /// <summary>
         /// オブジェクトの新規生成関数
@@ -23,7 +23,7 @@ namespace Assets.Src.Domains
         /// </param>
         /// <param name="level">形容詞の最大付与数</param>
         /// <returns>生成されたオブジェクト</returns>
-        public ItemRoot Generate(ItemStationery stationery, List<Adjective> addableAdjectives, int level = 1)
+        public Npc Generate(PersonStationery stationery, List<Adjective> addableAdjectives, int level = 1)
         {
             throw new NotImplementedException();
         }
@@ -35,7 +35,7 @@ namespace Assets.Src.Domains
         /// <param name="index">変更したい形容詞インデックス</param>
         /// <param name="setedAdjective">追加したい形容詞</param>
         /// <returns>変更されたオブジェクト</returns>
-        public ItemRoot ResetAdjective(ItemRoot origin, int index, Adjective setedAdjective)
+        public Npc ResetAdjective(Npc origin, int index, Adjective setedAdjective)
         {
             throw new NotImplementedException();
         }

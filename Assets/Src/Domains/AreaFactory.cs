@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 namespace Assets.Src.Domains
 {
     /// <summary>
-    /// 探索処理制御サービス
+    /// 地形類生成・変更サービス
     /// </summary>
-    public class ExploreManager : IManagerStationery<AreaRoot, AreaStationery>
+    public class AreaFactory : IFactoryStationery<AreaRoot, AreaStationery>
     {
         /// <summary>
         /// オブジェクトの新規生成関数

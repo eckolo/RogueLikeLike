@@ -1,17 +1,17 @@
-﻿using System;
+﻿using Assets.Src.Models;
+using Assets.Src.Models.Item;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Src.Models.Ability;
-using Assets.Src.Models;
 
 namespace Assets.Src.Domains
 {
     /// <summary>
-    /// アビリティ管理サービス
+    /// アイテム系生成・変更サービス
     /// </summary>
-    public class AbilityManager : IManagerStationery<AbilityRoot, AbilityStationery>
+    public class ItemFactory : IFactoryStationery<ItemRoot, ItemStationery>
     {
         /// <summary>
         /// オブジェクトの新規生成関数
@@ -23,7 +23,7 @@ namespace Assets.Src.Domains
         /// </param>
         /// <param name="level">形容詞の最大付与数</param>
         /// <returns>生成されたオブジェクト</returns>
-        public AbilityRoot Generate(AbilityStationery stationery, List<Adjective> addableAdjectives, int level = 1)
+        public ItemRoot Generate(ItemStationery stationery, List<Adjective> addableAdjectives, int level = 1)
         {
             throw new NotImplementedException();
         }
@@ -35,7 +35,7 @@ namespace Assets.Src.Domains
         /// <param name="index">変更したい形容詞インデックス</param>
         /// <param name="setedAdjective">追加したい形容詞</param>
         /// <returns>変更されたオブジェクト</returns>
-        public AbilityRoot ResetAdjective(AbilityRoot origin, int index, Adjective setedAdjective)
+        public ItemRoot ResetAdjective(ItemRoot origin, int index, Adjective setedAdjective)
         {
             throw new NotImplementedException();
         }
