@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 18b368a79c0ec894a8eaf1768e2fd389
+labels:
+- AbilityStationery
+- Data
+- ScriptableObject
+timeCreated: 1511784282
+licenseType: Free
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
