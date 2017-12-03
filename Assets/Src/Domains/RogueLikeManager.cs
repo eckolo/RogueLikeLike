@@ -18,7 +18,8 @@ namespace Assets.Src.Domains
         /// <returns>処理が正常終了したか否か</returns>
         public static bool PerformTurnByTurn()
         {
-            if(!ViewManager.UpdateMapState()) return false;
+            var view = GameStates.nowState.view;
+            if(!view.UpdateMapState()) return false;
             return true;
         }
         /// <summary>
