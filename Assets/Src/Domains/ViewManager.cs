@@ -14,9 +14,9 @@ namespace Assets.Src.Domains
         /// <summary>
         /// 画面内のマップ上の状況を更新する
         /// </summary>
-        /// <param name="viewData">描画要素データ</param>
+        /// <param name="viewState">描画に関わる状態の情報</param>
         /// <returns>更新処理成否</returns>
-        public static bool UpdateMapState(this GameStates.View viewData)
+        public static bool Update(this GameStates.View viewState)
         {
             return true;
         }
