@@ -28,7 +28,7 @@ namespace Assets.Src.Domains
             /// <summary>
             /// 描画の更新用全オブジェクトの今回の行動リスト
             /// </summary>
-            public List<KeyValuePair<Npc, BehaviorHistory>> updateList { get; set; }
+            public List<KeyValuePair<Npc, PersonBehavior>> updateList { get; set; }
         }
     }
 }
