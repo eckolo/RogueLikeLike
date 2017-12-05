@@ -14,6 +14,7 @@ MonoBehaviour:
   _description: 
   _sprite: {fileID: 21300000, guid: b2aa7ca3422ca8246850b13705f7b5ce, type: 3}
   _skillParameters: []
-  _masteredAbilitys: []
+  _masteredAbilitys:
+  - {fileID: 11400000, guid: 18b368a79c0ec894a8eaf1768e2fd389, type: 2}
   _possessedItems: []
   _possessedParts: []

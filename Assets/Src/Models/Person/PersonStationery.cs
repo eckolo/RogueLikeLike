@@ -37,21 +37,21 @@ namespace Assets.Src.Models.Person
         /// 初期習得済みアビリティリスト
         /// </summary>
         [SerializeField]
-        List<AbilityRoot> _masteredAbilitys = new List<AbilityRoot>();
+        List<AbilityStationery> _masteredAbilitys = new List<AbilityStationery>();
         /// <summary>
         /// 習得済みアビリティリスト
         /// </summary>
-        public List<AbilityRoot> masteredAbilityList => _masteredAbilitys;
+        public List<AbilityStationery> masteredAbilityList => _masteredAbilitys;
 
         /// <summary>
         /// 初期所持アイテムリスト
         /// </summary>
         [SerializeField]
-        List<ItemRoot> _possessedItems = new List<ItemRoot>();
+        List<ItemStationery> _possessedItems = new List<ItemStationery>();
         /// <summary>
         /// 所持アイテムリスト
         /// </summary>
-        public List<ItemRoot> possessedItemList => _possessedItems;
+        public List<ItemStationery> possessedItemList => _possessedItems;
 
         /// <summary>
         /// 所持部位リスト
