@@ -12,6 +12,16 @@ namespace Assets.Src.Models.Person
     public partial class PersonStationery : Named
     {
         /// <summary>
+        /// 表示画像
+        /// </summary>
+        [SerializeField]
+        Sprite _sprite = default(Sprite);
+        /// <summary>
+        /// 表示画像
+        /// </summary>
+        public Sprite displayedSprite => _sprite;
+
+        /// <summary>
         /// 初期スキルリスト
         /// </summary>
         [SerializeField]

@@ -16,12 +16,8 @@ MonoBehaviour:
   _dependentParts: []
   _useablejobs: []
   _behaviorDefinition:
-    _motionList:
-    - _effects: []
-      _attributeType: 1
-      _power: 0
-      _accuracy: 0
-    _movement: 0
+    _motionList: []
+    _movement: 1
     _maxRange: 0
     _minRange: 0
     _targetableType: 0
