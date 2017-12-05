@@ -11,7 +11,7 @@ namespace Assets.Src.Models.Area
     /// <summary>
     /// マップオブジェクト
     /// </summary>
-    public class Map
+    public class Map : IDuplicatable<Map>
     {
         /// <summary>
         /// 地域内座標
@@ -35,5 +35,11 @@ namespace Assets.Src.Models.Area
         /// 座標は中央が(0,0)、東がx+1、北がY+1
         /// </summary>
         public Dictionary<Vector2, Npc> npcList { get; set; }
+
+        /// <summary>
+        /// シャローコピーメソッド
+        /// </summary>
+        /// <returns>コピーされたオブジェクト</returns>
+        public Map Duplicate() => (Map)MemberwiseClone();
     }
 }

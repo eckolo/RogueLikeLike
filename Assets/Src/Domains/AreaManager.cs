@@ -22,7 +22,7 @@ namespace Assets.Src.Domains
         /// <returns>アクション実施後マップオブジェクト</returns>
         public static Map UpdateMap(this Map beforeMap, KeyValuePair<Npc, PersonBehavior> action)
         {
-            return beforeMap;
+            return beforeMap.Duplicate();
         }
     }
 }
