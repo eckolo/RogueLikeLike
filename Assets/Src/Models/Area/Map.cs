@@ -11,7 +11,7 @@ namespace Assets.Src.Models.Area
     /// <summary>
     /// マップオブジェクト
     /// </summary>
-    public class Map : IDuplicatable<Map>
+    public partial class Map : IDuplicatable<Map>
     {
         /// <summary>
         /// 地域内座標
@@ -22,6 +22,11 @@ namespace Assets.Src.Models.Area
         /// 発生イベント
         /// </summary>
         public MapEvent occurMapEvent { get; set; }
+
+        /// <summary>
+        /// 上方向の方角
+        /// </summary>
+        public Direction upwardDirection { get; set; } = Direction.NORTH;
 
         /// <summary>
         /// 各マスのマップチップリスト
