@@ -2,9 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Src.Models.Item;
 
-namespace Assets.Src.Models
+namespace Assets.Src.Models.Item
 {
     /// <summary>
     /// アイテムオブジェクト

@@ -1,5 +1,6 @@
 ﻿using Assets.Src.Models;
 using Assets.Src.Models.Area;
+using Assets.Src.Models.Person;
 using System.Collections.Generic;
 using UnityEngine;
 
