@@ -45,9 +45,10 @@ namespace Assets.Src.Infrastructure
         /// <returns>イテレータ</returns>
         IEnumerator IntroductionMainRoutine()
         {
+            var DiMethods = new InjectedMethods { };
             while(true)
             {
-                RogueLikeManager.PerformTurnByTurn();
+                DiMethods.PerformTurnByTurn();
             }
         }
         /// <summary>

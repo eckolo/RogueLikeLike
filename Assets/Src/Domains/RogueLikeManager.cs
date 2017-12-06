@@ -17,7 +17,7 @@ namespace Assets.Src.Domains
         /// ターン毎の処理実施
         /// </summary>
         /// <returns>処理が正常終了したか否か</returns>
-        public static bool PerformTurnByTurn()
+        public static bool PerformTurnByTurn(this InjectedMethods methods)
         {
             if(!GameStates.nowState.view.Update()) return false;
             return true;
