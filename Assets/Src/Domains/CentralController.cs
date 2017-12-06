@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using Assets.Src.Infrastructure;
 
 namespace Assets.Src.Domains
 {
@@ -13,8 +14,8 @@ namespace Assets.Src.Domains
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         static void StartUp()
         {
-            Debug.Log("CentralController StartUp");
-            new GameObject("CentralController", typeof(CentralController));
+            Debug.Log($"{typeof(CentralController).FullName} StartUp");
+            PrefabManager.SetObject<CentralController>();
         }
 
         /// <summary>
@@ -22,7 +23,7 @@ namespace Assets.Src.Domains
         /// </summary>
         void Awake()
         {
-            Debug.Log("CentralController Awake");
+            Debug.Log($"{typeof(CentralController).FullName} Awake");
             SetUp();
         }
 
@@ -32,9 +33,12 @@ namespace Assets.Src.Domains
         /// <returns>初期処理正常完了フラグ</returns>
         bool SetUp()
         {
+            viewRoot = viewRoot ?? PrefabManager.SetObject<ViewRoot>().SetParent(this);
+
             if(mainThread == default(Coroutine)) mainThread = StartCoroutine(IntroductionMainRoutine());
             return true;
         }
+        ViewRoot viewRoot = null;
 
         /// <summary>
         /// メインルーチン制御への導入
