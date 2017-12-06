@@ -1,20 +1,20 @@
-﻿using Assets.Src.Infrastructure;
+﻿using Assets.Src.Models.Item;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Src.Models.Person
+namespace Assets.Src.Infrastructure
 {
     /// <summary>
-    /// キャラクタリポジトリ
+    /// アイテムリポジトリ
     /// </summary>
-    public class PersonRepository : ResourceRepository<PersonStationery>
+    public class ItemRepository : ResourceRepository<ItemStationery>
     {
         /// <summary>
         /// データ格納ディレクトリ
         /// </summary>
-        protected override string directory => "Person/";
+        protected override string directory => "Item/";
     }
 }

@@ -1,20 +1,21 @@
-﻿using Assets.Src.Infrastructure;
+﻿using Assets.Src.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
-namespace Assets.Src.Models.Ability
+namespace Assets.Src.Infrastructure
 {
     /// <summary>
-    /// アビリティリポジトリ
+    /// スキルリポジトリ
     /// </summary>
-    public class AbilityRepository : ResourceRepository<AbilityStationery>
+    public class SkillRepository : ResourceRepository<Skill>
     {
         /// <summary>
         /// データ格納ディレクトリ
         /// </summary>
-        protected override string directory => "Ability/";
+        protected override string directory => "Skill/";
     }
 }

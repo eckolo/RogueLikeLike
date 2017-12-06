@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System;
-using Assets.Src.Infrastructure;
+using Assets.Src.Domains;
 
-namespace Assets.Src.Domains
+namespace Assets.Src.Infrastructure
 {
     public class CentralController : MonoBehaviour
     {

@@ -1,21 +1,20 @@
-﻿using Assets.Src.Infrastructure;
+﻿using Assets.Src.Models.Area;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UnityEngine;
 
-namespace Assets.Src.Models
+namespace Assets.Src.Infrastructure
 {
     /// <summary>
-    /// スキルリポジトリ
+    /// マップチップリポジトリ
     /// </summary>
-    public class SkillRepository : ResourceRepository<Skill>
+    public class MapChipRepository : ResourceRepository<MapChip>
     {
         /// <summary>
         /// データ格納ディレクトリ
         /// </summary>
-        protected override string directory => "Skill/";
+        protected override string directory => "MapChip/";
     }
 }

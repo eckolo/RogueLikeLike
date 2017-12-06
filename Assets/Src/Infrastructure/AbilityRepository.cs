@@ -1,20 +1,20 @@
-﻿using Assets.Src.Infrastructure;
+﻿using Assets.Src.Models.Ability;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Src.Models.Item
+namespace Assets.Src.Infrastructure
 {
     /// <summary>
-    /// アイテムリポジトリ
+    /// アビリティリポジトリ
     /// </summary>
-    public class ItemRepository : ResourceRepository<ItemStationery>
+    public class AbilityRepository : ResourceRepository<AbilityStationery>
     {
         /// <summary>
         /// データ格納ディレクトリ
         /// </summary>
-        protected override string directory => "Item/";
+        protected override string directory => "Ability/";
     }
 }
