@@ -19,7 +19,7 @@ namespace Assets.Src.Infrastructure
         /// <param name="objectName">オブジェクト名称</param>
         /// <returns>生成されたオブジェクト</returns>
         public static Prefab SetObject<Prefab>(this string objectName) where Prefab : MonoBehaviour
-            => new GameObject(objectName, typeof(Prefab)).GetComponent<Prefab>();
+            => new GameObject(objectName ?? "NoNameObject", typeof(Prefab)).GetComponent<Prefab>();
         /// <summary>
         /// ゲームオブジェクトの新規作成
         /// 型名をそのままオブジェクト名とする
@@ -27,7 +27,7 @@ namespace Assets.Src.Infrastructure
         /// <typeparam name="Prefab">作成されるオブジェクトに実装される型</typeparam>
         /// <returns>生成されたオブジェクト</returns>
         public static Prefab SetObject<Prefab>() where Prefab : MonoBehaviour
-            => typeof(Prefab).FullName.SetObject<Prefab>();
+            => typeof(Prefab).FullName.Split('.').Last().SetObject<Prefab>();
 
         /// <summary>
         /// ゲームオブジェクトに親オブジェクトを設定して返す
