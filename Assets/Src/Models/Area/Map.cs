@@ -45,6 +45,6 @@ namespace Assets.Src.Models.Area
         /// シャローコピーメソッド
         /// </summary>
         /// <returns>コピーされたオブジェクト</returns>
-        public Map Duplicate() => (Map)MemberwiseClone();
+        public Map DuplicateMyself() => (Map)MemberwiseClone();
     }
 }

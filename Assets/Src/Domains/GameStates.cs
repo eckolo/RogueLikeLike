@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Src.Models;
+using System;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ namespace Assets.Src.Domains
     /// 状態保持クラス
     /// シングルトンとして中身を保持する
     /// </summary>
-    public partial class GameStates
+    public partial class GameStates : IDuplicatable<GameStates>
     {
         /// <summary>
         /// 実際のインスタンス
@@ -38,6 +39,12 @@ namespace Assets.Src.Domains
             set {
 
             }
-        }
+        }  
+
+        /// <summary>
+        /// シャローコピーメソッド
+        /// </summary>
+        /// <returns>コピーされたオブジェクト</returns>
+        public GameStates DuplicateMyself() => (GameStates)MemberwiseClone();
     }
 }
