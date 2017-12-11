@@ -1,10 +1,8 @@
 ﻿using Assets.Src.Models;
-using Assets.Src.Models.Area;
 using System;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UnityEngine;
 
 namespace Assets.Src.Domains
 {
@@ -41,27 +39,6 @@ namespace Assets.Src.Domains
             set {
 
             }
-        }
-
-        public class Location
-        {
-            /// <summary>
-            /// 現在のエリア情報
-            /// </summary>
-            public AreaRoot area { get; set; } = default(AreaRoot);
-            /// <summary>
-            /// 現在のマップ状態
-            /// </summary>
-            public Map map { get; set; } = default(Map);
-
-            /// <summary>
-            /// 地域内での現在座標
-            /// </summary>
-            public Vector2 coordinate { get; set; }
-            /// <summary>
-            /// 上方向の方角
-            /// </summary>
-            public Direction upwardDirection { get; set; } = Direction.NORTH;
         }
 
         /// <summary>
