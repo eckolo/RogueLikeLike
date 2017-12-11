@@ -1,6 +1,6 @@
-﻿namespace Assets.Src.Models.Area
+﻿namespace Assets.Src.Domains
 {
-    public partial class Map
+    public partial class GameStates
     {
         /// <summary>
         /// 方角パラメータ選択肢

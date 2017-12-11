@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.Src.Models.Area
 {
@@ -15,10 +16,11 @@ namespace Assets.Src.Models.Area
         /// 他地域との接続情報
         /// </summary>
         public List<AreaConnection> connectionList { get; set; }
+
         /// <summary>
         /// 内包するマップのリスト
         /// </summary>
-        public List<Map> includeMapList { get; set; }
+        public Dictionary<Vector2, Map> includeMapList { get; set; }
 
         /// <summary>
         /// 形容詞リスト
