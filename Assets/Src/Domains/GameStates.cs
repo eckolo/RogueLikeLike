@@ -1,4 +1,5 @@
 ﻿using Assets.Src.Models;
+using Assets.Src.Models.Area;
 using System;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,11 @@ namespace Assets.Src.Domains
         /// 実際のインスタンス
         /// </summary>
         static GameStates myself = null;
+
+        /// <summary>
+        /// パラメータ実体
+        /// </summary>
+        Parameters parameters = new Parameters();
 
         /// <summary>
         /// インスタンス生成用のプライベートなコンストラクタ
@@ -38,6 +44,19 @@ namespace Assets.Src.Domains
             }
             set {
 
+            }
+        }
+
+        /// <summary>
+        /// マップデータ操作インターフェース
+        /// </summary>
+        public Map map
+        {
+            get {
+                return parameters.map.Duplicate();
+            }
+            set {
+                parameters.map = value.Duplicate();
             }
         }
 
