@@ -20,7 +20,7 @@ namespace Assets.Src.Domains
         /// <param name="nowMap">現在のマップデータ</param>
         /// <param name="destinationDirection">移動方向</param>
         /// <returns>次のマップ状態</returns>
-        public static Map SetupNextMap(this Map nowMap, Map.Direction destinationDirection = Map.Direction.NORTH)
+        public static Map SetupNextMap(this Map nowMap, Direction destinationDirection = Direction.NORTH)
         {
             return nowMap.Duplicate();
         }
