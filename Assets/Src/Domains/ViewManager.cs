@@ -16,7 +16,7 @@ namespace Assets.Src.Domains
         /// </summary>
         /// <param name="view">描画に関わる状態の情報</param>
         /// <returns>更新処理成否</returns>
-        public static bool Update(this GameStates.View view)
+        public static bool UpdateView(this GameStates.View view)
         {
             foreach(var nowUpdate in view.updateList)
             {

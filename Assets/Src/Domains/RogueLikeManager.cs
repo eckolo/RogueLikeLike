@@ -16,11 +16,15 @@ namespace Assets.Src.Domains
         /// <summary>
         /// ターン毎の処理実施
         /// </summary>
-        /// <returns>処理が正常終了したか否か</returns>
-        public static bool PerformTurnByTurn(this InjectedMethods methods)
+        /// <param name="_states">内部ステータス集合</param>
+        /// <param name="methods">インフラメソッド集合</param>
+        /// <returns>内部ステータス</returns>
+        public static GameStates PerformTurnByTurn(this GameStates _states, InjectedMethods methods)
         {
-            if(!GameStates.nowState.view.Update()) return false;
-            return true;
+            var states = _states.Duplicate();
+            if(states.map == null) states.map.SetupNextMap();
+            if(!states.view.UpdateView()) return states;
+            return states;
         }
         /// <summary>
         /// 行動決定関数

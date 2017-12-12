@@ -12,6 +12,9 @@ namespace Assets.Src.Domains
     /// </summary>
     public class InjectedMethods
     {
-        IRepository<Skill, string> skillRepository { get; set; }
+        /// <summary>
+        /// スキルリポジトリ
+        /// </summary>
+        public IRepository<Skill, string> skillRepository { get; set; }
     }
 }
