@@ -32,7 +32,6 @@ namespace Assets.Src.Domains
         /// 状態（つまりStateHolder自身）を取得する関数
         /// </summary>
         /// <returns>既にインスタンス生成されていればそれを、無ければ新規生成して返す</returns>
-        public static GameStates nowState => myself ?? new GameStates();
 
         /// <summary>
         /// ビューデータ操作インターフェース
@@ -46,6 +45,7 @@ namespace Assets.Src.Domains
 
             }
         }
+        public static GameStates nowState => (myself ?? (myself = new GameStates())).Duplicate();
 
         /// <summary>
         /// マップデータ操作インターフェース

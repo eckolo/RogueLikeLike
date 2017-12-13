@@ -19,9 +19,8 @@ namespace Assets.Src.Domains
         /// <param name="_states">内部ステータス集合</param>
         /// <param name="methods">インフラメソッド集合</param>
         /// <returns>内部ステータス</returns>
-        public static GameStates PerformTurnByTurn(this GameStates _states, InjectedMethods methods)
+        public static GameStates PerformTurnByTurn(this GameStates states, InjectedMethods methods)
         {
-            var states = _states.Duplicate();
             if(states.map == null) states.map.SetupNextMap();
             if(!states.view.UpdateView()) return states;
             return states;
