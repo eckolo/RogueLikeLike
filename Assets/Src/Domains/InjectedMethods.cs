@@ -13,6 +13,10 @@ namespace Assets.Src.Domains
     public class InjectedMethods
     {
         /// <summary>
+        /// 画面描画処理
+        /// </summary>
+        public IViewManager viewer { get; set; }
+        /// <summary>
         /// スキルリポジトリ
         /// </summary>
         public IRepository<Skill, string> skillRepository { get; set; }

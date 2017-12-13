@@ -20,9 +20,11 @@ namespace Assets.Src.Domains
         /// <param name="nowMap">現在のマップデータ</param>
         /// <param name="destinationDirection">移動方向</param>
         /// <returns>次のマップ状態</returns>
-        public static Map SetupNextMap(this Map nowMap, Direction destinationDirection = Direction.NORTH)
+        public static Map SetupNextMap(this Map nowMap, InjectedMethods methods, Direction destinationDirection = Direction.NORTH)
         {
-            return nowMap.Duplicate();
+            var nextMap = nowMap != null ? nowMap.Duplicate() : new Map();
+            methods.viewer.ReflectMap(nowMap, destinationDirection);
+            return nextMap;
         }
         /// <summary>
         /// マップとアクションとアクション主語を受け取りアクション後のマップ状態を返す
