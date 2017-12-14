@@ -79,6 +79,6 @@ namespace Assets.Src.Domains
         /// シャローコピーメソッド
         /// </summary>
         /// <returns>コピーされたオブジェクト</returns>
-        public GameStates DuplicateMyself() => (GameStates)MemberwiseClone();
+        public GameStates MemberwiseClonePublic() => (GameStates)MemberwiseClone();
     }
 }

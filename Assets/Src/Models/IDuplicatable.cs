@@ -17,6 +17,6 @@ namespace Assets.Src.Models
         /// 基本的にMemberwiseClone()メソッドをキャストだけしてそのまま返せばOK
         /// </summary>
         /// <returns>コピーされたオブジェクト</returns>
-        Duplicated DuplicateMyself();
+        Duplicated MemberwiseClonePublic();
     }
 }

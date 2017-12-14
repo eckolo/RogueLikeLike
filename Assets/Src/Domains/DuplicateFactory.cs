@@ -21,6 +21,6 @@ namespace Assets.Src.Domains
         /// <returns>複製されたオブジェクト</returns>
         public static Duplicated Duplicate<Duplicated>(this IDuplicatable<Duplicated> origin)
             where Duplicated : IDuplicatable<Duplicated>
-            => origin != null ? origin.DuplicateMyself() : default(Duplicated);
+            => origin != null ? origin.MemberwiseClonePublic() : default(Duplicated);
     }
 }

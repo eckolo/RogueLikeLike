@@ -33,7 +33,7 @@ namespace Assets.Src.Domains
             /// シャローコピーメソッド
             /// </summary>
             /// <returns>コピーされたオブジェクト</returns>
-            public Location DuplicateMyself() => (Location)MemberwiseClone();
+            public Location MemberwiseClonePublic() => (Location)MemberwiseClone();
         }
     }
 }
