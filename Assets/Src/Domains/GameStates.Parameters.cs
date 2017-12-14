@@ -13,9 +13,9 @@ namespace Assets.Src.Domains
         class Parameters
         {
             /// <summary>
-            /// ターン毎のマップ状態
+            /// 現在の所在地情報
             /// </summary>
-            public Map map { get; set; }
+            public Location location { get; set; }
             /// <summary>
             /// このターンの行動履歴
             /// </summary>

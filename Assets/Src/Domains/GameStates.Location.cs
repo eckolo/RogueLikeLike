@@ -1,4 +1,5 @@
-﻿using Assets.Src.Models.Area;
+﻿using Assets.Src.Models;
+using Assets.Src.Models.Area;
 using UnityEngine;
 
 namespace Assets.Src.Domains
@@ -8,7 +9,7 @@ namespace Assets.Src.Domains
         /// <summary>
         /// 現在地情報
         /// </summary>
-        public class Location
+        public class Location : IDuplicatable<Location>
         {
             /// <summary>
             /// 現在のエリア情報
@@ -27,6 +28,12 @@ namespace Assets.Src.Domains
             /// 上方向の方角
             /// </summary>
             public Direction upwardDirection { get; set; } = Direction.NORTH;
+
+            /// <summary>
+            /// シャローコピーメソッド
+            /// </summary>
+            /// <returns>コピーされたオブジェクト</returns>
+            public Location DuplicateMyself() => (Location)MemberwiseClone();
         }
     }
 }

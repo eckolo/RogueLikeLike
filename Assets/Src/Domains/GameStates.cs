@@ -51,15 +51,27 @@ namespace Assets.Src.Domains
         public InjectedMethods methods => _methods;
 
         /// <summary>
-        /// マップデータ操作インターフェース
+        /// 現在地情報
+        /// </summary>
+        public Location location
+        {
+            get {
+                return parameters.location.Duplicate();
+            }
+            set {
+                parameters.location = value.Duplicate();
+            }
+        }
+        /// <summary>
+        /// 現在のマップデータ
         /// </summary>
         public Map map
         {
             get {
-                return parameters.map.Duplicate();
+                return parameters.location.map.Duplicate();
             }
             set {
-                parameters.map = value.Duplicate();
+                parameters.location.map = value.Duplicate();
             }
         }
 
