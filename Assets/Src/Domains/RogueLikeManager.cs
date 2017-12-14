@@ -16,10 +16,10 @@ namespace Assets.Src.Domains
         /// <summary>
         /// ターン毎の処理実施
         /// </summary>
-        /// <param name="_states">内部ステータス集合</param>
+        /// <param name="states">内部ステータス集合</param>
         /// <param name="methods">インフラメソッド集合</param>
         /// <returns>内部ステータス</returns>
-        public static GameStates PerformTurnByTurn(this GameStates states, InjectedMethods methods)
+        public static GameStates PerformTurnByTurn(this GameStates states)
         {
             states.map = states.map.SetupNextMap(methods);
             return states;

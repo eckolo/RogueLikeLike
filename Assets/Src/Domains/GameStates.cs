@@ -24,15 +24,31 @@ namespace Assets.Src.Domains
         Parameters parameters = new Parameters();
 
         /// <summary>
+        /// インフラアクセスメソッド群
+        /// </summary>
+        InjectedMethods _methods = new InjectedMethods();
+
+        /// <summary>
         /// インスタンス生成用のプライベートなコンストラクタ
         /// </summary>
-        GameStates() { }
+        /// <param name="methods">インフラアクセスメソッド群の実体</param>
+        GameStates(InjectedMethods methods)
+        {
+            _methods = methods;
+        }
 
         /// <summary>
         /// 状態（つまりStateHolder自身）を取得する関数
         /// </summary>
+        /// <param name="methods">インフラアクセスメソッド群の実体</param>
         /// <returns>既にインスタンス生成されていればそれを、無ければ新規生成して返す</returns>
-        public static GameStates nowState => (myself ?? (myself = new GameStates())).Duplicate();
+        public static GameStates GetNowState(InjectedMethods methods = null)
+            => (myself ?? (myself = new GameStates(methods))).Duplicate();
+
+        /// <summary>
+        /// インフラアクセスメソッド群アクセス用インターフェース
+        /// </summary>
+        public InjectedMethods methods => _methods;
 
         /// <summary>
         /// マップデータ操作インターフェース

@@ -45,14 +45,14 @@ namespace Assets.Src.Infrastructure
         /// <returns>イテレータ</returns>
         IEnumerator IntroductionMainRoutine()
         {
-            var gameStates = GameStates.nowState;
-            var diMethods = new InjectedMethods
+            var gameStates = GameStates.GetNowState(new InjectedMethods
             {
+                viewer = new ViewManager(),
                 skillRepository = new SkillRepository()
-            };
+            });
             while(true)
             {
-                gameStates = gameStates.PerformTurnByTurn(diMethods);
+                gameStates = gameStates.PerformTurnByTurn();
             }
         }
         /// <summary>
