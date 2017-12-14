@@ -15,15 +15,15 @@ namespace Assets.Src.Domains
     public static class AreaManager
     {
         /// <summary>
-        /// 現在のマップ状態と移動方角から次のマップを生成する
+        /// 現在の状態と移動方角から次のマップを生成する
         /// </summary>
-        /// <param name="nowMap">現在のマップデータ</param>
+        /// <param name="states">現在の状態</param>
         /// <param name="destinationDirection">移動方向</param>
         /// <returns>次のマップ状態</returns>
-        public static Map SetupNextMap(this Map nowMap, InjectedMethods methods, Direction destinationDirection = Direction.NORTH)
+        public static Map SetupNextMap(this GameStates states, Direction destinationDirection = Direction.NORTH)
         {
-            var nextMap = nowMap != null ? nowMap.Duplicate() : new Map();
-            methods.viewer.ReflectMap(nowMap, destinationDirection);
+            var nextMap = states.map != null ? states.map.Duplicate() : new Map();
+            states.methods.viewer.ReflectMap(nextMap, destinationDirection);
             return nextMap;
         }
         /// <summary>

@@ -21,7 +21,7 @@ namespace Assets.Src.Domains
         /// <returns>内部ステータス</returns>
         public static GameStates PerformTurnByTurn(this GameStates states)
         {
-            states.map = states.map.SetupNextMap(methods);
+            states.map = states.SetupNextMap();
             return states;
         }
         /// <summary>
