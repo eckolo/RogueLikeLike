@@ -50,7 +50,7 @@ namespace Assets.Src.Domains
         /// <param name="origin">元の方向</param>
         /// <param name="top">
         /// 回転量を示す方角
-        /// この方角が上を向いている時に、北が上を向くよう回転させる
+        /// 元の北方向をこの方角へ回転させる
         /// </param>
         /// <returns></returns>
         public static Direction Rotation(this Direction origin, Direction top)

@@ -13,7 +13,7 @@ public static partial class TEST
         /// 必ず成功するはずのテストを行う
         /// </summary>
         [Test]
-        public static void TestBase()
+        public static void BaseTest()
         {
             //Arrange
             var gameObject = new GameObject();
