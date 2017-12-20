@@ -24,14 +24,5 @@ namespace Assets.Src.Domains
             states.map = states.SetupNextMap();
             return states;
         }
-        /// <summary>
-        /// 行動決定関数
-        /// </summary>
-        /// <param name="person">行動決定対象</param>
-        /// <returns>行動決定処理成否</returns>
-        public static bool DetermineAction(this Npc person)
-        {
-            return true;
-        }
     }
 }

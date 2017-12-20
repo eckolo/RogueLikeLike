@@ -22,5 +22,15 @@ namespace Assets.Src.Domains
         {
             return default(PersonStationery.Parameters);
         }
+
+        /// <summary>
+        /// 行動決定関数
+        /// </summary>
+        /// <param name="person">行動決定対象</param>
+        /// <returns>決定された行動</returns>
+        public static PersonBehavior DetermineAction(this Npc person)
+        {
+            return new PersonBehavior();
+        }
     }
 }
