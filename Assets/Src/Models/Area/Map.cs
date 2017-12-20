@@ -26,12 +26,6 @@ namespace Assets.Src.Models.Area
         public Dictionary<Vector2, List<MapChip>> mapchipList { get; set; }
 
         /// <summary>
-        /// 各マスのNPCリスト
-        /// 座標は中央が(0,0)、東がx+1、北がY+1
-        /// </summary>
-        public Dictionary<Vector2, Npc> npcList { get; set; }
-
-        /// <summary>
         /// シャローコピーメソッド
         /// </summary>
         /// <returns>コピーされたオブジェクト</returns>
