@@ -52,10 +52,49 @@ namespace Assets.Src.Domains
         /// 回転量を示す方角
         /// 元の北方向をこの方角へ回転させる
         /// </param>
-        /// <returns></returns>
+        /// <returns>回転された方角</returns>
         public static Direction Rotation(this Direction origin, Direction top)
         {
-            return origin;
+            switch(origin)
+            {
+                case Direction.NORTH:
+                    switch(top)
+                    {
+                        case Direction.NORTH: return Direction.NORTH;
+                        case Direction.SOUTH: return Direction.SOUTH;
+                        case Direction.EAST: return Direction.EAST;
+                        case Direction.WEST: return Direction.WEST;
+                        default: throw new IndexOutOfRangeException();
+                    }
+                case Direction.SOUTH:
+                    switch(top)
+                    {
+                        case Direction.NORTH: return Direction.SOUTH;
+                        case Direction.SOUTH: return Direction.NORTH;
+                        case Direction.EAST: return Direction.WEST;
+                        case Direction.WEST: return Direction.EAST;
+                        default: throw new IndexOutOfRangeException();
+                    }
+                case Direction.EAST:
+                    switch(top)
+                    {
+                        case Direction.NORTH: return Direction.EAST;
+                        case Direction.SOUTH: return Direction.WEST;
+                        case Direction.EAST: return Direction.SOUTH;
+                        case Direction.WEST: return Direction.NORTH;
+                        default: throw new IndexOutOfRangeException();
+                    }
+                case Direction.WEST:
+                    switch(top)
+                    {
+                        case Direction.NORTH: return Direction.WEST;
+                        case Direction.SOUTH: return Direction.EAST;
+                        case Direction.EAST: return Direction.NORTH;
+                        case Direction.WEST: return Direction.SOUTH;
+                        default: throw new IndexOutOfRangeException();
+                    }
+                default: throw new IndexOutOfRangeException();
+            }
         }
     }
 }
