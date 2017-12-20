@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: abe558ac34cd0d347897d64eb199b673
+labels:
+- Adjective
+- Data
+- ScriptableObject
+timeCreated: 1513799608
+licenseType: Free
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
