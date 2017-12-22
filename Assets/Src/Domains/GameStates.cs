@@ -66,6 +66,18 @@ namespace Assets.Src.Domains
             }
         }
         /// <summary>
+        /// 現在の地域データ
+        /// </summary>
+        public AreaRoot area
+        {
+            get {
+                return _parameters.location.area.Duplicate();
+            }
+            set {
+                _parameters.location.area = value.Duplicate();
+            }
+        }
+        /// <summary>
         /// 現在のマップデータ
         /// </summary>
         public Map map

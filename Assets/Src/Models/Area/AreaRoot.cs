@@ -10,7 +10,7 @@ namespace Assets.Src.Models.Area
     /// <summary>
     /// 地域オブジェクトルート
     /// </summary>
-    public class AreaRoot : AreaStationery, IAdhered
+    public class AreaRoot : AreaStationery, IAdhered, IDuplicatable<AreaRoot>
     {
         /// <summary>
         /// 他地域との接続情報
@@ -31,5 +31,11 @@ namespace Assets.Src.Models.Area
         /// 主要形容詞
         /// </summary>
         public Adjective mainAdjective => adjectives.First();
+
+        /// <summary>
+        /// シャローコピーメソッド
+        /// </summary>
+        /// <returns>コピーされたオブジェクト</returns>
+        public AreaRoot MemberwiseClonePublic() => (AreaRoot)MemberwiseClone();
     }
 }
