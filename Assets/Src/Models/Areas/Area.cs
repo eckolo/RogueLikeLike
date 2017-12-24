@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Src.Models.Area
+namespace Assets.Src.Models.Areas
 {
     /// <summary>
     /// 地域オブジェクトルート
     /// </summary>
-    public class AreaRoot : AreaStationery, IAdhered, IDuplicatable<AreaRoot>
+    public class Area : AreaStationery, IAdhered, IDuplicatable<Area>
     {
         /// <summary>
         /// 他地域との接続情報
@@ -36,6 +36,6 @@ namespace Assets.Src.Models.Area
         /// シャローコピーメソッド
         /// </summary>
         /// <returns>コピーされたオブジェクト</returns>
-        public AreaRoot MemberwiseClonePublic() => (AreaRoot)MemberwiseClone();
+        public Area MemberwiseClonePublic() => (Area)MemberwiseClone();
     }
 }

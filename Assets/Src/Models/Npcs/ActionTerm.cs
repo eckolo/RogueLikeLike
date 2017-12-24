@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Src.Models.Person
+namespace Assets.Src.Models.Npcs
 {
     /// <summary>
     /// 行動条件クラス

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Assets.Src.Models.Person
+namespace Assets.Src.Models.Npcs
 {
     public partial class PersonStationery
     {

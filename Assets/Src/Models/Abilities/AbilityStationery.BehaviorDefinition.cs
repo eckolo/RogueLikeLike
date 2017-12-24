@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Src.Models.Ability
+namespace Assets.Src.Models.Abilities
 {
     public partial class AbilityStationery
     {

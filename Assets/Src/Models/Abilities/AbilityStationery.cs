@@ -4,7 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Src.Models.Ability
+namespace Assets.Src.Models.Abilities
 {
     /// <summary>
     /// アビリティ雛形オブジェクト

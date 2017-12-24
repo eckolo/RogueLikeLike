@@ -1,6 +1,6 @@
 ﻿using Assets.Src.Models;
-using Assets.Src.Models.Area;
-using Assets.Src.Models.Person;
+using Assets.Src.Models.Areas;
+using Assets.Src.Models.Npcs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,7 +47,7 @@ namespace Assets.Src.Domains
         /// <param name="originArea">地域データ</param>
         /// <param name="coordinate">地域内座標</param>
         /// <returns>生成されたマップ</returns>
-        static Map GenerateMap(this AreaRoot originArea, Vector2 coordinate)
+        static Map GenerateMap(this Area originArea, Vector2 coordinate)
         {
             throw new NotImplementedException();
         }

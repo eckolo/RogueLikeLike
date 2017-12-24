@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Src.Models.Area
+namespace Assets.Src.Models.Areas
 {
     /// <summary>
     /// 地形オブジェクト

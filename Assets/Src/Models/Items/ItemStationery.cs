@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Src.Models.Item
+namespace Assets.Src.Models.Items
 {
     /// <summary>
     /// アイテムの雛形オブジェクト

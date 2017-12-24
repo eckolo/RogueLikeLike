@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UnityEngine;
 
-namespace Assets.Src.Models.Person
+namespace Assets.Src.Models.Areas
 {
     /// <summary>
-    /// AIの行動要素
+    /// マップイベントオブジェクト
     /// </summary>
-    public class ActionElement : ScriptableObject
+    public class MapEvent
     {
     }
 }

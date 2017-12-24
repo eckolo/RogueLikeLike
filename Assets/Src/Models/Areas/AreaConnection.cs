@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Src.Models.Area
+namespace Assets.Src.Models.Areas
 {
     /// <summary>
     /// 地域接続データオブジェクト
@@ -19,7 +19,7 @@ namespace Assets.Src.Models.Area
         /// <summary>
         /// 接続先地域
         /// </summary>
-        public AreaRoot connectArea { get; set; }
+        public Area connectArea { get; set; }
         /// <summary>
         /// 接続先地域の接続座標
         /// </summary>

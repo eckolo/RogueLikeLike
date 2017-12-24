@@ -1,6 +1,6 @@
 ﻿using Assets.Src.Models;
-using Assets.Src.Models.Area;
-using Assets.Src.Models.Person;
+using Assets.Src.Models.Areas;
+using Assets.Src.Models.Npcs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,7 +68,7 @@ namespace Assets.Src.Domains
         /// <summary>
         /// 現在の地域データ
         /// </summary>
-        public AreaRoot area
+        public Area area
         {
             get {
                 return _parameters.location.area.Duplicate();

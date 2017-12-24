@@ -1,5 +1,5 @@
 ﻿using Assets.Src.Models;
-using Assets.Src.Models.Area;
+using Assets.Src.Models.Areas;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,7 @@ namespace Assets.Src.Domains
     /// <summary>
     /// 地形類生成・変更サービス
     /// </summary>
-    public class AreaFactory : IFactoryStationery<AreaRoot, AreaStationery>
+    public class AreaFactory : IFactoryStationery<Area, AreaStationery>
     {
         /// <summary>
         /// オブジェクトの新規生成関数
@@ -23,7 +23,7 @@ namespace Assets.Src.Domains
         /// </param>
         /// <param name="level">形容詞の最大付与数</param>
         /// <returns>生成されたオブジェクト</returns>
-        public AreaRoot Generate(AreaStationery stationery, List<Adjective> addableAdjectives, int level = 1)
+        public Area Generate(AreaStationery stationery, List<Adjective> addableAdjectives, int level = 1)
         {
             throw new NotImplementedException();
         }
@@ -35,7 +35,7 @@ namespace Assets.Src.Domains
         /// <param name="index">変更したい形容詞インデックス</param>
         /// <param name="setedAdjective">追加したい形容詞</param>
         /// <returns>変更されたオブジェクト</returns>
-        public AreaRoot ResetAdjective(AreaRoot origin, int index, Adjective setedAdjective)
+        public Area ResetAdjective(Area origin, int index, Adjective setedAdjective)
         {
             throw new NotImplementedException();
         }

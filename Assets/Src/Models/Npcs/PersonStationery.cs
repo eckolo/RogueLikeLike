@@ -1,12 +1,12 @@
-﻿using Assets.Src.Models.Ability;
-using Assets.Src.Models.Item;
+﻿using Assets.Src.Models.Abilities;
+using Assets.Src.Models.Items;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Src.Models.Person
+namespace Assets.Src.Models.Npcs
 {
     /// <summary>
     /// キャラクター雛形オブジェクト

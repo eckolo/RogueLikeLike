@@ -1,5 +1,5 @@
 ﻿using Assets.Src.Domains;
-using Assets.Src.Models.Area;
+using Assets.Src.Models.Areas;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,16 +11,16 @@ namespace Assets.Src.Infrastructure
     /// <summary>
     /// 世界地図リポジトリ
     /// </summary>
-    public partial class WorldMap : IRepository<AreaRoot, int>
+    public partial class WorldMap : IRepository<Area, int>
     {
         /// <summary>
         /// 地域データ読み出し関数
         /// </summary>
         /// <param name="key">読み出しデータの索引キー</param>
         /// <returns>読みだされた地域データ</returns>
-        public AreaRoot GetContests(int key)
+        public Area GetContests(int key)
         {
-            if(!_areaList.ContainsKey(key)) return default(AreaRoot);
+            if(!_areaList.ContainsKey(key)) return default(Area);
             return _areaList[key];
         }
         /// <summary>
@@ -38,7 +38,7 @@ namespace Assets.Src.Infrastructure
         /// <param name="setedAreaData">再生成時に生成される地域データ</param>
         /// <param name="key">再生成対象データ索引キー</param>
         /// <returns>再生成された地域データ</returns>
-        public AreaRoot ResetContests(AreaRoot setedAreaData, int key = default(int))
+        public Area ResetContests(Area setedAreaData, int key = default(int))
         {
             throw new NotImplementedException();
         }
@@ -46,6 +46,6 @@ namespace Assets.Src.Infrastructure
         /// <summary>
         /// 地図データ実体
         /// </summary>
-        Dictionary<int, AreaRoot> _areaList = new Dictionary<int, AreaRoot>();
+        Dictionary<int, Area> _areaList = new Dictionary<int, Area>();
     }
 }

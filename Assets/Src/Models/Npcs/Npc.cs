@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Src.Models.Person
+namespace Assets.Src.Models.Npcs
 {
     /// <summary>
     /// NPCオブジェクト

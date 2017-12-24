@@ -1,4 +1,4 @@
-﻿namespace Assets.Src.Models.Ability
+﻿namespace Assets.Src.Models.Abilities
 {
     public partial class AbilityStationery
     {

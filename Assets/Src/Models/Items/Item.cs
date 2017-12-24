@@ -1,15 +1,14 @@
-﻿using System;
+﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Assets.Src.Models.Ability
+namespace Assets.Src.Models.Items
 {
     /// <summary>
-    /// アビリティオブジェクト
+    /// アイテムオブジェクト
     /// </summary>
-    public class AbilityRoot : AbilityStationery, IAdhered
+    public class Item : ItemStationery, IAdhered
     {
         /// <summary>
         /// 形容詞リスト

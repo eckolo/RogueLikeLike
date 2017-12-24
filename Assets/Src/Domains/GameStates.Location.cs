@@ -1,5 +1,5 @@
 ﻿using Assets.Src.Models;
-using Assets.Src.Models.Area;
+using Assets.Src.Models.Areas;
 using UnityEngine;
 
 namespace Assets.Src.Domains
@@ -14,7 +14,7 @@ namespace Assets.Src.Domains
             /// <summary>
             /// 現在のエリア情報
             /// </summary>
-            public AreaRoot area { get; set; } = default(AreaRoot);
+            public Area area { get; set; } = default(Area);
             /// <summary>
             /// 現在のマップ状態
             /// </summary>
