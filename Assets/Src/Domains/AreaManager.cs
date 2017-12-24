@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.Src.Domains
 {
@@ -17,15 +18,18 @@ namespace Assets.Src.Domains
         /// <summary>
         /// 現在の状態と移動方角から次のマップを生成する
         /// </summary>
-        /// <param name="states">現在の状態</param>
+        /// <param name="states">現在のゲーム状態</param>
         /// <param name="destinationDirection">移動方向</param>
         /// <returns>次のマップ状態</returns>
-        public static Map SetupNextMap(this GameStates states, Direction destinationDirection = Direction.NORTH)
+        public static Map SetupNextMap(this GameStates states, Direction? destinationDirection = null)
         {
-            var nextMap = states.map != null ? states.map.Duplicate() : new Map();
-            states.methods.viewer.ReflectMap(nextMap, destinationDirection);
+            var nextCoordinate = states.location.coordinate + destinationDirection.ToVector();
+            var nextMap = states.area.GenerateMap(nextCoordinate);
+
+            states.methods.viewer.ReflectMap(nextMap, destinationDirection ?? Direction.NORTH);
             return nextMap;
         }
+
         /// <summary>
         /// マップとアクションとアクション主語を受け取りアクション後のマップ状態を返す
         /// </summary>
@@ -36,5 +40,13 @@ namespace Assets.Src.Domains
         {
             return beforeMap.Duplicate();
         }
+
+        /// <summary>
+        /// 地域データと地域内座標をもとにマップを生成する
+        /// </summary>
+        /// <param name="originArea">地域データ</param>
+        /// <param name="coordinate">地域内座標</param>
+        /// <returns>生成されたマップ</returns>
+        static Map GenerateMap(this AreaRoot originArea, Vector2 coordinate) => new Map();
     }
 }
