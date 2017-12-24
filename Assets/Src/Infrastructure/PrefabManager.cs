@@ -13,13 +13,17 @@ namespace Assets.Src.Infrastructure
     public static class PrefabManager
     {
         /// <summary>
+        /// 名無しオブジェクトにつけられる名称
+        /// </summary>
+        public const string ANONYMOUS_NAME = "NoNameObject";
+        /// <summary>
         /// ゲームオブジェクトの新規作成
         /// </summary>
         /// <typeparam name="Prefab">作成されるオブジェクトに実装される型</typeparam>
         /// <param name="objectName">オブジェクト名称</param>
         /// <returns>生成されたオブジェクト</returns>
         public static Prefab SetObject<Prefab>(this string objectName) where Prefab : MonoBehaviour
-            => new GameObject(objectName ?? "NoNameObject", typeof(Prefab)).GetComponent<Prefab>();
+            => new GameObject(objectName ?? ANONYMOUS_NAME, typeof(Prefab)).GetComponent<Prefab>();
         /// <summary>
         /// ゲームオブジェクトの新規作成
         /// 型名をそのままオブジェクト名とする
@@ -27,7 +31,7 @@ namespace Assets.Src.Infrastructure
         /// <typeparam name="Prefab">作成されるオブジェクトに実装される型</typeparam>
         /// <returns>生成されたオブジェクト</returns>
         public static Prefab SetObject<Prefab>() where Prefab : MonoBehaviour
-            => typeof(Prefab).FullName.Split('.').Last().SetObject<Prefab>();
+            => typeof(Prefab).FullName.Split(new[] { '.', '+' }).Last().SetObject<Prefab>();
 
         /// <summary>
         /// ゲームオブジェクトに親オブジェクトを設定して返す

@@ -1,11 +1,11 @@
-﻿using Assets.Src.Models.Person;
+﻿using Assets.Src.Models.Npcs;
 using Assets.Src.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Src.Models.Area;
+using Assets.Src.Models.Areas;
 
 namespace Assets.Src.Domains
 {

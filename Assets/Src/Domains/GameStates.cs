@@ -1,9 +1,12 @@
 ﻿using Assets.Src.Models;
-using Assets.Src.Models.Area;
+using Assets.Src.Models.Areas;
+using Assets.Src.Models.Npcs;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.Src.Domains
 {
@@ -21,7 +24,7 @@ namespace Assets.Src.Domains
         /// <summary>
         /// パラメータ実体
         /// </summary>
-        Parameters parameters = new Parameters();
+        Parameters _parameters = new Parameters();
 
         /// <summary>
         /// インフラアクセスメソッド群
@@ -56,10 +59,22 @@ namespace Assets.Src.Domains
         public Location location
         {
             get {
-                return parameters.location.Duplicate();
+                return _parameters.location.Duplicate();
             }
             set {
-                parameters.location = value.Duplicate();
+                _parameters.location = value.Duplicate();
+            }
+        }
+        /// <summary>
+        /// 現在の地域データ
+        /// </summary>
+        public Area area
+        {
+            get {
+                return _parameters.location.area.Duplicate();
+            }
+            set {
+                _parameters.location.area = value.Duplicate();
             }
         }
         /// <summary>
@@ -68,12 +83,34 @@ namespace Assets.Src.Domains
         public Map map
         {
             get {
-                return parameters.location.map.Duplicate();
+                return _parameters.location.map.Duplicate();
             }
             set {
-                parameters.location.map = value.Duplicate();
+                _parameters.location.map = value.Duplicate();
             }
         }
+
+        /// <summary>
+        /// 現在のマップ上に存在するNPC全体のリスト
+        /// </summary>
+        public List<Npc> npcList => _parameters.npcList.Select(npcData => npcData.Value).ToList();
+        /// <summary>
+        /// 座標から座標上に存在するNPCを返す
+        /// 座標上に誰もいなければNullが返る
+        /// </summary>
+        /// <param name="key">NPCの存在座標</param>
+        /// <returns>NPC</returns>
+        public Npc GetNpc(Vector2 key) => _parameters.npcList.ContainsKey(key) ? _parameters.npcList[key] : null;
+        /// <summary>
+        /// NPCからその存在座標を返す
+        /// NPCがマップ上に存在していなければNullを返す
+        /// </summary>
+        /// <param name="npc"></param>
+        /// <returns></returns>
+        public Vector2? GetCoordinate(Npc npc)
+            => npcList.Contains(npc) ?
+            _parameters.npcList.FirstOrDefault(npcData => npcData.Value == npc).Key :
+            (Vector2?)null;
 
         /// <summary>
         /// シャローコピーメソッド

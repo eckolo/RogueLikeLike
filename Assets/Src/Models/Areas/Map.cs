@@ -1,0 +1,34 @@
+﻿using Assets.Src.Models.Npcs;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using UnityEngine;
+
+namespace Assets.Src.Models.Areas
+{
+    /// <summary>
+    /// マップオブジェクト
+    /// </summary>
+    public class Map : IDuplicatable<Map>
+    {
+        /// <summary>
+        /// 発生イベント
+        /// </summary>
+        public MapEvent occurMapEvent { get; set; }
+
+        /// <summary>
+        /// 各マスのマップチップリスト
+        /// 座標は中央が(0,0)、東がx+1、北がY+1
+        /// マップチップ配列はインデックスが多いほど手前に表示
+        /// </summary>
+        public Dictionary<Vector2, List<MapChip>> mapchipList { get; set; }
+
+        /// <summary>
+        /// シャローコピーメソッド
+        /// </summary>
+        /// <returns>コピーされたオブジェクト</returns>
+        public Map MemberwiseClonePublic() => (Map)MemberwiseClone();
+    }
+}

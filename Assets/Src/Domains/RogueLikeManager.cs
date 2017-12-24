@@ -1,7 +1,8 @@
 ﻿using Assets.Src.Models;
-using Assets.Src.Models.Person;
+using Assets.Src.Models.Npcs;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,22 +17,31 @@ namespace Assets.Src.Domains
         /// <summary>
         /// ターン毎の処理実施
         /// </summary>
-        /// <param name="states">内部ステータス集合</param>
+        /// <param name="states">現在のゲーム状態</param>
         /// <param name="methods">インフラメソッド集合</param>
         /// <returns>内部ステータス</returns>
         public static GameStates PerformTurnByTurn(this GameStates states)
         {
+            var actionNpc = states.npcList.GetNextActNpc();
+            var behavior = actionNpc.DetermineBehavior();
+            var behaviorList = states.GeneratePersonBehaviorList(actionNpc, behavior);
+
+            foreach(var _behavior in behaviorList) states = states.ProcessBehavior(_behavior.Key, _behavior.Value);
+
             states.map = states.SetupNextMap();
             return states;
         }
+
         /// <summary>
-        /// 行動決定関数
+        /// 起点となる行動からそのターンの行動リストを生成する
         /// </summary>
-        /// <param name="person">行動決定対象</param>
-        /// <returns>行動決定処理成否</returns>
-        public static bool DetermineAction(this Npc person)
+        /// <param name="states">現在のゲーム状態</param>
+        /// <param name="npc">起点となる行動者</param>
+        /// <param name="behavior">起点となる行動</param>
+        /// <returns>ターン内行動リスト</returns>
+        static List<KeyValuePair<Npc, PersonBehavior>> GeneratePersonBehaviorList(this GameStates states, Npc npc, PersonBehavior behavior)
         {
-            return true;
+            throw new NotImplementedException();
         }
     }
 }

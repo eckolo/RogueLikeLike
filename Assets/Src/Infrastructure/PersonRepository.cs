@@ -1,4 +1,4 @@
-﻿using Assets.Src.Models.Person;
+﻿using Assets.Src.Models.Npcs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ namespace Assets.Src.Infrastructure
     /// <summary>
     /// キャラクタリポジトリ
     /// </summary>
-    public class PersonRepository : ResourceRepository<PersonStationery>
+    public class PersonRepository : ResourceRepository<NpcStationery>
     {
         /// <summary>
         /// データ格納ディレクトリ

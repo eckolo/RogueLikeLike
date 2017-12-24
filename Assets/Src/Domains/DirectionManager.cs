@@ -28,6 +28,12 @@ namespace Assets.Src.Domains
                 default: throw new IndexOutOfRangeException();
             }
         }
+        /// <summary>
+        /// 方角を単位ベクトルに変換する関数
+        /// </summary>
+        /// <param name="origin">元の方角</param>
+        /// <returns>単位ベクトル</returns>
+        public static Vector2 ToVector(this Direction? origin) => origin?.ToVector() ?? Vector2.zero;
 
         /// <summary>
         /// 単位ベクトルを方角に変換する関数
@@ -50,12 +56,51 @@ namespace Assets.Src.Domains
         /// <param name="origin">元の方向</param>
         /// <param name="top">
         /// 回転量を示す方角
-        /// この方角が上を向いている時に、北が上を向くよう回転させる
+        /// 元の北方向をこの方角へ回転させる
         /// </param>
-        /// <returns></returns>
+        /// <returns>回転された方角</returns>
         public static Direction Rotation(this Direction origin, Direction top)
         {
-            return origin;
+            switch(origin)
+            {
+                case Direction.NORTH:
+                    switch(top)
+                    {
+                        case Direction.NORTH: return Direction.NORTH;
+                        case Direction.SOUTH: return Direction.SOUTH;
+                        case Direction.EAST: return Direction.EAST;
+                        case Direction.WEST: return Direction.WEST;
+                        default: throw new IndexOutOfRangeException();
+                    }
+                case Direction.SOUTH:
+                    switch(top)
+                    {
+                        case Direction.NORTH: return Direction.SOUTH;
+                        case Direction.SOUTH: return Direction.NORTH;
+                        case Direction.EAST: return Direction.WEST;
+                        case Direction.WEST: return Direction.EAST;
+                        default: throw new IndexOutOfRangeException();
+                    }
+                case Direction.EAST:
+                    switch(top)
+                    {
+                        case Direction.NORTH: return Direction.EAST;
+                        case Direction.SOUTH: return Direction.WEST;
+                        case Direction.EAST: return Direction.SOUTH;
+                        case Direction.WEST: return Direction.NORTH;
+                        default: throw new IndexOutOfRangeException();
+                    }
+                case Direction.WEST:
+                    switch(top)
+                    {
+                        case Direction.NORTH: return Direction.WEST;
+                        case Direction.SOUTH: return Direction.EAST;
+                        case Direction.EAST: return Direction.NORTH;
+                        case Direction.WEST: return Direction.SOUTH;
+                        default: throw new IndexOutOfRangeException();
+                    }
+                default: throw new IndexOutOfRangeException();
+            }
         }
     }
 }

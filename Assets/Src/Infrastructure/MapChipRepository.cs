@@ -1,4 +1,4 @@
-﻿using Assets.Src.Models.Area;
+﻿using Assets.Src.Models.Areas;
 using System;
 using System.Collections.Generic;
 using System.Linq;

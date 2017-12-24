@@ -1,4 +1,4 @@
-﻿using Assets.Src.Models.Item;
+﻿using Assets.Src.Models.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;

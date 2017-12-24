@@ -1,7 +1,7 @@
 ﻿using Assets.Src.Domains;
 using Assets.Src.Models;
-using Assets.Src.Models.Area;
-using Assets.Src.Models.Person;
+using Assets.Src.Models.Areas;
+using Assets.Src.Models.Npcs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
