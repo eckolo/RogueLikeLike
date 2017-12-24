@@ -11,7 +11,7 @@ namespace Assets.Src.Models.Npcs
     /// <summary>
     /// キャラクター雛形オブジェクト
     /// </summary>
-    public partial class PersonStationery : Named
+    public partial class NpcStationery : Named
     {
         /// <summary>
         /// 表示画像

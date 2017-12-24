@@ -2,7 +2,7 @@
 
 namespace Assets.Src.Models.Npcs
 {
-    public partial class PersonStationery
+    public partial class NpcStationery
     {
         /// <summary>
         /// キャラクタの基礎ステータス

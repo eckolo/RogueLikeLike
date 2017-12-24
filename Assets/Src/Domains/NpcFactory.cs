@@ -11,7 +11,7 @@ namespace Assets.Src.Domains
     /// <summary>
     /// NPC系オブジェクト生成・変更サービス
     /// </summary>
-    public class NpcFactory : IFactoryStationery<Npc, PersonStationery>
+    public class NpcFactory : IFactoryStationery<Npc, NpcStationery>
     {
         /// <summary>
         /// オブジェクトの新規生成関数
@@ -23,7 +23,7 @@ namespace Assets.Src.Domains
         /// </param>
         /// <param name="level">形容詞の最大付与数</param>
         /// <returns>生成されたオブジェクト</returns>
-        public Npc Generate(PersonStationery stationery, List<Adjective> addableAdjectives, int level = 1)
+        public Npc Generate(NpcStationery stationery, List<Adjective> addableAdjectives, int level = 1)
         {
             throw new NotImplementedException();
         }

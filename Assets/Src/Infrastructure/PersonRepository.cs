@@ -10,7 +10,7 @@ namespace Assets.Src.Infrastructure
     /// <summary>
     /// キャラクタリポジトリ
     /// </summary>
-    public class PersonRepository : ResourceRepository<PersonStationery>
+    public class PersonRepository : ResourceRepository<NpcStationery>
     {
         /// <summary>
         /// データ格納ディレクトリ

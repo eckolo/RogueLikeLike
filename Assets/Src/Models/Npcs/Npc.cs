@@ -9,7 +9,7 @@ namespace Assets.Src.Models.Npcs
     /// <summary>
     /// NPCオブジェクト
     /// </summary>
-    public class Npc : PersonStationery, IAdhered
+    public class Npc : NpcStationery, IAdhered
     {
         /// <summary>
         /// 形容詞リスト
