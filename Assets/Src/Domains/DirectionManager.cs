@@ -28,6 +28,12 @@ namespace Assets.Src.Domains
                 default: throw new IndexOutOfRangeException();
             }
         }
+        /// <summary>
+        /// 方角を単位ベクトルに変換する関数
+        /// </summary>
+        /// <param name="origin">元の方角</param>
+        /// <returns>単位ベクトル</returns>
+        public static Vector2 ToVector(this Direction? origin) => origin?.ToVector() ?? Vector2.zero;
 
         /// <summary>
         /// 単位ベクトルを方角に変換する関数

@@ -17,6 +17,15 @@ public static partial class TEST
             Assert.AreEqual(Direction.EAST.ToVector(), Vector2.right);
             Assert.AreEqual(Direction.WEST.ToVector(), Vector2.left);
         }
+        [Test]
+        public static void ToVectorTest2()
+        {
+            Assert.AreEqual(Direction.NORTH.ToVector(), Vector2.up);
+            Assert.AreEqual(Direction.SOUTH.ToVector(), Vector2.down);
+            Assert.AreEqual(Direction.EAST.ToVector(), Vector2.right);
+            Assert.AreEqual(Direction.WEST.ToVector(), Vector2.left);
+            Assert.AreEqual(((Direction?)null).ToVector(), Vector2.zero);
+        }
 
         [Test]
         public static void ToDirectionTest()
