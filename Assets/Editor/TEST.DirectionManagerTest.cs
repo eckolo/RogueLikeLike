@@ -48,7 +48,7 @@ public static partial class TEST
         {
             try
             {
-                var temp = new Vector2(1, 2).ToDirection();
+                new Vector2(1, 2).ToDirection();
                 Assert.Fail();
             }
             catch
