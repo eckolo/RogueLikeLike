@@ -27,13 +27,13 @@ namespace Assets.Src.Domains
             /// <summary>
             /// 現ターンの行動履歴
             /// </summary>
-            public List<KeyValuePair<Npc, PersonBehavior>> behaviorLog { get; set; }
-                = new List<KeyValuePair<Npc, PersonBehavior>>();
+            public List<KeyValuePair<Npc, Behavior>> behaviorLog { get; set; }
+                = new List<KeyValuePair<Npc, Behavior>>();
             /// <summary>
             /// これからの行動予約
             /// </summary>
-            public Queue<KeyValuePair<Npc, PersonBehavior>> behaviorQueue { get; set; }
-                = new Queue<KeyValuePair<Npc, PersonBehavior>>();
+            public Queue<KeyValuePair<Npc, Behavior>> behaviorQueue { get; set; }
+                = new Queue<KeyValuePair<Npc, Behavior>>();
         }
     }
 }
