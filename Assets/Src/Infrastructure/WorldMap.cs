@@ -30,7 +30,7 @@ namespace Assets.Src.Infrastructure
         /// <returns>削除成否</returns>
         public bool DeleteContests(int key)
         {
-            return true;
+            throw new NotImplementedException();
         }
         /// <summary>
         /// 地域データの再生成
@@ -40,7 +40,7 @@ namespace Assets.Src.Infrastructure
         /// <returns>再生成された地域データ</returns>
         public AreaRoot ResetContests(AreaRoot setedAreaData, int key = default(int))
         {
-            return _areaList[key];
+            throw new NotImplementedException();
         }
 
         /// <summary>

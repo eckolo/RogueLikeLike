@@ -38,7 +38,7 @@ namespace Assets.Src.Domains
         /// <returns>アクション実施後マップオブジェクト</returns>
         public static Map UpdateMap(this Map beforeMap, KeyValuePair<Npc, PersonBehavior> action)
         {
-            return beforeMap.Duplicate();
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -47,6 +47,9 @@ namespace Assets.Src.Domains
         /// <param name="originArea">地域データ</param>
         /// <param name="coordinate">地域内座標</param>
         /// <returns>生成されたマップ</returns>
-        static Map GenerateMap(this AreaRoot originArea, Vector2 coordinate) => new Map();
+        static Map GenerateMap(this AreaRoot originArea, Vector2 coordinate)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

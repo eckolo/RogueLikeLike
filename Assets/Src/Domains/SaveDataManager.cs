@@ -19,7 +19,10 @@ namespace Assets.Src.Domains
         /// 0は自動セーブ先
         /// </param>
         /// <returns>セーブ処理成否</returns>
-        public static bool Save(int dataIndex = 0) => true;
+        public static bool Save(int dataIndex = 0)
+        {
+            throw new NotImplementedException();
+        }
         /// <summary>
         /// ロード処理
         /// </summary>
@@ -28,6 +31,9 @@ namespace Assets.Src.Domains
         /// 0は自動セーブ先
         /// </param>
         /// <returns>ロード処理成否</returns>
-        public static bool Load(int dataIndex = 0) => true;
+        public static bool Load(int dataIndex = 0)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

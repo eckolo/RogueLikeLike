@@ -30,7 +30,7 @@ namespace Assets.Src.Domains
         /// <returns>変換されたパラメータ</returns>
         public static PersonStationery.Parameters ToParameters(this List<SkillParameter> skills)
         {
-            return default(PersonStationery.Parameters);
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Assets.Src.Domains
         /// <returns>決定された行動</returns>
         public static PersonBehavior DetermineBehavior(this Npc person)
         {
-            return new PersonBehavior();
+            throw new NotImplementedException();
         }
 
         /// <summary>
