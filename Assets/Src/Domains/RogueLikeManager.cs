@@ -39,7 +39,7 @@ namespace Assets.Src.Domains
         /// <param name="npc">起点となる行動者</param>
         /// <param name="behavior">起点となる行動</param>
         /// <returns>ターン内行動リスト</returns>
-        static List<KeyValuePair<Npc, PersonBehavior>> GeneratePersonBehaviorList(this GameStates states, Npc npc, PersonBehavior behavior)
+        static List<KeyValuePair<Npc, Behavior>> GeneratePersonBehaviorList(this GameStates states, Npc npc, Behavior behavior)
         {
             throw new NotImplementedException();
         }

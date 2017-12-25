@@ -38,7 +38,7 @@ namespace Assets.Src.Domains
         /// </summary>
         /// <param name="person">行動決定対象</param>
         /// <returns>決定された行動</returns>
-        public static PersonBehavior DetermineBehavior(this Npc person)
+        public static Behavior DetermineBehavior(this Npc person)
         {
             throw new NotImplementedException();
         }
@@ -50,7 +50,7 @@ namespace Assets.Src.Domains
         /// <param name="npc">行動者</param>
         /// <param name="behavior">行動内容</param>
         /// <returns>行動結果を反映したゲーム状態</returns>
-        public static GameStates ProcessBehavior(this GameStates states, Npc npc, PersonBehavior behavior)
+        public static GameStates ProcessBehavior(this GameStates states, Npc npc, Behavior behavior)
         {
             throw new NotImplementedException();
         }

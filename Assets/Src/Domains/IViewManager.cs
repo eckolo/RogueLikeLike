@@ -27,6 +27,6 @@ namespace Assets.Src.Domains
         /// <param name="person">動作主体キャラクター</param>
         /// <param name="behavior">アクション内容</param>
         /// <returns>描画処理成否</returns>
-        bool ReflectAction(Npc person, PersonBehavior behavior);
+        bool ReflectAction(Npc person, Behavior behavior);
     }
 }

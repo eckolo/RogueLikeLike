@@ -36,7 +36,7 @@ namespace Assets.Src.Domains
         /// <param name="beforeMap">アクション実行前のマップ状態</param>
         /// <param name="action">アクション主語とアクション内容のペアオブジェクト</param>
         /// <returns>アクション実施後マップオブジェクト</returns>
-        public static Map UpdateMap(this Map beforeMap, KeyValuePair<Npc, PersonBehavior> action)
+        public static Map UpdateMap(this Map beforeMap, KeyValuePair<Npc, Behavior> action)
         {
             throw new NotImplementedException();
         }

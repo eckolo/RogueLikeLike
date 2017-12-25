@@ -32,7 +32,7 @@ namespace Assets.Src.Infrastructure
         /// <param name="person">動作主体キャラクター</param>
         /// <param name="behavior">アクション内容</param>
         /// <returns>描画処理成否</returns>
-        public bool ReflectAction(Npc person, PersonBehavior behavior)
+        public bool ReflectAction(Npc person, Behavior behavior)
         {
             throw new NotImplementedException();
         }
