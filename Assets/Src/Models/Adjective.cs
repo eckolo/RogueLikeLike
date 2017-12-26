@@ -1,7 +1,4 @@
-﻿using UnityEngine;
-using UnityEditor;
-
-namespace Assets.Src.Models
+﻿namespace Assets.Src.Models
 {
     /// <summary>
     /// 形容詞オブジェクト
