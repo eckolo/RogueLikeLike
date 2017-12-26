@@ -29,11 +29,6 @@ namespace Assets.Src.Domains
             /// </summary>
             public List<KeyValuePair<Npc, Behavior>> behaviorLog { get; set; }
                 = new List<KeyValuePair<Npc, Behavior>>();
-            /// <summary>
-            /// これからの行動予約
-            /// </summary>
-            public Queue<KeyValuePair<Npc, Behavior>> behaviorQueue { get; set; }
-                = new Queue<KeyValuePair<Npc, Behavior>>();
         }
     }
 }
