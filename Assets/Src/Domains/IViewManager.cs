@@ -24,9 +24,8 @@ namespace Assets.Src.Domains
         /// <summary>
         /// キャラクターのアクションを画面に反映する
         /// </summary>
-        /// <param name="person">動作主体キャラクター</param>
         /// <param name="behavior">アクション内容</param>
         /// <returns>描画処理成否</returns>
-        bool ReflectAction(Npc person, Behavior behavior);
+        bool ReflectAction(Behavior behavior);
     }
 }

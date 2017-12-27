@@ -27,8 +27,7 @@ namespace Assets.Src.Domains
             /// <summary>
             /// 現ターンの行動履歴
             /// </summary>
-            public List<KeyValuePair<Npc, Behavior>> behaviorLog { get; set; }
-                = new List<KeyValuePair<Npc, Behavior>>();
+            public List<Behavior> behaviorLog { get; set; } = new List<Behavior>();
         }
     }
 }
