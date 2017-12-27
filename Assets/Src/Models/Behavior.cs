@@ -1,4 +1,5 @@
-﻿using Assets.Src.Models.Npcs;
+﻿using Assets.Src.Domains;
+using Assets.Src.Models.Npcs;
 
 namespace Assets.Src.Models
 {
@@ -24,5 +25,12 @@ namespace Assets.Src.Models
         /// 動作主体
         /// </summary>
         public Npc subject => _subject;
+
+        /// <summary>
+        /// 動作内容
+        /// </summary>
+        /// <param name="states">動作前のゲーム状態</param>
+        /// <returns>動作後のゲーム状態</returns>
+        public abstract GameStates Predicate(GameStates states);
     }
 }

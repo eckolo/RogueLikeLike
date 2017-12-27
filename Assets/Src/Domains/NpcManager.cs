@@ -51,7 +51,10 @@ namespace Assets.Src.Domains
         /// <returns>行動結果を反映したゲーム状態</returns>
         public static GameStates ProcessBehavior(this GameStates states, Behavior behavior)
         {
-            throw new NotImplementedException();
+
+            var result = behavior.Predicate(states);
+            result.AddBehaviorLog(behavior);
+            return result;
         }
     }
 }
