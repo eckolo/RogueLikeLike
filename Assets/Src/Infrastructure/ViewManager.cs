@@ -1,6 +1,7 @@
 ﻿using Assets.Src.Domains;
 using Assets.Src.Models;
 using Assets.Src.Models.Areas;
+using Assets.Src.Models.Behaviors;
 using Assets.Src.Models.Npcs;
 using System;
 using System.Collections.Generic;

@@ -1,7 +1,7 @@
 ﻿using Assets.Src.Domains;
 using Assets.Src.Models.Npcs;
 
-namespace Assets.Src.Models
+namespace Assets.Src.Models.Behaviors
 {
     /// <summary>
     /// キャラクターの動作を示すデータオブジェクト
