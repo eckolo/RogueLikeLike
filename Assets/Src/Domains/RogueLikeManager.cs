@@ -24,10 +24,10 @@ namespace Assets.Src.Domains
         public static GameStates PerformTurnByTurn(this GameStates states)
         {
             var actionNpc = states.npcList.GetNextActNpc();
-            var behavior = actionNpc.DetermineBehavior();
-            var behaviorList = states.GeneratePersonBehaviorList(behavior);
+            var behaviorFirst = actionNpc.DetermineBehavior();
+            var behaviorList = states.GeneratePersonBehaviorList(behaviorFirst);
 
-            foreach(var _behavior in behaviorList) states = states.ProcessBehavior(_behavior);
+            foreach(var behavior in behaviorList) states = states.ProcessBehavior(behavior);
 
             states.map = states.SetupNextMap();
             return states;
