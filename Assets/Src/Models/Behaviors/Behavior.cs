@@ -11,10 +11,10 @@ namespace Assets.Src.Models.Behaviors
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        /// <param name="_subject">動作主体設定値</param>
-        public Behavior(Npc _subject)
+        /// <param name="subject">動作主体設定値</param>
+        public Behavior(Npc subject)
         {
-            this._subject = _subject;
+            _subject = subject;
         }
 
         /// <summary>
