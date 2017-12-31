@@ -1,4 +1,5 @@
 ﻿using Assets.Src.Models;
+using Assets.Src.Models.Abilities;
 using Assets.Src.Models.Behaviors;
 using Assets.Src.Models.Npcs;
 using System;
@@ -35,11 +36,11 @@ namespace Assets.Src.Domains
         }
 
         /// <summary>
-        /// 行動決定関数
+        /// 使用アビリティ決定関数
         /// </summary>
-        /// <param name="person">行動決定対象</param>
-        /// <returns>決定された行動</returns>
-        public static Behavior DetermineBehavior(this Npc person)
+        /// <param name="person">使用アビリティ決定対象</param>
+        /// <returns>決定されたアビリティ</returns>
+        public static Ability DetermineBehavior(this Npc person)
         {
             throw new NotImplementedException();
         }
