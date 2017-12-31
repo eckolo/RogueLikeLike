@@ -1,6 +1,4 @@
 ﻿using Assets.Src.Models;
-using Assets.Src.Models.Areas;
-using Assets.Src.Models.Behaviors;
 using Assets.Src.Models.Npcs;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,7 +26,7 @@ namespace Assets.Src.Domains
             /// <summary>
             /// 現ターンの行動履歴
             /// </summary>
-            public List<Behavior> behaviorLog { get; set; } = new List<Behavior>();
+            public List<Happened> behaviorLog { get; set; } = new List<Happened>();
         }
     }
 }

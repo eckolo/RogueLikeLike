@@ -1,6 +1,6 @@
 ﻿namespace Assets.Src.Models.Abilities
 {
-    public partial class Motion
+    public partial class Behavior
     {
         public partial class Definition
         {

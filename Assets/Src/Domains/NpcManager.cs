@@ -1,12 +1,8 @@
 ﻿using Assets.Src.Models;
 using Assets.Src.Models.Abilities;
-using Assets.Src.Models.Behaviors;
 using Assets.Src.Models.Npcs;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Assets.Src.Domains
 {
@@ -51,7 +47,7 @@ namespace Assets.Src.Domains
         /// <param name="states">現在のゲーム状態</param>
         /// <param name="behavior">行動内容</param>
         /// <returns>行動結果を反映したゲーム状態</returns>
-        public static GameStates ProcessBehavior(this GameStates states, Behavior behavior)
+        public static GameStates ProcessBehavior(this GameStates states, Happened behavior)
         {
 
             var result = behavior.Predicate(states);

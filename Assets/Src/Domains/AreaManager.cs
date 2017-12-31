@@ -1,12 +1,6 @@
 ﻿using Assets.Src.Models;
 using Assets.Src.Models.Areas;
-using Assets.Src.Models.Behaviors;
-using Assets.Src.Models.Npcs;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.Src.Domains
@@ -37,7 +31,7 @@ namespace Assets.Src.Domains
         /// <param name="beforeMap">アクション実行前のマップ状態</param>
         /// <param name="action">アクション内容</param>
         /// <returns>アクション実施後マップオブジェクト</returns>
-        public static Map UpdateMap(this Map beforeMap, Behavior action)
+        public static Map UpdateMap(this Map beforeMap, Happened action)
         {
             throw new NotImplementedException();
         }

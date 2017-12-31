@@ -1,13 +1,8 @@
 ﻿using Assets.Src.Models;
 using Assets.Src.Models.Abilities;
-using Assets.Src.Models.Behaviors;
 using Assets.Src.Models.Npcs;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Assets.Src.Domains
 {
@@ -41,7 +36,7 @@ namespace Assets.Src.Domains
         /// <param name="npc">起点となる行動者</param>
         /// <param name="ability">起点となるアビリティ</param>
         /// <returns>ターン内行動リスト</returns>
-        static List<Behavior> GeneratePersonBehaviorList(this GameStates states, Npc npc, Ability ability)
+        static List<Happened> GeneratePersonBehaviorList(this GameStates states, Npc npc, Ability ability)
         {
             throw new NotImplementedException();
         }

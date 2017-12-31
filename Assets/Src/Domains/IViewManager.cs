@@ -1,12 +1,5 @@
-﻿using Assets.Src.Models.Npcs;
-using Assets.Src.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Assets.Src.Models;
 using Assets.Src.Models.Areas;
-using Assets.Src.Models.Behaviors;
 
 namespace Assets.Src.Domains
 {
@@ -27,6 +20,6 @@ namespace Assets.Src.Domains
         /// </summary>
         /// <param name="behavior">アクション内容</param>
         /// <returns>描画処理成否</returns>
-        bool ReflectAction(Behavior behavior);
+        bool ReflectAction(Happened behavior);
     }
 }

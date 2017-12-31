@@ -8,7 +8,7 @@ namespace Assets.Src.Models.Abilities
     /// アビリティの具体的動作を示すデータ群
     /// </summary>
     [Serializable]
-    public partial class Motion
+    public partial class Behavior
     {
         /// <summary>
         /// 同時発生エフェクト一覧

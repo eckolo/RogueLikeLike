@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Src.Models.Abilities
 {
-    public partial class Motion
+    public partial class Behavior
     {
         /// <summary>
         /// 挙動定義パラメータ
@@ -16,11 +16,11 @@ namespace Assets.Src.Models.Abilities
             /// 挙動定義リスト
             /// </summary>
             [SerializeField]
-            List<Motion> _motionList = new List<Motion>();
+            List<Behavior> _motionList = new List<Behavior>();
             /// <summary>
             /// 挙動定義リスト
             /// </summary>
-            public List<Motion> motionList => _motionList;
+            public List<Behavior> motionList => _motionList;
 
             /// <summary>
             /// 移動可能量
