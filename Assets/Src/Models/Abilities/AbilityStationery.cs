@@ -34,7 +34,7 @@ namespace Assets.Src.Models.Abilities
         /// <summary>
         /// 挙動定義リスト
         /// </summary>
-        public List<Behavior> motionList => _behaviorDefinition.motionList;
+        public List<Behavior> behaviorList => _behaviorDefinition.behaviorList;
 
         /// <summary>
         /// 使用条件ジョブリスト

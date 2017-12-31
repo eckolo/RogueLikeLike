@@ -24,9 +24,9 @@ namespace Assets.Src.Infrastructure
         /// <summary>
         /// キャラクターのアクションを画面に反映する
         /// </summary>
-        /// <param name="behavior">アクション内容</param>
+        /// <param name="happened">アクション内容</param>
         /// <returns>描画処理成否</returns>
-        public bool ReflectAction(Happened behavior)
+        public bool ReflectAction(Happened happened)
         {
             throw new NotImplementedException();
         }

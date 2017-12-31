@@ -112,10 +112,10 @@ namespace Assets.Src.Domains
         /// <summary>
         /// 行動履歴に追加
         /// </summary>
-        /// <param name="behavior">履歴に追加される行動内容</param>
-        public void AddBehaviorLog(Happened behavior)
+        /// <param name="happened">履歴に追加される行動内容</param>
+        public void AddHappenedLog(Happened happened)
         {
-            _parameters.behaviorLog.Add(behavior);
+            _parameters.happenedLog.Add(happened);
         }
 
         /// <summary>

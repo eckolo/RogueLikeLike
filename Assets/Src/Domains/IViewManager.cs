@@ -18,8 +18,8 @@ namespace Assets.Src.Domains
         /// <summary>
         /// キャラクターのアクションを画面に反映する
         /// </summary>
-        /// <param name="behavior">アクション内容</param>
+        /// <param name="happened">アクション内容</param>
         /// <returns>描画処理成否</returns>
-        bool ReflectAction(Happened behavior);
+        bool ReflectAction(Happened happened);
     }
 }

@@ -26,7 +26,7 @@ namespace Assets.Src.Domains
             /// <summary>
             /// 現ターンの行動履歴
             /// </summary>
-            public List<Happened> behaviorLog { get; set; } = new List<Happened>();
+            public List<Happened> happenedLog { get; set; } = new List<Happened>();
         }
     }
 }

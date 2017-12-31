@@ -16,11 +16,11 @@ namespace Assets.Src.Models.Abilities
             /// 挙動定義リスト
             /// </summary>
             [SerializeField]
-            List<Behavior> _motionList = new List<Behavior>();
+            List<Behavior> _behaviorList = new List<Behavior>();
             /// <summary>
             /// 挙動定義リスト
             /// </summary>
-            public List<Behavior> motionList => _motionList;
+            public List<Behavior> behaviorList => _behaviorList;
 
             /// <summary>
             /// 移動可能量

@@ -36,7 +36,7 @@ namespace Assets.Src.Domains
         /// </summary>
         /// <param name="person">使用アビリティ決定対象</param>
         /// <returns>決定されたアビリティ</returns>
-        public static Ability DetermineBehavior(this Npc person)
+        public static Ability DetermineAbility(this Npc person)
         {
             throw new NotImplementedException();
         }
@@ -45,13 +45,12 @@ namespace Assets.Src.Domains
         /// 各行動の実処理関数
         /// </summary>
         /// <param name="states">現在のゲーム状態</param>
-        /// <param name="behavior">行動内容</param>
+        /// <param name="happened">行動内容</param>
         /// <returns>行動結果を反映したゲーム状態</returns>
-        public static GameStates ProcessBehavior(this GameStates states, Happened behavior)
+        public static GameStates ProcessActually(this GameStates states, Happened happened)
         {
-
-            var result = behavior.Predicate(states);
-            result.AddBehaviorLog(behavior);
+            var result = happened.Predicate(states);
+            result.AddHappenedLog(happened);
             return result;
         }
     }
