@@ -50,6 +50,6 @@ namespace Assets.Src.Models.Abilities
         /// 挙動定義パラメータ
         /// </summary>
         [SerializeField]
-        BehaviorDefinition _behaviorDefinition = new BehaviorDefinition();
+        Motion.Definition _behaviorDefinition = new Motion.Definition();
     }
 }
