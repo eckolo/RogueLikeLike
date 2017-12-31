@@ -1,5 +1,6 @@
 ﻿using Assets.Src.Models;
 using Assets.Src.Models.Areas;
+using Assets.Src.Models.Behaviors;
 using Assets.Src.Models.Npcs;
 using System;
 using System.Collections.Generic;
@@ -111,6 +112,15 @@ namespace Assets.Src.Domains
             => npcList.Contains(npc) ?
             _parameters.npcList.FirstOrDefault(npcData => npcData.Value == npc).Key :
             (Vector2?)null;
+
+        /// <summary>
+        /// 行動履歴に追加
+        /// </summary>
+        /// <param name="behavior">履歴に追加される行動内容</param>
+        public void AddBehaviorLog(Behavior behavior)
+        {
+            _parameters.behaviorLog.Add(behavior);
+        }
 
         /// <summary>
         /// シャローコピーメソッド

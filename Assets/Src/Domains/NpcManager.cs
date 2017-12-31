@@ -1,4 +1,5 @@
 ﻿using Assets.Src.Models;
+using Assets.Src.Models.Behaviors;
 using Assets.Src.Models.Npcs;
 using System;
 using System.Collections.Generic;
@@ -47,12 +48,14 @@ namespace Assets.Src.Domains
         /// 各行動の実処理関数
         /// </summary>
         /// <param name="states">現在のゲーム状態</param>
-        /// <param name="npc">行動者</param>
         /// <param name="behavior">行動内容</param>
         /// <returns>行動結果を反映したゲーム状態</returns>
-        public static GameStates ProcessBehavior(this GameStates states, Npc npc, Behavior behavior)
+        public static GameStates ProcessBehavior(this GameStates states, Behavior behavior)
         {
-            throw new NotImplementedException();
+
+            var result = behavior.Predicate(states);
+            result.AddBehaviorLog(behavior);
+            return result;
         }
     }
 }

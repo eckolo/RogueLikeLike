@@ -1,6 +1,7 @@
 ﻿using Assets.Src.Domains;
 using Assets.Src.Models;
 using Assets.Src.Models.Areas;
+using Assets.Src.Models.Behaviors;
 using Assets.Src.Models.Npcs;
 using System;
 using System.Collections.Generic;
@@ -29,10 +30,9 @@ namespace Assets.Src.Infrastructure
         /// <summary>
         /// キャラクターのアクションを画面に反映する
         /// </summary>
-        /// <param name="person">動作主体キャラクター</param>
         /// <param name="behavior">アクション内容</param>
         /// <returns>描画処理成否</returns>
-        public bool ReflectAction(Npc person, Behavior behavior)
+        public bool ReflectAction(Behavior behavior)
         {
             throw new NotImplementedException();
         }

@@ -1,4 +1,5 @@
 ﻿using Assets.Src.Models;
+using Assets.Src.Models.Behaviors;
 using Assets.Src.Models.Npcs;
 using System;
 using System.Collections;
@@ -23,10 +24,10 @@ namespace Assets.Src.Domains
         public static GameStates PerformTurnByTurn(this GameStates states)
         {
             var actionNpc = states.npcList.GetNextActNpc();
-            var behavior = actionNpc.DetermineBehavior();
-            var behaviorList = states.GeneratePersonBehaviorList(actionNpc, behavior);
+            var behaviorFirst = actionNpc.DetermineBehavior();
+            var behaviorList = states.GeneratePersonBehaviorList(behaviorFirst);
 
-            foreach(var _behavior in behaviorList) states = states.ProcessBehavior(_behavior.Key, _behavior.Value);
+            foreach(var behavior in behaviorList) states = states.ProcessBehavior(behavior);
 
             states.map = states.SetupNextMap();
             return states;
@@ -39,7 +40,7 @@ namespace Assets.Src.Domains
         /// <param name="npc">起点となる行動者</param>
         /// <param name="behavior">起点となる行動</param>
         /// <returns>ターン内行動リスト</returns>
-        static List<KeyValuePair<Npc, Behavior>> GeneratePersonBehaviorList(this GameStates states, Npc npc, Behavior behavior)
+        static List<Behavior> GeneratePersonBehaviorList(this GameStates states, Behavior behavior)
         {
             throw new NotImplementedException();
         }
