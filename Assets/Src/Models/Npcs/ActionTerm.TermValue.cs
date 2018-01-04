@@ -22,6 +22,15 @@ namespace Assets.Src.Models.Npcs
             public ValueType valueType => _valueType;
 
             /// <summary>
+            /// 条件判定値取得対象
+            /// </summary>
+            ValueTarget _valueTarget = default(ValueTarget);
+            /// <summary>
+            /// 条件判定値取得対象
+            /// </summary>
+            public ValueTarget valueTarget => _valueTarget;
+
+            /// <summary>
             /// 条件適用方式
             /// </summary>
             TermType _termType = default(TermType);
