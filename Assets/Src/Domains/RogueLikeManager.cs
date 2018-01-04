@@ -1,12 +1,8 @@
 ﻿using Assets.Src.Models;
-using Assets.Src.Models.Behaviors;
+using Assets.Src.Models.Abilities;
 using Assets.Src.Models.Npcs;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Assets.Src.Domains
 {
@@ -23,24 +19,23 @@ namespace Assets.Src.Domains
         /// <returns>内部ステータス</returns>
         public static GameStates PerformTurnByTurn(this GameStates states)
         {
-            var actionNpc = states.npcList.GetNextActNpc();
-            var behaviorFirst = actionNpc.DetermineBehavior();
-            var behaviorList = states.GeneratePersonBehaviorList(behaviorFirst);
+            var actor = states.npcList.GetNextActNpc();
+            var firstAction = actor.DetermineAction(states);
+            var happenedList = states.GenerateHappenedList(firstAction);
 
-            foreach(var behavior in behaviorList) states = states.ProcessBehavior(behavior);
+            foreach(var happened in happenedList) states = states.ProcessActually(happened);
 
             states.map = states.SetupNextMap();
             return states;
         }
 
         /// <summary>
-        /// 起点となる行動からそのターンの行動リストを生成する
+        /// 起点となるNPC、アビリティからそのターンの行動リストを生成する
         /// </summary>
         /// <param name="states">現在のゲーム状態</param>
-        /// <param name="npc">起点となる行動者</param>
-        /// <param name="behavior">起点となる行動</param>
+        /// <param name="action">起点となる行動内容</param>
         /// <returns>ターン内行動リスト</returns>
-        static List<Behavior> GeneratePersonBehaviorList(this GameStates states, Behavior behavior)
+        static List<Happened> GenerateHappenedList(this GameStates states, ActionPattern action)
         {
             throw new NotImplementedException();
         }

@@ -34,7 +34,7 @@ namespace Assets.Src.Models.Abilities
         /// <summary>
         /// 挙動定義リスト
         /// </summary>
-        public List<Motion> motionList => _behaviorDefinition.motionList;
+        public List<Behavior> behaviorList => _behaviorDefinition.behaviorList;
 
         /// <summary>
         /// 使用条件ジョブリスト
@@ -50,6 +50,6 @@ namespace Assets.Src.Models.Abilities
         /// 挙動定義パラメータ
         /// </summary>
         [SerializeField]
-        BehaviorDefinition _behaviorDefinition = new BehaviorDefinition();
+        Behavior.Definition _behaviorDefinition = new Behavior.Definition();
     }
 }

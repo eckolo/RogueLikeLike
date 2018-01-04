@@ -1,13 +1,7 @@
 ﻿using Assets.Src.Domains;
 using Assets.Src.Models;
 using Assets.Src.Models.Areas;
-using Assets.Src.Models.Behaviors;
-using Assets.Src.Models.Npcs;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Assets.Src.Infrastructure
 {
@@ -30,9 +24,9 @@ namespace Assets.Src.Infrastructure
         /// <summary>
         /// キャラクターのアクションを画面に反映する
         /// </summary>
-        /// <param name="behavior">アクション内容</param>
+        /// <param name="happened">アクション内容</param>
         /// <returns>描画処理成否</returns>
-        public bool ReflectAction(Behavior behavior)
+        public bool ReflectAction(Happened happened)
         {
             throw new NotImplementedException();
         }

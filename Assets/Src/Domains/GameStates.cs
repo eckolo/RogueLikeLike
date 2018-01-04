@@ -1,12 +1,8 @@
 ﻿using Assets.Src.Models;
 using Assets.Src.Models.Areas;
-using Assets.Src.Models.Behaviors;
 using Assets.Src.Models.Npcs;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.Src.Domains
@@ -109,17 +105,17 @@ namespace Assets.Src.Domains
         /// <param name="npc"></param>
         /// <returns></returns>
         public Vector2? GetCoordinate(Npc npc)
-            => npcList.Contains(npc) ?
+            => npc != null && npcList.Contains(npc) ?
             _parameters.npcList.FirstOrDefault(npcData => npcData.Value == npc).Key :
             (Vector2?)null;
 
         /// <summary>
         /// 行動履歴に追加
         /// </summary>
-        /// <param name="behavior">履歴に追加される行動内容</param>
-        public void AddBehaviorLog(Behavior behavior)
+        /// <param name="happened">履歴に追加される行動内容</param>
+        public void AddHappenedLog(Happened happened)
         {
-            _parameters.behaviorLog.Add(behavior);
+            _parameters.happenedLog.Add(happened);
         }
 
         /// <summary>
