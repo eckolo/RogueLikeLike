@@ -9,17 +9,26 @@ namespace Assets.Src.Models.Npcs
         /// 条件値オブジェクト
         /// </summary>
         [Serializable]
-        class TermValue
+        partial class TermValue
         {
             /// <summary>
             /// 条件判定に用いられる値の種類
             /// </summary>
             [SerializeField]
-            TermValueType _type = default(TermValueType);
+            ValueType _valueType = default(ValueType);
             /// <summary>
             /// 条件判定に用いられる値の種類
             /// </summary>
-            public TermValueType type => _type;
+            public ValueType valueType => _valueType;
+
+            /// <summary>
+            /// 条件適用方式
+            /// </summary>
+            TermType _termType = default(TermType);
+            /// <summary>
+            /// 条件適用方式
+            /// </summary>
+            public TermType termType => _termType;
 
             /// <summary>
             /// 判定条件値
