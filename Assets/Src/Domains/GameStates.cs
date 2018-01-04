@@ -105,7 +105,7 @@ namespace Assets.Src.Domains
         /// <param name="npc"></param>
         /// <returns></returns>
         public Vector2? GetCoordinate(Npc npc)
-            => npcList.Contains(npc) ?
+            => npc != null && npcList.Contains(npc) ?
             _parameters.npcList.FirstOrDefault(npcData => npcData.Value == npc).Key :
             (Vector2?)null;
 
