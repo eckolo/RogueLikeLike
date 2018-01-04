@@ -24,12 +24,14 @@ namespace Assets.Src.Models.Npcs
 
             /// <summary>
             /// 条件判定値取得対象
+            /// （動作対象）
             /// </summary>
-            ValueTarget _valueTarget = default(ValueTarget);
+            TargetType _valueTarget = default(TargetType);
             /// <summary>
             /// 条件判定値取得対象
+            /// （動作対象）
             /// </summary>
-            public ValueTarget valueTarget => _valueTarget;
+            public TargetType valueTarget => _valueTarget;
 
             /// <summary>
             /// 条件適用方式

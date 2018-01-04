@@ -25,6 +25,15 @@ namespace Assets.Src.Models.Npcs
         public ActionPattern actionPattern => _actionPattern;
 
         /// <summary>
+        /// 動作対象
+        /// </summary>
+        TargetType _targetType = default(TargetType);
+        /// <summary>
+        /// 動作対象
+        /// </summary>
+        public TargetType targetType => _targetType;
+
+        /// <summary>
         /// 条件値オブジェクト
         /// 全ての条件を満たした場合該当する
         /// （つまりAND条件）
