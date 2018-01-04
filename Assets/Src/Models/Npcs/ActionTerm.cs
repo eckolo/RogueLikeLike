@@ -24,7 +24,9 @@ namespace Assets.Src.Models.Npcs
         public ActionPattern actionPattern => _actionPattern;
 
         /// <summary>
-        /// 条件値リスト
+        /// 条件値オブジェクト
+        /// 全ての条件を満たした場合該当する
+        /// （つまりAND条件）
         /// </summary>
         [SerializeField]
         List<TermValue> _termList = new List<TermValue>();
