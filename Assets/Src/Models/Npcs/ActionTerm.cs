@@ -11,7 +11,7 @@ namespace Assets.Src.Models.Npcs
     /// 行動条件クラス
     /// </summary>
     [Serializable]
-    public class ActionTerm
+    public partial class ActionTerm
     {
         /// <summary>
         /// 該当行動パターン
@@ -22,5 +22,11 @@ namespace Assets.Src.Models.Npcs
         /// 該当行動パターン
         /// </summary>
         public ActionPattern actionPattern => _actionPattern;
+
+        /// <summary>
+        /// 条件値リスト
+        /// </summary>
+        [SerializeField]
+        List<TermValue> _termList = new List<TermValue>();
     }
 }
