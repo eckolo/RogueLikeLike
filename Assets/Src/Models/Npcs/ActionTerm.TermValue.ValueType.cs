@@ -14,6 +14,18 @@
                 /// </summary>
                 RANGE,
                 /// <summary>
+                /// NPC数
+                /// </summary>
+                HOW_MANY_NPC,
+                /// <summary>
+                /// 友好NPC数
+                /// </summary>
+                HOW_MANY_FRIEND,
+                /// <summary>
+                /// 敵対NPC数
+                /// </summary>
+                HOW_MANY_STRANGER,
+                /// <summary>
                 /// 最大HP
                 /// </summary>
                 MAX_HP,
