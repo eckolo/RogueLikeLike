@@ -1,4 +1,5 @@
 ﻿using Assets.Src.Domains;
+using Assets.Src.Models.Abilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,14 +16,14 @@ namespace Assets.Src.Models.Npcs
     public partial class ActionTerm
     {
         /// <summary>
-        /// 該当行動パターン
+        /// 該当使用アビリティ
         /// </summary>
         [SerializeField]
-        ActionPattern _actionPattern = default(ActionPattern);
+        AbilityStationery _ability = default(AbilityStationery);
         /// <summary>
-        /// 該当行動パターン
+        /// 該当使用アビリティ
         /// </summary>
-        public ActionPattern actionPattern => _actionPattern;
+        public AbilityStationery ability => _ability;
 
         /// <summary>
         /// 動作対象

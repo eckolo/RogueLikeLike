@@ -20,8 +20,8 @@ namespace Assets.Src.Domains
         public static GameStates PerformTurnByTurn(this GameStates states)
         {
             var actor = states.npcList.GetNextActNpc();
-            var abilityFirst = actor.DetermineAbility();
-            var happenedList = states.GenerateHappenedList(actor, abilityFirst);
+            var firstAction = actor.DetermineAction(states);
+            var happenedList = states.GenerateHappenedList(firstAction);
 
             foreach(var happened in happenedList) states = states.ProcessActually(happened);
 
@@ -33,10 +33,9 @@ namespace Assets.Src.Domains
         /// 起点となるNPC、アビリティからそのターンの行動リストを生成する
         /// </summary>
         /// <param name="states">現在のゲーム状態</param>
-        /// <param name="npc">起点となる行動者</param>
-        /// <param name="ability">起点となるアビリティ</param>
+        /// <param name="action">起点となる行動内容</param>
         /// <returns>ターン内行動リスト</returns>
-        static List<Happened> GenerateHappenedList(this GameStates states, Npc npc, Ability ability)
+        static List<Happened> GenerateHappenedList(this GameStates states, ActionPattern action)
         {
             throw new NotImplementedException();
         }
