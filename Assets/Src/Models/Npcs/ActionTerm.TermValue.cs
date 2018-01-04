@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Src.Domains;
+using System;
 using UnityEngine;
 
 namespace Assets.Src.Models.Npcs
@@ -48,6 +49,17 @@ namespace Assets.Src.Models.Npcs
             /// 判定条件値
             /// </summary>
             public int value => _value;
+
+            /// <summary>
+            /// 指定されたゲーム状態下でこの条件が真か否か判定する
+            /// </summary>
+            /// <param name="myself">判定者</param>
+            /// <param name="states">ゲーム状態</param>
+            /// <returns>条件判定結果</returns>
+            public bool Judge(Npc myself, GameStates states)
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }
