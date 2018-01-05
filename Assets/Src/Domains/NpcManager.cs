@@ -40,9 +40,8 @@ namespace Assets.Src.Domains
         /// <returns>決定されたアビリティと使用対象を定めた行動パターンオブジェクト</returns>
         public static ActionPattern DetermineAction(this Npc npc, GameStates states)
         {
-            var applicable = npc.actionAlgorithm
-                .FirstOrDefault(term => term.Judge(npc, states));
-            if(applicable == null) return null;
+            var applicable = npc.actionAlgorithm.FirstOrDefault(term => term.Judge(npc, states));
+            if(applicable == default(ActionTerm)) return null;
 
             var targetNpc = npc.GetTermedNpc(states, applicable.targetType);
             var coordinateNullable = states.GetCoordinate(targetNpc);

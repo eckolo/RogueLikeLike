@@ -1,5 +1,7 @@
-﻿using Assets.Src.Models.Abilities;
+﻿using Assets.Src.Domains;
+using Assets.Src.Models.Abilities;
 using Assets.Src.Models.Items;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -81,5 +83,10 @@ namespace Assets.Src.Models.Npcs
         /// 行動アルゴリズム
         /// </summary>
         public List<ActionTerm> actionAlgorithm => _actionAlgorithm;
+
+        /// <summary>
+        /// 外部から参照されるパラメータ
+        /// </summary>
+        public virtual Parameters parameters => _skillParameters.ToParameters();
     }
 }

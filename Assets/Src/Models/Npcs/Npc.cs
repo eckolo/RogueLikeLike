@@ -30,5 +30,76 @@ namespace Assets.Src.Models.Npcs
         /// 現存在座標
         /// </summary>
         public Vector2 location => _location;
+
+        /// <summary>
+        /// パラメータ補正値
+        /// </summary>
+        Parameters _parametersAdjust;
+        /// <summary>
+        /// パラメータ補正値
+        /// </summary>
+        public Parameters parametersAdjust => _parametersAdjust;
+
+        /// <summary>
+        /// 外部から参照されるパラメータ
+        /// </summary>
+        public override Parameters parameters => base.parameters + parametersAdjust;
+
+        /// <summary>
+        /// 現在HP
+        /// </summary>
+        int? _nowHp = null;
+        /// <summary>
+        /// 現在HP
+        /// </summary>
+        public int nowHp
+        {
+            get {
+                int result = _nowHp ?? parameters.maxHp;
+                _nowHp = result;
+                return result;
+            }
+            set {
+                _nowHp = Mathf.Min(value, parameters.maxHp);
+            }
+        }
+
+        /// <summary>
+        /// 現在スタミナ
+        /// </summary>
+        int? _nowEnergy = null;
+        /// <summary>
+        /// 現在スタミナ
+        /// </summary>
+        public int nowEnergy
+        {
+            get {
+                int result = _nowEnergy ?? parameters.maxEnergy;
+                _nowEnergy = result;
+                return result;
+            }
+            set {
+                _nowEnergy = Mathf.Min(value, parameters.maxEnergy);
+            }
+        }
+
+        /// <summary>
+        /// 現在精神力
+        /// </summary>
+        int? _nowMental = null;
+        /// <summary>
+        /// 現在精神力
+        /// </summary>
+        public int nowMental
+        {
+            get {
+                int result = _nowMental ?? parameters.maxMental;
+                _nowMental = result;
+                return result;
+            }
+            set {
+                _nowMental = Mathf.Min(value, parameters.maxMental);
+            }
+        }
     }
 }
