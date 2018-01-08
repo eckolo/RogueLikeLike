@@ -78,6 +78,7 @@ namespace Assets.Src.Models.Npcs
         /// <summary>
         /// 行動アルゴリズム
         /// </summary>
+        [SerializeField]
         List<ActionTerm> _actionAlgorithm = new List<ActionTerm>();
         /// <summary>
         /// 行動アルゴリズム
