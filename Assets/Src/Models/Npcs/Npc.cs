@@ -34,7 +34,7 @@ namespace Assets.Src.Models.Npcs
         /// <summary>
         /// パラメータ補正値
         /// </summary>
-        Parameters _parametersAdjust;
+        Parameters _parametersAdjust = null;
         /// <summary>
         /// パラメータ補正値
         /// </summary>
@@ -101,5 +101,10 @@ namespace Assets.Src.Models.Npcs
                 _nowMental = Mathf.Min(value, parameters.maxMental);
             }
         }
+
+        /// <summary>
+        /// 現在の行動優先度
+        /// </summary>
+        public int nowInitiative { get; set; } = 0;
     }
 }

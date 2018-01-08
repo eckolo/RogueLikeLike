@@ -92,6 +92,18 @@ namespace Assets.Src.Domains
         /// </summary>
         public IEnumerable<Npc> npcList => _parameters.npcList.Select(npcData => npcData.Value);
         /// <summary>
+        /// 現在の行動者
+        /// </summary>
+        public Npc actor
+        {
+            get {
+                return _parameters.actor;
+            }
+            set {
+                _parameters.actor = value ?? _parameters.actor;
+            }
+        }
+        /// <summary>
         /// 座標から座標上に存在するNPCを返す
         /// 座標上に誰もいなければNullが返る
         /// </summary>

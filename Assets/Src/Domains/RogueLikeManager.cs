@@ -15,12 +15,11 @@ namespace Assets.Src.Domains
         /// ターン毎の処理実施
         /// </summary>
         /// <param name="states">現在のゲーム状態</param>
-        /// <param name="methods">インフラメソッド集合</param>
         /// <returns>内部ステータス</returns>
         public static GameStates PerformTurnByTurn(this GameStates states)
         {
-            var actor = states.npcList.GetNextActNpc();
-            var firstAction = actor.DetermineAction(states);
+            states.actor = states.actor.CalcNextActNpc(states.npcList);
+            var firstAction = states.actor.DetermineAction(states);
             var happenedList = states.GenerateHappenedList(firstAction);
 
             foreach(var happened in happenedList) states = states.ProcessActually(happened);

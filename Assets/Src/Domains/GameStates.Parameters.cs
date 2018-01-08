@@ -24,9 +24,14 @@ namespace Assets.Src.Domains
             public Dictionary<Vector2, Npc> npcList { get; set; } = new Dictionary<Vector2, Npc>();
 
             /// <summary>
-            /// 現ターンの行動履歴
+            /// 行動履歴
             /// </summary>
             public List<Happened> happenedLog { get; set; } = new List<Happened>();
+
+            /// <summary>
+            /// 現在の行動者
+            /// </summary>
+            public Npc actor { get; set; } = null;
         }
     }
 }
