@@ -18,7 +18,7 @@ namespace Assets.Src.Models.Abilities
         /// <summary>
         /// 同時発生エフェクト一覧
         /// </summary>
-        public List<EffectAnimation> effectList => _effects;
+        public IEnumerable<EffectAnimation> effectList => _effects;
 
         /// <summary>
         /// 付随属性

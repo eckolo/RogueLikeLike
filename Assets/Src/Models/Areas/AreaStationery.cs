@@ -20,7 +20,7 @@ namespace Assets.Src.Models.Areas
         /// <summary>
         /// 設置され得るマップチップリスト
         /// </summary>
-        protected List<MapChip> setableMapChipList => _setableMapChips;
+        protected IEnumerable<MapChip> setableMapChipList => _setableMapChips;
 
         /// <summary>
         /// 発生し得るイベントリスト
@@ -30,6 +30,6 @@ namespace Assets.Src.Models.Areas
         /// <summary>
         /// 発生し得るイベントリスト
         /// </summary>
-        protected List<MapEvent> mapEventList => _mapEvents;
+        protected IEnumerable<MapEvent> mapEventList => _mapEvents;
     }
 }

@@ -18,7 +18,7 @@ namespace Assets.Src.Domains
         /// </summary>
         /// <param name="npcList">存在しているNPCリスト</param>
         /// <returns>行動するNPC</returns>
-        public static Npc GetNextActNpc(this List<Npc> npcList)
+        public static Npc GetNextActNpc(this IEnumerable<Npc> npcList)
         {
             throw new NotImplementedException();
         }
@@ -28,7 +28,7 @@ namespace Assets.Src.Domains
         /// </summary>
         /// <param name="skills">変換元スキルセット</param>
         /// <returns>変換されたパラメータ</returns>
-        public static NpcStationery.Parameters ToParameters(this List<SkillParameter> skills)
+        public static NpcStationery.Parameters ToParameters(this IEnumerable<SkillParameter> skills)
         {
             throw new NotImplementedException();
         }

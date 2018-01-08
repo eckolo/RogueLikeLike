@@ -19,7 +19,7 @@ namespace Assets.Src.Models.Abilities
         /// <summary>
         /// ベースとなるスキル値リスト
         /// </summary>
-        public List<SkillParameter> baseSkillParameterList => _baseSkillParameters;
+        public IEnumerable<SkillParameter> baseSkillParameterList => _baseSkillParameters;
 
         /// <summary>
         /// アビリティの性能依存先スキル
@@ -29,7 +29,7 @@ namespace Assets.Src.Models.Abilities
         /// <summary>
         /// アビリティの性能依存先スキルリスト
         /// </summary>
-        public List<Parts> dependentPartsList => _dependentParts;
+        public IEnumerable<Parts> dependentPartsList => _dependentParts;
 
         /// <summary>
         /// 挙動定義リスト
@@ -44,7 +44,7 @@ namespace Assets.Src.Models.Abilities
         /// <summary>
         /// 使用条件ジョブリスト
         /// </summary>
-        public List<Job> useablejobList => _useablejobs;
+        public IEnumerable<Job> useablejobList => _useablejobs;
 
         /// <summary>
         /// 挙動定義パラメータ
