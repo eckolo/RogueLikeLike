@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Name: Nomal
   m_EditorClassIdentifier: 
   _description: "\u666E\u901A\u306E"
+  _prefixName: "\u30CE\u30FC\u30DE\u30EB"
