@@ -23,7 +23,7 @@ namespace Assets.Src.Domains
         /// </param>
         /// <param name="level">形容詞の最大付与数</param>
         /// <returns>生成されたオブジェクト</returns>
-        public Area Generate(AreaStationery stationery, List<Adjective> addableAdjectives, int level = 1)
+        public Area Generate(AreaStationery stationery, IEnumerable<Adjective> addableAdjectives, int level = 1)
         {
             throw new NotImplementedException();
         }

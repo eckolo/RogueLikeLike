@@ -15,7 +15,7 @@ namespace Assets.Src.Models.Areas
         /// <summary>
         /// 他地域との接続情報
         /// </summary>
-        public List<AreaConnection> connectionList { get; set; }
+        public IEnumerable<AreaConnection> connectionList { get; set; }
 
         /// <summary>
         /// 内包するマップのリスト

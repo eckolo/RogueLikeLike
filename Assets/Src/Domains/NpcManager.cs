@@ -16,11 +16,16 @@ namespace Assets.Src.Domains
         /// <summary>
         /// 次行動NPC決定関数
         /// </summary>
-        /// <param name="npcList">存在しているNPCリスト</param>
+        /// <param name="previousActor">前回の行動者</param>
+        /// <param name="npcList">候補NPCリスト</param>
         /// <returns>行動するNPC</returns>
-        public static Npc GetNextActNpc(this List<Npc> npcList)
+        public static Npc CalcNextActNpc(this Npc previousActor, IEnumerable<Npc> npcList)
         {
-            throw new NotImplementedException();
+            foreach(var npc in npcList) if(npc != previousActor) npc.nowInitiative += npc.parameters.speed;
+            var minInitiative = npcList.Min(npc => npc.nowInitiative);
+            foreach(var npc in npcList) npc.nowInitiative -= minInitiative;
+
+            return npcList.MaxKeys(npc => npc.nowInitiative).First();
         }
 
         /// <summary>
@@ -28,7 +33,7 @@ namespace Assets.Src.Domains
         /// </summary>
         /// <param name="skills">変換元スキルセット</param>
         /// <returns>変換されたパラメータ</returns>
-        public static NpcStationery.Parameters ToParameters(this List<SkillParameter> skills)
+        public static NpcStationery.Parameters ToParameters(this IEnumerable<SkillParameter> skills)
         {
             throw new NotImplementedException();
         }
@@ -40,9 +45,8 @@ namespace Assets.Src.Domains
         /// <returns>決定されたアビリティと使用対象を定めた行動パターンオブジェクト</returns>
         public static ActionPattern DetermineAction(this Npc npc, GameStates states)
         {
-            var applicable = npc.actionAlgorithm
-                .FirstOrDefault(term => term.Judge(npc, states));
-            if(applicable == null) return null;
+            var applicable = npc.actionAlgorithm.FirstOrDefault(term => term.Judge(npc, states));
+            if(applicable == default(ActionTerm)) return null;
 
             var targetNpc = npc.GetTermedNpc(states, applicable.targetType);
             var coordinateNullable = states.GetCoordinate(targetNpc);

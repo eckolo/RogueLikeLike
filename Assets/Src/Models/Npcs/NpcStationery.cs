@@ -1,5 +1,7 @@
-﻿using Assets.Src.Models.Abilities;
+﻿using Assets.Src.Domains;
+using Assets.Src.Models.Abilities;
 using Assets.Src.Models.Items;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,7 +33,7 @@ namespace Assets.Src.Models.Npcs
         /// <summary>
         /// スキルリスト
         /// </summary>
-        public List<SkillParameter> skillParameters => _skillParameters;
+        public IEnumerable<SkillParameter> skillParameters => _skillParameters;
 
         /// <summary>
         /// 初期習得済みアビリティリスト
@@ -41,7 +43,7 @@ namespace Assets.Src.Models.Npcs
         /// <summary>
         /// 習得済みアビリティリスト
         /// </summary>
-        public List<AbilityStationery> masteredAbilityList => _masteredAbilitys;
+        public IEnumerable<AbilityStationery> masteredAbilityList => _masteredAbilitys;
 
         /// <summary>
         /// 初期所持アイテムリスト
@@ -51,7 +53,7 @@ namespace Assets.Src.Models.Npcs
         /// <summary>
         /// 所持アイテムリスト
         /// </summary>
-        public List<ItemStationery> possessedItemList => _possessedItems;
+        public IEnumerable<ItemStationery> possessedItemList => _possessedItems;
 
         /// <summary>
         /// 所持部位リスト
@@ -61,25 +63,31 @@ namespace Assets.Src.Models.Npcs
         /// <summary>
         /// 所持部位リスト
         /// </summary>
-        public List<Parts> possessedPartsList => _possessedParts;
+        public IEnumerable<Parts> possessedPartsList => _possessedParts;
 
         /// <summary>
         /// 状態異常リスト
         /// </summary>
-        public List<StatusAilment> statusAilmentList { get; protected set; }
+        public IEnumerable<StatusAilment> statusAilmentList { get; protected set; }
 
         /// <summary>
         /// 習得ジョブリスト
         /// </summary>
-        public List<Job> hadJobList { get; protected set; }
+        public IEnumerable<Job> hadJobList { get; protected set; }
 
         /// <summary>
         /// 行動アルゴリズム
         /// </summary>
+        [SerializeField]
         List<ActionTerm> _actionAlgorithm = new List<ActionTerm>();
         /// <summary>
         /// 行動アルゴリズム
         /// </summary>
-        public List<ActionTerm> actionAlgorithm => _actionAlgorithm;
+        public IEnumerable<ActionTerm> actionAlgorithm => _actionAlgorithm;
+
+        /// <summary>
+        /// 外部から参照されるパラメータ
+        /// </summary>
+        public virtual Parameters parameters => _skillParameters.ToParameters();
     }
 }

@@ -24,7 +24,7 @@ namespace Assets.Src.Domains
         /// </param>
         /// <param name="level">形容詞の最大付与数</param>
         /// <returns>生成されたオブジェクト</returns>
-        Entity Generate(Stationery stationery, List<Adjective> addableAdjectives, int level = 1);
+        Entity Generate(Stationery stationery, IEnumerable<Adjective> addableAdjectives, int level = 1);
         /// <summary>
         /// オブジェクトの形容詞を付け替え・追加する関数
         /// </summary>

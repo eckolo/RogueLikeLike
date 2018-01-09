@@ -70,7 +70,7 @@ namespace Assets.Src.Models.Abilities
             /// <summary>
             /// 影響を受けるスキルと影響度合いリスト
             /// </summary>
-            public List<SkillParameter> affectedSkillList => _affectedSkills;
+            public IEnumerable<SkillParameter> affectedSkillList => _affectedSkills;
         }
     }
 }

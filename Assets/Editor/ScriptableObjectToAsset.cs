@@ -4,13 +4,13 @@ using UnityEditor;
 using System.IO;
 
 /// <summary>
-// ScriptableObjectをプレハブとして出力する汎用スクリプト  
+/// ScriptableObjectをプレハブとして出力する汎用スクリプト  
 /// </summary>
-// <remarks>
-// 指定したScriptableObjectをプレハブに変換する。
-// 1.Editorフォルダ下にCreateScriptableObjectPrefub.csを配置  
-// 2.ScriptableObjectのファイルを選択して右クリック→Create ScriptableObjectを選択  
-// </remarks>
+/// <remarks>
+/// 指定したScriptableObjectをプレハブに変換する。
+/// 1.Editorフォルダ下にCreateScriptableObjectPrefub.csを配置  
+/// 2.ScriptableObjectのファイルを選択して右クリック→Create ScriptableObjectを選択  
+/// </remarks>
 public class ScriptableObjectToAsset
 {
     readonly static string[] labels = { "Data", "ScriptableObject", string.Empty };

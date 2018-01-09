@@ -20,7 +20,7 @@ namespace Assets.Src.Models.Items
         /// <summary>
         /// 装備可能部位リスト
         /// </summary>
-        public virtual List<Parts> equipablePartsList => _equipableParts;
+        public virtual IEnumerable<Parts> equipablePartsList => _equipableParts;
 
         /// <summary>
         /// 装備可能ジョブ
@@ -30,6 +30,6 @@ namespace Assets.Src.Models.Items
         /// <summary>
         /// 装備可能ジョブリスト
         /// </summary>
-        public virtual List<Job> equipableJobList => _equipableJobs;
+        public virtual IEnumerable<Job> equipableJobList => _equipableJobs;
     }
 }

@@ -20,6 +20,6 @@ namespace Assets.Src.Models.Areas
         /// <summary>
         /// 地形リスト
         /// </summary>
-        public List<MapTerrain> terrainList => _terrains;
+        public IEnumerable<MapTerrain> terrainList => _terrains;
     }
 }

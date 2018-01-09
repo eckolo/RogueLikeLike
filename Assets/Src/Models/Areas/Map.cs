@@ -21,9 +21,9 @@ namespace Assets.Src.Models.Areas
         /// <summary>
         /// 各マスのマップチップリスト
         /// 座標は中央が(0,0)、東がx+1、北がY+1
-        /// マップチップ配列はインデックスが多いほど手前に表示
+        /// z座標が大きいほど手前に表示
         /// </summary>
-        public Dictionary<Vector2, List<MapChip>> mapchipList { get; set; }
+        public Dictionary<Vector3, MapChip> mapchipList { get; set; }
 
         /// <summary>
         /// シャローコピーメソッド
