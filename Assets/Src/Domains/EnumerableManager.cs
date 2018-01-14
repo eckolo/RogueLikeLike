@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Src.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,5 +25,15 @@ namespace Assets.Src.Domains
             var maxValue = source.Max(selector);
             return source.Where(elem => selector(elem).CompareTo(maxValue) == 0);
         }
+
+        /// <summary>
+        /// インスペクタから管理するKeyValueっぽいクラスのリストをDictionaryに変換する
+        /// </summary>
+        /// <typeparam name="TKey">キ－型</typeparam>
+        /// <typeparam name="TValue">内容型</typeparam>
+        /// <param name="origin">変換元のKeyValueっぽいクラスのリスト</param>
+        /// <returns>生成された辞書型リスト</returns>
+        public static Dictionary<TKey, TValue> ToDictionary<TKey, TValue>(this IEnumerable<IKeyValueLike<TKey, TValue>> origin)
+            => origin.ToDictionary(keyValue => keyValue.key, keyValue => keyValue.value);
     }
 }
