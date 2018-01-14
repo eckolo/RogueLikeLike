@@ -10,7 +10,18 @@ namespace Assets.Src.Models
     /// <summary>
     /// スキルオブジェクト
     /// </summary>
-    public class Skill : Named
+    public partial class Skill : Named
     {
+        /// <summary>
+        /// スキルの所属する分類項目
+        /// </summary>
+        [SerializeField]
+        Section _section = default(Section);
+
+        /// <summary>
+        /// 分類項目内のインデックス番号
+        /// </summary>
+        [SerializeField]
+        uint _index = 0;
     }
 }
