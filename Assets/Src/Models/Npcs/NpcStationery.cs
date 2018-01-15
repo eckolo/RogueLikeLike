@@ -33,7 +33,7 @@ namespace Assets.Src.Models.Npcs
         /// <summary>
         /// スキルリスト
         /// </summary>
-        public IEnumerable<SkillParameter> skillParameters => _skillParameters;
+        public Dictionary<Skill, int> skillParameters => _skillParameters.ToDictionary();
 
         /// <summary>
         /// 初期習得済みアビリティリスト
@@ -88,6 +88,6 @@ namespace Assets.Src.Models.Npcs
         /// <summary>
         /// 外部から参照されるパラメータ
         /// </summary>
-        public virtual Parameters parameters => _skillParameters.ToParameters();
+        public virtual Parameters parameters => skillParameters.ToParameters();
     }
 }
