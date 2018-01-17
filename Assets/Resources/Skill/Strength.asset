@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Name: Strength
   m_EditorClassIdentifier: 
   _description: "\u8155\u529B\u30B9\u30AD\u30EB"
+  _section: 0
+  _index: 0
+  _skillKey: 2000
