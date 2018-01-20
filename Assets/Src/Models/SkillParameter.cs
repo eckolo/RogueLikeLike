@@ -11,26 +11,27 @@ namespace Assets.Src.Models
     /// スキルに対して各エンティティが所持するスキル値のオブジェクト
     /// </summary>
     [Serializable]
-    public class SkillParameter : IKeyValueLike<Skill, int>
+    public class SkillParameter : IKeyValueLike<SkillKey, int>
     {
         /// <summary>
         /// 対応スキル
         /// </summary>
         [SerializeField]
-        Skill _skill = default(Skill);
+        SkillKey _skill = default(SkillKey);
         /// <summary>
         /// 対応スキル
         /// </summary>
-        public Skill skill => _skill;
+        public SkillKey skill => _skill;
         /// <summary>
         /// 辞書型変換用プロパティ
         /// </summary>
-        public Skill key => skill;
+        public SkillKey key => skill;
 
         /// <summary>
         /// スキル値
         /// </summary>
         [SerializeField]
+        [Range(0, 120)]
         int _value = 0;
         /// <summary>
         /// スキル値

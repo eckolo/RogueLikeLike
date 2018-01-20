@@ -33,7 +33,7 @@ namespace Assets.Src.Models.Npcs
         /// <summary>
         /// スキルリスト
         /// </summary>
-        public Dictionary<Skill, int> skillParameters => _skillParameters.ToDictionary();
+        public Dictionary<SkillKey, int> skillParameters => _skillParameters.ToDictionary();
 
         /// <summary>
         /// 初期習得済みアビリティリスト
