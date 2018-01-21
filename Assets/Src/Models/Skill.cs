@@ -19,12 +19,6 @@ namespace Assets.Src.Models
         Section _section = default(Section);
 
         /// <summary>
-        /// 分類項目内のインデックス番号
-        /// </summary>
-        [SerializeField]
-        uint _index = 0;
-
-        /// <summary>
         /// 内部索引用のキー
         /// </summary>
         [SerializeField]
