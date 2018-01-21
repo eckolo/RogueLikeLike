@@ -12,7 +12,7 @@ namespace Assets.Src.Infrastructure
     /// <summary>
     /// スキルリポジトリ
     /// </summary>
-    public class SkillRepository : ResourceRepository<Skill>, IRepository<Skill, SkillKey>
+    public class SkillRepository : ResourceRepository<Skill>, IRepository<SkillKey, Skill>
     {
         /// <summary>
         /// データ格納ディレクトリ
