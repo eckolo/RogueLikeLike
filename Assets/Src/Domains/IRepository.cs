@@ -17,7 +17,7 @@ namespace Assets.Src.Domains
         /// <summary>
         /// 格納データ読み出し関数
         /// </summary>
-        /// <param name="name">読み出しデータキー</param>
+        /// <param name="key">読み出しデータキー</param>
         /// <returns>読みだされたデータ</returns>
         Contests GetContests(Key key);
     }
