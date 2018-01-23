@@ -12,7 +12,7 @@ public static partial class TEST
         public static void ToFileNameTest()
         {
             var skillKey = SkillKey.DARK_APTITUDE;
-            var fileName = "DarkAptitude";
+            var fileName = "20307_DarkAptitude";
 
             Assert.AreEqual(skillKey.ToFileName(), fileName);
         }

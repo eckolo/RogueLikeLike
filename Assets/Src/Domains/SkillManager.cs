@@ -17,6 +17,6 @@ namespace Assets.Src.Domains
         /// </summary>
         /// <param name="key">スキルの索引キークラス</param>
         /// <returns>検索キーとなる文字列</returns>
-        public static string ToFileName(this SkillKey key) => key.ToString().ConvertSnakeToPascal();
+        public static string ToFileName(this SkillKey key) => $"{(int)key}_{key.ToString().ConvertSnakeToPascal()}";
     }
 }
