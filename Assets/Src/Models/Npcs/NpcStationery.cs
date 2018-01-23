@@ -26,7 +26,7 @@ namespace Assets.Src.Models.Npcs
         /// 初期スキルリスト
         /// </summary>
         [SerializeField]
-        List<SkillParameter> _skillParameters = new List<SkillParameter>();
+        List<Skill.Parameter> _skillParameters = new List<Skill.Parameter>();
         /// <summary>
         /// スキルリスト
         /// </summary>

@@ -66,11 +66,11 @@ namespace Assets.Src.Models.Abilities
             /// 影響を受けるスキルと影響度合い一覧
             /// </summary>
             [SerializeField]
-            List<SkillParameter> _affectedSkills = new List<SkillParameter>();
+            List<Skill.Parameter> _affectedSkills = new List<Skill.Parameter>();
             /// <summary>
             /// 影響を受けるスキルと影響度合いリスト
             /// </summary>
-            public IEnumerable<SkillParameter> affectedSkillList => _affectedSkills;
+            public IEnumerable<Skill.Parameter> affectedSkillList => _affectedSkills;
         }
     }
 }
