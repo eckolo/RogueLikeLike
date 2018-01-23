@@ -99,11 +99,11 @@
         /// </summary>
         DARK_APTITUDE = 20307,
         /// <summary>
-        /// 炎適応力
+        /// 命適応力
         /// </summary>
         LIFE_APTITUDE = 20308,
         /// <summary>
-        /// 炎適応力
+        /// 毒適応力
         /// </summary>
         POISON_APTITUDE = 20309,
     }

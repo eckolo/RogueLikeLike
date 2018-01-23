@@ -9,7 +9,7 @@ public static partial class TEST
     public static class StringManagerTest
     {
         [Test]
-        public static void ConvertSnakeToUpperCamel()
+        public static void ConvertSnakeToPascalTest()
         {
             var snakeCase1 = "test_text";
             var snakeCase2 = "TEST_TEXT";
