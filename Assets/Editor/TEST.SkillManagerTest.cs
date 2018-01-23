@@ -12,10 +12,13 @@ public static partial class TEST
         [Test]
         public static void ToFileNameTest()
         {
-            var skillKey = SkillKey.DARK_APTITUDE;
-            var fileName = "20307_DarkAptitude";
+            var skillKey1 = SkillKey.DARK_APTITUDE;
+            var skillKey2 = SkillKey.INDOMITABLE;
+            var fileName1 = "20307_DarkAptitude";
+            var fileName2 = "00000_Indomitable";
 
-            Assert.AreEqual(skillKey.ToFileName(), fileName);
+            Assert.AreEqual(skillKey1.ToFileName(), fileName1);
+            Assert.AreEqual(skillKey2.ToFileName(), fileName2);
         }
 
         [Test]

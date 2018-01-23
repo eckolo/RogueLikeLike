@@ -25,12 +25,6 @@ namespace Assets.Src.Infrastructure
         /// </summary>
         /// <param name="key">読み出しデータキー</param>
         /// <returns>読みだされたデータ</returns>
-        public Skill GetContests(SkillKey key)
-        {
-            var fileName = key.ToFileName();
-            var result = GetContests(fileName);
-            if(result.name != fileName) throw new FileNotFoundException("Skillの索引キーとSkillオブジェクト名が異なる");
-            return result;
-        }
+        public Skill GetContests(SkillKey key) => GetContests(key.ToFileName());
     }
 }
