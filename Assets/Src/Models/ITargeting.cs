@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Assets.Src.Models
+﻿namespace Assets.Src.Models
 {
     /// <summary>
     /// 何かしらを対象とするクラス全般インターフェース

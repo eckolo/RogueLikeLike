@@ -1,6 +1,4 @@
 ﻿using Assets.Src.Models;
-using Assets.Src.Models.Abilities;
-using Assets.Src.Models.Npcs;
 using System;
 using System.Collections.Generic;
 

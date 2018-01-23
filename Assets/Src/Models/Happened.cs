@@ -1,7 +1,6 @@
 ﻿using Assets.Src.Domains;
 using Assets.Src.Models.Abilities;
 using Assets.Src.Models.Npcs;
-using System;
 
 namespace Assets.Src.Models
 {
