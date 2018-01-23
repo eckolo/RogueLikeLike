@@ -10,15 +10,15 @@
             /// <summary>
             /// 心
             /// </summary>
-            SPIRIT,
+            SPIRIT = 0,
             /// <summary>
             /// 技
             /// </summary>
-            TECHNIQUE,
+            TECHNIQUE = 1,
             /// <summary>
             /// 体
             /// </summary>
-            BODY
+            BODY = 2
         }
     }
 }

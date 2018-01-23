@@ -17,6 +17,10 @@ namespace Assets.Src.Models
         /// </summary>
         [SerializeField]
         Section _section = default(Section);
+        /// <summary>
+        /// スキルの所属する分類項目
+        /// </summary>
+        public Section section => _section;
 
         /// <summary>
         /// 内部索引用のキー
