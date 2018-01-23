@@ -29,6 +29,22 @@ namespace Assets.Src.Domains
         }
 
         /// <summary>
+        /// 固定接頭辞付きオブジェクトの新規生成関数
+        /// </summary>
+        /// <param name="stationery">雛形となるオブジェクト</param>
+        /// <param name="prefix">固定で先頭に付与される形容詞（接頭辞）リスト</param>
+        /// <param name="addableAdjectives">
+        /// 付与され得る形容詞リスト
+        /// 同要素を複数含むことで付与確率上昇
+        /// </param>
+        /// <param name="level">形容詞の最大付与数</param>
+        /// <returns>生成されたオブジェクト</returns>
+        public Ability Generate(AbilityStationery stationery, List<Adjective> prefix, IEnumerable<Adjective> addableAdjectives, int level = 1)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
         /// オブジェクトの形容詞を付け替え・追加する関数
         /// </summary>
         /// <param name="origin">元オブジェクト</param>

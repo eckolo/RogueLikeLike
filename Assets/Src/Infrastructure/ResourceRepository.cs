@@ -12,8 +12,8 @@ namespace Assets.Src.Infrastructure
     /// <summary>
     /// Resourceからの読み出し処理ラッパー
     /// </summary>
-    /// <typeparam name="Resource"></typeparam>
-    public abstract class ResourceRepository<Resource> : IRepository<Resource, string> where Resource : ScriptableObject
+    /// <typeparam name="Resource">読みだされるソースオブジェクト型</typeparam>
+    public abstract class ResourceRepository<Resource> : IRepository<string, Resource> where Resource : ScriptableObject
     {
         /// <summary>
         /// データ格納ディレクトリ

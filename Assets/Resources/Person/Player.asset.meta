@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 63b23f40a253bdc4fb24bc5fa9d8ac2b
+guid: 7016090b404943342bf732c41ea1db32
 labels:
 - Data
-- PersonStationery
+- NpcStationery
 - ScriptableObject
-timeCreated: 1512342603
+timeCreated: 1516223428
 licenseType: Free
 NativeFormatImporter:
   externalObjects: {}

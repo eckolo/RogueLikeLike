@@ -11,7 +11,7 @@ namespace Assets.Src.Infrastructure
     /// <summary>
     /// 世界地図リポジトリ
     /// </summary>
-    public partial class WorldMap : IRepository<Area, int>
+    public partial class WorldMap : IRepository<int, Area>
     {
         /// <summary>
         /// 地域データ読み出し関数

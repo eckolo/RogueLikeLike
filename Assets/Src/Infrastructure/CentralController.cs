@@ -13,7 +13,7 @@ namespace Assets.Src.Infrastructure
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         static void StartUp()
         {
-            Debug.Log($"{typeof(CentralController).FullName} StartUp");
+            LogHub.TRACE.LeaveLog($"{typeof(CentralController).FullName} StartUp");
             PrefabManager.SetObject<CentralController>();
         }
 
@@ -22,7 +22,7 @@ namespace Assets.Src.Infrastructure
         /// </summary>
         void Awake()
         {
-            Debug.Log($"{typeof(CentralController).FullName} Awake");
+            LogHub.TRACE.LeaveLog($"{typeof(CentralController).FullName} Awake");
             SetUp();
         }
 
