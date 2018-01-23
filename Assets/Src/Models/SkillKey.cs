@@ -42,7 +42,7 @@
         /// <summary>
         /// 持久力
         /// </summary>
-        ELECTRICITY = 20001,
+        ENDURANCE = 20001,
         /// <summary>
         /// 精神力
         /// </summary>
