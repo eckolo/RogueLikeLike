@@ -1,40 +1,6 @@
-﻿using System;
-using UnityEngine;
-
-namespace Assets.Src.Models
+﻿namespace Assets.Src.Models
 {
     public partial class Skill
     {
-        /// <summary>
-        /// スキルに対して各エンティティが所持するスキル値のオブジェクト
-        /// </summary>
-        [Serializable]
-        public class Parameter : IKeyValueLike<SkillKey, int>
-        {
-            /// <summary>
-            /// 対応スキル
-            /// </summary>
-            [SerializeField]
-            SkillKey _skill = default(SkillKey);
-            /// <summary>
-            /// 対応スキル
-            /// </summary>
-            public SkillKey skill => _skill;
-            /// <summary>
-            /// 辞書型変換用プロパティ
-            /// </summary>
-            public SkillKey key => skill;
-
-            /// <summary>
-            /// スキル値
-            /// </summary>
-            [SerializeField]
-            [Range(0, 120)]
-            int _value = 0;
-            /// <summary>
-            /// スキル値
-            /// </summary>
-            public int value => _value;
-        }
     }
 }

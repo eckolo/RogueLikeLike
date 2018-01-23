@@ -5,7 +5,7 @@ namespace Assets.Src.Models
     /// <summary>
     /// スキルオブジェクト
     /// </summary>
-    public partial class Skill : Named, IKeyValueLike<SkillKey, Skill>
+    public partial class Skill : Named, IKeyValueLike<Skill.Key, Skill>
     {
         /// <summary>
         /// スキルの所属する分類項目
@@ -21,12 +21,12 @@ namespace Assets.Src.Models
         /// 内部索引用のキー
         /// </summary>
         [SerializeField]
-        SkillKey _skillKey = default(SkillKey);
+        Skill.Key _skillKey = default(Skill.Key);
 
         /// <summary>
         /// 内部索引用のキー
         /// </summary>
-        public SkillKey key => _skillKey;
+        public Skill.Key key => _skillKey;
 
         public Skill value => this;
     }

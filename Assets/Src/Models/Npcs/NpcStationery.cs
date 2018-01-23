@@ -26,11 +26,11 @@ namespace Assets.Src.Models.Npcs
         /// 初期スキルリスト
         /// </summary>
         [SerializeField]
-        List<Skill.Parameter> _skillParameters = new List<Skill.Parameter>();
+        List<Skill.Parameters> _skillParameters = new List<Skill.Parameters>();
         /// <summary>
         /// スキルリスト
         /// </summary>
-        public Dictionary<SkillKey, int> skillParameters => _skillParameters.ToDictionary();
+        public Dictionary<Skill.Key, int> skillParameters => _skillParameters.ToDictionary();
 
         /// <summary>
         /// 初期習得済みアビリティリスト

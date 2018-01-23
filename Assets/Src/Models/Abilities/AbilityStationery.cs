@@ -12,11 +12,11 @@ namespace Assets.Src.Models.Abilities
         /// ベースとなるスキル値リスト
         /// </summary>
         [SerializeField]
-        List<Skill.Parameter> _baseSkillParameters = new List<Skill.Parameter>();
+        List<Skill.Parameters> _baseSkillParameters = new List<Skill.Parameters>();
         /// <summary>
         /// ベースとなるスキル値リスト
         /// </summary>
-        public IEnumerable<Skill.Parameter> baseSkillParameterList => _baseSkillParameters;
+        public IEnumerable<Skill.Parameters> baseSkillParameterList => _baseSkillParameters;
 
         /// <summary>
         /// アビリティの性能依存先スキル

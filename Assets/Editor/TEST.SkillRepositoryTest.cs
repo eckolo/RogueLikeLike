@@ -15,7 +15,7 @@ public static partial class TEST
         public static void GetContestsTest()
         {
             var skillRepository = new SkillRepository();
-            foreach(SkillKey key in Enum.GetValues(typeof(SkillKey)))
+            foreach(Skill.Key key in Enum.GetValues(typeof(Skill.Key)))
             {
                 var skill = skillRepository.GetContests(key);
 

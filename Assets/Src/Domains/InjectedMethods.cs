@@ -14,6 +14,6 @@ namespace Assets.Src.Domains
         /// <summary>
         /// スキルリポジトリ
         /// </summary>
-        public IRepository<SkillKey, Skill> skillRepository { get; set; }
+        public IRepository<Skill.Key, Skill> skillRepository { get; set; }
     }
 }

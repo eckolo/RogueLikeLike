@@ -12,8 +12,8 @@ public static partial class TEST
         [Test]
         public static void ToFileNameTest()
         {
-            var skillKey1 = SkillKey.DARK_APTITUDE;
-            var skillKey2 = SkillKey.INDOMITABLE;
+            var skillKey1 = Skill.Key.DARK_APTITUDE;
+            var skillKey2 = Skill.Key.INDOMITABLE;
             var fileName1 = "20307_DarkAptitude";
             var fileName2 = "00000_Indomitable";
 
@@ -24,9 +24,9 @@ public static partial class TEST
         [Test]
         public static void ToSectionTest()
         {
-            var skillKey1 = SkillKey.LEADER;
-            var skillKey2 = SkillKey.COMMAND;
-            var skillKey3 = SkillKey.DARK_APTITUDE;
+            var skillKey1 = Skill.Key.LEADER;
+            var skillKey2 = Skill.Key.COMMAND;
+            var skillKey3 = Skill.Key.DARK_APTITUDE;
 
             Assert.AreEqual(skillKey1.ToSection(), Skill.Section.SPIRIT);
             Assert.AreEqual(skillKey2.ToSection(), Skill.Section.TECHNIQUE);

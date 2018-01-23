@@ -12,7 +12,7 @@ namespace Assets.Src.Domains
         /// </summary>
         /// <param name="key">スキルの索引キークラス</param>
         /// <returns>検索キーとなる文字列</returns>
-        public static string ToFileName(this SkillKey key)
+        public static string ToFileName(this Skill.Key key)
             => $"{((int)key).ToString("D5")}_{key.ToString().ConvertSnakeToPascal()}";
 
         /// <summary>
@@ -20,6 +20,6 @@ namespace Assets.Src.Domains
         /// </summary>
         /// <param name="key">スキルの索引キークラス</param>
         /// <returns>スキルキーに紐づくスキル分類</returns>
-        public static Skill.Section ToSection(this SkillKey key) => (Skill.Section)(((int)key) / 10000);
+        public static Skill.Section ToSection(this Skill.Key key) => (Skill.Section)(((int)key) / 10000);
     }
 }
