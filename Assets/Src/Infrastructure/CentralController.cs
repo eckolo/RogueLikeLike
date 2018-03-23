@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Assets.Src.Domains;
+using System;
 
 namespace Assets.Src.Infrastructure
 {
@@ -52,7 +53,14 @@ namespace Assets.Src.Infrastructure
             });
             while(true)
             {
-                gameStates = gameStates.PerformTurnByTurn();
+                try
+                {
+                    gameStates = gameStates.PerformTurnByTurn();
+                }
+                catch(Exception error)
+                {
+                    LogHub.ERROR.LeaveLog(error.ToString());
+                }
             }
         }
         /// <summary>

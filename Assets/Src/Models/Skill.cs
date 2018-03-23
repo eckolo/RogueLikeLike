@@ -21,13 +21,16 @@ namespace Assets.Src.Models
         /// 内部索引用のキー
         /// </summary>
         [SerializeField]
-        Skill.Key _skillKey = default(Skill.Key);
+        Key _skillKey = default(Key);
 
         /// <summary>
         /// 内部索引用のキー
         /// </summary>
-        public Skill.Key key => _skillKey;
+        public Key key => _skillKey;
 
+        /// <summary>
+        /// 内部索引用の値として自身を返す
+        /// </summary>
         public Skill value => this;
     }
 }
