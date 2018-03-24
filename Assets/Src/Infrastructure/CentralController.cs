@@ -46,21 +46,22 @@ namespace Assets.Src.Infrastructure
         /// <returns>イテレータ</returns>
         IEnumerator IntroductionMainRoutine()
         {
-            var gameStates = GameStates.GetNowState(new InjectedMethods
+            try
             {
-                viewer = new ViewManager(),
-                skillRepository = new SkillRepository()
-            });
-            while(true)
-            {
-                try
+                var gameStates = GameStates.GetNowState(new InjectedMethods
+                {
+                    viewer = new ViewManager(),
+                    skillRepository = new SkillRepository()
+                });
+                while(true)
                 {
                     gameStates = gameStates.PerformTurnByTurn();
                 }
-                catch(Exception error)
-                {
-                    LogHub.ERROR.LeaveLog(error.ToString());
-                }
+            }
+            catch(Exception error)
+            {
+                LogHub.ERROR.LeaveLog(error.ToString());
+                throw error;
             }
         }
         /// <summary>
