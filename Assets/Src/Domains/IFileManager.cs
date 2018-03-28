@@ -14,15 +14,18 @@ namespace Assets.Src.Domains
         /// <summary>
         /// ファイル書き込み
         /// </summary>
-        /// <param name="filename">書き込み先ファイルパス名</param>
+        /// <param name="path">書き込み先ファイルパス</param>
+        /// <param name="filename">書き込み先ファイル名</param>
         /// <param name="value">書き込み内容</param>
+        /// <param name="append">上書き保存ではなく追加保存するフラグ</param>
         /// <returns>書き込み成否</returns>
-        bool Write(string filename, string value);
+        bool Write(string path, string filename, string value, bool append = false);
         /// <summary>
         /// ファイル読み込み
         /// </summary>
-        /// <param name="filename">読み込み先ファイルパス名</param>
+        /// <param name="path">書き込み先ファイルパス</param>
+        /// <param name="filename">読み込み先ファイル名</param>
         /// <returns>読み込んだファイル内容</returns>
-        string Read(string filename);
+        string Read(string path, string filename);
     }
 }
