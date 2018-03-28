@@ -14,7 +14,7 @@ namespace Assets.Src.Infrastructure
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         static void StartUp()
         {
-            LogHub.TRACE.LeaveLog($"{typeof(CentralController).FullName} StartUp");
+            LogHub.TRACE.LeaveLog($"{typeof(CentralController).FullName} StartUp", new FileManager());
             PrefabManager.SetObject<CentralController>();
         }
 
@@ -23,7 +23,7 @@ namespace Assets.Src.Infrastructure
         /// </summary>
         void Awake()
         {
-            LogHub.TRACE.LeaveLog($"{typeof(CentralController).FullName} Awake");
+            LogHub.TRACE.LeaveLog($"{typeof(CentralController).FullName} Awake", new FileManager());
             SetUp();
         }
 
@@ -60,7 +60,7 @@ namespace Assets.Src.Infrastructure
             }
             catch(Exception error)
             {
-                LogHub.ERROR.LeaveLog(error.ToString());
+                LogHub.ERROR.LeaveLog(error.ToString(), new FileManager());
                 throw error;
             }
         }

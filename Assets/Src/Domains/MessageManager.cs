@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Assets.Src.Domains
 {
@@ -12,12 +13,16 @@ namespace Assets.Src.Domains
         /// </summary>
         /// <param name="logger">ログの種類</param>
         /// <param name="logedText">ログに残されるべきテキスト</param>
-        /// <returns></returns>
-        public static string LeaveLog(this LogHub logger, string logedText)
+        /// <returns>ログファイル名</returns>
+        public static string LeaveLog(this LogHub logger, string logedText, IFileManager fileManager)
         {
-            var displayedSentences = $"【{logger.ToString()}】{logedText}";
+            var displayedSentences = $"{DateTime.Now.ToLongTimeString()}\t【{logger.ToString()}】\t{logedText}";
             Debug.Log(displayedSentences);
-            return displayedSentences;
+
+            var path = $"{Application.dataPath}/Logs";
+            var filename = $"{DateTime.Today.ToString("yyyyMMdd")}.log";
+            fileManager.Write(path, filename, displayedSentences, true);
+            return filename;
         }
     }
 }
