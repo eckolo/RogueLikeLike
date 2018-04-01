@@ -24,17 +24,16 @@ namespace Assets.Src.Infrastructure
         /// </summary>
         /// <param name="path">書き込み先ファイルパス</param>
         /// <param name="filename">書き込み先ファイル名</param>
-        /// <param name="value">書き込み内容</param>
+        /// <param name="written">書き込み内容</param>
         /// <param name="append">上書き保存ではなく追加保存するフラグ</param>
         /// <returns>書き込み成否</returns>
-        public bool Write(string path, string filename, string value, bool append = false)
+        public bool Write(string path, string filename, string written, bool append = false)
         {
             try
             {
                 if(!Directory.Exists(path)) Directory.CreateDirectory(path);
                 var fullpath = $"{path}/{filename}";
 
-                var written = Debug.isDebugBuild ? value : value.EncodeCrypt();
                 using(var writer = new StreamWriter(fullpath, append, characterCode))
                 {
                     writer.WriteLine(written);
@@ -60,7 +59,7 @@ namespace Assets.Src.Infrastructure
             {
                 using(var stream = new StreamReader(fullpath, characterCode))
                 {
-                    return Debug.isDebugBuild ? stream.ReadToEnd() : stream.ReadToEnd().DecodeCrypt();
+                    return stream.ReadToEnd();
                 }
             }
             else
