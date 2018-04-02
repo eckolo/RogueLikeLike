@@ -16,7 +16,7 @@ namespace Assets.Src.Domains
         /// <returns>ログファイル名</returns>
         public static string LeaveLog(this LogHub logger, string logedText, IFileManager fileManager)
         {
-            var displayedSentences = $"{DateTime.Now.ToLongTimeString()}\t【{logger.ToString()}】\t{logedText}";
+            var displayedSentences = $"{DateTime.Now.ToLongTimeString()}\t【{logger.ToString()}】\t{logedText.Replace(Environment.NewLine, @"\r\n")}";
             Debug.Log(displayedSentences);
 
             var path = $"{Application.dataPath}/Logs";
