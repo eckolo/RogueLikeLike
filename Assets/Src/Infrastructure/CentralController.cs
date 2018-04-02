@@ -51,7 +51,7 @@ namespace Assets.Src.Infrastructure
                 var gameStates = GameStates.CreateNewState();
                 while(true)
                 {
-                    gameStates = gameStates.PerformTurnByTurn();
+                    gameStates = (GameStates)gameStates.PerformTurnByTurn();
                 }
             }
             catch(Exception error)

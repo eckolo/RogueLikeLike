@@ -27,7 +27,7 @@ namespace Assets.Src.Infrastructure
         /// <summary>
         /// インフラアクセスメソッド群
         /// </summary>
-        InjectedMethods _methods = new InjectedMethods();
+        static InjectedMethods _methods = null;
 
         /// <summary>
         /// インスタンス生成用のプライベートなコンストラクタ
@@ -35,11 +35,11 @@ namespace Assets.Src.Infrastructure
         /// <param name="stateEntity">初期状態</param>
         GameStates(IStateEntity stateEntity)
         {
-            _methods = new InjectedMethods
-            {
-                viewer = new ViewManager(),
-                skillRepository = new SkillRepository()
-            };
+            _methods = methods ?? new InjectedMethods(
+                viewer: new ViewManager(),
+                fileManager: new FileManager(),
+                skillRepository: new SkillRepository()
+                );
             _stateEntity = stateEntity ?? _stateEntity.Duplicate();
         }
 
@@ -48,7 +48,7 @@ namespace Assets.Src.Infrastructure
         /// </summary>
         /// <param name="stateEntity">初期状態</param>
         /// <returns>生成されたゲーム状態</returns>
-        public static IGameStates CreateNewState(IStateEntity stateEntity = null)
+        public static GameStates CreateNewState(IStateEntity stateEntity = null)
         {
             if(myself == null) return myself = new GameStates(stateEntity);
             myself.stateEntity = stateEntity;
