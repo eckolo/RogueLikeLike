@@ -39,7 +39,7 @@ namespace Assets.Src.Models
         /// </summary>
         /// <param name="states">動作前のゲーム状態</param>
         /// <returns>動作後のゲーム状態</returns>
-        public override GameStates Predicate(GameStates states)
+        public override IGameStates Predicate(IGameStates states)
         {
             throw new NotImplementedException();
         }

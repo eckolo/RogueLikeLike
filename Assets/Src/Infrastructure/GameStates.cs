@@ -12,12 +12,12 @@ namespace Assets.Src.Infrastructure
     /// 状態保持クラス
     /// シングルトンとして中身を保持する
     /// </summary>
-    public partial class GameStates : IDuplicatable<GameStates>
+    public partial class GameStates : IGameStates
     {
         /// <summary>
         /// パラメータ実体
         /// </summary>
-        StateEntity _parameters = new StateEntity();
+        IStateEntity _stateEntity = new StateEntity();
 
         /// <summary>
         /// インフラアクセスメソッド群
@@ -27,16 +27,23 @@ namespace Assets.Src.Infrastructure
         /// <summary>
         /// インスタンス生成用のプライベートなコンストラクタ
         /// </summary>
-        /// <param name="methods">インフラアクセスメソッド群の実体</param>
-        public GameStates(StateEntity parameters = null)
+        /// <param name="stateEntity">初期状態</param>
+        GameStates(IStateEntity stateEntity)
         {
             _methods = new InjectedMethods
             {
                 viewer = new ViewManager(),
                 skillRepository = new SkillRepository()
             };
-            _parameters = parameters ?? _parameters;
+            _stateEntity = stateEntity ?? _stateEntity;
         }
+
+        /// <summary>
+        /// ドメインからのアクセス用新規ゲーム状態生成メソッド
+        /// </summary>
+        /// <param name="stateEntity">初期状態</param>
+        /// <returns>生成されたゲーム状態</returns>
+        public static IGameStates CreateNewState(IStateEntity stateEntity = null) => new GameStates(stateEntity);
 
         /// <summary>
         /// インフラアクセスメソッド群アクセス用インターフェース
@@ -46,7 +53,7 @@ namespace Assets.Src.Infrastructure
         /// <summary>
         /// パラメータ一括アクセス用プロパティ
         /// </summary>
-        public StateEntity parameters => _parameters;
+        public IStateEntity stateEntity => _stateEntity.Duplicate();
 
         /// <summary>
         /// 現在地情報
@@ -54,10 +61,10 @@ namespace Assets.Src.Infrastructure
         public Location location
         {
             get {
-                return _parameters.location.Duplicate();
+                return _stateEntity.location.Duplicate();
             }
             set {
-                _parameters.location = value.Duplicate();
+                _stateEntity.location = value.Duplicate();
             }
         }
         /// <summary>
@@ -66,10 +73,10 @@ namespace Assets.Src.Infrastructure
         public Area area
         {
             get {
-                return _parameters.location.area.Duplicate();
+                return _stateEntity.location.area.Duplicate();
             }
             set {
-                _parameters.location.area = value.Duplicate();
+                _stateEntity.location.area = value.Duplicate();
             }
         }
         /// <summary>
@@ -78,27 +85,27 @@ namespace Assets.Src.Infrastructure
         public Map map
         {
             get {
-                return _parameters.location.map.Duplicate();
+                return _stateEntity.location.map.Duplicate();
             }
             set {
-                _parameters.location.map = value.Duplicate();
+                _stateEntity.location.map = value.Duplicate();
             }
         }
 
         /// <summary>
         /// 現在のマップ上に存在するNPC全体のリスト
         /// </summary>
-        public IEnumerable<Npc> npcList => _parameters.npcList.Select(npcData => npcData.Value);
+        public IEnumerable<Npc> npcList => _stateEntity.npcList.Select(npcData => npcData.Value);
         /// <summary>
         /// 現在の行動者
         /// </summary>
         public Npc actor
         {
             get {
-                return _parameters.actor;
+                return _stateEntity.actor;
             }
             set {
-                _parameters.actor = value ?? _parameters.actor;
+                _stateEntity.actor = value ?? _stateEntity.actor;
             }
         }
         /// <summary>
@@ -107,7 +114,7 @@ namespace Assets.Src.Infrastructure
         /// </summary>
         /// <param name="key">NPCの存在座標</param>
         /// <returns>NPC</returns>
-        public Npc GetNpc(Vector2 key) => _parameters.npcList.ContainsKey(key) ? _parameters.npcList[key] : null;
+        public Npc GetNpc(Vector2 key) => _stateEntity.npcList.ContainsKey(key) ? _stateEntity.npcList[key] : null;
         /// <summary>
         /// NPCからその存在座標を返す
         /// NPCがマップ上に存在していなければNullを返す
@@ -116,7 +123,7 @@ namespace Assets.Src.Infrastructure
         /// <returns></returns>
         public Vector2? GetCoordinate(Npc npc)
             => npc != null && npcList.Contains(npc) ?
-            _parameters.npcList.FirstOrDefault(npcData => npcData.Value == npc).Key :
+            _stateEntity.npcList.FirstOrDefault(npcData => npcData.Value == npc).Key :
             (Vector2?)null;
 
         /// <summary>
@@ -125,13 +132,13 @@ namespace Assets.Src.Infrastructure
         /// <param name="happened">履歴に追加される行動内容</param>
         public void AddHappenedLog(Happened happened)
         {
-            _parameters.happenedLog.Add(happened);
+            _stateEntity.happenedLog.Add(happened);
         }
 
         /// <summary>
         /// シャローコピーメソッド
         /// </summary>
         /// <returns>コピーされたオブジェクト</returns>
-        public GameStates MemberwiseClonePublic() => (GameStates)MemberwiseClone();
+        public IGameStates MemberwiseClonePublic() => (GameStates)MemberwiseClone();
     }
 }

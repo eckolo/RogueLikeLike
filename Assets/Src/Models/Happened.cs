@@ -43,6 +43,6 @@ namespace Assets.Src.Models
         /// </summary>
         /// <param name="states">動作前のゲーム状態</param>
         /// <returns>動作後のゲーム状態</returns>
-        public abstract GameStates Predicate(GameStates states);
+        public abstract IGameStates Predicate(IGameStates states);
     }
 }

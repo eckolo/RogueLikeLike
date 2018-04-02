@@ -14,7 +14,7 @@ namespace Assets.Src.Domains
         /// </summary>
         /// <param name="states">現在のゲーム状態</param>
         /// <returns>内部ステータス</returns>
-        public static GameStates PerformTurnByTurn(this GameStates states)
+        public static IGameStates PerformTurnByTurn(this IGameStates states)
         {
             states.actor = states.actor.CalcNextActNpc(states.npcList);
             var firstAction = states.actor.DetermineAction(states);
@@ -32,7 +32,7 @@ namespace Assets.Src.Domains
         /// <param name="states">現在のゲーム状態</param>
         /// <param name="action">起点となる行動内容</param>
         /// <returns>ターン内行動リスト</returns>
-        static List<Happened> GenerateHappenedList(this GameStates states, ActionPattern action)
+        static List<Happened> GenerateHappenedList(this IGameStates states, ActionPattern action)
         {
             throw new NotImplementedException();
         }

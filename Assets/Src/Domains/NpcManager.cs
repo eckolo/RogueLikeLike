@@ -43,7 +43,7 @@ namespace Assets.Src.Domains
         /// </summary>
         /// <param name="npc">使用アビリティ決定対象</param>
         /// <returns>決定されたアビリティと使用対象を定めた行動パターンオブジェクト</returns>
-        public static ActionPattern DetermineAction(this Npc npc, GameStates states)
+        public static ActionPattern DetermineAction(this Npc npc, IGameStates states)
         {
             var applicable = npc.actionAlgorithm.FirstOrDefault(term => term.Judge(npc, states));
             if(applicable == default(ActionTerm)) return null;
@@ -67,7 +67,7 @@ namespace Assets.Src.Domains
         /// <param name="states">指定されたゲーム状態</param>
         /// <param name="targetType">検索条件タイプ</param>
         /// <returns>検索結果NPC</returns>
-        static Npc GetTermedNpc(this Npc myself, GameStates states, TargetType targetType)
+        static Npc GetTermedNpc(this Npc myself, IGameStates states, TargetType targetType)
         {
             throw new NotImplementedException();
         }
@@ -89,7 +89,7 @@ namespace Assets.Src.Domains
         /// <param name="states">現在のゲーム状態</param>
         /// <param name="happened">行動内容</param>
         /// <returns>行動結果を反映したゲーム状態</returns>
-        public static GameStates ProcessActually(this GameStates states, Happened happened)
+        public static IGameStates ProcessActually(this IGameStates states, Happened happened)
         {
             var result = happened.Predicate(states);
             result.AddHappenedLog(happened);

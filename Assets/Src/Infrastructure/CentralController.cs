@@ -48,7 +48,7 @@ namespace Assets.Src.Infrastructure
         {
             try
             {
-                var gameStates = new GameStates();
+                var gameStates = GameStates.CreateNewState();
                 while(true)
                 {
                     gameStates = gameStates.PerformTurnByTurn();

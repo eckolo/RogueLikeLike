@@ -11,7 +11,7 @@ namespace Assets.Src.Infrastructure
         /// <summary>
         /// メインパラメータ
         /// </summary>
-        public class StateEntity
+        public class StateEntity : IStateEntity
         {
             /// <summary>
             /// 現在の所在地情報
@@ -33,6 +33,12 @@ namespace Assets.Src.Infrastructure
             /// 現在の行動者
             /// </summary>
             public Npc actor { get; set; } = null;
+
+            /// <summary>
+            /// シャローコピーメソッド
+            /// </summary>
+            /// <returns>コピーされたオブジェクト</returns>
+            public IStateEntity MemberwiseClonePublic() => (StateEntity)MemberwiseClone();
         }
     }
 }
