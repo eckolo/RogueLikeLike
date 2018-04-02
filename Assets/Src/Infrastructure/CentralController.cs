@@ -48,11 +48,7 @@ namespace Assets.Src.Infrastructure
         {
             try
             {
-                var gameStates = GameStates.GetNowState(new InjectedMethods
-                {
-                    viewer = new ViewManager(),
-                    skillRepository = new SkillRepository()
-                });
+                var gameStates = new GameStates();
                 while(true)
                 {
                     gameStates = gameStates.PerformTurnByTurn();

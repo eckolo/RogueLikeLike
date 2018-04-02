@@ -1,11 +1,12 @@
-﻿using Assets.Src.Models;
+﻿using Assets.Src.Domains;
+using Assets.Src.Models;
 using Assets.Src.Models.Areas;
 using Assets.Src.Models.Npcs;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Assets.Src.Domains
+namespace Assets.Src.Infrastructure
 {
     /// <summary>
     /// 状態保持クラス
@@ -14,14 +15,9 @@ namespace Assets.Src.Domains
     public partial class GameStates : IDuplicatable<GameStates>
     {
         /// <summary>
-        /// 実際のインスタンス
-        /// </summary>
-        static GameStates myself = null;
-
-        /// <summary>
         /// パラメータ実体
         /// </summary>
-        Parameters _parameters = new Parameters();
+        StateEntity _parameters = new StateEntity();
 
         /// <summary>
         /// インフラアクセスメソッド群
@@ -32,23 +28,25 @@ namespace Assets.Src.Domains
         /// インスタンス生成用のプライベートなコンストラクタ
         /// </summary>
         /// <param name="methods">インフラアクセスメソッド群の実体</param>
-        GameStates(InjectedMethods methods)
+        public GameStates(StateEntity parameters = null)
         {
-            _methods = methods;
+            _methods = new InjectedMethods
+            {
+                viewer = new ViewManager(),
+                skillRepository = new SkillRepository()
+            };
+            _parameters = parameters ?? _parameters;
         }
-
-        /// <summary>
-        /// 状態（つまりStateHolder自身）を取得する関数
-        /// </summary>
-        /// <param name="methods">インフラアクセスメソッド群の実体</param>
-        /// <returns>既にインスタンス生成されていればそれを、無ければ新規生成して返す</returns>
-        public static GameStates GetNowState(InjectedMethods methods = null)
-            => (myself ?? (myself = new GameStates(methods))).Duplicate();
 
         /// <summary>
         /// インフラアクセスメソッド群アクセス用インターフェース
         /// </summary>
         public InjectedMethods methods => _methods;
+
+        /// <summary>
+        /// パラメータ一括アクセス用プロパティ
+        /// </summary>
+        public StateEntity parameters => _parameters;
 
         /// <summary>
         /// 現在地情報

@@ -1,16 +1,17 @@
-﻿using Assets.Src.Models;
+﻿using Assets.Src.Domains;
+using Assets.Src.Models;
 using Assets.Src.Models.Npcs;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Src.Domains
+namespace Assets.Src.Infrastructure
 {
     public partial class GameStates
     {
         /// <summary>
         /// メインパラメータ
         /// </summary>
-        class Parameters
+        public class StateEntity
         {
             /// <summary>
             /// 現在の所在地情報
