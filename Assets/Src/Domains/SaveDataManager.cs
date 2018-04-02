@@ -14,8 +14,9 @@ namespace Assets.Src.Domains
         /// セーブ先データ番号
         /// 0は自動セーブ先
         /// </param>
+        /// <param name="states">保存したいゲーム状態</param>
         /// <returns>セーブ処理成否</returns>
-        public static bool Save(int dataIndex = 0)
+        public static bool Save(this int dataIndex, IStateEntity states)
         {
             throw new NotImplementedException();
         }
@@ -26,8 +27,8 @@ namespace Assets.Src.Domains
         /// ロード対象データ番号
         /// 0は自動セーブ先
         /// </param>
-        /// <returns>ロード処理成否</returns>
-        public static bool Load(int dataIndex = 0)
+        /// <returns>ロードされたゲーム状態</returns>
+        public static IStateEntity Load(this int dataIndex)
         {
             throw new NotImplementedException();
         }

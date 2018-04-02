@@ -15,6 +15,11 @@ namespace Assets.Src.Infrastructure
     public partial class GameStates : IGameStates
     {
         /// <summary>
+        /// 現在有効なゲーム状態の実体
+        /// </summary>
+        static GameStates myself = null;
+
+        /// <summary>
         /// パラメータ実体
         /// </summary>
         IStateEntity _stateEntity = new StateEntity();
@@ -35,7 +40,7 @@ namespace Assets.Src.Infrastructure
                 viewer = new ViewManager(),
                 skillRepository = new SkillRepository()
             };
-            _stateEntity = stateEntity ?? _stateEntity;
+            _stateEntity = stateEntity ?? _stateEntity.Duplicate();
         }
 
         /// <summary>
@@ -43,7 +48,12 @@ namespace Assets.Src.Infrastructure
         /// </summary>
         /// <param name="stateEntity">初期状態</param>
         /// <returns>生成されたゲーム状態</returns>
-        public static IGameStates CreateNewState(IStateEntity stateEntity = null) => new GameStates(stateEntity);
+        public static IGameStates CreateNewState(IStateEntity stateEntity = null)
+        {
+            if(myself == null) return myself = new GameStates(stateEntity);
+            myself.stateEntity = stateEntity;
+            return myself;
+        }
 
         /// <summary>
         /// インフラアクセスメソッド群アクセス用インターフェース
@@ -53,7 +63,15 @@ namespace Assets.Src.Infrastructure
         /// <summary>
         /// パラメータ一括アクセス用プロパティ
         /// </summary>
-        public IStateEntity stateEntity => _stateEntity.Duplicate();
+        public IStateEntity stateEntity
+        {
+            get {
+                return _stateEntity.Duplicate();
+            }
+            private set {
+                _stateEntity = value.Duplicate();
+            }
+        }
 
         /// <summary>
         /// 現在地情報
