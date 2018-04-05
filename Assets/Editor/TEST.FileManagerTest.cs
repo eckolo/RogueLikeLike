@@ -1,4 +1,4 @@
-﻿using Assets.Src.Domains;
+﻿using Assets.Src.Domains.Service;
 using Assets.Src.Infrastructure;
 using NUnit.Framework;
 using UnityEngine;

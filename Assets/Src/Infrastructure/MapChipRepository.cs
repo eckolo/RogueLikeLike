@@ -1,4 +1,4 @@
-﻿using Assets.Src.Models.Areas;
+﻿using Assets.Src.Domains.Models.Areas;
 
 namespace Assets.Src.Infrastructure
 {

@@ -1,6 +1,6 @@
-﻿using Assets.Src.Domains;
-using Assets.Src.Models;
-using Assets.Src.Models.Npcs;
+﻿using Assets.Src.Domains.Service;
+using Assets.Src.Domains.Models;
+using Assets.Src.Domains.Models.Npcs;
 using System.Collections.Generic;
 using UnityEngine;
 

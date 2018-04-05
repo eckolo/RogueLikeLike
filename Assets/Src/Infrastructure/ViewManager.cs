@@ -1,6 +1,6 @@
-﻿using Assets.Src.Domains;
-using Assets.Src.Models;
-using Assets.Src.Models.Areas;
+﻿using Assets.Src.Domains.Service;
+using Assets.Src.Domains.Models;
+using Assets.Src.Domains.Models.Areas;
 using System;
 
 namespace Assets.Src.Infrastructure

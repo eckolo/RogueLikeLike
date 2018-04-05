@@ -1,4 +1,4 @@
-﻿using Assets.Src.Domains;
+﻿using Assets.Src.Domains.Service;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;

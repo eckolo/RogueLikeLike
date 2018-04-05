@@ -1,4 +1,4 @@
-﻿using Assets.Src.Models.Npcs;
+﻿using Assets.Src.Domains.Models.Npcs;
 using System;
 using System.Collections.Generic;
 using System.Linq;

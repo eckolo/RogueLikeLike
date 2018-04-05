@@ -1,6 +1,6 @@
-﻿using Assets.Src.Domains;
+﻿using Assets.Src.Domains.Service;
 using Assets.Src.Infrastructure;
-using Assets.Src.Models;
+using Assets.Src.Domains.Models;
 using NUnit.Framework;
 using System;
 

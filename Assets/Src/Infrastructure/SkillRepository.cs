@@ -1,5 +1,5 @@
-﻿using Assets.Src.Domains;
-using Assets.Src.Models;
+﻿using Assets.Src.Domains.Service;
+using Assets.Src.Domains.Models;
 
 namespace Assets.Src.Infrastructure
 {

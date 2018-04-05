@@ -1,4 +1,4 @@
-﻿using Assets.Src.Models.Abilities;
+﻿using Assets.Src.Domains.Models.Abilities;
 
 namespace Assets.Src.Infrastructure
 {

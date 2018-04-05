@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using Assets.Src.Domains;
+using Assets.Src.Domains.Service;
 using System;
 
 namespace Assets.Src.Infrastructure
