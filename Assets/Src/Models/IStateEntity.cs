@@ -1,4 +1,4 @@
-﻿using Assets.Src.Models;
+﻿using Assets.Src.Domains;
 using Assets.Src.Models.Npcs;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Src.Domains
+namespace Assets.Src.Models
 {
     /// <summary>
     /// ゲーム状態の実体を表すインターフェース

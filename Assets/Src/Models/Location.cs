@@ -2,7 +2,7 @@
 using Assets.Src.Models.Areas;
 using UnityEngine;
 
-namespace Assets.Src.Domains
+namespace Assets.Src.Models
 {
     /// <summary>
     /// 現在地情報

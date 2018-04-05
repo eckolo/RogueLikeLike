@@ -1,4 +1,5 @@
 ﻿using Assets.Src.Domains;
+using Assets.Src.Models;
 using NUnit.Framework;
 using UnityEngine;
 

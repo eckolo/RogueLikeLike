@@ -1,4 +1,4 @@
-﻿namespace Assets.Src.Domains
+﻿namespace Assets.Src.Models
 {
     /// <summary>
     /// 方角パラメータ選択肢

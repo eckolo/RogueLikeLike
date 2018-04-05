@@ -1,4 +1,4 @@
-﻿using Assets.Src.Models;
+﻿using Assets.Src.Domains;
 using Assets.Src.Models.Areas;
 using Assets.Src.Models.Npcs;
 using System;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Src.Domains
+namespace Assets.Src.Models
 {
     /// <summary>
     /// 状態保持オブジェクトのインターフェース

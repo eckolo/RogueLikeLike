@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Src.Models;
+using System;
 
 namespace Assets.Src.Domains
 {
