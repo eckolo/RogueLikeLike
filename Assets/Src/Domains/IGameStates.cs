@@ -23,7 +23,7 @@ namespace Assets.Src.Domains
         /// <summary>
         /// パラメータ一括アクセス用プロパティ
         /// </summary>
-        IStateEntity stateEntity { get; }
+        IStateEntity stateEntity { get; set; }
 
         /// <summary>
         /// 現在地情報

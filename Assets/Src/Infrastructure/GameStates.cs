@@ -44,7 +44,7 @@ namespace Assets.Src.Infrastructure
         }
 
         /// <summary>
-        /// ドメインからのアクセス用新規ゲーム状態生成メソッド
+        /// 新規ゲーム状態生成メソッド
         /// </summary>
         /// <param name="stateEntity">初期状態</param>
         /// <returns>生成されたゲーム状態</returns>
@@ -68,7 +68,7 @@ namespace Assets.Src.Infrastructure
             get {
                 return _stateEntity.Duplicate();
             }
-            private set {
+            set {
                 _stateEntity = value.Duplicate();
             }
         }
