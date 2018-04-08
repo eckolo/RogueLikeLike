@@ -11,6 +11,7 @@ namespace Assets.Src.Domains.Models.Areas
         /// <summary>
         /// 発生イベント
         /// </summary>
+        [SerializeField]
         public MapEvent occurMapEvent { get; set; }
 
         /// <summary>
@@ -18,6 +19,7 @@ namespace Assets.Src.Domains.Models.Areas
         /// 座標は中央が(0,0)、東がx+1、北がY+1
         /// z座標が大きいほど手前に表示
         /// </summary>
+        [SerializeField]
         public Dictionary<Vector3, MapChip> mapchipList { get; set; }
 
         /// <summary>

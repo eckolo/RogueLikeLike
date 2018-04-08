@@ -9,29 +9,45 @@ namespace Assets.Src.Domains.Service
     public static class SaveDataManager
     {
         /// <summary>
+        /// メインセーブデータ記録時のキー接頭辞
+        /// </summary>
+        const string KEY_PREFIX = "DataSlot";
+
+        /// <summary>
         /// セーブ処理
         /// </summary>
+        /// <param name="states">保存したいゲーム状態</param>
         /// <param name="dataIndex">
         /// セーブ先データ番号
         /// 0は自動セーブ先
         /// </param>
-        /// <param name="states">保存したいゲーム状態</param>
-        /// <returns>セーブ処理成否</returns>
-        public static bool Save(this int dataIndex, IStateEntity states)
+        /// <returns>保存されたゲーム状態</returns>
+        public static IGameStates Save(this IGameStates states, int dataIndex)
         {
-            throw new NotImplementedException();
+            var fileManager = states.methods.fileManager;
+            var stateEntity = states.stateEntity;
+
+            fileManager.SetClass($"{KEY_PREFIX}{dataIndex}", stateEntity);
+            fileManager.Save();
+            return states;
         }
         /// <summary>
         /// ロード処理
         /// </summary>
+        /// <param name="_states">ゲーム状態</param>
         /// <param name="dataIndex">
         /// ロード対象データ番号
         /// 0は自動セーブ先
         /// </param>
-        /// <returns>ロードされたゲーム状態</returns>
-        public static IStateEntity Load(this int dataIndex)
+        /// <returns>ロードされたゲーム状態の実体</returns>
+        public static GameStateEntity Load(this IGameStates _states, int dataIndex)
         {
-            throw new NotImplementedException();
+            var states = _states.Duplicate();
+            var fileManager = states.methods.fileManager;
+            var stateEntity = states.stateEntity;
+
+            fileManager.Load();
+            return fileManager.GetClass($"{KEY_PREFIX}{dataIndex}", stateEntity);
         }
     }
 }

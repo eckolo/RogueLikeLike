@@ -22,7 +22,7 @@ namespace Assets.Src.Infrastructure
         /// <summary>
         /// パラメータ実体
         /// </summary>
-        IStateEntity _stateEntity = new StateEntity();
+        GameStateEntity _stateEntity = new GameStateEntity();
 
         /// <summary>
         /// インフラアクセスメソッド群
@@ -30,16 +30,22 @@ namespace Assets.Src.Infrastructure
         static InjectedMethods _methods = null;
 
         /// <summary>
+        /// インジェクション用メソッド定義のために初回生成時のみ起動
+        /// </summary>
+        static GameStates()
+        {
+            _methods = new InjectedMethods(
+                viewer: new ViewManager(),
+                fileManager: new FileManager(),
+                skillRepository: new SkillRepository());
+        }
+
+        /// <summary>
         /// インスタンス生成用のプライベートなコンストラクタ
         /// </summary>
         /// <param name="stateEntity">初期状態</param>
-        GameStates(IStateEntity stateEntity)
+        GameStates(GameStateEntity stateEntity)
         {
-            _methods = methods ?? new InjectedMethods(
-                viewer: new ViewManager(),
-                fileManager: new FileManager(),
-                skillRepository: new SkillRepository()
-                );
             _stateEntity = stateEntity ?? _stateEntity.Duplicate();
         }
 
@@ -48,7 +54,7 @@ namespace Assets.Src.Infrastructure
         /// </summary>
         /// <param name="stateEntity">初期状態</param>
         /// <returns>生成されたゲーム状態</returns>
-        public static GameStates CreateNewState(IStateEntity stateEntity = null)
+        public static GameStates CreateNewState(GameStateEntity stateEntity = null)
         {
             if(myself == null) return myself = new GameStates(stateEntity);
             myself.stateEntity = stateEntity;
@@ -63,7 +69,7 @@ namespace Assets.Src.Infrastructure
         /// <summary>
         /// パラメータ一括アクセス用プロパティ
         /// </summary>
-        public IStateEntity stateEntity
+        public GameStateEntity stateEntity
         {
             get {
                 return _stateEntity.Duplicate();

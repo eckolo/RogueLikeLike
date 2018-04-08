@@ -10,14 +10,17 @@ namespace Assets.Src.Domains.Models.Areas
         /// <summary>
         /// 地域内座標
         /// </summary>
+        [SerializeField]
         public Vector2 coordinate { get; set; }
         /// <summary>
         /// 接続先地域
         /// </summary>
+        [SerializeField]
         public Area connectArea { get; set; }
         /// <summary>
         /// 接続先地域の接続座標
         /// </summary>
+        [SerializeField]
         public Vector2 connectAreaCoordinate { get; set; }
     }
 }

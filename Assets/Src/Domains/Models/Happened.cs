@@ -1,12 +1,15 @@
 ﻿using Assets.Src.Domains.Service;
 using Assets.Src.Domains.Models.Abilities;
 using Assets.Src.Domains.Models.Npcs;
+using UnityEngine;
+using System;
 
 namespace Assets.Src.Domains.Models
 {
     /// <summary>
     /// キャラクターの動作の結果発生した事象を表すデータクラス
     /// </summary>
+    [Serializable]
     public abstract class Happened
     {
         /// <summary>
@@ -23,6 +26,7 @@ namespace Assets.Src.Domains.Models
         /// <summary>
         /// 動作主体
         /// </summary>
+        [SerializeField]
         Npc _subject;
         /// <summary>
         /// 動作主体
@@ -32,6 +36,7 @@ namespace Assets.Src.Domains.Models
         /// <summary>
         /// 動作内容
         /// </summary>
+        [SerializeField]
         public Behavior _predicate;
         /// <summary>
         /// 動作内容
