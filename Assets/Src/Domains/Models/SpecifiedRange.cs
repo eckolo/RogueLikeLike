@@ -22,7 +22,8 @@ namespace Assets.Src.Domains.Models
         /// <summary>
         /// 実範囲の半径指定値
         /// </summary>
-        int radius = 0;
+        [SerializeField]
+        int _radius = 0;
 
         /// <summary>
         /// 対象マスの列挙
@@ -33,22 +34,41 @@ namespace Assets.Src.Domains.Models
         /// </param>
         /// <returns>対象マス一覧</returns>
         public List<Vector2> EnumerateTargetPointList(Vector2? _basePoint = null)
+            => _targetPointList.SelectMany(vector => GetRoundRange(vector)).ToList();
+
+        List<Vector2> GetRoundRange(Vector2 basePoint)
         {
-            throw new NotImplementedException();
+            var result = new List<Vector2>();
+            var radius = _radius + 0.5f;
+            for(int pointDiffX = -_radius; pointDiffX <= _radius; pointDiffX++)
+            {
+                for(int pointDiffY = -_radius; pointDiffY <= _radius; pointDiffY++)
+                {
+                    var pointDiff = new Vector2(pointDiffX, pointDiffY);
+                    var vector = basePoint + pointDiff;
+
+                    if((vector - basePoint).magnitude <= radius) result.Add(vector);
+                }
+            }
+            return result;
         }
 
         /// <summary>
         /// 指定された座標が範囲に含まれるか否か判定する
         /// </summary>
-        /// <param name="target">指定座標</param>
+        /// <param name="_target">指定座標</param>
         /// <param name="_basePoint">
         /// 範囲指定の起点となる座標
         /// 未指定時は(0,0)となる
         /// </param>
         /// <returns>指定された座標が範囲に含まれていればTrue</returns>
-        public bool OnTarget(Vector2 target, Vector2? _basePoint = null)
+        public bool OnTarget(Vector2 _target, Vector2? _basePoint = null)
         {
-            throw new NotImplementedException();
+            var basePoint = _basePoint ?? Vector2.zero;
+            var target = _target - basePoint;
+            var radius = _radius + 0.5f;
+
+            return _targetPointList.Any(vector => (target - vector).magnitude <= radius);
         }
     }
 }
