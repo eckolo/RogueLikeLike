@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Src.Domains.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,19 +12,21 @@ namespace Assets.Src.Domains.Models
     /// 詳細なマス目指定の範囲指定
     /// </summary>
     [Serializable]
-    public class SpecifiedRange
+    public partial class SpecifiedRange
     {
-        /// <summary>
-        /// (0,0)を起点とした上向きの場合の対象座標リスト
-        /// </summary>
         [SerializeField]
-        List<Vector2> _targetPointList = new List<Vector2>();
+        List<TargetPointRadius> _targetPoints = new List<TargetPointRadius>();
 
         /// <summary>
-        /// 実範囲の半径指定値
+        /// (0,0)を起点とした上向きの場合の対象座標と各地点の半径リスト
         /// </summary>
-        [SerializeField]
-        int _radius = 0;
+        Dictionary<Vector2, uint> targetPointRadiusList
+            => _targetPointRadiusList ?? (_targetPointRadiusList = _targetPoints.ToDictionary());
+
+        /// <summary>
+        /// (0,0)を起点とした上向きの場合の対象座標と各地点の半径リスト
+        /// </summary>
+        Dictionary<Vector2, uint> _targetPointRadiusList = null;
 
         /// <summary>
         /// 対象マスの列挙
@@ -34,20 +37,22 @@ namespace Assets.Src.Domains.Models
         /// </param>
         /// <returns>対象マス一覧</returns>
         public List<Vector2> EnumerateTargetPointList(Vector2? _basePoint = null)
-            => _targetPointList.SelectMany(vector => GetRoundRange(vector)).ToList();
+            => targetPointRadiusList.SelectMany(vectorRadius => GetRoundRange(vectorRadius)).ToList();
 
-        List<Vector2> GetRoundRange(Vector2 basePoint)
+        List<Vector2> GetRoundRange(KeyValuePair<Vector2, uint> vectorRadius)
         {
             var result = new List<Vector2>();
-            var radius = _radius + 0.5f;
-            for(int pointDiffX = -_radius; pointDiffX <= _radius; pointDiffX++)
+            var basePoint = vectorRadius.Key;
+            var radius = (int)vectorRadius.Value;
+            var limit = radius + 0.5f;
+            for(int pointDiffX = -radius; pointDiffX <= radius; pointDiffX++)
             {
-                for(int pointDiffY = -_radius; pointDiffY <= _radius; pointDiffY++)
+                for(int pointDiffY = -radius; pointDiffY <= radius; pointDiffY++)
                 {
                     var pointDiff = new Vector2(pointDiffX, pointDiffY);
                     var vector = basePoint + pointDiff;
 
-                    if((vector - basePoint).magnitude <= radius) result.Add(vector);
+                    if((vector - basePoint).magnitude <= limit) result.Add(vector);
                 }
             }
             return result;
@@ -66,9 +71,9 @@ namespace Assets.Src.Domains.Models
         {
             var basePoint = _basePoint ?? Vector2.zero;
             var target = _target - basePoint;
-            var radius = _radius + 0.5f;
 
-            return _targetPointList.Any(vector => (target - vector).magnitude <= radius);
+            return targetPointRadiusList
+                .Any(vectorRadius => (target - vectorRadius.Key).magnitude <= vectorRadius.Value);
         }
     }
 }
