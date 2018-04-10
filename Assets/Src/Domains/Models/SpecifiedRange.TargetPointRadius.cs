@@ -9,7 +9,7 @@ namespace Assets.Src.Domains.Models
         /// 位置と半径の組
         /// </summary>
         [Serializable]
-        class TargetPointRadius : IKeyValueLike<Vector2, uint>
+        class TargetPointRadius : IKeyValueLike<Vector2, int>
         {
             /// <summary>
             /// 位置座標
@@ -29,7 +29,7 @@ namespace Assets.Src.Domains.Models
             /// <summary>
             /// 半径
             /// </summary>
-            public uint value => _value;
+            public int value => (int)_value;
         }
     }
 }

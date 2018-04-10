@@ -20,13 +20,13 @@ namespace Assets.Src.Domains.Models
         /// <summary>
         /// (0,0)を起点とした上向きの場合の対象座標と各地点の半径リスト
         /// </summary>
-        Dictionary<Vector2, uint> targetPointRadiusList
+        Dictionary<Vector2, int> targetPointRadiusList
             => _targetPointRadiusList ?? (_targetPointRadiusList = _targetPoints.ToDictionary());
 
         /// <summary>
         /// (0,0)を起点とした上向きの場合の対象座標と各地点の半径リスト
         /// </summary>
-        Dictionary<Vector2, uint> _targetPointRadiusList = null;
+        Dictionary<Vector2, int> _targetPointRadiusList = null;
 
         /// <summary>
         /// 対象マスの列挙
@@ -39,24 +39,12 @@ namespace Assets.Src.Domains.Models
         public List<Vector2> EnumerateTargetPointList(Vector2? _basePoint = null)
             => targetPointRadiusList.SelectMany(vectorRadius => GetRoundRange(vectorRadius)).ToList();
 
-        List<Vector2> GetRoundRange(KeyValuePair<Vector2, uint> vectorRadius)
-        {
-            var result = new List<Vector2>();
-            var basePoint = vectorRadius.Key;
-            var radius = (int)vectorRadius.Value;
-            var limit = radius + 0.5f;
-            for(int pointDiffX = -radius; pointDiffX <= radius; pointDiffX++)
-            {
-                for(int pointDiffY = -radius; pointDiffY <= radius; pointDiffY++)
-                {
-                    var pointDiff = new Vector2(pointDiffX, pointDiffY);
-                    var vector = basePoint + pointDiff;
-
-                    if((vector - basePoint).magnitude <= limit) result.Add(vector);
-                }
-            }
-            return result;
-        }
+        IEnumerable<Vector2> GetRoundRange(KeyValuePair<Vector2, int> vectorRadius)
+            => GetDiameterLine(vectorRadius.Value)
+            .SelectMany(_ => GetDiameterLine(vectorRadius.Value), (x, y) => new Vector2(x, y))
+            .Where(vector => vector.magnitude <= vectorRadius.Value + 0.5f)
+            .Select(vector => vectorRadius.Key + vector);
+        IEnumerable<int> GetDiameterLine(int radius) => Enumerable.Range(-radius, radius * 2 + 1);
 
         /// <summary>
         /// 指定された座標が範囲に含まれるか否か判定する

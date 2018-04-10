@@ -16,7 +16,7 @@ public static partial class TEST
         public static void EnumerateTargetPointListTest()
         {
             var binding = BindingFlags.SetField | BindingFlags.NonPublic | BindingFlags.Instance;
-            var map = new Dictionary<Vector2, uint> { { new Vector2(-2, 3), 3 }, { new Vector2(1, 2), 3 } };
+            var map = new Dictionary<Vector2, int> { { new Vector2(-2, 3), 3 }, { new Vector2(1, 2), 3 } };
 
             var range = new SpecifiedRange();
             range.GetType().GetField("_targetPointRadiusList", binding).SetValue(range, map);
@@ -152,7 +152,7 @@ public static partial class TEST
         public static void OnTargetTest()
         {
             var binding = BindingFlags.SetField | BindingFlags.NonPublic | BindingFlags.Instance;
-            var map = new Dictionary<Vector2, uint> { { new Vector2(-2, 3), 3 }, { new Vector2(1, 2), 3 } };
+            var map = new Dictionary<Vector2, int> { { new Vector2(-2, 3), 3 }, { new Vector2(1, 2), 3 } };
 
             var range = new SpecifiedRange();
             range.GetType().GetField("_targetPointRadiusList", binding).SetValue(range, map);
