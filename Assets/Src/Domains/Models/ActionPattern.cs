@@ -44,7 +44,6 @@ namespace Assets.Src.Domains.Models
         /// 対象座標
         /// </summary>
         Vector2 _target = default(Vector2);
-
         /// <summary>
         /// 対象座標
         /// </summary>

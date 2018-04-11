@@ -82,18 +82,5 @@ namespace Assets.Src.Domains.Service
         {
             throw new NotImplementedException();
         }
-
-        /// <summary>
-        /// 各行動の実処理関数
-        /// </summary>
-        /// <param name="states">現在のゲーム状態</param>
-        /// <param name="happened">行動内容</param>
-        /// <returns>行動結果を反映したゲーム状態</returns>
-        public static IGameStates ProcessActually(this IGameStates states, Happened happened)
-        {
-            var result = happened.Predicate(states);
-            result.AddHappenedLog(happened);
-            return result;
-        }
     }
 }

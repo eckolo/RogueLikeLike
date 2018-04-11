@@ -25,16 +25,5 @@ namespace Assets.Src.Domains.Service
             states.map = states.SetupNextMap();
             return states;
         }
-
-        /// <summary>
-        /// 起点となるNPC、アビリティからそのターンの行動リストを生成する
-        /// </summary>
-        /// <param name="states">現在のゲーム状態</param>
-        /// <param name="action">起点となる行動内容</param>
-        /// <returns>ターン内行動リスト</returns>
-        static List<Happened> GenerateHappenedList(this IGameStates states, ActionPattern action)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
