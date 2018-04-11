@@ -21,5 +21,11 @@ namespace Assets.Src.Domains.Service
         /// <param name="happened">アクション内容</param>
         /// <returns>描画処理成否</returns>
         bool ReflectAction(Happened happened);
+        /// <summary>
+        /// エフェクトアクション描画関数
+        /// </summary>
+        /// <param name="effect">動作対象エフェクト</param>
+        /// <returns>描画処理成否</returns>
+        bool OperateEffect(EffectAnimation effect);
     }
 }

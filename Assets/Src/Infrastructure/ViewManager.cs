@@ -30,5 +30,15 @@ namespace Assets.Src.Infrastructure
         {
             throw new NotImplementedException();
         }
+
+        /// <summary>
+        /// エフェクトアクション描画関数
+        /// </summary>
+        /// <param name="effect">動作対象エフェクト</param>
+        /// <returns>描画処理成否</returns>
+        public bool OperateEffect(EffectAnimation effect)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
