@@ -19,10 +19,7 @@ namespace Assets.Src.Domains.Service
         public static Map SetupNextMap(this IGameStates states, Direction? destinationDirection = null)
         {
             var nextCoordinate = states.location.coordinate + destinationDirection.ToVector();
-            var nextMap = states.area.GenerateMap(nextCoordinate);
-
-            states.methods.viewer.ReflectMap(nextMap, destinationDirection ?? Direction.NORTH);
-            return nextMap;
+            return states.area.GenerateMap(nextCoordinate);
         }
 
         /// <summary>

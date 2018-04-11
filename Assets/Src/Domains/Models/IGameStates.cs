@@ -24,6 +24,10 @@ namespace Assets.Src.Domains.Models
         /// パラメータ一括アクセス用プロパティ
         /// </summary>
         GameStateEntity stateEntity { get; set; }
+        /// <summary>
+        /// 画面反映待ちキュー
+        /// </summary>
+        Queue<Happened> viewQueue { get; }
 
         /// <summary>
         /// 現在地情報
@@ -60,11 +64,5 @@ namespace Assets.Src.Domains.Models
         /// <param name="npc"></param>
         /// <returns></returns>
         Vector2? GetCoordinate(Npc npc);
-
-        /// <summary>
-        /// 行動履歴に追加
-        /// </summary>
-        /// <param name="happened">履歴に追加される行動内容</param>
-        void AddViewQueue(Happened happened);
     }
 }

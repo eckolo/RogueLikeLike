@@ -21,7 +21,7 @@ namespace Assets.Src.Domains.Service
         public static IGameStates ProcessActually(this IGameStates states, Happened happened)
         {
             var result = happened.Predicate(states);
-            result.AddViewQueue(happened);
+            result.viewQueue.Enqueue(happened);
             return result;
         }
 

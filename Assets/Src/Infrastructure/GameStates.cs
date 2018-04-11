@@ -80,6 +80,11 @@ namespace Assets.Src.Infrastructure
         }
 
         /// <summary>
+        /// 画面反映待ちキュー
+        /// </summary>
+        public Queue<Happened> viewQueue => _stateEntity.viewQueue;
+
+        /// <summary>
         /// 現在地情報
         /// </summary>
         public Location location
@@ -149,15 +154,6 @@ namespace Assets.Src.Infrastructure
             => npc != null && npcList.Contains(npc) ?
             _stateEntity.npcList.FirstOrDefault(npcData => npcData.Value == npc).Key :
             (Vector2?)null;
-
-        /// <summary>
-        /// 画面反映待ちキューに追加
-        /// </summary>
-        /// <param name="happened">履歴に追加される行動内容</param>
-        public void AddViewQueue(Happened happened)
-        {
-            _stateEntity.viewQueue.Enqueue(happened);
-        }
 
         /// <summary>
         /// シャローコピーメソッド
