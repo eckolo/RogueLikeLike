@@ -151,12 +151,12 @@ namespace Assets.Src.Infrastructure
             (Vector2?)null;
 
         /// <summary>
-        /// 行動履歴に追加
+        /// 画面反映待ちキューに追加
         /// </summary>
         /// <param name="happened">履歴に追加される行動内容</param>
-        public void AddHappenedLog(Happened happened)
+        public void AddViewQueue(Happened happened)
         {
-            _stateEntity.happenedLog.Add(happened);
+            _stateEntity.viewQueue.Enqueue(happened);
         }
 
         /// <summary>

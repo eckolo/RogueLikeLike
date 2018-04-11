@@ -36,14 +36,14 @@ namespace Assets.Src.Domains.Models
         public Dictionary<Vector2, Npc> npcList { get { return _npcList; } set { _npcList = value; } }
 
         /// <summary>
-        /// 行動履歴
+        /// 画面未反映の行動履歴
         /// </summary>
         [SerializeField]
-        List<Happened> _happenedLog = new List<Happened>();
+        Queue<Happened> _viewQueue = new Queue<Happened>();
         /// <summary>
-        /// 行動履歴
+        /// 画面未反映の行動履歴
         /// </summary>
-        public List<Happened> happenedLog { get { return _happenedLog; } set { _happenedLog = value; } }
+        public Queue<Happened> viewQueue { get { return _viewQueue; } set { _viewQueue = value; } }
 
         /// <summary>
         /// 現在の行動者

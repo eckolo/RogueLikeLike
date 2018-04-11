@@ -65,6 +65,6 @@ namespace Assets.Src.Domains.Models
         /// 行動履歴に追加
         /// </summary>
         /// <param name="happened">履歴に追加される行動内容</param>
-        void AddHappenedLog(Happened happened);
+        void AddViewQueue(Happened happened);
     }
 }
