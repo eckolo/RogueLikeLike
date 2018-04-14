@@ -1,14 +1,14 @@
 ﻿using Assets.Src.Domains.Models;
-using Assets.Src.Domains.Models.Areas;
+using Assets.Src.Domains.Models.Items;
 using System;
 using System.Collections.Generic;
 
-namespace Assets.Src.Domains.Service
+namespace Assets.Src.Domains.Service.Factory
 {
     /// <summary>
-    /// 地形類生成・変更サービス
+    /// アイテム系生成・変更サービス
     /// </summary>
-    public class AreaFactory : IFactoryStationery<Area, AreaStationery>
+    public class ItemFactory : IFactoryStationery<Item, ItemStationery>
     {
         /// <summary>
         /// オブジェクトの新規生成関数
@@ -20,7 +20,7 @@ namespace Assets.Src.Domains.Service
         /// </param>
         /// <param name="level">形容詞の最大付与数</param>
         /// <returns>生成されたオブジェクト</returns>
-        public Area Generate(AreaStationery stationery, IEnumerable<Adjective> addableAdjectives, int level = 1)
+        public Item Generate(ItemStationery stationery, IEnumerable<Adjective> addableAdjectives, int level = 1)
         {
             throw new NotImplementedException();
         }
@@ -36,7 +36,7 @@ namespace Assets.Src.Domains.Service
         /// </param>
         /// <param name="level">形容詞の最大付与数</param>
         /// <returns>生成されたオブジェクト</returns>
-        public Area Generate(AreaStationery stationery, List<Adjective> prefix, IEnumerable<Adjective> addableAdjectives, int level = 1)
+        public Item Generate(ItemStationery stationery, List<Adjective> prefix, IEnumerable<Adjective> addableAdjectives, int level = 1)
         {
             throw new NotImplementedException();
         }
@@ -48,7 +48,7 @@ namespace Assets.Src.Domains.Service
         /// <param name="index">変更したい形容詞インデックス</param>
         /// <param name="setedAdjective">追加したい形容詞</param>
         /// <returns>変更されたオブジェクト</returns>
-        public Area ResetAdjective(Area origin, int index, Adjective setedAdjective)
+        public Item ResetAdjective(Item origin, int index, Adjective setedAdjective)
         {
             throw new NotImplementedException();
         }

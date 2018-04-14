@@ -1,14 +1,14 @@
 ﻿using Assets.Src.Domains.Models;
-using Assets.Src.Domains.Models.Items;
-using System;
 using System.Collections.Generic;
 
-namespace Assets.Src.Domains.Service
+namespace Assets.Src.Domains.Service.Factory
 {
     /// <summary>
-    /// アイテム系生成・変更サービス
+    /// 生成・変更系サービスの雛形
     /// </summary>
-    public class ItemFactory : IFactoryStationery<Item, ItemStationery>
+    /// <typeparam name="Entity">管理対象オブジェクトの型</typeparam>
+    /// <typeparam name="Stationery">管理対象オブジェクトの雛形となる型</typeparam>
+    public interface IFactoryStationery<Entity, Stationery> where Entity : Stationery, IAdhered where Stationery : Named
     {
         /// <summary>
         /// オブジェクトの新規生成関数
@@ -20,11 +20,7 @@ namespace Assets.Src.Domains.Service
         /// </param>
         /// <param name="level">形容詞の最大付与数</param>
         /// <returns>生成されたオブジェクト</returns>
-        public Item Generate(ItemStationery stationery, IEnumerable<Adjective> addableAdjectives, int level = 1)
-        {
-            throw new NotImplementedException();
-        }
-
+        Entity Generate(Stationery stationery, IEnumerable<Adjective> addableAdjectives, int level = 1);
         /// <summary>
         /// 固定接頭辞付きオブジェクトの新規生成関数
         /// </summary>
@@ -36,11 +32,7 @@ namespace Assets.Src.Domains.Service
         /// </param>
         /// <param name="level">形容詞の最大付与数</param>
         /// <returns>生成されたオブジェクト</returns>
-        public Item Generate(ItemStationery stationery, List<Adjective> prefix, IEnumerable<Adjective> addableAdjectives, int level = 1)
-        {
-            throw new NotImplementedException();
-        }
-
+        Entity Generate(Stationery stationery, List<Adjective> prefix, IEnumerable<Adjective> addableAdjectives, int level = 1);
         /// <summary>
         /// オブジェクトの形容詞を付け替え・追加する関数
         /// </summary>
@@ -48,9 +40,6 @@ namespace Assets.Src.Domains.Service
         /// <param name="index">変更したい形容詞インデックス</param>
         /// <param name="setedAdjective">追加したい形容詞</param>
         /// <returns>変更されたオブジェクト</returns>
-        public Item ResetAdjective(Item origin, int index, Adjective setedAdjective)
-        {
-            throw new NotImplementedException();
-        }
+        Entity ResetAdjective(Entity origin, int index, Adjective setedAdjective);
     }
 }

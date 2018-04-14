@@ -1,14 +1,14 @@
-﻿using Assets.Src.Domains.Models;
+﻿using System;
 using System.Collections.Generic;
+using Assets.Src.Domains.Models.Abilities;
+using Assets.Src.Domains.Models;
 
-namespace Assets.Src.Domains.Service
+namespace Assets.Src.Domains.Service.Factory
 {
     /// <summary>
-    /// 生成・変更系サービスの雛形
+    /// アビリティ生成・変更サービス
     /// </summary>
-    /// <typeparam name="Entity">管理対象オブジェクトの型</typeparam>
-    /// <typeparam name="Stationery">管理対象オブジェクトの雛形となる型</typeparam>
-    public interface IFactoryStationery<Entity, Stationery> where Entity : Stationery, IAdhered where Stationery : Named
+    public class AbilityFactory : IFactoryStationery<Ability, AbilityStationery>
     {
         /// <summary>
         /// オブジェクトの新規生成関数
@@ -20,7 +20,11 @@ namespace Assets.Src.Domains.Service
         /// </param>
         /// <param name="level">形容詞の最大付与数</param>
         /// <returns>生成されたオブジェクト</returns>
-        Entity Generate(Stationery stationery, IEnumerable<Adjective> addableAdjectives, int level = 1);
+        public Ability Generate(AbilityStationery stationery, IEnumerable<Adjective> addableAdjectives, int level = 1)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// 固定接頭辞付きオブジェクトの新規生成関数
         /// </summary>
@@ -32,7 +36,11 @@ namespace Assets.Src.Domains.Service
         /// </param>
         /// <param name="level">形容詞の最大付与数</param>
         /// <returns>生成されたオブジェクト</returns>
-        Entity Generate(Stationery stationery, List<Adjective> prefix, IEnumerable<Adjective> addableAdjectives, int level = 1);
+        public Ability Generate(AbilityStationery stationery, List<Adjective> prefix, IEnumerable<Adjective> addableAdjectives, int level = 1)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// オブジェクトの形容詞を付け替え・追加する関数
         /// </summary>
@@ -40,6 +48,9 @@ namespace Assets.Src.Domains.Service
         /// <param name="index">変更したい形容詞インデックス</param>
         /// <param name="setedAdjective">追加したい形容詞</param>
         /// <returns>変更されたオブジェクト</returns>
-        Entity ResetAdjective(Entity origin, int index, Adjective setedAdjective);
+        public Ability ResetAdjective(Ability origin, int index, Adjective setedAdjective)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -5,7 +5,7 @@ namespace Assets.Src.Domains.Service
     /// <summary>
     /// オブジェクト複製クラス
     /// </summary>
-    public static class DuplicateFactory
+    public static class DuplicateManager
     {
         /// <summary>
         /// 複製可能なオブジェクトの複製を行う
