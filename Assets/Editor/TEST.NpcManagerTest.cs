@@ -1,5 +1,5 @@
 ﻿using Assets.Src.Domains.Service;
-using Assets.Src.Domains.Models.Npcs;
+using Assets.Src.Domains.Models;
 using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;

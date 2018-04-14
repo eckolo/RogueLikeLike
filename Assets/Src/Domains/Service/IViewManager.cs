@@ -1,5 +1,4 @@
 ﻿using Assets.Src.Domains.Models;
-using Assets.Src.Domains.Models.Areas;
 
 namespace Assets.Src.Domains.Service
 {

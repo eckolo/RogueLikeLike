@@ -1,5 +1,4 @@
 ﻿using Assets.Src.Domains.Models;
-using Assets.Src.Domains.Models.Npcs;
 using System;
 using System.Collections.Generic;
 

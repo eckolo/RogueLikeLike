@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Assets.Src.Domains.Models.Abilities;
 using Assets.Src.Domains.Models;
 
 namespace Assets.Src.Domains.Service.Factory

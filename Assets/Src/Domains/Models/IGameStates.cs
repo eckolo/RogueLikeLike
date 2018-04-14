@@ -1,11 +1,5 @@
 ﻿using Assets.Src.Domains.Service;
-using Assets.Src.Domains.Models.Areas;
-using Assets.Src.Domains.Models.Npcs;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.Src.Domains.Models

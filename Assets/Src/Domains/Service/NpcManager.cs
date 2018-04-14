@@ -1,6 +1,4 @@
 ﻿using Assets.Src.Domains.Models;
-using Assets.Src.Domains.Models.Abilities;
-using Assets.Src.Domains.Models.Npcs;
 using System;
 using System.Collections.Generic;
 using System.Linq;

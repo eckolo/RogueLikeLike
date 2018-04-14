@@ -1,7 +1,7 @@
 ﻿using Assets.Src.Domains.Service;
-using Assets.Src.Domains.Models.Areas;
 using System;
 using System.Collections.Generic;
+using Assets.Src.Domains.Models;
 
 namespace Assets.Src.Infrastructure
 {

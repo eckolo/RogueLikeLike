@@ -1,6 +1,4 @@
-﻿using Assets.Src.Domains.Models.Abilities;
-using Assets.Src.Domains.Models.Npcs;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Src.Domains.Models
 {

@@ -1,9 +1,4 @@
-﻿using Assets.Src.Domains.Models.Npcs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Assets.Src.Domains.Models;
 
 namespace Assets.Src.Infrastructure
 {

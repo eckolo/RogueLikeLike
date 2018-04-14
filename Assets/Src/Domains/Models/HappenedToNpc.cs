@@ -1,7 +1,4 @@
-﻿using Assets.Src.Domains.Service;
-using Assets.Src.Domains.Models.Abilities;
-using Assets.Src.Domains.Models.Npcs;
-using System;
+﻿using System;
 
 namespace Assets.Src.Domains.Models
 {

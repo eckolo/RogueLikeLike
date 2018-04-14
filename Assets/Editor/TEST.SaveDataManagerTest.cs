@@ -1,10 +1,7 @@
 ﻿using Assets.Src.Domains.Models;
-using Assets.Src.Domains.Models.Npcs;
 using Assets.Src.Domains.Service;
 using Assets.Src.Infrastructure;
 using NUnit.Framework;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public static partial class TEST
