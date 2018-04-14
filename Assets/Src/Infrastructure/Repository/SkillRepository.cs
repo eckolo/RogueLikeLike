@@ -2,7 +2,7 @@
 using Assets.Src.Domains.Models.Value;
 using Assets.Src.Domains.Service.Repository;
 
-namespace Assets.Src.Infrastructure
+namespace Assets.Src.Infrastructure.Repository
 {
     /// <summary>
     /// スキルリポジトリ

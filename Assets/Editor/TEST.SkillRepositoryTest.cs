@@ -1,8 +1,8 @@
 ﻿using Assets.Src.Domains.Service;
-using Assets.Src.Infrastructure;
 using Assets.Src.Domains.Models.Value;
 using NUnit.Framework;
 using System;
+using Assets.Src.Infrastructure.Repository;
 
 public static partial class TEST
 {

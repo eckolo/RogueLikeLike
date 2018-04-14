@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Assets.Src.Domains.Models.Entity;
+using Assets.Src.Infrastructure.Repository;
 
 namespace Assets.Src.Infrastructure
 {

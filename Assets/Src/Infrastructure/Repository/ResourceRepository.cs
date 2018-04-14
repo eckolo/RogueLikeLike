@@ -1,7 +1,7 @@
 ﻿using Assets.Src.Domains.Service.Repository;
 using UnityEngine;
 
-namespace Assets.Src.Infrastructure
+namespace Assets.Src.Infrastructure.Repository
 {
     /// <summary>
     /// Resourceからの読み出し処理ラッパー

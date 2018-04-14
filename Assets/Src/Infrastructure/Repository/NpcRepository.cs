@@ -1,6 +1,6 @@
 ﻿using Assets.Src.Domains.Models.Value;
 
-namespace Assets.Src.Infrastructure
+namespace Assets.Src.Infrastructure.Repository
 {
     /// <summary>
     /// キャラクタリポジトリ
