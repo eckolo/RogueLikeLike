@@ -1,8 +1,9 @@
 ﻿using Assets.Src.Domains.Service;
-using Assets.Src.Domains.Models;
+using Assets.Src.Domains.Models.Value;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Assets.Src.Domains.Models.Entity;
 
 namespace Assets.Src.Infrastructure
 {

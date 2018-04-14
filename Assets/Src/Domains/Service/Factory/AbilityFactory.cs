@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Assets.Src.Domains.Models;
+using Assets.Src.Domains.Models.Entity;
+using Assets.Src.Domains.Models.Value;
 
 namespace Assets.Src.Domains.Service.Factory
 {

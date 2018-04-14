@@ -1,8 +1,9 @@
 ﻿using Assets.Src.Domains.Service;
-using Assets.Src.Domains.Models;
+using Assets.Src.Domains.Models.Value;
 using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Src.Domains.Models.Entity;
 
 public static partial class TEST
 {

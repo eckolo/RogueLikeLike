@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Src.Domains.Service
+namespace Assets.Src.Domains.Service.Repository
 {
     /// <summary>
     /// データ格納リポジトリの雛形

@@ -1,4 +1,4 @@
-﻿using Assets.Src.Domains.Service;
+﻿using Assets.Src.Domains.Service.Repository;
 using UnityEngine;
 
 namespace Assets.Src.Infrastructure

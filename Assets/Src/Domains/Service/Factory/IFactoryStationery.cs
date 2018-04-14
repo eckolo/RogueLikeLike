@@ -1,4 +1,5 @@
-﻿using Assets.Src.Domains.Models;
+﻿using Assets.Src.Domains.Models.Interface;
+using Assets.Src.Domains.Models.Value;
 using System.Collections.Generic;
 
 namespace Assets.Src.Domains.Service.Factory

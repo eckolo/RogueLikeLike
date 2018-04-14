@@ -1,4 +1,4 @@
-﻿using Assets.Src.Domains.Models;
+﻿using Assets.Src.Domains.Models.Value;
 using Assets.Src.Domains.Service;
 using NUnit.Framework;
 using System.Collections.Generic;
