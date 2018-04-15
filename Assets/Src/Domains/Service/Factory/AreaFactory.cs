@@ -8,7 +8,7 @@ namespace Assets.Src.Domains.Service.Factory
     /// <summary>
     /// 地形類生成・変更サービス
     /// </summary>
-    public class AreaFactory : IFactoryStationery<Area, AreaStationery>
+    public class AreaFactory : IFactoryFromStationery<Area, AreaStationery>
     {
         /// <summary>
         /// オブジェクトの新規生成関数

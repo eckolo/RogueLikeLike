@@ -8,7 +8,7 @@ namespace Assets.Src.Domains.Service.Factory
     /// <summary>
     /// アイテム系生成・変更サービス
     /// </summary>
-    public class ItemFactory : IFactoryStationery<Item, ItemStationery>
+    public class ItemFactory : IFactoryFromStationery<Item, ItemStationery>
     {
         /// <summary>
         /// オブジェクトの新規生成関数

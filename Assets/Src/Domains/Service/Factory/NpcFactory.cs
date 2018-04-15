@@ -8,7 +8,7 @@ namespace Assets.Src.Domains.Service.Factory
     /// <summary>
     /// NPC系オブジェクト生成・変更サービス
     /// </summary>
-    public class NpcFactory : IFactoryStationery<Npc, NpcStationery>
+    public class NpcFactory : IFactoryFromStationery<Npc, NpcStationery>
     {
         /// <summary>
         /// オブジェクトの新規生成関数

@@ -8,7 +8,7 @@ namespace Assets.Src.Domains.Service.Factory
     /// <summary>
     /// アビリティ生成・変更サービス
     /// </summary>
-    public class AbilityFactory : IFactoryStationery<Ability, AbilityStationery>
+    public class AbilityFactory : IFactoryFromStationery<Ability, AbilityStationery>
     {
         /// <summary>
         /// オブジェクトの新規生成関数

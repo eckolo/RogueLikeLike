@@ -9,7 +9,7 @@ namespace Assets.Src.Domains.Service.Factory
     /// </summary>
     /// <typeparam name="Entity">管理対象オブジェクトの型</typeparam>
     /// <typeparam name="Stationery">管理対象オブジェクトの雛形となる型</typeparam>
-    public interface IFactoryStationery<Entity, Stationery> where Entity : Stationery, IAdhered where Stationery : Named
+    public interface IFactoryFromStationery<Entity, Stationery> where Entity : Stationery, IAdhered where Stationery : Named
     {
         /// <summary>
         /// オブジェクトの新規生成関数
