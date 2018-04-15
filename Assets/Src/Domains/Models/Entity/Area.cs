@@ -1,5 +1,6 @@
 ﻿using Assets.Src.Domains.Models.Interface;
 using Assets.Src.Domains.Models.Value;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -9,17 +10,36 @@ namespace Assets.Src.Domains.Models.Entity
     /// <summary>
     /// 地域オブジェクトルート
     /// </summary>
+    [Serializable]
     public class Area : AreaStationery, IAdhered, IDuplicatable<Area>
     {
         /// <summary>
         /// 他地域との接続情報
         /// </summary>
-        public IEnumerable<AreaConnection> connectionList { get; set; }
+        [SerializeField]
+        IEnumerable<AreaConnection> _connectionList = new List<AreaConnection>();
+        /// <summary>
+        /// 他地域との接続情報
+        /// </summary>
+        public IEnumerable<AreaConnection> connectionList
+        {
+            get { return _connectionList; }
+            set { _connectionList = value; }
+        }
 
         /// <summary>
         /// 内包するマップのリスト
         /// </summary>
-        public Dictionary<Vector2, Map> includeMapList { get; set; }
+        [SerializeField]
+        Dictionary<Vector2, Map> _includeMapList = new Dictionary<Vector2, Map>();
+        /// <summary>
+        /// 内包するマップのリスト
+        /// </summary>
+        public Dictionary<Vector2, Map> includeMapList
+        {
+            get { return _includeMapList; }
+            set { _includeMapList = value; }
+        }
 
         /// <summary>
         /// 現在のマップ情報
@@ -48,7 +68,12 @@ namespace Assets.Src.Domains.Models.Entity
         /// <summary>
         /// 形容詞リスト
         /// </summary>
-        public List<Adjective> adjectives { get; set; }
+        [SerializeField]
+        List<Adjective> _adjectives = new List<Adjective>();
+        /// <summary>
+        /// 形容詞リスト
+        /// </summary>
+        public List<Adjective> adjectives { get { return _adjectives; } set { _adjectives = value; } }
 
         /// <summary>
         /// 主要形容詞

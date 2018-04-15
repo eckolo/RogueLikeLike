@@ -1,4 +1,5 @@
 ﻿using Assets.Src.Domains.Models.Interface;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ namespace Assets.Src.Domains.Models.Value
     /// <summary>
     /// アイテムの雛形オブジェクト
     /// </summary>
+    [Serializable]
     public class ItemStationery : Named
     {
         /// <summary>

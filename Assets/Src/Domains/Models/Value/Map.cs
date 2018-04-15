@@ -1,5 +1,6 @@
 ﻿using Assets.Src.Domains.Models.Entity;
 using Assets.Src.Domains.Models.Interface;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ namespace Assets.Src.Domains.Models.Value
     /// <summary>
     /// マップオブジェクト
     /// </summary>
+    [Serializable]
     public class Map : IDuplicatable<Map>
     {
         /// <summary>

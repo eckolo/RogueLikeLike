@@ -1,4 +1,5 @@
 ﻿using Assets.Src.Domains.Models.Interface;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ namespace Assets.Src.Domains.Models.Value
     /// <summary>
     /// アビリティ雛形オブジェクト
     /// </summary>
+    [Serializable]
     public partial class AbilityStationery : Named
     {
         /// <summary>
@@ -30,11 +32,6 @@ namespace Assets.Src.Domains.Models.Value
         public IEnumerable<Parts> dependentPartsList => _dependentParts;
 
         /// <summary>
-        /// 挙動定義リスト
-        /// </summary>
-        public List<Behavior> behaviorList => _behaviorDefinition.behaviorList;
-
-        /// <summary>
         /// 使用条件ジョブリスト
         /// </summary>
         [SerializeField]
@@ -49,5 +46,9 @@ namespace Assets.Src.Domains.Models.Value
         /// </summary>
         [SerializeField]
         Behavior.Definition _behaviorDefinition = new Behavior.Definition();
+        /// <summary>
+        /// 挙動定義リスト
+        /// </summary>
+        public List<Behavior> behaviorList => _behaviorDefinition.behaviorList;
     }
 }

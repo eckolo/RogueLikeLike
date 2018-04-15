@@ -1,5 +1,6 @@
 ﻿using Assets.Src.Domains.Models.Interface;
 using Assets.Src.Domains.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -9,6 +10,7 @@ namespace Assets.Src.Domains.Models.Value
     /// <summary>
     /// キャラクター雛形オブジェクト
     /// </summary>
+    [Serializable]
     public partial class NpcStationery : Named
     {
         /// <summary>
@@ -27,9 +29,9 @@ namespace Assets.Src.Domains.Models.Value
         [SerializeField]
         List<Skill.Parameters> _skillParameters = new List<Skill.Parameters>();
         /// <summary>
-        /// スキルリスト
+        /// 外部から参照されるスキルパラメータ
         /// </summary>
-        public Dictionary<Skill.Key, int> skillParameters => _skillParameters.ToDictionary();
+        public virtual Parameters parameters => _skillParameters.ToDictionary().ToParameters();
 
         /// <summary>
         /// 初期習得済みアビリティリスト
@@ -62,14 +64,14 @@ namespace Assets.Src.Domains.Models.Value
         public IEnumerable<Parts> possessedPartsList => _possessedParts;
 
         /// <summary>
-        /// 状態異常リスト
+        /// 習得ジョブリスト
         /// </summary>
-        public IEnumerable<StatusAilment> statusAilmentList { get; protected set; }
-
+        [SerializeField]
+        IEnumerable<Job> _hadJobList = new List<Job>();
         /// <summary>
         /// 習得ジョブリスト
         /// </summary>
-        public IEnumerable<Job> hadJobList { get; protected set; }
+        public IEnumerable<Job> hadJobList { get { return _hadJobList; } set { _hadJobList = value; } }
 
         /// <summary>
         /// 行動アルゴリズム
@@ -80,10 +82,5 @@ namespace Assets.Src.Domains.Models.Value
         /// 行動アルゴリズム
         /// </summary>
         public IEnumerable<ActionTerm> actionAlgorithm => _actionAlgorithm;
-
-        /// <summary>
-        /// 外部から参照されるパラメータ
-        /// </summary>
-        public virtual Parameters parameters => skillParameters.ToParameters();
     }
 }

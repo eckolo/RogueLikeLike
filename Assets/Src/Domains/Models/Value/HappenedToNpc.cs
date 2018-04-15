@@ -1,12 +1,14 @@
 ﻿using Assets.Src.Domains.Models.Entity;
 using Assets.Src.Domains.Models.Interface;
 using System;
+using UnityEngine;
 
 namespace Assets.Src.Domains.Models.Value
 {
     /// <summary>
     /// NPCを対象とするタイプの動作データオブジェクト
     /// </summary>
+    [Serializable]
     public class HappenedToNpc : Happened, ITargeting<Npc>
     {
         /// <summary>
@@ -25,8 +27,8 @@ namespace Assets.Src.Domains.Models.Value
         /// 動作対象
         /// 対象無し行動は自身対象扱い
         /// </summary>
+        [SerializeField]
         Npc _target;
-
         /// <summary>
         /// 動作対象
         /// 対象無し行動は自身対象扱い

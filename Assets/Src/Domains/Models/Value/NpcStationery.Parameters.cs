@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Assets.Src.Domains.Models.Value
 {
@@ -35,58 +36,108 @@ namespace Assets.Src.Domains.Models.Value
                 int evasion,
                 int speed)
             {
-                this.maxHp = maxHp;
-                this.maxEnergy = maxEnergy;
-                this.maxMental = maxMental;
-                this.physicalAttack = physicalAttack;
-                this.physicalDefense = physicalDefense;
-                this.magicAttack = magicAttack;
-                this.magicDefense = magicDefense;
-                this.accuracy = accuracy;
-                this.evasion = evasion;
-                this.speed = speed;
+                _maxHp = maxHp;
+                _maxEnergy = maxEnergy;
+                _maxMental = maxMental;
+                _physicalAttack = physicalAttack;
+                _physicalDefense = physicalDefense;
+                _magicAttack = magicAttack;
+                _magicDefense = magicDefense;
+                _accuracy = accuracy;
+                _evasion = evasion;
+                _speed = speed;
             }
 
             /// <summary>
             /// 最大HP
             /// </summary>
-            public int maxHp { get; }
+            [SerializeField]
+            int _maxHp;
+            /// <summary>
+            /// 最大HP
+            /// </summary>
+            public int maxHp => _maxHp;
             /// <summary>
             /// 最大スタミナ
             /// </summary>
-            public int maxEnergy { get; }
+            [SerializeField]
+            int _maxEnergy;
+            /// <summary>
+            /// 最大スタミナ
+            /// </summary>
+            public int maxEnergy => _maxEnergy;
             /// <summary>
             /// 最大精神力
             /// </summary>
-            public int maxMental { get; }
+            [SerializeField]
+            int _maxMental;
+            /// <summary>
+            /// 最大精神力
+            /// </summary>
+            public int maxMental => _maxMental;
             /// <summary>
             /// 物理攻撃力
             /// </summary>
-            public int physicalAttack { get; }
+            [SerializeField]
+            int _physicalAttack;
+            /// <summary>
+            /// 物理攻撃力
+            /// </summary>
+            public int physicalAttack => _physicalAttack;
             /// <summary>
             /// 物理防御力
             /// </summary>
-            public int physicalDefense { get; }
+            [SerializeField]
+            int _physicalDefense;
+            /// <summary>
+            /// 物理防御力
+            /// </summary>
+            public int physicalDefense => _physicalDefense;
             /// <summary>
             /// 魔法攻撃力
             /// </summary>
-            public int magicAttack { get; }
+            [SerializeField]
+            int _magicAttack;
+            /// <summary>
+            /// 魔法攻撃力
+            /// </summary>
+            public int magicAttack => _magicAttack;
             /// <summary>
             /// 魔法防御力
             /// </summary>
-            public int magicDefense { get; }
+            [SerializeField]
+            int _magicDefense;
+            /// <summary>
+            /// 魔法防御力
+            /// </summary>
+            public int magicDefense => _magicDefense;
             /// <summary>
             /// 命中率
             /// </summary>
-            public int accuracy { get; }
+            [SerializeField]
+            int _accuracy;
+            /// <summary>
+            /// 命中率
+            /// </summary>
+            public int accuracy => _accuracy;
             /// <summary>
             /// 回避率
             /// </summary>
-            public int evasion { get; }
+            [SerializeField]
+            int _evasion;
+            /// <summary>
+            /// 回避率
+            /// </summary>
+            public int evasion => _evasion;
             /// <summary>
             /// 行動速度
             /// </summary>
-            public int speed { get; }
+            [SerializeField]
+            int _speed;
+            /// <summary>
+            /// 行動速度
+            /// </summary>
+            public int speed => _speed;
 
             /// <summary>
             /// パラメータ補正値計算用の加算処理

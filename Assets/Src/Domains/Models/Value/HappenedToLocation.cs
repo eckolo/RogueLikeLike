@@ -8,6 +8,7 @@ namespace Assets.Src.Domains.Models.Value
     /// <summary>
     /// 位置を対象とするタイプの動作データオブジェクト
     /// </summary>
+    [Serializable]
     public class HappenedToLocation : Happened, ITargeting<Vector2>
     {
         /// <summary>
@@ -25,6 +26,7 @@ namespace Assets.Src.Domains.Models.Value
         /// <summary>
         /// 動作対象地点座標
         /// </summary>
+        [SerializeField]
         Vector2 _target;
         /// <summary>
         /// 動作対象地点座標

@@ -1,4 +1,5 @@
 ﻿using Assets.Src.Domains.Models.Entity;
+using System;
 using UnityEngine;
 
 namespace Assets.Src.Domains.Models.Value
@@ -6,6 +7,7 @@ namespace Assets.Src.Domains.Models.Value
     /// <summary>
     /// 誰が何のアビリティをどこに向けて使用するのか
     /// </summary>
+    [Serializable]
     public class ActionPattern
     {
         /// <summary>
@@ -24,6 +26,7 @@ namespace Assets.Src.Domains.Models.Value
         /// <summary>
         /// 動作主体
         /// </summary>
+        [SerializeField]
         Npc _subject;
         /// <summary>
         /// 動作主体
@@ -33,6 +36,7 @@ namespace Assets.Src.Domains.Models.Value
         /// <summary>
         /// 使用されるアビリティ
         /// </summary>
+        [SerializeField]
         Ability _ability = default(Ability);
         /// <summary>
         /// 使用されるアビリティ
@@ -42,6 +46,7 @@ namespace Assets.Src.Domains.Models.Value
         /// <summary>
         /// 対象座標
         /// </summary>
+        [SerializeField]
         Vector2 _target = default(Vector2);
         /// <summary>
         /// 対象座標

@@ -5,7 +5,6 @@ namespace Assets.Src.Domains.Models.Value
     /// <summary>
     /// 攻撃属性
     /// </summary>
-    [Serializable]
     public enum AttributeType
     {
         /// <summary>

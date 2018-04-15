@@ -1,4 +1,5 @@
 ﻿using Assets.Src.Domains.Models.Interface;
+using System;
 using UnityEngine;
 
 namespace Assets.Src.Domains.Models.Value
@@ -6,6 +7,7 @@ namespace Assets.Src.Domains.Models.Value
     /// <summary>
     /// 形容詞オブジェクト
     /// </summary>
+    [Serializable]
     public class Adjective : Named
     {
         /// <summary>

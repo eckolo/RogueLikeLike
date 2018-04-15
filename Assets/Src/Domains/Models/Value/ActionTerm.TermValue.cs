@@ -26,6 +26,7 @@ namespace Assets.Src.Domains.Models.Value
             /// 条件判定値取得対象
             /// （動作対象）
             /// </summary>
+            [SerializeField]
             TargetType _valueTarget = default(TargetType);
             /// <summary>
             /// 条件判定値取得対象
@@ -36,6 +37,7 @@ namespace Assets.Src.Domains.Models.Value
             /// <summary>
             /// 条件適用方式
             /// </summary>
+            [SerializeField]
             TermType _termType = default(TermType);
             /// <summary>
             /// 条件適用方式

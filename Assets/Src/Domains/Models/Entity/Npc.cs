@@ -1,5 +1,6 @@
 ﻿using Assets.Src.Domains.Models.Interface;
 using Assets.Src.Domains.Models.Value;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -9,8 +10,14 @@ namespace Assets.Src.Domains.Models.Entity
     /// <summary>
     /// NPCオブジェクト
     /// </summary>
+    [Serializable]
     public class Npc : NpcStationery, IAdhered
     {
+        /// <summary>
+        /// 形容詞リスト
+        /// </summary>
+        [SerializeField]
+        List<Adjective> _adjectives = new List<Adjective>();
         /// <summary>
         /// 形容詞リスト
         /// </summary>
@@ -24,6 +31,7 @@ namespace Assets.Src.Domains.Models.Entity
         /// <summary>
         /// 現存在座標
         /// </summary>
+        [SerializeField]
         Vector2 _location = Vector2.zero;
         /// <summary>
         /// 現存在座標
@@ -33,6 +41,7 @@ namespace Assets.Src.Domains.Models.Entity
         /// <summary>
         /// パラメータ補正値
         /// </summary>
+        [SerializeField]
         Parameters _parametersAdjust = null;
         /// <summary>
         /// パラメータ補正値
@@ -47,6 +56,7 @@ namespace Assets.Src.Domains.Models.Entity
         /// <summary>
         /// 現在HP
         /// </summary>
+        [SerializeField]
         int? _nowHp = null;
         /// <summary>
         /// 現在HP
@@ -66,6 +76,7 @@ namespace Assets.Src.Domains.Models.Entity
         /// <summary>
         /// 現在スタミナ
         /// </summary>
+        [SerializeField]
         int? _nowEnergy = null;
         /// <summary>
         /// 現在スタミナ
@@ -85,6 +96,7 @@ namespace Assets.Src.Domains.Models.Entity
         /// <summary>
         /// 現在精神力
         /// </summary>
+        [SerializeField]
         int? _nowMental = null;
         /// <summary>
         /// 現在精神力
@@ -104,6 +116,25 @@ namespace Assets.Src.Domains.Models.Entity
         /// <summary>
         /// 現在の行動優先度
         /// </summary>
-        public int nowInitiative { get; set; } = 0;
+        [SerializeField]
+        int _nowInitiative = 0;
+        /// <summary>
+        /// 現在の行動優先度
+        /// </summary>
+        public int nowInitiative { get { return _nowInitiative; } set { _nowInitiative = value; } }
+
+        /// <summary>
+        /// 状態異常リスト
+        /// </summary>
+        [SerializeField]
+        IEnumerable<StatusAilment> _statusAilmentList = new List<StatusAilment>();
+        /// <summary>
+        /// 状態異常リスト
+        /// </summary>
+        public IEnumerable<StatusAilment> statusAilmentList
+        {
+            get { return _statusAilmentList; }
+            set { _statusAilmentList = value; }
+        }
     }
 }

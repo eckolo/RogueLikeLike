@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Src.Domains.Models.Value
@@ -6,6 +7,7 @@ namespace Assets.Src.Domains.Models.Value
     /// <summary>
     /// 1マスごとのステータスを持つマップチップオブジェクト
     /// </summary>
+    [Serializable]
     public class MapChip : ScriptableObject
     {
         /// <summary>
