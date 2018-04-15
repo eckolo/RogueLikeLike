@@ -26,10 +26,6 @@ namespace Assets.Src.Domains.Models.Entity
         Queue<Happened> viewQueue { get; }
 
         /// <summary>
-        /// 現在地情報
-        /// </summary>
-        Location location { get; set; }
-        /// <summary>
         /// 現在の地域データ
         /// </summary>
         Area area { get; set; }
@@ -37,6 +33,10 @@ namespace Assets.Src.Domains.Models.Entity
         /// 現在のマップデータ
         /// </summary>
         Map map { get; set; }
+        /// <summary>
+        /// 所在マップ座標
+        /// </summary>
+        Vector2 mapCondition { get; set; }
 
         /// <summary>
         /// 現在のマップ上に存在するNPC全体のリスト

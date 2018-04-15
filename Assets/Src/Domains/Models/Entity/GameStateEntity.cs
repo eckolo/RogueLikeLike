@@ -3,6 +3,7 @@ using UnityEngine;
 using System;
 using Assets.Src.Domains.Models.Value;
 using Assets.Src.Domains.Models.Interface;
+using Assets.Src.Domains.Service;
 
 namespace Assets.Src.Domains.Models.Entity
 {
@@ -13,26 +14,60 @@ namespace Assets.Src.Domains.Models.Entity
     public class GameStateEntity : IDuplicatable<GameStateEntity>
     {
         /// <summary>
-        /// 現在の所在地情報
+        /// 上方向の方角
         /// </summary>
         [SerializeField]
-        Location _location = new Location();
+        Direction _upwardDirection = Direction.NORTH;
         /// <summary>
-        /// 現在の所在地情報
+        /// 上方向の方角
         /// </summary>
-        public Location location { get { return _location; } set { _location = value; } }
+        public Direction upwardDirection { get { return _upwardDirection; } set { _upwardDirection = value; } }
 
         /// <summary>
-        /// 各マスのNPCリスト
-        /// 座標は中央が(0,0)、東がx+1、北がY+1
+        /// 全エリアデータ
         /// </summary>
         [SerializeField]
-        Dictionary<Vector2, Npc> _npcList = new Dictionary<Vector2, Npc>();
+        List<Area> _areaList = new List<Area>();
         /// <summary>
-        /// 各マスのNPCリスト
-        /// 座標は中央が(0,0)、東がx+1、北がY+1
+        /// 全エリアデータ
         /// </summary>
-        public Dictionary<Vector2, Npc> npcList { get { return _npcList; } set { _npcList = value; } }
+        List<Area> areaList { get { return _areaList; } set { _areaList = value; } }
+
+        /// <summary>
+        /// 現在のエリア情報
+        /// </summary>
+        public Area nowArea
+        {
+            get {
+                if(!areaList.ContainsIndex(_nowAreaNum)) return null;
+                return areaList[_nowAreaNum];
+            }
+            set {
+                if(!areaList.Contains(value)) areaList.Add(value);
+                _nowAreaNum = areaList.IndexOf(value);
+            }
+        }
+        /// <summary>
+        /// 所在エリア番号
+        /// </summary>
+        int _nowAreaNum = 0;
+        /// <summary>
+        /// 現在のマップ状態
+        /// </summary>
+        public Map nowMap { get { return nowArea.nowMap; } set { nowArea.nowMap = value; } }
+        /// <summary>
+        /// 所在マップ座標
+        /// </summary>
+        public Vector2 nowMapCondition
+        {
+            get { return nowArea.nowMapCondition; }
+            set { nowArea.nowMapCondition = value; }
+        }
+
+        /// <summary>
+        /// 現在のマップのNPC配置情報
+        /// </summary>
+        public Dictionary<Vector2, Npc> nowNpcList { get { return nowMap.npcList; } set { nowMap.npcList = value; } }
 
         /// <summary>
         /// 画面未反映の行動履歴

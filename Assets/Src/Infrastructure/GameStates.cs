@@ -71,12 +71,8 @@ namespace Assets.Src.Infrastructure
         /// </summary>
         public GameStateEntity stateEntity
         {
-            get {
-                return _stateEntity.Duplicate();
-            }
-            set {
-                _stateEntity = value.Duplicate();
-            }
+            get { return _stateEntity.Duplicate(); }
+            set { _stateEntity = value.Duplicate(); }
         }
 
         /// <summary>
@@ -85,46 +81,34 @@ namespace Assets.Src.Infrastructure
         public Queue<Happened> viewQueue => _stateEntity.viewQueue;
 
         /// <summary>
-        /// 現在地情報
-        /// </summary>
-        public Location location
-        {
-            get {
-                return _stateEntity.location.Duplicate();
-            }
-            set {
-                _stateEntity.location = value.Duplicate();
-            }
-        }
-        /// <summary>
         /// 現在の地域データ
         /// </summary>
         public Area area
         {
-            get {
-                return _stateEntity.location.area.Duplicate();
-            }
-            set {
-                _stateEntity.location.area = value.Duplicate();
-            }
+            get { return _stateEntity.nowArea.Duplicate(); }
+            set { _stateEntity.nowArea = value.Duplicate(); }
         }
         /// <summary>
         /// 現在のマップデータ
         /// </summary>
         public Map map
         {
-            get {
-                return _stateEntity.location.map.Duplicate();
-            }
-            set {
-                _stateEntity.location.map = value.Duplicate();
-            }
+            get { return _stateEntity.nowMap.Duplicate(); }
+            set { _stateEntity.nowMap = value.Duplicate(); }
+        }
+        /// <summary>
+        /// 所在マップ座標
+        /// </summary>
+        public Vector2 mapCondition
+        {
+            get { return _stateEntity.nowMapCondition; }
+            set { _stateEntity.nowMapCondition = value; }
         }
 
         /// <summary>
         /// 現在のマップ上に存在するNPC全体のリスト
         /// </summary>
-        public IEnumerable<Npc> npcList => _stateEntity.npcList.Select(npcData => npcData.Value);
+        public IEnumerable<Npc> npcList => _stateEntity.nowNpcList.Select(npcData => npcData.Value);
         /// <summary>
         /// 現在の行動者
         /// </summary>
@@ -143,7 +127,7 @@ namespace Assets.Src.Infrastructure
         /// </summary>
         /// <param name="key">NPCの存在座標</param>
         /// <returns>NPC</returns>
-        public Npc GetNpc(Vector2 key) => _stateEntity.npcList.ContainsKey(key) ? _stateEntity.npcList[key] : null;
+        public Npc GetNpc(Vector2 key) => _stateEntity.nowNpcList.ContainsKey(key) ? _stateEntity.nowNpcList[key] : null;
         /// <summary>
         /// NPCからその存在座標を返す
         /// NPCがマップ上に存在していなければNullを返す
@@ -152,7 +136,7 @@ namespace Assets.Src.Infrastructure
         /// <returns></returns>
         public Vector2? GetCoordinate(Npc npc)
             => npc != null && npcList.Contains(npc) ?
-            _stateEntity.npcList.FirstOrDefault(npcData => npcData.Value == npc).Key :
+            _stateEntity.nowNpcList.FirstOrDefault(npcData => npcData.Value == npc).Key :
             (Vector2?)null;
 
         /// <summary>

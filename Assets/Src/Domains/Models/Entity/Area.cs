@@ -22,6 +22,30 @@ namespace Assets.Src.Domains.Models.Entity
         public Dictionary<Vector2, Map> includeMapList { get; set; }
 
         /// <summary>
+        /// 現在のマップ情報
+        /// </summary>
+        public Map nowMap
+        {
+            get {
+                if(!includeMapList.ContainsKey(_nowMapCondition)) return null;
+                return includeMapList[_nowMapCondition];
+            }
+            set {
+                if(!includeMapList.ContainsValue(value)) return;
+                _nowMapCondition = includeMapList.Single(map => map.Value == value).Key;
+            }
+        }
+        /// <summary>
+        /// 所在マップ座標
+        /// </summary>
+        [SerializeField]
+        Vector2 _nowMapCondition = Vector2.zero;
+        /// <summary>
+        /// 所在マップ座標
+        /// </summary>
+        public Vector2 nowMapCondition { get { return _nowMapCondition; } set { _nowMapCondition = value; } }
+
+        /// <summary>
         /// 形容詞リスト
         /// </summary>
         public List<Adjective> adjectives { get; set; }

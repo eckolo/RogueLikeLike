@@ -18,8 +18,8 @@ namespace Assets.Src.Domains.Service
         /// <returns>次のマップ状態</returns>
         public static Map SetupNextMap(this IGameStates states, Direction? destinationDirection = null)
         {
-            var nextCoordinate = states.location.coordinate + destinationDirection.ToVector();
             return states.area.GenerateMap(nextCoordinate);
+            var nextCoordinate = states.mapCondition + destinationDirection.ToVector();
         }
 
         /// <summary>
