@@ -23,7 +23,7 @@ namespace Assets.Src.Domains.Service
             var happenedList = states.GenerateHappenedList(firstAction);
 
             states = states.ReflectHappenedList(happenedList);
-            states.map = states.SetupNextMap();
+            states = states.SetupNextMap();
 
             states = states.ReflectViewQueue();
             states.methods.viewer.ReflectMap(states.map);
