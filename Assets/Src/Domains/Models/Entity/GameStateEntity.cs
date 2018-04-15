@@ -31,7 +31,7 @@ namespace Assets.Src.Domains.Models.Entity
         /// <summary>
         /// 全エリアデータ
         /// </summary>
-        List<Area> areaList { get { return _areaList; } set { _areaList = value; } }
+        public List<Area> areaList { get { return _areaList; } set { _areaList = value; } }
 
         /// <summary>
         /// 現在のエリア情報

@@ -81,6 +81,10 @@ namespace Assets.Src.Infrastructure
         public Queue<Happened> viewQueue => _stateEntity.viewQueue;
 
         /// <summary>
+        /// 全エリアデータ
+        /// </summary>
+        public List<Area> areaList => _stateEntity.areaList;
+        /// <summary>
         /// 現在の地域データ
         /// </summary>
         public Area area

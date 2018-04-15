@@ -26,6 +26,10 @@ namespace Assets.Src.Domains.Models.Entity
         Queue<Happened> viewQueue { get; }
 
         /// <summary>
+        /// 全エリアデータ
+        /// </summary>
+        List<Area> areaList { get; }
+        /// <summary>
         /// 現在の地域データ
         /// </summary>
         Area area { get; set; }
