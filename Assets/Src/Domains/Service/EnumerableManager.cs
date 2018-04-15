@@ -7,7 +7,7 @@ using System.Linq;
 namespace Assets.Src.Domains.Service
 {
     /// <summary>
-    /// リスト関連の汎用操作クラス
+    /// <see cref="IEnumerable{T}">関連の汎用操作クラス
     /// </summary>
     public static class EnumerableManager
     {
@@ -26,7 +26,7 @@ namespace Assets.Src.Domains.Service
         }
 
         /// <summary>
-        /// インスペクタから管理するKeyValueっぽいクラスのリストをDictionaryに変換する
+        /// インスペクタから管理する<see cref="IKeyValueLike{TKey, TValue}">のリストを<see cref="Dictionary{TKey, TValue}"/>に変換する
         /// </summary>
         /// <typeparam name="TKey">キ－型</typeparam>
         /// <typeparam name="TValue">内容型</typeparam>
@@ -34,5 +34,15 @@ namespace Assets.Src.Domains.Service
         /// <returns>生成された辞書型リスト</returns>
         public static Dictionary<TKey, TValue> ToDictionary<TKey, TValue>(this IEnumerable<IKeyValueLike<TKey, TValue>> origin)
             => origin.ToDictionary(keyValue => keyValue.key, keyValue => keyValue.value);
+
+        /// <summary>
+        /// ある数値が<see cref="List{T}">のインデックスとして正当か否か判定する
+        /// </summary>
+        /// <typeparam name="TValue">内容型</typeparam>
+        /// <param name="origin">判定対象のリスト</param>
+        /// <param name="index">判定対象のインデックス</param>
+        /// <returns>指定した数値がリストのインデックスに含まれているか否か</returns>
+        public static bool ContainsIndex<TValue>(this List<TValue> origin, int index)
+            => 0 <= index && index < origin.Count;
     }
 }
