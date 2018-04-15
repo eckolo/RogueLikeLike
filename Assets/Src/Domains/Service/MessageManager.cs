@@ -19,6 +19,8 @@ namespace Assets.Src.Domains.Service
             var displayedSentences = $"{DateTime.Now.ToLongTimeString()}\t【{logger.ToString()}】\t{logedText.Replace(Environment.NewLine, @"\r\n")}";
             Debug.Log(displayedSentences);
 
+            if(logger != LogHub.ERROR && !Debug.isDebugBuild) return "";
+
             var path = $"{Application.dataPath}/Logs";
             var filename = $"{DateTime.Today.ToString("yyyyMMdd")}.log";
             fileManager.Write(path, filename, displayedSentences, true);
