@@ -8,7 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d1a4bb26b8ad4d45921987d3ed29f42, type: 3}
+  m_Script: {fileID: 11500000, guid: c73fbe13560abdc4fab089f0cf976358, type: 3}
   m_Name: WalkMove
   m_EditorClassIdentifier: 
   _description: "\u5F92\u6B69\u306B\u3088\u308B\u79FB\u52D5"

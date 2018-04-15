@@ -8,7 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c4d3f01d2f7d1645bc2e9fd9b2b5885, type: 3}
+  m_Script: {fileID: 11500000, guid: fdc0895f959c3954aae5da8d0514449b, type: 3}
   m_Name: 20302_ThunderAptitude
   m_EditorClassIdentifier: 
   _description: "\u96F7\u9069\u5FDC\u529B"
