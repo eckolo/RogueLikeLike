@@ -76,7 +76,7 @@ public static partial class TEST
 
             try
             {
-                var result2 = list2.ToDictionary();
+                list2.ToDictionary();
                 Assert.Fail();
             }
             catch(Exception error)

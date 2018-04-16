@@ -80,16 +80,6 @@ namespace Assets.Src.Domains.Models.Entity
         public Queue<Happened> viewQueue { get { return _viewQueue; } set { _viewQueue = value; } }
 
         /// <summary>
-        /// 現在の行動者
-        /// </summary>
-        [SerializeField]
-        Npc _actor = null;
-        /// <summary>
-        /// 現在の行動者
-        /// </summary>
-        public Npc actor { get { return _actor; } set { _actor = value; } }
-
-        /// <summary>
         /// シャローコピーメソッド
         /// </summary>
         /// <returns>コピーされたオブジェクト</returns>

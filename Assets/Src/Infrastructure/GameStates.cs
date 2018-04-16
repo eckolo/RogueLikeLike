@@ -114,18 +114,6 @@ namespace Assets.Src.Infrastructure
         /// </summary>
         public IEnumerable<Npc> npcList => _stateEntity.nowNpcList.Select(npcData => npcData.Value);
         /// <summary>
-        /// 現在の行動者
-        /// </summary>
-        public Npc actor
-        {
-            get {
-                return _stateEntity.actor;
-            }
-            set {
-                _stateEntity.actor = value ?? _stateEntity.actor;
-            }
-        }
-        /// <summary>
         /// 座標から座標上に存在するNPCを返す
         /// 座標上に誰もいなければNullが返る
         /// </summary>

@@ -16,14 +16,17 @@ namespace Assets.Src.Domains.Service
         /// </summary>
         /// <param name="states">現在のゲーム状態</param>
         /// <returns>実行後のゲーム状態</returns>
-        public static IGameStates PerformTurnByTurn(this IGameStates states)
+        public static IGameStates PerformTurnByTurn(this IGameStates _states)
         {
-            states.actor = states.actor.CalcNextActNpc(states.npcList);
-            var firstAction = states.actor.DetermineAction(states);
+            var states = _states.Duplicate();
+            var actor = states.npcList.CalcNextActNpc();
+            var firstAction = actor.DetermineAction(states);
             var happenedList = states.GenerateHappenedList(firstAction);
 
             states = states.ReflectHappenedList(happenedList);
+
             states = states.SetupNextMap();
+            states = states.CalcInitiativeTurnEnd(actor);
 
             states = states.ReflectView();
             return states;

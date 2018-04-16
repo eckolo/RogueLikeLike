@@ -47,10 +47,6 @@ namespace Assets.Src.Domains.Models.Entity
         /// </summary>
         IEnumerable<Npc> npcList { get; }
         /// <summary>
-        /// 現在の行動者
-        /// </summary>
-        Npc actor { get; set; }
-        /// <summary>
         /// 座標から座標上に存在するNPCを返す
         /// 座標上に誰もいなければNullが返る
         /// </summary>

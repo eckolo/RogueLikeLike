@@ -18,13 +18,25 @@ namespace Assets.Src.Domains.Service
         /// <param name="previousActor">前回の行動者</param>
         /// <param name="npcList">候補NPCリスト</param>
         /// <returns>行動するNPC</returns>
-        public static Npc CalcNextActNpc(this Npc previousActor, IEnumerable<Npc> npcList)
+        public static Npc CalcNextActNpc(this IEnumerable<Npc> npcList) => npcList
+            .MaxKeys(npc => npc.nowInitiative)
+            .MaxKeys(npc => npc.parameters.speed)
+            .First();
+
+        /// <summary>
+        /// ターンエンド時のイニシアチブ演算
+        /// </summary>
+        /// <param name="_states"></param>
+        /// <param name="nowActor"></param>
+        /// <returns></returns>
+        public static IGameStates CalcInitiativeTurnEnd(this IGameStates _states, Npc nowActor)
         {
-            foreach(var npc in npcList) if(npc != previousActor) npc.nowInitiative += npc.parameters.speed;
+            var states = _states.Duplicate();
+            var npcList = states.npcList;
+            foreach(var npc in npcList) if(npc != nowActor) npc.nowInitiative += npc.parameters.speed;
             var minInitiative = npcList.Min(npc => npc.nowInitiative);
             foreach(var npc in npcList) npc.nowInitiative -= minInitiative;
-
-            return npcList.MaxKeys(npc => npc.nowInitiative).First();
+            return states;
         }
 
         /// <summary>
