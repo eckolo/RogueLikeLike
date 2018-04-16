@@ -25,8 +25,7 @@ namespace Assets.Src.Domains.Service
             states = states.ReflectHappenedList(happenedList);
             states = states.SetupNextMap();
 
-            states = states.ReflectViewQueue();
-            states.methods.viewer.ReflectMap(states.map);
+            states = states.ReflectView();
             return states;
         }
 
@@ -43,17 +42,25 @@ namespace Assets.Src.Domains.Service
         }
 
         /// <summary>
-        /// 描画待ちキューの反映処理
+        /// 描画待ちキューとマップ状態の反映処理
         /// </summary>
         /// <param name="_states">現在のゲーム状態</param>
         /// <returns>実行後のゲーム状態</returns>
-        static IGameStates ReflectViewQueue(this IGameStates _states)
+        static IGameStates ReflectView(this IGameStates _states)
         {
             var states = _states.Duplicate();
-            if(!states.viewQueue.Any()) return states;
-            var success = states.methods.viewer.ReflectAction(states.viewQueue.Dequeue());
-            if(!success) throw new Exception("Drawing process failed.");
-            return states.ReflectViewQueue();
+            if(states.viewQueue.Any())
+            {
+                var success = states.methods.viewer.ReflectAction(states.viewQueue.Dequeue());
+                if(!success) throw new Exception("Drawing view queue process failed.");
+                return states.ReflectView();
+            }
+            else
+            {
+                var success = states.methods.viewer.ReflectMap(states.map);
+                if(!success) throw new Exception($"Drawing map process failed.");
+                return states;
+            }
         }
     }
 }
