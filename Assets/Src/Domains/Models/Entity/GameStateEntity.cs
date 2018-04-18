@@ -3,7 +3,6 @@ using UnityEngine;
 using System;
 using Assets.Src.Domains.Models.Value;
 using Assets.Src.Domains.Models.Interface;
-using Assets.Src.Domains.Service;
 
 namespace Assets.Src.Domains.Models.Entity
 {
@@ -11,46 +10,30 @@ namespace Assets.Src.Domains.Models.Entity
     /// ゲーム状態のメインパラメータ
     /// </summary>
     [Serializable]
-    public class GameStateEntity : IDuplicatable<GameStateEntity>
+    public partial class GameStateEntity : IDuplicatable<GameStateEntity>
     {
         /// <summary>
-        /// 上方向の方角
+        /// 所在地情報
         /// </summary>
         [SerializeField]
-        Direction _upwardDirection = Direction.NORTH;
+        Location _location = new Location();
+
         /// <summary>
         /// 上方向の方角
         /// </summary>
-        public Direction upwardDirection { get { return _upwardDirection; } set { _upwardDirection = value; } }
-
+        public Direction upwardDirection
+        {
+            get { return _location.upwardDirection; }
+            set { _location.upwardDirection = value; }
+        }
         /// <summary>
         /// 全エリアデータ
         /// </summary>
-        [SerializeField]
-        List<Area> _areaList = new List<Area>();
-        /// <summary>
-        /// 全エリアデータ
-        /// </summary>
-        public List<Area> areaList { get { return _areaList; } set { _areaList = value; } }
-
+        public List<Area> areaList { get { return _location.areaList; } set { _location.areaList = value; } }
         /// <summary>
         /// 現在のエリア情報
         /// </summary>
-        public Area nowArea
-        {
-            get {
-                if(!areaList.ContainsIndex(_nowAreaNum)) return null;
-                return areaList[_nowAreaNum];
-            }
-            set {
-                if(!areaList.Contains(value)) areaList.Add(value);
-                _nowAreaNum = areaList.IndexOf(value);
-            }
-        }
-        /// <summary>
-        /// 所在エリア番号
-        /// </summary>
-        int _nowAreaNum = 0;
+        public Area nowArea { get { return _location.nowArea; } set { _location.nowArea = value; } }
         /// <summary>
         /// 現在のマップ状態
         /// </summary>
