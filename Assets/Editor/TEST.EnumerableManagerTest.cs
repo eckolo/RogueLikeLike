@@ -1,4 +1,5 @@
 ﻿using Assets.Src.Domains.Models.Interface;
+using Assets.Src.Domains.Models.Value;
 using Assets.Src.Domains.Service;
 using NUnit.Framework;
 using System;
@@ -98,6 +99,37 @@ public static partial class TEST
             Assert.IsTrue(list.ContainsIndex(0));
             Assert.IsTrue(list.ContainsIndex(3));
             Assert.IsFalse(list.ContainsIndex(4));
+        }
+        [Test]
+        public static void PickTest()
+        {
+            var vector1 = new Vector2(2, 2);
+            var vector2 = new Vector2(6, -8);
+            var vector3 = new Vector2(-6, 8);
+            var vector4 = new Vector2(0, -1);
+            var list = new List<Vector2> { vector1, vector2, vector3, vector4 };
+            var rate = new List<int> { 10, 20, 30, 40 };
+            var norm0 = new Fraction(-1, 100);
+            var norm1 = new Fraction(0, 100);
+            var norm2 = new Fraction(9, 100);
+            var norm3 = new Fraction(10, 100);
+            var norm4 = new Fraction(29, 100);
+            var norm5 = new Fraction(30, 100);
+            var norm6 = new Fraction(59, 100);
+            var norm7 = new Fraction(60, 100);
+            var norm8 = new Fraction(99, 100);
+            var norm9 = new Fraction(100, 100);
+
+            Assert.AreEqual(default(Vector2), list.Pick(norm0, rate));
+            Assert.AreEqual(vector1, list.Pick(norm1, rate));
+            Assert.AreEqual(vector1, list.Pick(norm2, rate));
+            Assert.AreEqual(vector2, list.Pick(norm3, rate));
+            Assert.AreEqual(vector2, list.Pick(norm4, rate));
+            Assert.AreEqual(vector3, list.Pick(norm5, rate));
+            Assert.AreEqual(vector3, list.Pick(norm6, rate));
+            Assert.AreEqual(vector4, list.Pick(norm7, rate));
+            Assert.AreEqual(vector4, list.Pick(norm8, rate));
+            Assert.AreEqual(default(Vector2), list.Pick(norm9, rate));
         }
     }
 }

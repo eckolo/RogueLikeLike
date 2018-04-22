@@ -1,8 +1,8 @@
 ﻿using Assets.Src.Domains.Models.Interface;
 using Assets.Src.Domains.Models.Value;
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace Assets.Src.Domains.Service
 {
@@ -19,7 +19,8 @@ namespace Assets.Src.Domains.Service
         /// <param name="source">元リスト</param>
         /// <param name="selector">最大値判定値算出関数</param>
         /// <returns></returns>
-        public static IEnumerable<TSource> MaxKeys<TSource, TComparable>(this IEnumerable<TSource> source, Func<TSource, TComparable> selector) where TComparable : IComparable<TComparable>
+        public static IEnumerable<TSource> MaxKeys<TSource, TComparable>(this IEnumerable<TSource> source, System.Func<TSource, TComparable> selector)
+            where TComparable : System.IComparable<TComparable>
         {
             var maxValue = source.Max(selector);
             return source.Where(elem => selector(elem).CompareTo(maxValue) == 0);
@@ -44,5 +45,37 @@ namespace Assets.Src.Domains.Service
         /// <returns>指定した数値がリストのインデックスに含まれているか否か</returns>
         public static bool ContainsIndex<TValue>(this List<TValue> origin, int index)
             => 0 <= index && index < origin.Count;
+
+        /// <summary>
+        /// リストから選択基準値に基づき1要素を抜き出す
+        /// </summary>
+        /// <typeparam name="TValue">リストの要素型</typeparam>
+        /// <param name="values">選択されるリストのセット</param>
+        /// <param name="norm">選択基準値</param>
+        /// <param name="rates">確率分布</param>
+        /// <returns>選択された値</returns>
+        public static TValue Pick<TValue>(this List<TValue> values, Fraction norm, List<int> rates = null)
+        {
+            rates = rates ?? values.Select(_ => 1).ToList();
+            var ratevalues = rates.Zip(values, (rate, value) => new KeyValuePair<int, TValue>(rate, value));
+            var selection = ratevalues.Sum(ratevalue => Mathf.Max(ratevalue.Key, 0)) * norm;
+            if(selection < 0) return default(TValue);
+            foreach(var ratevalue in ratevalues)
+            {
+                selection -= ratevalue.Key;
+                if(selection < 0) return ratevalue.Value;
+            }
+            return default(TValue);
+        }
+        /// <summary>
+        /// リストから乱数シード値に基づき無作為1要素を抜き出す
+        /// </summary>
+        /// <typeparam name="TValue">リストの要素型</typeparam>
+        /// <param name="values">選択されるリストのセット</param>
+        /// <param name="seed">乱数シード値</param>
+        /// <param name="rates">確率分布</param>
+        /// <returns>選択された値</returns>
+        public static TValue Pick<TValue>(this List<TValue> values, Random.State seed, List<int> rates = null)
+            => values.Pick(seed.SetupRandomNorm(rates?.Sum() ?? values.Count), rates);
     }
 }
