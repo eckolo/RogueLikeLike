@@ -104,5 +104,23 @@ namespace Assets.Src.Domains.Models.Value
             if(_numer < other * _denom) return -1;
             return 0;
         }
+
+        public override bool Equals(object obj)
+        {
+            var fraction = obj as Fraction;
+            return CompareTo(fraction) == 0;
+        }
+
+        public override int GetHashCode()
+        {
+            const int NORM = -1521134295;
+            var hashCode = 2124583152;
+            hashCode = hashCode * NORM + _numer.GetHashCode();
+            hashCode = hashCode * NORM + numer.GetHashCode();
+            hashCode = hashCode * NORM + _denom.GetHashCode();
+            hashCode = hashCode * NORM + denom.GetHashCode();
+            hashCode = hashCode * NORM + value.GetHashCode();
+            return hashCode;
+        }
     }
 }
