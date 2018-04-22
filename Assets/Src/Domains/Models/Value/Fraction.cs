@@ -58,6 +58,39 @@ namespace Assets.Src.Domains.Models.Value
         public static Fraction operator /(int x, Fraction y) => new Fraction(x) / y;
         public static Fraction operator /(Fraction x, int y) => x / new Fraction(y);
 
+        public static bool operator ==(Fraction x, Fraction y) => x.CompareTo(y) == 0;
+        public static bool operator !=(Fraction x, Fraction y) => x.CompareTo(y) != 0;
+        public static bool operator ==(Fraction x, float y) => x.CompareTo(y) == 0;
+        public static bool operator !=(Fraction x, float y) => x.CompareTo(y) != 0;
+        public static bool operator ==(float x, Fraction y) => x.CompareTo(y) == 0;
+        public static bool operator !=(float x, Fraction y) => x.CompareTo(y) != 0;
+        public static bool operator ==(Fraction x, int y) => x.CompareTo(y) == 0;
+        public static bool operator !=(Fraction x, int y) => x.CompareTo(y) != 0;
+        public static bool operator ==(int x, Fraction y) => x.CompareTo(y) == 0;
+        public static bool operator !=(int x, Fraction y) => x.CompareTo(y) != 0;
+
+        public static bool operator <(Fraction x, Fraction y) => x.CompareTo(y) < 0;
+        public static bool operator >(Fraction x, Fraction y) => x.CompareTo(y) > 0;
+        public static bool operator <(Fraction x, float y) => x.CompareTo(y) < 0;
+        public static bool operator >(Fraction x, float y) => x.CompareTo(y) > 0;
+        public static bool operator <(float x, Fraction y) => x.CompareTo(y) < 0;
+        public static bool operator >(float x, Fraction y) => x.CompareTo(y) > 0;
+        public static bool operator <(Fraction x, int y) => x.CompareTo(y) < 0;
+        public static bool operator >(Fraction x, int y) => x.CompareTo(y) > 0;
+        public static bool operator <(int x, Fraction y) => x.CompareTo(y) < 0;
+        public static bool operator >(int x, Fraction y) => x.CompareTo(y) > 0;
+
+        public static bool operator <=(Fraction x, Fraction y) => x.CompareTo(y) <= 0;
+        public static bool operator >=(Fraction x, Fraction y) => x.CompareTo(y) >= 0;
+        public static bool operator <=(Fraction x, float y) => x.CompareTo(y) <= 0;
+        public static bool operator >=(Fraction x, float y) => x.CompareTo(y) >= 0;
+        public static bool operator <=(float x, Fraction y) => x.CompareTo(y) <= 0;
+        public static bool operator >=(float x, Fraction y) => x.CompareTo(y) >= 0;
+        public static bool operator <=(Fraction x, int y) => x.CompareTo(y) <= 0;
+        public static bool operator >=(Fraction x, int y) => x.CompareTo(y) >= 0;
+        public static bool operator <=(int x, Fraction y) => x.CompareTo(y) <= 0;
+        public static bool operator >=(int x, Fraction y) => x.CompareTo(y) >= 0;
+
         public int CompareTo(Fraction other)
         {
             if(_numer * other._denom > other._numer * _denom) return 1;

@@ -25,6 +25,51 @@ public static partial class TEST
             Assert.AreEqual(-3, fraction4.value);
         }
         [Test]
+        public static void CompareTest()
+        {
+            var fraction1 = new Fraction(4, 5);
+            var fraction2 = new Fraction(7, 2);
+            var fraction3 = new Fraction(3, -8);
+            var fraction4 = new Fraction(4, 5);
+            var value1 = 3f;
+            var value2 = -12;
+
+            Assert.IsFalse(fraction1 == fraction2);
+            Assert.IsTrue(fraction1 != fraction2);
+            Assert.IsTrue(fraction1 < fraction2);
+            Assert.IsFalse(fraction1 > fraction2);
+            Assert.IsTrue(fraction1 <= fraction2);
+            Assert.IsFalse(fraction1 >= fraction2);
+
+            Assert.IsFalse(fraction1 == fraction3);
+            Assert.IsTrue(fraction1 != fraction3);
+            Assert.IsFalse(fraction1 < fraction3);
+            Assert.IsTrue(fraction1 > fraction3);
+            Assert.IsFalse(fraction1 <= fraction3);
+            Assert.IsTrue(fraction1 >= fraction3);
+
+            Assert.IsTrue(fraction1 == fraction4);
+            Assert.IsFalse(fraction1 != fraction4);
+            Assert.IsFalse(fraction1 < fraction4);
+            Assert.IsFalse(fraction1 > fraction4);
+            Assert.IsTrue(fraction1 <= fraction4);
+            Assert.IsTrue(fraction1 >= fraction4);
+
+            Assert.IsFalse(fraction1 == value1);
+            Assert.IsTrue(fraction1 != value1);
+            Assert.IsTrue(fraction1 < value1);
+            Assert.IsFalse(fraction1 > value1);
+            Assert.IsTrue(fraction1 <= value1);
+            Assert.IsFalse(fraction1 >= value1);
+
+            Assert.IsFalse(fraction1 == value2);
+            Assert.IsTrue(fraction1 != value2);
+            Assert.IsFalse(fraction1 < value2);
+            Assert.IsTrue(fraction1 > value2);
+            Assert.IsFalse(fraction1 <= value2);
+            Assert.IsTrue(fraction1 >= value2);
+        }
+        [Test]
         public static void AdditionTest()
         {
             var fraction1 = new Fraction(4, 5);
