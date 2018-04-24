@@ -56,7 +56,9 @@ namespace Assets.Src.Domains.Service
         /// <returns>決定されたアビリティと使用対象を定めた行動パターンオブジェクト</returns>
         public static ActionPattern DetermineAction(this Npc npc, IGameStates states)
         {
-            var applicable = npc.actionAlgorithm.FirstOrDefault(term => term.Judge(npc, states));
+            var applicable = npc.actionAlgorithm
+                .Where(term => term.Judge(npc, states))
+                .Pick(states.seed);
             if(applicable == default(ActionTerm)) return null;
 
             var targetNpc = npc.GetTermedNpc(states, applicable.targetType);

@@ -68,6 +68,13 @@ public static partial class TEST
         IEnumerable<Npc> _npcList = new List<Npc>();
         public IEnumerable<Npc> npcList => _npcList;
 
+        public Random.State seed
+        {
+            get {
+                throw new System.NotImplementedException();
+            }
+        }
+
         public Vector2? GetCoordinate(Npc npc)
         {
             throw new System.NotImplementedException();

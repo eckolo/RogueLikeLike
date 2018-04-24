@@ -54,7 +54,7 @@ namespace Assets.Src.Domains.Service
         /// <param name="norm">選択基準値</param>
         /// <param name="rates">確率分布</param>
         /// <returns>選択された値</returns>
-        public static TValue Pick<TValue>(this List<TValue> values, Fraction norm, List<int> rates = null)
+        public static TValue Pick<TValue>(this IEnumerable<TValue> values, Fraction norm, List<int> rates = null)
         {
             rates = rates ?? values.Select(_ => 1).ToList();
             var ratevalues = rates.Zip(values, (rate, value) => new KeyValuePair<int, TValue>(rate, value));
@@ -75,7 +75,7 @@ namespace Assets.Src.Domains.Service
         /// <param name="seed">乱数シード値</param>
         /// <param name="rates">確率分布</param>
         /// <returns>選択された値</returns>
-        public static TValue Pick<TValue>(this List<TValue> values, Random.State seed, List<int> rates = null)
-            => values.Pick(seed.SetupRandomNorm(rates?.Sum() ?? values.Count), rates);
+        public static TValue Pick<TValue>(this IEnumerable<TValue> values, Random.State seed, List<int> rates = null)
+            => values.Pick(seed.SetupRandomNorm(rates?.Sum() ?? values.Count()), rates);
     }
 }

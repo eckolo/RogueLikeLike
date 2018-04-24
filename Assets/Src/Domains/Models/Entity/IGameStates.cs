@@ -26,6 +26,11 @@ namespace Assets.Src.Domains.Models.Entity
         Queue<Happened> viewQueue { get; }
 
         /// <summary>
+        /// 乱数の種
+        /// </summary>
+        Random.State seed { get; }
+
+        /// <summary>
         /// 全エリアデータ
         /// </summary>
         List<Area> areaList { get; }

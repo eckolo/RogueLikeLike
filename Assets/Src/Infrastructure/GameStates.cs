@@ -113,6 +113,14 @@ namespace Assets.Src.Infrastructure
         /// 現在のマップ上に存在するNPC全体のリスト
         /// </summary>
         public IEnumerable<Npc> npcList => _stateEntity.nowNpcList.Select(npcData => npcData.Value);
+
+        public Random.State seed
+        {
+            get {
+                throw new System.NotImplementedException();
+            }
+        }
+
         /// <summary>
         /// 座標から座標上に存在するNPCを返す
         /// 座標上に誰もいなければNullが返る
