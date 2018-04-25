@@ -12,6 +12,12 @@ namespace Assets.Src.Domains.Models.Entity
     [Serializable]
     public partial class GameStateEntity : IDuplicatable<GameStateEntity>
     {
+        public GameStateEntity(int seedInt)
+        {
+            UnityEngine.Random.InitState(seedInt);
+            _seed = UnityEngine.Random.state;
+        }
+
         /// <summary>
         /// 所在地情報
         /// </summary>
@@ -61,6 +67,17 @@ namespace Assets.Src.Domains.Models.Entity
         /// 画面未反映の行動履歴
         /// </summary>
         public Queue<Happened> viewQueue { get { return _viewQueue; } set { _viewQueue = value; } }
+
+
+        /// <summary>
+        /// 乱数の種
+        /// </summary>
+        [SerializeField]
+        readonly UnityEngine.Random.State _seed = default(UnityEngine.Random.State);
+        /// <summary>
+        /// 乱数の種
+        /// </summary>
+        public UnityEngine.Random.State seed => _seed;
 
         /// <summary>
         /// シャローコピーメソッド

@@ -22,7 +22,7 @@ namespace Assets.Src.Infrastructure
         /// <summary>
         /// パラメータ実体
         /// </summary>
-        GameStateEntity _stateEntity = new GameStateEntity();
+        GameStateEntity _stateEntity = null;
 
         /// <summary>
         /// インフラアクセスメソッド群
@@ -43,23 +43,29 @@ namespace Assets.Src.Infrastructure
         /// <summary>
         /// インスタンス生成用のプライベートなコンストラクタ
         /// </summary>
-        /// <param name="stateEntity">初期状態</param>
-        GameStates(GameStateEntity stateEntity)
+        /// <param name="_stateEntity">初期状態</param>
+        GameStates(GameStateEntity _stateEntity)
         {
-            _stateEntity = stateEntity ?? _stateEntity.Duplicate();
+            this._stateEntity = _stateEntity ?? this._stateEntity.Duplicate();
         }
 
         /// <summary>
         /// 新規ゲーム状態生成メソッド
         /// </summary>
-        /// <param name="stateEntity">初期状態</param>
+        /// <param name="_stateEntity">初期状態</param>
         /// <returns>生成されたゲーム状態</returns>
-        public static GameStates CreateNewState(GameStateEntity stateEntity = null)
+        public static GameStates CreateNewState(GameStateEntity _stateEntity)
         {
-            if(myself == null) return myself = new GameStates(stateEntity);
-            myself.stateEntity = stateEntity;
+            if(myself == null) return myself = myself ?? new GameStates(_stateEntity);
+            myself._stateEntity = _stateEntity.Duplicate();
             return myself;
         }
+        /// <summary>
+        /// 新規ゲーム状態生成メソッド
+        /// </summary>
+        /// <param name="randamSeed">乱数の種</param>
+        /// <returns>生成されたゲーム状態</returns>
+        public static GameStates CreateNewState(int randamSeed) => CreateNewState(new GameStateEntity(randamSeed));
 
         /// <summary>
         /// インフラアクセスメソッド群アクセス用インターフェース
@@ -114,12 +120,10 @@ namespace Assets.Src.Infrastructure
         /// </summary>
         public IEnumerable<Npc> npcList => _stateEntity.nowNpcList.Select(npcData => npcData.Value);
 
-        public Random.State seed
-        {
-            get {
-                throw new System.NotImplementedException();
-            }
-        }
+        /// <summary>
+        /// 乱数の種
+        /// </summary>
+        public Random.State seed => stateEntity.seed;
 
         /// <summary>
         /// 座標から座標上に存在するNPCを返す

@@ -64,7 +64,7 @@ namespace Assets.Src.Domains.Service
         /// <exception cref="ArgumentException"></exception>
         /// <returns></returns>
         public static Type GetClass<Type>(this IFileManager fileManager, string key, Type _default)
-            where Type : class, new()
+            where Type : class
             => fileManager.GetSavedatabase().GetClass(key, _default);
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Assets.Src.Domains.Service
         /// <param name="key"></param>
         /// <param name="obj"></param>
         /// <exception cref="ArgumentException"></exception>
-        public static void SetClass<Type>(this IFileManager fileManager, string key, Type obj) where Type : class, new()
+        public static void SetClass<Type>(this IFileManager fileManager, string key, Type obj) where Type : class
             => fileManager.GetSavedatabase().SetClass(key, obj);
 
         /// <summary>
@@ -237,7 +237,7 @@ namespace Assets.Src.Domains.Service
                 return deserializeList?.ToList() ?? _default;
             }
 
-            public Type GetClass<Type>(string key, Type _default) where Type : class, new()
+            public Type GetClass<Type>(string key, Type _default) where Type : class
             {
                 CheckKey(key);
                 if(!saveDictionary.ContainsKey(key)) return _default;
@@ -247,7 +247,7 @@ namespace Assets.Src.Domains.Service
                 return obj;
             }
 
-            public void SetClass<Type>(string key, Type obj) where Type : class, new()
+            public void SetClass<Type>(string key, Type obj) where Type : class
             {
                 CheckKey(key);
                 string json = JsonUtility.ToJson(obj);

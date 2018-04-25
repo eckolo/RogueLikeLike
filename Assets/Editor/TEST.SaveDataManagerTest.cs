@@ -15,16 +15,19 @@ public static partial class TEST
         [Test]
         public static void SaveLoadTest()
         {
+            System.IO.File.Delete($@"{Application.dataPath}/{Application.productName}.save");
+
+            var seed = 0;
             var index1 = 0;
             var index2 = 3;
-            var stateEntity1 = new GameStateEntity { upwardDirection = Direction.EAST };
-            var stateEntity2 = new GameStateEntity { upwardDirection = Direction.NORTH };
+            var stateEntity1 = new GameStateEntity(seed) { upwardDirection = Direction.EAST };
+            var stateEntity2 = new GameStateEntity(seed) { upwardDirection = Direction.NORTH };
 
             GameStates.CreateNewState(stateEntity1).Save(index1);
             GameStates.CreateNewState(stateEntity2).Save(index2);
 
-            var result1 = GameStates.CreateNewState().Load(index1);
-            var result2 = GameStates.CreateNewState().Load(index2);
+            var result1 = GameStates.CreateNewState(seed).Load(index1);
+            var result2 = GameStates.CreateNewState(seed).Load(index2);
 
             Assert.AreEqual(stateEntity1.upwardDirection, result1.upwardDirection);
             Assert.AreEqual(stateEntity2.upwardDirection, result2.upwardDirection);

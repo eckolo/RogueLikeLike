@@ -48,7 +48,7 @@ namespace Assets.Src.Infrastructure
         {
             try
             {
-                var gameStates = GameStates.CreateNewState();
+                var gameStates = GameStates.CreateNewState(DateTime.Now.GetHashCode());
                 while(true)
                 {
                     gameStates = (GameStates)gameStates.PerformTurnByTurn();
