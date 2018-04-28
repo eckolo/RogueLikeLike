@@ -62,14 +62,13 @@ namespace Assets.Src.Domains.Service
             if(applicable == default(ActionTerm)) return null;
 
             var targetNpc = npc.GetTermedNpc(states, applicable.targetType);
-            var coordinateNullable = states.GetCoordinate(targetNpc);
-            var coordinate = coordinateNullable ?? Vector2.zero;
-            if(coordinateNullable == null) return null;
+            var coordinate = states.GetCoordinate(targetNpc);
+            if(coordinate == null) return null;
 
             var ability = npc.SearchAbility(applicable.ability);
             if(ability == null) return null;
 
-            return new ActionPattern(npc, ability, coordinate);
+            return new ActionPattern(npc, ability, coordinate ?? Vector2.zero);
         }
 
         /// <summary>
