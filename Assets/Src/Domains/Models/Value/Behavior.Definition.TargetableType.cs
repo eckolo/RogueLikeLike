@@ -21,7 +21,7 @@
                 /// <summary>
                 /// 自分以外
                 /// </summary>
-                EXCEPT_MYSELF,
+                OTHER_MYSELF,
                 /// <summary>
                 /// 全ての物体
                 /// </summary>

@@ -24,6 +24,7 @@ namespace Assets.Src.Domains.Models.Value
         /// <summary>
         /// 動作対象
         /// </summary>
+        [SerializeField]
         TargetType _targetType = default(TargetType);
         /// <summary>
         /// 動作対象

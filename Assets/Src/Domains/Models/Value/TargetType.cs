@@ -1,85 +1,42 @@
-﻿namespace Assets.Src.Domains.Models.Value
+﻿using System;
+using UnityEngine;
+
+namespace Assets.Src.Domains.Models.Value
 {
     /// <summary>
     /// 動作対象の種類
     /// </summary>
-    public enum TargetType
+    [Serializable]
+    public partial class TargetType
     {
         /// <summary>
-        /// 自身
+        /// 確定条件
         /// </summary>
-        MYSELF,
+        [SerializeField]
+        Determination _determination = default(Determination);
         /// <summary>
-        /// 最も近いNPC
+        /// 確定条件
         /// </summary>
-        NEAR,
+        public Determination determination => _determination;
+
         /// <summary>
-        /// 最も近い友好NPC
+        /// 限定条件
         /// </summary>
-        NEAR_FRIEND,
+        [SerializeField]
+        Limited _limited = default(Limited);
         /// <summary>
-        /// 最も近い敵対NPC
+        /// 限定条件
         /// </summary>
-        NEAR_STRANGER,
+        public Limited limited => _limited;
+
         /// <summary>
-        /// 最も遠いNPC
+        /// 対象候補に自信を含むか否か
         /// </summary>
-        AWAY,
+        [SerializeField]
+        bool _includeMyself = false;
         /// <summary>
-        /// 最も遠い友好NPC
+        /// 対象候補に自信を含むか否か
         /// </summary>
-        AWAY_FRIEND,
-        /// <summary>
-        /// 最も遠い敵対NPC
-        /// </summary>
-        AWAY_STRANGER,
-        /// <summary>
-        /// 最も強いNPC
-        /// </summary>
-        STRONG,
-        /// <summary>
-        /// 最も強い友好NPC
-        /// </summary>
-        STRONG_FRIEND,
-        /// <summary>
-        /// 最も強い敵対NPC
-        /// </summary>
-        STRONG_STRANGER,
-        /// <summary>
-        /// 最も弱いNPC
-        /// </summary>
-        WEAK,
-        /// <summary>
-        /// 最も弱い友好NPC
-        /// </summary>
-        WEAK_FRIEND,
-        /// <summary>
-        /// 最も弱い敵対NPC
-        /// </summary>
-        WEAK_STRANGER,
-        /// <summary>
-        /// 最も元気なNPC
-        /// </summary>
-        LIVELY,
-        /// <summary>
-        /// 最も元気な友好NPC
-        /// </summary>
-        LIVELY_FRIEND,
-        /// <summary>
-        /// 最も元気な敵対NPC
-        /// </summary>
-        LIVELY_STRANGER,
-        /// <summary>
-        /// 最も弱っているNPC
-        /// </summary>
-        WEAKENED,
-        /// <summary>
-        /// 最も弱っている友好NPC
-        /// </summary>
-        WEAKENED_FRIEND,
-        /// <summary>
-        /// 最も弱っている敵対NPC
-        /// </summary>
-        WEAKENED_STRANGER,
+        public bool includeMyself => _includeMyself;
     }
 }
