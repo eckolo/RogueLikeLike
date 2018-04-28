@@ -11,13 +11,8 @@ namespace Assets.Src.Domains.Models.Entity
     /// NPCオブジェクト
     /// </summary>
     [Serializable]
-    public class Npc : NpcStationery, IAdhered
+    public partial class Npc : NpcStationery, IAdhered
     {
-        /// <summary>
-        /// 形容詞リスト
-        /// </summary>
-        [SerializeField]
-        List<Adjective> _adjectives = new List<Adjective>();
         /// <summary>
         /// 形容詞リスト
         /// </summary>
@@ -29,14 +24,10 @@ namespace Assets.Src.Domains.Models.Entity
         public Adjective mainAdjective => adjectives.First();
 
         /// <summary>
-        /// 現存在座標
+        /// 各NPCへの友好度
+        /// 0より大きければ友好、0未満なら敵対、0丁度なら無関心
         /// </summary>
-        [SerializeField]
-        Vector2 _location = Vector2.zero;
-        /// <summary>
-        /// 現存在座標
-        /// </summary>
-        public Vector2 location => _location;
+        public Friendship friendship { get; set; }
 
         /// <summary>
         /// パラメータ補正値
