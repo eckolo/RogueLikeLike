@@ -52,6 +52,26 @@ public static partial class TEST
             Assert.AreEqual(resultSecond.y, 8);
         }
         [Test]
+        public static void MinKeysTest()
+        {
+            var list = new List<Vector2> {
+                new Vector2(6, 6),
+                new Vector2(3, -4),
+                new Vector2(-3, 4),
+                new Vector2(0, -7)
+            };
+
+            var result = list.MinKeys(elem => elem.magnitude);
+            Assert.AreEqual(result.Count(), 2);
+
+            var resultFirst = result.Single(elem => elem.x > 0);
+            var resultSecond = result.Single(elem => elem.x < 0);
+            Assert.AreEqual(resultFirst.x, 3);
+            Assert.AreEqual(resultFirst.y, -4);
+            Assert.AreEqual(resultSecond.x, -3);
+            Assert.AreEqual(resultSecond.y, 4);
+        }
+        [Test]
         public static void ToDictionaryTest()
         {
             var key1 = "test1";

@@ -25,6 +25,20 @@ namespace Assets.Src.Domains.Service
             var maxValue = source.Max(selector);
             return source.Where(elem => selector(elem).CompareTo(maxValue) == 0);
         }
+        /// <summary>
+        /// リストから所定の最小値を持つ要素を抽出する
+        /// </summary>
+        /// <typeparam name="TSource">リストを構成する要素型</typeparam>
+        /// <typeparam name="TComparable">最小値判定時の型</typeparam>
+        /// <param name="source">元リスト</param>
+        /// <param name="selector">最小値判定値算出関数</param>
+        /// <returns></returns>
+        public static IEnumerable<TSource> MinKeys<TSource, TComparable>(this IEnumerable<TSource> source, System.Func<TSource, TComparable> selector)
+            where TComparable : System.IComparable<TComparable>
+        {
+            var minValue = source.Min(selector);
+            return source.Where(elem => selector(elem).CompareTo(minValue) == 0);
+        }
 
         /// <summary>
         /// インスペクタから管理する<see cref="IKeyValueLike{TKey, TValue}">のリストを<see cref="Dictionary{TKey, TValue}"/>に変換する
