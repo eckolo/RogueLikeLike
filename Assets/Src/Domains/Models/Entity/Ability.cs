@@ -1,4 +1,5 @@
 ﻿using Assets.Src.Domains.Models.Interface;
+using Assets.Src.Domains.Models.Value;
 using System;
 
 namespace Assets.Src.Domains.Models.Entity
@@ -7,7 +8,7 @@ namespace Assets.Src.Domains.Models.Entity
     /// アビリティオブジェクト
     /// </summary>
     [Serializable]
-    public partial class Ability : Adhered<Ability.Stationery>
+    public partial class Ability : Adhered<AbilityStationery>
     {
     }
 }

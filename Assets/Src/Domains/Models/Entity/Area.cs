@@ -11,7 +11,7 @@ namespace Assets.Src.Domains.Models.Entity
     /// 地域オブジェクトルート
     /// </summary>
     [Serializable]
-    public partial class Area : Adhered<Area.Stationery>, IDuplicatable<Area>
+    public partial class Area : Adhered<AreaStationery>, IDuplicatable<Area>
     {
         /// <summary>
         /// 他地域との接続情報

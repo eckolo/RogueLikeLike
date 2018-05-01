@@ -1,11 +1,11 @@
-﻿using Assets.Src.Domains.Models.Entity;
+﻿using Assets.Src.Domains.Models.Value;
 
 namespace Assets.Src.Infrastructure.Repository
 {
     /// <summary>
     /// アイテムリポジトリ
     /// </summary>
-    public class ItemRepository : ResourceRepository<Item.Stationery>
+    public class ItemRepository : ResourceRepository<ItemStationery>
     {
         /// <summary>
         /// データ格納ディレクトリ

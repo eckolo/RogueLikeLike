@@ -2,7 +2,6 @@
 using Assets.Src.Domains.Models.Value;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Assets.Src.Domains.Models.Entity
@@ -11,7 +10,7 @@ namespace Assets.Src.Domains.Models.Entity
     /// NPCオブジェクト
     /// </summary>
     [Serializable]
-    public partial class Npc : Adhered<Npc.Stationery>
+    public partial class Npc : Adhered<NpcStationery>
     {
         /// <summary>
         /// 各NPCへの友好度

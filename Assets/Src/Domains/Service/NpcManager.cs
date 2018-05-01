@@ -157,7 +157,7 @@ namespace Assets.Src.Domains.Service
         /// </summary>
         /// <param name="myself">検索対象NPC</param>
         /// <param name="origin">検索元のアビリティ雛形</param>
-        static Ability SearchAbility(this Npc myself, Ability.Stationery origin)
+        static Ability SearchAbility(this Npc myself, AbilityStationery origin)
         {
             throw new NotImplementedException();
         }
