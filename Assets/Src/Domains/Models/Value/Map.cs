@@ -32,7 +32,11 @@ namespace Assets.Src.Domains.Models.Value
         /// 各マスのNPCリスト
         /// 座標は中央が(0,0)、東がx+1、北がY+1
         /// </summary>
-        public Dictionary<Vector2, Npc> npcList { get { return _npcList; } set { _npcList = value; } }
+        public virtual Dictionary<Vector2, Npc> npcList
+        {
+            get { return _npcList; }
+            set { _npcList = value; }
+        }
 
         /// <summary>
         /// 各マスのマップチップリスト

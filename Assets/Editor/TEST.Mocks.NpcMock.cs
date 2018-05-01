@@ -12,6 +12,18 @@ public static partial class TEST
         /// </summary>
         public class NpcMock : Npc
         {
+            public static NpcMock GetMock() => new NpcMock(new Parameters(
+                maxHp: Default.NpcMock.MAX_HP,
+                maxEnergy: Default.NpcMock.MAX_ENERGY,
+                maxMental: Default.NpcMock.MAX_MENTAL,
+                physicalAttack: Default.NpcMock.PHYSICAL_ATTACK,
+                physicalDefense: Default.NpcMock.PHYSICAL_DEFENSE,
+                magicAttack: Default.NpcMock.MAGIC_ATTACK,
+                magicDefense: Default.NpcMock.MAGIC_DEFENSE,
+                accuracy: Default.NpcMock.ACCURACY,
+                evasion: Default.NpcMock.EVASION,
+                speed: Default.NpcMock.SPEED));
+
             public static NpcMock GetSpeedMock(int speed) => new NpcMock(new Parameters(
                 maxHp: Default.NpcMock.MAX_HP,
                 maxEnergy: Default.NpcMock.MAX_ENERGY,
@@ -24,7 +36,7 @@ public static partial class TEST
                 evasion: Default.NpcMock.EVASION,
                 speed: speed));
 
-            public NpcMock(Parameters parameters)
+            NpcMock(Parameters parameters)
             {
                 _parameters = parameters;
             }
