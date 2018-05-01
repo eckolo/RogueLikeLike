@@ -59,6 +59,7 @@ namespace Assets.Src.Domains.Service
         {
             var applicable = npc.actionAlgorithm
                 .Where(term => term.Judge(npc, states))
+                .Where(action => npc.SearchAbility(action.ability) != null)
                 .Pick(states.seed);
             if(applicable == default(ActionTerm)) return null;
 

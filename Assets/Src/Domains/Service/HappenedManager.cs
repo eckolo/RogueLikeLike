@@ -31,6 +31,7 @@ namespace Assets.Src.Domains.Service
         /// <returns>ターン内行動リスト</returns>
         public static List<Happened> GenerateHappenedList(this IGameStates states, ActionPattern action)
         {
+            if(action == null) return new List<Happened>();
             throw new NotImplementedException();
         }
     }
