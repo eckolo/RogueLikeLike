@@ -1,15 +1,16 @@
 ﻿using Assets.Src.Domains.Models.Interface;
 using Assets.Src.Domains.Models.Value;
+using System;
 using System.Collections.Generic;
 
 namespace Assets.Src.Domains.Service.Factory
 {
     /// <summary>
-    /// 生成・変更系サービスの雛形
+    /// 形容詞付きオブジェクト生成サービス
     /// </summary>
-    /// <typeparam name="Entity">管理対象オブジェクトの型</typeparam>
-    /// <typeparam name="Stationery">管理対象オブジェクトの雛形となる型</typeparam>
-    public interface IFactoryFromStationery<Entity, Stationery> where Entity : Stationery, IAdhered where Stationery : Named
+    /// <typeparam name="TAdhered">生成オブジェクトの型</typeparam>
+    /// <typeparam name="TStationery">生成オブジェクトの雛形となる型</typeparam>
+    public static class IFactoryFromStationery<TAdhered, TStationery> where TAdhered : Adhered<TStationery> where TStationery : Named
     {
         /// <summary>
         /// オブジェクトの新規生成関数
@@ -21,7 +22,10 @@ namespace Assets.Src.Domains.Service.Factory
         /// </param>
         /// <param name="level">形容詞の最大付与数</param>
         /// <returns>生成されたオブジェクト</returns>
-        Entity Generate(Stationery stationery, IEnumerable<Adjective> addableAdjectives, int level = 1);
+        public static TAdhered Generate(TStationery stationery, IEnumerable<Adjective> addableAdjectives, int level = 1)
+        {
+            throw new NotImplementedException();
+        }
         /// <summary>
         /// 固定接頭辞付きオブジェクトの新規生成関数
         /// </summary>
@@ -33,7 +37,10 @@ namespace Assets.Src.Domains.Service.Factory
         /// </param>
         /// <param name="level">形容詞の最大付与数</param>
         /// <returns>生成されたオブジェクト</returns>
-        Entity Generate(Stationery stationery, List<Adjective> prefix, IEnumerable<Adjective> addableAdjectives, int level = 1);
+        public static TAdhered Generate(TStationery stationery, List<Adjective> prefix, IEnumerable<Adjective> addableAdjectives, int level = 1)
+        {
+            throw new NotImplementedException();
+        }
         /// <summary>
         /// オブジェクトの形容詞を付け替え・追加する関数
         /// </summary>
@@ -41,6 +48,9 @@ namespace Assets.Src.Domains.Service.Factory
         /// <param name="index">変更したい形容詞インデックス</param>
         /// <param name="setedAdjective">追加したい形容詞</param>
         /// <returns>変更されたオブジェクト</returns>
-        Entity ResetAdjective(Entity origin, int index, Adjective setedAdjective);
+        public static TAdhered ResetAdjective(TAdhered origin, int index, Adjective setedAdjective)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

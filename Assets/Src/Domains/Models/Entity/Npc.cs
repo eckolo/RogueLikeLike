@@ -11,18 +11,8 @@ namespace Assets.Src.Domains.Models.Entity
     /// NPCオブジェクト
     /// </summary>
     [Serializable]
-    public partial class Npc : NpcStationery, IAdhered
+    public partial class Npc : Adhered<NpcStationery>
     {
-        /// <summary>
-        /// 形容詞リスト
-        /// </summary>
-        public List<Adjective> adjectives { get; set; }
-
-        /// <summary>
-        /// 主要形容詞
-        /// </summary>
-        public Adjective mainAdjective => adjectives.First();
-
         /// <summary>
         /// 各NPCへの友好度
         /// 0より大きければ友好、0未満なら敵対、0丁度なら無関心
@@ -42,7 +32,7 @@ namespace Assets.Src.Domains.Models.Entity
         /// <summary>
         /// 外部から参照されるパラメータ
         /// </summary>
-        public override Parameters parameters => base.parameters + parametersAdjust;
+        public virtual Parameters parameters => stationery.parameters + parametersAdjust;
 
         /// <summary>
         /// 現在HP
@@ -127,5 +117,10 @@ namespace Assets.Src.Domains.Models.Entity
             get { return _statusAilmentList; }
             set { _statusAilmentList = value; }
         }
+
+        /// <summary>
+        /// 行動アルゴリズム
+        /// </summary>
+        public IEnumerable<ActionTerm> actionAlgorithm => stationery.actionAlgorithm;
     }
 }

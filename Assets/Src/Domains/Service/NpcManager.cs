@@ -45,7 +45,7 @@ namespace Assets.Src.Domains.Service
         /// </summary>
         /// <param name="skills">変換元スキルセット</param>
         /// <returns>変換されたパラメータ</returns>
-        public static NpcStationery.Parameters ToParameters(this Dictionary<Skill.Key, int> skills)
+        public static Npc.Parameters ToParameters(this Dictionary<Skill.Key, int> skills)
         {
             throw new NotImplementedException();
         }

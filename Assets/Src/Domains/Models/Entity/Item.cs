@@ -11,21 +11,7 @@ namespace Assets.Src.Domains.Models.Entity
     /// アイテムオブジェクト
     /// </summary>
     [Serializable]
-    public class Item : ItemStationery, IAdhered
+    public class Item : Adhered<ItemStationery>
     {
-        /// <summary>
-        /// 形容詞リスト
-        /// </summary>
-        [SerializeField]
-        List<Adjective> _adjectives = new List<Adjective>();
-        /// <summary>
-        /// 形容詞リスト
-        /// </summary>
-        public List<Adjective> adjectives { get { return _adjectives; } set { _adjectives = value; } }
-
-        /// <summary>
-        /// 主要形容詞
-        /// </summary>
-        public Adjective mainAdjective => adjectives.First();
     }
 }

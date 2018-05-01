@@ -11,7 +11,7 @@ namespace Assets.Src.Domains.Models.Entity
     /// 地域オブジェクトルート
     /// </summary>
     [Serializable]
-    public class Area : AreaStationery, IAdhered, IDuplicatable<Area>
+    public class Area : Adhered<AreaStationery>, IDuplicatable<Area>
     {
         /// <summary>
         /// 他地域との接続情報
@@ -64,21 +64,6 @@ namespace Assets.Src.Domains.Models.Entity
         /// 所在マップ座標
         /// </summary>
         public Vector2 nowMapCondition { get { return _nowMapCondition; } set { _nowMapCondition = value; } }
-
-        /// <summary>
-        /// 形容詞リスト
-        /// </summary>
-        [SerializeField]
-        List<Adjective> _adjectives = new List<Adjective>();
-        /// <summary>
-        /// 形容詞リスト
-        /// </summary>
-        public List<Adjective> adjectives { get { return _adjectives; } set { _adjectives = value; } }
-
-        /// <summary>
-        /// 主要形容詞
-        /// </summary>
-        public Adjective mainAdjective => adjectives.First();
 
         /// <summary>
         /// シャローコピーメソッド

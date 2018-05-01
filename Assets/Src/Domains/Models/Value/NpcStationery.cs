@@ -1,4 +1,5 @@
-﻿using Assets.Src.Domains.Models.Interface;
+﻿using Assets.Src.Domains.Models.Entity;
+using Assets.Src.Domains.Models.Interface;
 using Assets.Src.Domains.Service;
 using System;
 using System.Collections.Generic;
@@ -31,7 +32,7 @@ namespace Assets.Src.Domains.Models.Value
         /// <summary>
         /// 外部から参照されるスキルパラメータ
         /// </summary>
-        public virtual Parameters parameters => _skillParameters.ToDictionary().ToParameters();
+        public virtual Npc.Parameters parameters => _skillParameters.ToDictionary().ToParameters();
 
         /// <summary>
         /// 初期習得済みアビリティリスト
