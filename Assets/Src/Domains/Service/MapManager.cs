@@ -17,7 +17,7 @@ namespace Assets.Src.Domains.Service
         /// <param name="map">座標確認対象マップ</param>
         /// <param name="npc">座標確認したいNPC</param>
         /// <returns>座標</returns>
-        public static Vector2? GetNpcVector(this Map map, Npc npc)
+        public static Vector2? GetNpcCoordinate(this Map map, Npc npc)
             => map.npcList.ContainsValue(npc)
             ? map.npcList.SingleOrDefault(_npc => _npc.Value == npc).Key
             : (Vector2?)null;
@@ -31,6 +31,6 @@ namespace Assets.Src.Domains.Service
         /// <param name="npc2">距離算出元NPCその２</param>
         /// <returns>距離</returns>
         public static float? GetNpcsDistance(this Map map, Npc npc1, Npc npc2)
-            => (map.GetNpcVector(npc1) - map.GetNpcVector(npc2))?.magnitude;
+            => (map.GetNpcCoordinate(npc1) - map.GetNpcCoordinate(npc2))?.magnitude;
     }
 }

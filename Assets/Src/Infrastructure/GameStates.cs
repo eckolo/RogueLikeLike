@@ -126,24 +126,6 @@ namespace Assets.Src.Infrastructure
         public Random.State seed => stateEntity.seed;
 
         /// <summary>
-        /// 座標から座標上に存在するNPCを返す
-        /// 座標上に誰もいなければNullが返る
-        /// </summary>
-        /// <param name="key">NPCの存在座標</param>
-        /// <returns>NPC</returns>
-        public Npc GetNpc(Vector2 key) => _stateEntity.nowNpcList.ContainsKey(key) ? _stateEntity.nowNpcList[key] : null;
-        /// <summary>
-        /// NPCからその存在座標を返す
-        /// NPCがマップ上に存在していなければNullを返す
-        /// </summary>
-        /// <param name="npc"></param>
-        /// <returns></returns>
-        public Vector2? GetCoordinate(Npc npc)
-            => npc != null && npcList.Contains(npc) ?
-            _stateEntity.nowNpcList.FirstOrDefault(npcData => npcData.Value == npc).Key :
-            (Vector2?)null;
-
-        /// <summary>
         /// シャローコピーメソッド
         /// </summary>
         /// <returns>コピーされたオブジェクト</returns>

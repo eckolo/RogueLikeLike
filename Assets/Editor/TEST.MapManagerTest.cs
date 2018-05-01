@@ -18,7 +18,7 @@ public static partial class TEST
             var map = Mocks.MapMock.GetNpcsMock(new List<Vector2> { vector });
             var npc = map.npcList.First().Value;
 
-            var result = map.GetNpcVector(npc);
+            var result = map.GetNpcCoordinate(npc);
 
             Assert.AreEqual(vector, result);
         }

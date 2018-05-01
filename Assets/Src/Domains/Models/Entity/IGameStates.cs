@@ -51,19 +51,5 @@ namespace Assets.Src.Domains.Models.Entity
         /// 現在のマップ上に存在するNPC全体のリスト
         /// </summary>
         IEnumerable<Npc> npcList { get; }
-        /// <summary>
-        /// 座標から座標上に存在するNPCを返す
-        /// 座標上に誰もいなければNullが返る
-        /// </summary>
-        /// <param name="key">NPCの存在座標</param>
-        /// <returns>NPC</returns>
-        Npc GetNpc(Vector2 key);
-        /// <summary>
-        /// NPCからその存在座標を返す
-        /// NPCがマップ上に存在していなければNullを返す
-        /// </summary>
-        /// <param name="npc"></param>
-        /// <returns></returns>
-        Vector2? GetCoordinate(Npc npc);
     }
 }

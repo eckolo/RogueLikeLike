@@ -64,7 +64,7 @@ namespace Assets.Src.Domains.Service
             if(applicable == default(ActionTerm)) return null;
 
             var targetNpc = npc.GetTermedNpc(states, applicable.targetType);
-            var coordinate = states.GetCoordinate(targetNpc);
+            var coordinate = states.map.GetNpcCoordinate(targetNpc);
             if(coordinate == null) return null;
 
             var ability = npc.SearchAbility(applicable.ability);
