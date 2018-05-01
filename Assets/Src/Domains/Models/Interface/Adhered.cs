@@ -29,10 +29,10 @@ namespace Assets.Src.Domains.Models.Interface
         /// 雛形情報
         /// </summary>
         [SerializeField]
-        TStationery _stationery;
+        TStationery _stationery = null;
         /// <summary>
         /// 雛形情報
         /// </summary>
-        public TStationery stationery => _stationery;
+        protected TStationery stationery => _stationery;
     }
 }

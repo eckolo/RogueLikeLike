@@ -15,11 +15,11 @@ namespace Assets.Src.Domains.Models.Value
         /// 該当使用アビリティ
         /// </summary>
         [SerializeField]
-        AbilityStationery _ability = default(AbilityStationery);
+        Ability.Stationery _ability = default(Ability.Stationery);
         /// <summary>
         /// 該当使用アビリティ
         /// </summary>
-        public AbilityStationery ability => _ability;
+        public Ability.Stationery ability => _ability;
 
         /// <summary>
         /// 動作対象

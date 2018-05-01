@@ -11,7 +11,7 @@ namespace Assets.Src.Domains.Models.Entity
     /// NPCオブジェクト
     /// </summary>
     [Serializable]
-    public partial class Npc : Adhered<NpcStationery>
+    public partial class Npc : Adhered<Npc.Stationery>
     {
         /// <summary>
         /// 各NPCへの友好度
