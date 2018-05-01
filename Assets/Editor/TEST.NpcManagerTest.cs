@@ -1,8 +1,6 @@
 ﻿using Assets.Src.Domains.Service;
-using Assets.Src.Domains.Models.Value;
 using NUnit.Framework;
 using System.Collections.Generic;
-using UnityEngine;
 using Assets.Src.Domains.Models.Entity;
 
 public static partial class TEST
@@ -15,9 +13,9 @@ public static partial class TEST
         [Test]
         public static void GetNextActNpcTest()
         {
-            var npc1 = NpcMock.GetSpeedMock(10);
-            var npc2 = NpcMock.GetSpeedMock(15);
-            var npc3 = NpcMock.GetSpeedMock(18);
+            var npc1 = Mocks.NpcMock.GetSpeedMock(10);
+            var npc2 = Mocks.NpcMock.GetSpeedMock(15);
+            var npc3 = Mocks.NpcMock.GetSpeedMock(18);
             var list = new List<Npc> { npc1, npc2, npc3 };
             IGameStates states = GameStatesMock.GetNpcListMock(list);
             Npc actor = null;
