@@ -20,6 +20,8 @@ public static partial class TEST
             IGameStates states = GameStatesMock.GetNpcListMock(list);
             Npc actor = null;
 
+            #region Repetitive processing simulation every turn
+
             states = states.CalcInitiativeTurnEnd(actor);
             actor = list.CalcNextActNpc();
             Assert.AreEqual(actor, npc3);
@@ -75,6 +77,32 @@ public static partial class TEST
             Assert.AreEqual(npc1.nowInitiative, 8);
             Assert.AreEqual(npc2.nowInitiative, 3);
             Assert.AreEqual(npc3.nowInitiative, 0);
+
+            #endregion
+        }
+
+        [Test]
+        public static void ToParametersTest()
+        {
+            Assert.Inconclusive();
+        }
+
+        [Test]
+        public static void DetermineActionTest()
+        {
+            Assert.Inconclusive();
+        }
+
+        [Test]
+        public static void CalcStrongTest()
+        {
+            Assert.Inconclusive();
+        }
+
+        [Test]
+        public static void CalcLivelyTest()
+        {
+            Assert.Inconclusive();
         }
     }
 }

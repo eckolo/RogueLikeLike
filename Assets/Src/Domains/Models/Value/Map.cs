@@ -13,14 +13,28 @@ namespace Assets.Src.Domains.Models.Value
     public class Map : IDuplicatable<Map>
     {
         /// <summary>
-        /// 発生イベント
+        /// マップの縦横座標絶対値の最大値
         /// </summary>
         [SerializeField]
-        MapEvent _occurMapEvent;
+        Vector2 _coordinateLimit = Vector2.one;
+        /// <summary>
+        /// マップの縦横座標絶対値の最大値
+        /// </summary>
+        public Vector2 coordinateLimit => _coordinateLimit;
+        /// <summary>
+        /// マップの縦横サイズ
+        /// </summary>
+        public Vector2 size => _coordinateLimit * 2 - Vector2.one;
+
         /// <summary>
         /// 発生イベント
         /// </summary>
-        public MapEvent occurMapEvent { get { return _occurMapEvent; } set { _occurMapEvent = value; } }
+        [SerializeField]
+        MapEvent _occurEvent;
+        /// <summary>
+        /// 発生イベント
+        /// </summary>
+        public MapEvent occurEvent { get { return _occurEvent; } set { _occurEvent = value; } }
 
         /// <summary>
         /// 各マスのNPCリスト

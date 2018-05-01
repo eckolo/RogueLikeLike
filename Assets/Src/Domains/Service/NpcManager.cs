@@ -1,5 +1,6 @@
 ﻿using Assets.Src.Domains.Models.Entity;
 using Assets.Src.Domains.Models.Value;
+using Assets.Src.Domains.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -80,6 +81,71 @@ namespace Assets.Src.Domains.Service
         /// <param name="targetType">検索条件タイプ</param>
         /// <returns>検索結果NPC</returns>
         static Npc GetTermedNpc(this Npc myself, IGameStates states, TargetType targetType)
+        {
+            var npcs = states.npcList;
+            if(!targetType.includeMyself) npcs = npcs.Where(npc => npc != myself);
+            switch(targetType.limited)
+            {
+                case TargetType.Limited.NONE:
+                    break;
+                case TargetType.Limited.FRIEND:
+                    npcs = npcs.Where(npc => myself.friendship[npc] > 0);
+                    break;
+                case TargetType.Limited.STRANGER:
+                    npcs = npcs.Where(npc => myself.friendship[npc] < 0);
+                    break;
+                default: throw new IndexOutOfRangeException();
+            }
+            switch(targetType.determination)
+            {
+                case TargetType.Determination.MYSELF:
+                    return npcs.SingleOrDefault(npc => npc == myself);
+                case TargetType.Determination.NEAR:
+                    var maxDistance = states.map.size.magnitude;
+                    return npcs
+                        .MinKeys(npc => states.map.GetNpcsDistance(myself, npc) ?? maxDistance)
+                        .Pick(states.seed);
+                case TargetType.Determination.AWAY:
+                    return npcs
+                        .MaxKeys(npc => states.map.GetNpcsDistance(myself, npc) ?? 0)
+                        .Pick(states.seed);
+                case TargetType.Determination.STRONG:
+                    return npcs
+                        .MaxKeys(npc => npc.parameters.CalcStrong())
+                        .Pick(states.seed);
+                case TargetType.Determination.WEAK:
+                    return npcs
+                        .MinKeys(npc => npc.parameters.CalcStrong())
+                        .Pick(states.seed);
+                case TargetType.Determination.LIVELY:
+                    return npcs
+                        .MaxKeys(npc => npc.CalcLively())
+                        .Pick(states.seed);
+                case TargetType.Determination.WEAKENED:
+                    return npcs
+                        .MinKeys(npc => npc.CalcLively())
+                        .Pick(states.seed);
+                default: throw new IndexOutOfRangeException();
+            }
+        }
+
+        /// <summary>
+        /// パラメータよりNPCの強さの基準値を算出する
+        /// </summary>
+        /// <param name="parameters">算出対象パラメータ</param>
+        /// <returns>強さの基準値</returns>
+        public static int CalcStrong(this Npc.Parameters parameters)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// NPCの「元気さ」を算出する
+        /// 「元気さ」とは即ち、体力とかの変動系パラメータの残量割合の総合評価のこと
+        /// </summary>
+        /// <param name="npc">算出対象NPC</param>
+        /// <returns>元気さを示す数値</returns>
+        public static int CalcLively(this Npc npc)
         {
             throw new NotImplementedException();
         }
