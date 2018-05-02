@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Src.Domains.Service;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,45 @@ namespace Assets.Src.Domains.Models.Value
     public partial class Behavior
     {
         /// <summary>
+        /// 移動可能範囲
+        /// </summary>
+        [SerializeField]
+        SpecifiedRange _movement = SpecifiedRange.one;
+        /// <summary>
+        /// 移動可能範囲
+        /// </summary>
+        public SpecifiedRange movement => _movement;
+
+        /// <summary>
+        /// 対象範囲
+        /// </summary>
+        [SerializeField]
+        SpecifiedRange _coverage = SpecifiedRange.one;
+        /// <summary>
+        /// 対象範囲
+        /// </summary>
+        public SpecifiedRange coverage => _coverage;
+
+        /// <summary>
+        /// ターゲットタイプ
+        /// </summary>
+        [SerializeField]
+        TargetableType _targetableType = default(TargetableType);
+        /// <summary>
+        /// ターゲットタイプ
+        /// </summary>
+        public TargetableType targetableType => _targetableType;
+
+        /// <summary>
+        /// 影響を受けるスキルと影響度合い一覧
+        /// </summary>
+        [SerializeField]
+        List<Skill.Parameters> _affectedSkills = new List<Skill.Parameters>();
+        /// <summary>
+        /// 影響を受けるスキルと影響度合いリスト
+        /// </summary>
+        public Dictionary<Skill.Key, int> affectedSkills => _affectedSkills.ToDictionary();
+        /// <summary>
         /// 同時発生エフェクト一覧
         /// </summary>
         [SerializeField]
@@ -18,17 +58,17 @@ namespace Assets.Src.Domains.Models.Value
         /// <summary>
         /// 同時発生エフェクト一覧
         /// </summary>
-        public IEnumerable<EffectAnimation> effectList => _effects;
+        public IEnumerable<EffectAnimation> effects => _effects;
 
         /// <summary>
-        /// 付随属性
+        /// 付随属性リスト
         /// </summary>
         [SerializeField]
-        AttributeType _attributeType = default(AttributeType);
+        List<AttributeType> _attributeTypes = new List<AttributeType>();
         /// <summary>
-        /// 付随属性
+        /// 付随属性リスト
         /// </summary>
-        public AttributeType? attributeType => _attributeType;
+        public List<AttributeType> attributeTypes => _attributeTypes;
 
         /// <summary>
         /// モーション威力
@@ -38,7 +78,7 @@ namespace Assets.Src.Domains.Models.Value
         /// <summary>
         /// モーション威力
         /// </summary>
-        public uint power => _power;
+        public int power => (int)_power;
 
         /// <summary>
         /// モーション精度
@@ -48,6 +88,6 @@ namespace Assets.Src.Domains.Models.Value
         /// <summary>
         /// モーション精度
         /// </summary>
-        public uint accuracy => _accuracy;
+        public int accuracy => (int)_accuracy;
     }
 }

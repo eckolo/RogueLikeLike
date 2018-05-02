@@ -18,7 +18,7 @@ public static partial class TEST
             var binding = BindingFlags.SetField | BindingFlags.NonPublic | BindingFlags.Instance;
             var map = new Dictionary<Vector2, int> { { new Vector2(-2, 3), 3 }, { new Vector2(1, 2), 3 } };
 
-            var range = new SpecifiedRange();
+            var range = SpecifiedRange.one;
             range.GetType().GetField("_targetPointRadiusList", binding).SetValue(range, map);
 
             var result = range.EnumerateTargetPointList();
@@ -154,7 +154,7 @@ public static partial class TEST
             var binding = BindingFlags.SetField | BindingFlags.NonPublic | BindingFlags.Instance;
             var map = new Dictionary<Vector2, int> { { new Vector2(-2, 3), 3 }, { new Vector2(1, 2), 3 } };
 
-            var range = new SpecifiedRange();
+            var range = SpecifiedRange.one;
             range.GetType().GetField("_targetPointRadiusList", binding).SetValue(range, map);
 
             var point1 = new Vector2(-2, 3);

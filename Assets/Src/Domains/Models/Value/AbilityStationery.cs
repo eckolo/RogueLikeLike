@@ -42,13 +42,13 @@ namespace Assets.Src.Domains.Models.Value
         public IEnumerable<Job> useablejobList => _useablejobs;
 
         /// <summary>
-        /// 挙動定義パラメータ
+        /// 挙動定義リスト
         /// </summary>
         [SerializeField]
-        Behavior.Definition _behaviorDefinition = new Behavior.Definition();
+        List<Behavior> _behaviorDefinition = new List<Behavior>();
         /// <summary>
         /// 挙動定義リスト
         /// </summary>
-        public List<Behavior> behaviorList => _behaviorDefinition.behaviorList;
+        public List<Behavior> behaviorList => _behaviorDefinition;
     }
 }

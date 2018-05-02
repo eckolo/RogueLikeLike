@@ -12,6 +12,17 @@ namespace Assets.Src.Domains.Models.Value
     [Serializable]
     public partial class SpecifiedRange
     {
+        /// <summary>
+        /// その場1マスのみの範囲
+        /// </summary>
+        public static readonly SpecifiedRange one
+            = new SpecifiedRange(new Dictionary<Vector2, int> { { Vector2.zero, 0 } });
+
+        SpecifiedRange(Dictionary<Vector2, int> _targetPointRadiusList)
+        {
+            this._targetPointRadiusList = _targetPointRadiusList;
+        }
+
         [SerializeField]
         List<TargetPointRadius> _targetPoints = new List<TargetPointRadius>();
 
