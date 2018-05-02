@@ -16,21 +16,21 @@ namespace Assets.Src.Domains.Models.Value
             /// 位置座標
             /// </summary>
             [SerializeField]
-            Vector2 _key = new Vector2();
+            Vector2 _point= new Vector2();
             /// <summary>
             /// 位置座標
             /// </summary>
-            public Vector2 key => _key;
+            public Vector2 key => _point;
 
             /// <summary>
             /// 半径
             /// </summary>
             [SerializeField]
-            uint _value = default(uint);
+            uint _radius = default(uint);
             /// <summary>
             /// 半径
             /// </summary>
-            public int value => (int)_value;
+            public int value => (int)_radius;
 
             /// <summary>
             /// 除外範囲であるフラグ
