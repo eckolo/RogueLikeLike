@@ -15,7 +15,7 @@ namespace Assets.Src.Domains.Models.Value
         /// 移動可能範囲
         /// </summary>
         [SerializeField]
-        SpecifiedRange _movement = SpecifiedRange.one;
+        SpecifiedRange _movement = SpecifiedRange.zero;
         /// <summary>
         /// 移動可能範囲
         /// </summary>
@@ -25,7 +25,7 @@ namespace Assets.Src.Domains.Models.Value
         /// 対象範囲
         /// </summary>
         [SerializeField]
-        SpecifiedRange _coverage = SpecifiedRange.one;
+        SpecifiedRange _coverage = SpecifiedRange.zero;
         /// <summary>
         /// 対象範囲
         /// </summary>

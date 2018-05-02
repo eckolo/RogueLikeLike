@@ -31,6 +31,16 @@ namespace Assets.Src.Domains.Models.Value
             /// 半径
             /// </summary>
             public int value => (int)_value;
+
+            /// <summary>
+            /// 除外範囲であるフラグ
+            /// </summary>
+            [SerializeField]
+            bool _exclusion = false;
+            /// <summary>
+            /// 除外範囲であるフラグ
+            /// </summary>
+            public bool exclusion => _exclusion;
         }
     }
 }

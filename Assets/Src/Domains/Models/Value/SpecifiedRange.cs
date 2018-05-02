@@ -17,25 +17,44 @@ namespace Assets.Src.Domains.Models.Value
         /// </summary>
         public static readonly SpecifiedRange one
             = new SpecifiedRange(new Dictionary<Vector2, int> { { Vector2.zero, 0 } });
+        /// <summary>
+        /// 該当箇所の無い範囲
+        /// </summary>
+        public static SpecifiedRange zero => new SpecifiedRange(new Dictionary<Vector2, int>());
 
-        SpecifiedRange(Dictionary<Vector2, int> _targetPointRadiusList)
+        SpecifiedRange(Dictionary<Vector2, int> target, Dictionary<Vector2, int> exclude = null)
         {
-            this._targetPointRadiusList = _targetPointRadiusList;
+            _targetPointRadiuses = target;
+            _excludePointRadiuses = exclude ?? new Dictionary<Vector2, int>();
         }
 
+        /// <summary>
+        /// 含む範囲
+        /// </summary>
         [SerializeField]
         List<TargetPointRadius> _targetPoints = new List<TargetPointRadius>();
 
         /// <summary>
         /// (0,0)を起点とした上向きの場合の対象座標と各地点の半径リスト
         /// </summary>
-        Dictionary<Vector2, int> targetPointRadiusList
-            => _targetPointRadiusList ?? (_targetPointRadiusList = _targetPoints.ToDictionary());
-
+        protected Dictionary<Vector2, int> targetPointRadiuses
+               => _targetPointRadiuses ??
+               (_targetPointRadiuses = _targetPoints.Where(point => !point.exclusion).ToDictionary());
         /// <summary>
         /// (0,0)を起点とした上向きの場合の対象座標と各地点の半径リスト
         /// </summary>
-        Dictionary<Vector2, int> _targetPointRadiusList = null;
+        Dictionary<Vector2, int> _targetPointRadiuses = null;
+
+        /// <summary>
+        /// (0,0)を起点とした上向きの場合の除外対象座標と各地点の半径リスト
+        /// </summary>
+        protected Dictionary<Vector2, int> excludePointRadiuses
+                 => _excludePointRadiuses ??
+                 (_excludePointRadiuses = _targetPoints.Where(point => point.exclusion).ToDictionary());
+        /// <summary>
+        /// (0,0)を起点とした上向きの場合の除外対象座標と各地点の半径リスト
+        /// </summary>
+        Dictionary<Vector2, int> _excludePointRadiuses = null;
 
         /// <summary>
         /// 対象マスの列挙
@@ -46,8 +65,14 @@ namespace Assets.Src.Domains.Models.Value
         /// </param>
         /// <returns>対象マス一覧</returns>
         public List<Vector2> EnumerateTargetPointList(Vector2? _basePoint = null)
-            => targetPointRadiusList.SelectMany(vectorRadius => GetRoundRange(vectorRadius)).ToList();
+            => targetPointRadiuses
+            .Select(vectorRadius => CalcBasePoint(vectorRadius, _basePoint ?? Vector2.zero))
+            .SelectMany(vectorRadius => GetRoundRange(vectorRadius))
+            .Where(vector => !IsInclude(excludePointRadiuses, vector))
+            .ToList();
 
+        KeyValuePair<Vector2, int> CalcBasePoint(KeyValuePair<Vector2, int> origin, Vector2 _basePoint)
+            => new KeyValuePair<Vector2, int>(origin.Key - _basePoint, origin.Value);
         IEnumerable<Vector2> GetRoundRange(KeyValuePair<Vector2, int> vectorRadius)
             => GetDiameterLine(vectorRadius.Value)
             .SelectMany(_ => GetDiameterLine(vectorRadius.Value), (x, y) => new Vector2(x, y))
@@ -69,8 +94,12 @@ namespace Assets.Src.Domains.Models.Value
             var basePoint = _basePoint ?? Vector2.zero;
             var target = _target - basePoint;
 
-            return targetPointRadiusList
-                .Any(vectorRadius => (target - vectorRadius.Key).magnitude <= vectorRadius.Value);
+            return IsInclude(targetPointRadiuses, target)
+                && !IsInclude(excludePointRadiuses, target);
         }
+
+        bool IsInclude(Dictionary<Vector2, int> pointRadiuses, Vector2 target)
+            => pointRadiuses
+            .Any(vectorRadius => (target - vectorRadius.Key).magnitude <= vectorRadius.Value);
     }
 }
