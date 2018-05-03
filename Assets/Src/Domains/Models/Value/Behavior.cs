@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Assets.Src.Domains.Models.Value
 {
     /// <summary>
-    /// アビリティの具体的動作を示すデータ群
+    /// 具体的な動作内容を示すデータ群
     /// </summary>
     [Serializable]
     public partial class Behavior

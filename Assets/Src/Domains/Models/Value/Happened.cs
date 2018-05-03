@@ -8,7 +8,7 @@ namespace Assets.Src.Domains.Models.Value
     /// キャラクターの動作の結果発生した事象を表すデータクラス
     /// </summary>
     [Serializable]
-    public abstract class Happened
+    public class Happened
     {
         /// <summary>
         /// コンストラクタ
@@ -19,6 +19,7 @@ namespace Assets.Src.Domains.Models.Value
         {
             _subject = subject;
             _predicate = predicate;
+            _direction = direction;
         }
 
         /// <summary>
@@ -55,6 +56,9 @@ namespace Assets.Src.Domains.Models.Value
         /// </summary>
         /// <param name="states">動作前のゲーム状態</param>
         /// <returns>動作後のゲーム状態</returns>
-        public abstract IGameStates Predicate(IGameStates states);
+        public IGameStates Predicate(IGameStates states)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
