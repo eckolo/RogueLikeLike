@@ -15,8 +15,8 @@ namespace Assets.Src.Domains.Models.Value
         /// <summary>
         /// その場1マスのみの範囲
         /// </summary>
-        public static readonly SpecifiedRange one
-            = new SpecifiedRange(new Dictionary<Vector2, int> { { Vector2.zero, 0 } });
+        public static SpecifiedRange one
+            => new SpecifiedRange(new Dictionary<Vector2, int> { { Vector2.zero, 0 } });
         /// <summary>
         /// 該当箇所の無い範囲
         /// </summary>

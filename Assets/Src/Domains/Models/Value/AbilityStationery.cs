@@ -42,6 +42,16 @@ namespace Assets.Src.Domains.Models.Value
         public IEnumerable<Job> useablejobList => _useablejobs;
 
         /// <summary>
+        /// 移動可能範囲
+        /// </summary>
+        [SerializeField]
+        SpecifiedRange _movement = SpecifiedRange.zero;
+        /// <summary>
+        /// 移動可能範囲
+        /// </summary>
+        public SpecifiedRange movement => _movement;
+
+        /// <summary>
         /// 挙動定義リスト
         /// </summary>
         [SerializeField]

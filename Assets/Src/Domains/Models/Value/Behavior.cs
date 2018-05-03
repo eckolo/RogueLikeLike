@@ -12,14 +12,14 @@ namespace Assets.Src.Domains.Models.Value
     public partial class Behavior
     {
         /// <summary>
-        /// 移動可能範囲
+        /// 挙動タイプ
         /// </summary>
         [SerializeField]
-        SpecifiedRange _movement = SpecifiedRange.zero;
+        Patern _patern = default(Patern);
         /// <summary>
-        /// 移動可能範囲
+        /// 挙動タイプ
         /// </summary>
-        public SpecifiedRange movement => _movement;
+        public Patern patern => _patern;
 
         /// <summary>
         /// 対象範囲
@@ -30,6 +30,16 @@ namespace Assets.Src.Domains.Models.Value
         /// 対象範囲
         /// </summary>
         public SpecifiedRange coverage => _coverage;
+
+        /// <summary>
+        /// 吹き飛ばし方向・量
+        /// </summary>
+        [SerializeField]
+        Vector2 _blowing = Vector2.zero;
+        /// <summary>
+        /// 吹き飛ばし方向・量
+        /// </summary>
+        public Vector2 blowing => _blowing;
 
         /// <summary>
         /// ターゲットタイプ

@@ -15,7 +15,7 @@ namespace Assets.Src.Domains.Models.Value
         /// </summary>
         /// <param name="subject">動作主体設定値</param>
         /// <param name="predicate">動作内容</param>
-        public Happened(Npc subject, Behavior predicate)
+        public Happened(Npc subject, Behavior predicate, Direction direction)
         {
             _subject = subject;
             _predicate = predicate;
@@ -35,11 +35,20 @@ namespace Assets.Src.Domains.Models.Value
         /// 動作内容
         /// </summary>
         [SerializeField]
-        public Behavior _predicate;
+        Behavior _predicate;
         /// <summary>
         /// 動作内容
         /// </summary>
         public Behavior predicate => _predicate;
+
+        /// <summary>
+        /// 動作方向
+        /// </summary>
+        Direction _direction;
+        /// <summary>
+        /// 動作方向
+        /// </summary>
+        public Direction direction => _direction;
 
         /// <summary>
         /// 動作内容
