@@ -20,8 +20,8 @@ namespace Assets.Src.Domains.Service
         {
             var states = _states.Duplicate();
             var actor = states.npcList.CalcNextActNpc();
-            var firstAction = actor.DetermineAction(states);
-            var happenedList = states.GenerateHappenedList(firstAction);
+            var selectedAction = actor.DetermineAction(states);
+            var happenedList = states.GenerateHappenedList(actor, selectedAction);
 
             states = states.ReflectHappenedList(happenedList);
 

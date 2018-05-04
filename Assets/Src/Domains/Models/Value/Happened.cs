@@ -45,6 +45,7 @@ namespace Assets.Src.Domains.Models.Value
         /// <summary>
         /// 動作方向
         /// </summary>
+        [SerializeField]
         Direction _direction;
         /// <summary>
         /// 動作方向

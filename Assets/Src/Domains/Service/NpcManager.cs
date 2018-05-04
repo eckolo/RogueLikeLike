@@ -55,7 +55,7 @@ namespace Assets.Src.Domains.Service
         /// </summary>
         /// <param name="npc">使用アビリティ決定対象</param>
         /// <returns>決定されたアビリティと使用対象を定めた行動パターンオブジェクト</returns>
-        public static ActionPattern DetermineAction(this Npc npc, IGameStates states)
+        public static Selected DetermineAction(this Npc npc, IGameStates states)
         {
             var applicable = npc.actionAlgorithm
                 .Where(term => term.Judge(npc, states))
@@ -63,14 +63,17 @@ namespace Assets.Src.Domains.Service
                 .Pick(states.seed);
             if(applicable == default(ActionTerm)) return null;
 
-            var targetNpc = npc.GetTermedNpc(states, applicable.targetType);
-            var coordinate = states.map.GetNpcCoordinate(targetNpc);
-            if(coordinate == null) return null;
-
             var ability = npc.SearchAbility(applicable.ability);
-            if(ability == null) return null;
 
-            return new ActionPattern(npc, ability, coordinate ?? Vector2.zero);
+            var targetNpc = npc.GetTermedNpc(states, applicable.targetType);
+            var targetPoint = states.map.GetNpcCoordinate(targetNpc);
+
+            var direction = applicable.CalcTargetDirection(states.map, targetPoint);
+
+            var relativePoint = targetPoint - states.map.GetNpcCoordinate(npc);
+            var movePolicy = applicable.moveType.CalcMovePoint(relativePoint);
+
+            return new Selected(ability, targetPoint ?? Vector2.zero, direction, movePolicy);
         }
 
         /// <summary>
@@ -128,6 +131,29 @@ namespace Assets.Src.Domains.Service
                         .Pick(states.seed);
                 default: throw new IndexOutOfRangeException();
             }
+        }
+
+        /// <summary>
+        /// アビリティ使用時の使用方向を決定する
+        /// </summary>
+        /// <param name="action">行動パターン</param>
+        /// <param name="map">現在のマップ状態</param>
+        /// <param name="targetPoint">目標座標</param>
+        /// <returns>目標座標からどの方向へ向けてアビリティを使用するか</returns>
+        static Direction CalcTargetDirection(this ActionTerm action, Map map, Vector2? targetPoint)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 移動方向を決定する
+        /// </summary>
+        /// <param name="moveType">移動方針</param>
+        /// <param name="relativeTarget">目標地点の自身からの相対座標</param>
+        /// <returns>移動方向</returns>
+        static Vector2 CalcMovePoint(this ActionTerm.MoveType moveType, Vector2? relativeTarget)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>

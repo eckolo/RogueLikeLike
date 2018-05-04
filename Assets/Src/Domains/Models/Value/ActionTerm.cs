@@ -32,6 +32,16 @@ namespace Assets.Src.Domains.Models.Value
         public TargetType targetType => _targetType;
 
         /// <summary>
+        /// 移動方針
+        /// </summary>
+        [SerializeField]
+        MoveType _moveType = default(MoveType);
+        /// <summary>
+        /// 移動方針
+        /// </summary>
+        public MoveType moveType => _moveType;
+
+        /// <summary>
         /// 条件値オブジェクト
         /// 全ての条件を満たした場合該当する
         /// （つまりAND条件）

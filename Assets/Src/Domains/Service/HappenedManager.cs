@@ -29,7 +29,7 @@ namespace Assets.Src.Domains.Service
         /// <param name="states">現在のゲーム状態</param>
         /// <param name="action">起点となる行動内容</param>
         /// <returns>ターン内行動リスト</returns>
-        public static List<Happened> GenerateHappenedList(this IGameStates states, ActionPattern action)
+        public static List<Happened> GenerateHappenedList(this IGameStates states, Npc npc, Selected action)
         {
             if(action == null) return new List<Happened>();
             throw new NotImplementedException();
