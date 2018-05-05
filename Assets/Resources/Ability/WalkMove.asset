@@ -15,12 +15,18 @@ MonoBehaviour:
   _baseSkillParameters: []
   _dependentParts: []
   _useablejobs: []
+  _movement:
+    _targetPoints: []
   _behaviorDefinition:
-    _motionList: []
-    _movement: 1
-    _maxRange: 0
-    _minRange: 0
+  - _patern: 0
+    _coverage:
+      _targetPoints: []
+    _blowing: {x: 0, y: 0}
     _targetableType: 0
     _affectedSkills:
-    - _skill: {fileID: 0}
+    - _skill: 0
       _value: 0
+    _effects: []
+    _attributeTypes: 
+    _power: 0
+    _accuracy: 0
