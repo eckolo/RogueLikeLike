@@ -1,4 +1,5 @@
-﻿using Assets.Src.Domains.Service;
+﻿using Assets.Src.Domains.Models.Value;
+using Assets.Src.Domains.Service;
 using NUnit.Framework;
 using UnityEngine;
 public static partial class TEST
@@ -92,6 +93,19 @@ public static partial class TEST
         }
         [Test]
         public static void ToRotation2()
+        {
+            var direction1 = Direction.NORTH;
+            var direction2 = Direction.SOUTH;
+            var direction3 = Direction.EAST;
+            var direction4 = Direction.WEST;
+
+            Assert.AreEqual(AngleManager.ToRotation(direction1), Quaternion.AngleAxis(0, Vector3.forward));
+            Assert.AreEqual(AngleManager.ToRotation(direction2), Quaternion.AngleAxis(180, Vector3.forward));
+            Assert.AreEqual(AngleManager.ToRotation(direction3), Quaternion.AngleAxis(270, Vector3.forward));
+            Assert.AreEqual(AngleManager.ToRotation(direction4), Quaternion.AngleAxis(90, Vector3.forward));
+        }
+        [Test]
+        public static void ToRotation3()
         {
             var vector = new Vector2(5, 5);
 

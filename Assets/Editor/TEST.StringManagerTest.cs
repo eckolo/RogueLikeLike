@@ -1,6 +1,5 @@
 ﻿using Assets.Src.Domains.Service;
 using NUnit.Framework;
-using UnityEngine;
 public static partial class TEST
 {
     /// <summary>

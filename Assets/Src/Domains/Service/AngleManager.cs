@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Assets.Src.Domains.Models.Value;
+using System;
+using UnityEngine;
 
 namespace Assets.Src.Domains.Service
 {
@@ -59,6 +61,21 @@ namespace Assets.Src.Domains.Service
         {
             eulerAngles = new Vector3(0, 0, targetAngle)
         };
+        /// <summary>
+        /// 方向をクォータニオン化
+        /// 北を基準方向とする
+        /// </summary>
+        public static Quaternion ToRotation(this Direction targetDirection)
+        {
+            switch(targetDirection)
+            {
+                case Direction.NORTH: return ToRotation(0f);
+                case Direction.SOUTH: return ToRotation(180f);
+                case Direction.EAST: return ToRotation(270f);
+                case Direction.WEST: return ToRotation(90f);
+                default: throw new IndexOutOfRangeException();
+            }
+        }
         /// <summary>
         /// ベクトルをクォータニオン化
         /// </summary>
