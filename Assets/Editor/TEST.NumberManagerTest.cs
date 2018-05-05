@@ -1,5 +1,6 @@
 ﻿using Assets.Src.Domains.Service;
 using NUnit.Framework;
+
 public static partial class TEST
 {
     /// <summary>
@@ -31,6 +32,16 @@ public static partial class TEST
             Assert.AreEqual(value4, value4.Euclidean(value4));
             Assert.AreEqual(1, value4.Euclidean(value5));
             Assert.AreEqual(1, value5.Euclidean(value5));
+        }
+        [Test]
+        public static void Correct()
+        {
+            var scalar1 = 3f;
+            var scalar2 = 5f;
+
+            Assert.AreEqual(NumberManager.Correct(scalar1, scalar2), 4f);
+            Assert.AreEqual(NumberManager.Correct(scalar1, scalar2, 1), 3f);
+            Assert.AreEqual(NumberManager.Correct(scalar1, scalar2, 0), 5f);
         }
     }
 }

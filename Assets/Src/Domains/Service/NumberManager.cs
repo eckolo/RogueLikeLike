@@ -23,5 +23,14 @@ namespace Assets.Src.Domains.Service
             if(absX % absY == 0) return y;
             return Euclidean(absY, absX % y);
         }
+        /// <summary>
+        /// mainの数値をsubに合わせて補正する
+        /// </summary>
+        /// <param name="main">元値</param>
+        /// <param name="sub">補正値</param>
+        /// <param name="degree">元値への寄せ度合い</param>
+        /// <returns>補正済みの値</returns>
+        public static float Correct(this float main, float sub, float degree = 0.5f)
+            => main * degree + sub * (1 - degree);
     }
 }
