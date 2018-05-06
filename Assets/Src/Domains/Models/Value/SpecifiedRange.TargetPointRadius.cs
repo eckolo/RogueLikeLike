@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Src.Domains.Models.Value
 {
-    public partial class SpecifiedRange
+    public partial class Coverage
     {
         /// <summary>
         /// 位置と半径の組

@@ -45,11 +45,11 @@ namespace Assets.Src.Domains.Models.Value
         /// 移動可能範囲
         /// </summary>
         [SerializeField]
-        SpecifiedRange _movement = SpecifiedRange.zero;
+        Coverage _movement = Coverage.zero;
         /// <summary>
         /// 移動可能範囲
         /// </summary>
-        public SpecifiedRange movement => _movement;
+        public Coverage movement => _movement;
 
         /// <summary>
         /// 挙動定義リスト

@@ -9,9 +9,9 @@ using UnityEngine;
 public static partial class TEST
 {
     /// <summary>
-    /// 文字列処理サービスのテスト
+    /// <see cref="Coverage"/>サービスのテスト
     /// </summary>
-    public static class SpecifiedRangeTest
+    public static class CoverageTest
     {
         [Test]
         public static void EnumerateTargetPointListTest()
@@ -25,7 +25,7 @@ public static partial class TEST
                 { new Vector2(0, 0), 2 }
             };
 
-            var range = SpecifiedRange.zero;
+            var range = Coverage.zero;
             range.GetType().GetField("_targetRanges", binding).SetValue(range, map1);
             range.GetType().GetField("_excludeRanges", binding).SetValue(range, map2);
 
@@ -168,7 +168,7 @@ public static partial class TEST
                 { new Vector2(0, 0), 2 }//1,-2
             };
 
-            var range = SpecifiedRange.zero;
+            var range = Coverage.zero;
             range.GetType().GetField("_targetRanges", binding).SetValue(range, map1);
             range.GetType().GetField("_excludeRanges", binding).SetValue(range, map2);
 
@@ -311,7 +311,7 @@ public static partial class TEST
                 { new Vector2(0, 0), 2 }
             };
 
-            var range = SpecifiedRange.zero;
+            var range = Coverage.zero;
             range.GetType().GetField("_targetRanges", binding).SetValue(range, map1);
             range.GetType().GetField("_excludeRanges", binding).SetValue(range, map2);
 
@@ -454,7 +454,7 @@ public static partial class TEST
             var direction = Direction.WEST;
             var center = new Vector2(1, -2);
 
-            var range = SpecifiedRange.zero;
+            var range = Coverage.zero;
             range.GetType().GetField("_targetRanges", binding).SetValue(range, map1);
             range.GetType().GetField("_excludeRanges", binding).SetValue(range, map2);
 

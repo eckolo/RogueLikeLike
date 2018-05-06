@@ -25,11 +25,11 @@ namespace Assets.Src.Domains.Models.Value
         /// 対象範囲
         /// </summary>
         [SerializeField]
-        SpecifiedRange _coverage = SpecifiedRange.zero;
+        Coverage _coverage = Coverage.zero;
         /// <summary>
         /// 対象範囲
         /// </summary>
-        public SpecifiedRange coverage => _coverage;
+        public Coverage coverage => _coverage;
 
         /// <summary>
         /// 吹き飛ばし方向・量

@@ -10,21 +10,21 @@ namespace Assets.Src.Domains.Models.Value
     /// 詳細なマス目指定の範囲指定
     /// </summary>
     [Serializable]
-    public partial class SpecifiedRange
+    public partial class Coverage
     {
         const float HALF_MAS = 0.5f;
 
         /// <summary>
         /// その場1マスのみの範囲
         /// </summary>
-        public static SpecifiedRange one
-            => new SpecifiedRange(new Dictionary<Vector2, int> { { Vector2.zero, 0 } });
+        public static Coverage one
+            => new Coverage(new Dictionary<Vector2, int> { { Vector2.zero, 0 } });
         /// <summary>
         /// 該当箇所の無い範囲
         /// </summary>
-        public static SpecifiedRange zero => new SpecifiedRange(new Dictionary<Vector2, int>());
+        public static Coverage zero => new Coverage(new Dictionary<Vector2, int>());
 
-        SpecifiedRange(Dictionary<Vector2, int> target, Dictionary<Vector2, int> exclude = null)
+        Coverage(Dictionary<Vector2, int> target, Dictionary<Vector2, int> exclude = null)
         {
             _targetRanges = target;
             _excludeRanges = exclude ?? new Dictionary<Vector2, int>();
