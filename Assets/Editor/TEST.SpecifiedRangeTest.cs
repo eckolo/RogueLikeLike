@@ -172,7 +172,7 @@ public static partial class TEST
             range.GetType().GetField("_targetRanges", binding).SetValue(range, map1);
             range.GetType().GetField("_excludeRanges", binding).SetValue(range, map2);
 
-            var result = range.EnumerateTargetPoints(new Vector2(1, -2), Direction.EAST).ToList();
+            var result = range.EnumerateTargetPoints(new Vector2(1, -2), Direction.WEST).ToList();
 
             #region AssertEveryPoint
 
@@ -451,7 +451,7 @@ public static partial class TEST
             var map2 = new Dictionary<Vector2, int> {
                 { new Vector2(0, 0), 2 }//1,-2
             };
-            var direction = Direction.EAST;
+            var direction = Direction.WEST;
             var center = new Vector2(1, -2);
 
             var range = SpecifiedRange.zero;

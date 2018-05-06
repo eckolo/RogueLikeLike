@@ -63,32 +63,32 @@ public static partial class TEST
         {
             Assert.AreEqual(Direction.NORTH.Rotate(Direction.NORTH), Direction.NORTH);
             Assert.AreEqual(Direction.NORTH.Rotate(Direction.SOUTH), Direction.SOUTH);
-            Assert.AreEqual(Direction.NORTH.Rotate(Direction.EAST), Direction.EAST);
-            Assert.AreEqual(Direction.NORTH.Rotate(Direction.WEST), Direction.WEST);
+            Assert.AreEqual(Direction.NORTH.Rotate(Direction.EAST), Direction.WEST);
+            Assert.AreEqual(Direction.NORTH.Rotate(Direction.WEST), Direction.EAST);
         }
         [Test]
         public static void RotateTest2()
         {
             Assert.AreEqual(Direction.SOUTH.Rotate(Direction.NORTH), Direction.SOUTH);
             Assert.AreEqual(Direction.SOUTH.Rotate(Direction.SOUTH), Direction.NORTH);
-            Assert.AreEqual(Direction.SOUTH.Rotate(Direction.EAST), Direction.WEST);
-            Assert.AreEqual(Direction.SOUTH.Rotate(Direction.WEST), Direction.EAST);
+            Assert.AreEqual(Direction.SOUTH.Rotate(Direction.EAST), Direction.EAST);
+            Assert.AreEqual(Direction.SOUTH.Rotate(Direction.WEST), Direction.WEST);
         }
         [Test]
         public static void RotateTest3()
         {
             Assert.AreEqual(Direction.EAST.Rotate(Direction.NORTH), Direction.EAST);
             Assert.AreEqual(Direction.EAST.Rotate(Direction.SOUTH), Direction.WEST);
-            Assert.AreEqual(Direction.EAST.Rotate(Direction.EAST), Direction.SOUTH);
-            Assert.AreEqual(Direction.EAST.Rotate(Direction.WEST), Direction.NORTH);
+            Assert.AreEqual(Direction.EAST.Rotate(Direction.EAST), Direction.NORTH);
+            Assert.AreEqual(Direction.EAST.Rotate(Direction.WEST), Direction.SOUTH);
         }
         [Test]
         public static void RotateTest4()
         {
             Assert.AreEqual(Direction.WEST.Rotate(Direction.NORTH), Direction.WEST);
             Assert.AreEqual(Direction.WEST.Rotate(Direction.SOUTH), Direction.EAST);
-            Assert.AreEqual(Direction.WEST.Rotate(Direction.EAST), Direction.NORTH);
-            Assert.AreEqual(Direction.WEST.Rotate(Direction.WEST), Direction.SOUTH);
+            Assert.AreEqual(Direction.WEST.Rotate(Direction.EAST), Direction.SOUTH);
+            Assert.AreEqual(Direction.WEST.Rotate(Direction.WEST), Direction.NORTH);
         }
 
         [Test]
@@ -98,8 +98,8 @@ public static partial class TEST
 
             Assert.AreEqual(new Vector2(3, 5), vector.Rotate(Direction.NORTH));
             Assert.AreEqual(new Vector2(-3, -5), vector.Rotate(Direction.SOUTH));
-            Assert.AreEqual(new Vector2(5, -3), vector.Rotate(Direction.EAST));
-            Assert.AreEqual(new Vector2(-5, 3), vector.Rotate(Direction.WEST));
+            Assert.AreEqual(new Vector2(-5, 3), vector.Rotate(Direction.EAST));
+            Assert.AreEqual(new Vector2(5, -3), vector.Rotate(Direction.WEST));
         }
         [Test]
         public static void RotateTest6()
@@ -109,8 +109,8 @@ public static partial class TEST
 
             Assert.AreEqual(new Vector2(3, 5), vector1.Rotate(Direction.NORTH, vector2));
             Assert.AreEqual(new Vector2(-5, -1), vector1.Rotate(Direction.SOUTH, vector2));
-            Assert.AreEqual(new Vector2(2, -2), vector1.Rotate(Direction.EAST, vector2));
-            Assert.AreEqual(new Vector2(-4, 6), vector1.Rotate(Direction.WEST, vector2));
+            Assert.AreEqual(new Vector2(-4, 6), vector1.Rotate(Direction.EAST, vector2));
+            Assert.AreEqual(new Vector2(2, -2), vector1.Rotate(Direction.WEST, vector2));
         }
     }
 }

@@ -53,7 +53,7 @@ namespace Assets.Src.Domains.Service
         /// <param name="origin">元の方向</param>
         /// <param name="top">
         /// 回転量を示す方角
-        /// 元の北方向をこの方角へ回転させる
+        /// この方角を北へ向けるよう回転させる
         /// </param>
         /// <returns>回転された方角</returns>
         public static Direction Rotate(this Direction origin, Direction top)
@@ -65,8 +65,8 @@ namespace Assets.Src.Domains.Service
                     {
                         case Direction.NORTH: return Direction.NORTH;
                         case Direction.SOUTH: return Direction.SOUTH;
-                        case Direction.EAST: return Direction.EAST;
-                        case Direction.WEST: return Direction.WEST;
+                        case Direction.EAST: return Direction.WEST;
+                        case Direction.WEST: return Direction.EAST;
                         default: throw new IndexOutOfRangeException();
                     }
                 case Direction.SOUTH:
@@ -74,8 +74,8 @@ namespace Assets.Src.Domains.Service
                     {
                         case Direction.NORTH: return Direction.SOUTH;
                         case Direction.SOUTH: return Direction.NORTH;
-                        case Direction.EAST: return Direction.WEST;
-                        case Direction.WEST: return Direction.EAST;
+                        case Direction.EAST: return Direction.EAST;
+                        case Direction.WEST: return Direction.WEST;
                         default: throw new IndexOutOfRangeException();
                     }
                 case Direction.EAST:
@@ -83,8 +83,8 @@ namespace Assets.Src.Domains.Service
                     {
                         case Direction.NORTH: return Direction.EAST;
                         case Direction.SOUTH: return Direction.WEST;
-                        case Direction.EAST: return Direction.SOUTH;
-                        case Direction.WEST: return Direction.NORTH;
+                        case Direction.EAST: return Direction.NORTH;
+                        case Direction.WEST: return Direction.SOUTH;
                         default: throw new IndexOutOfRangeException();
                     }
                 case Direction.WEST:
@@ -92,8 +92,8 @@ namespace Assets.Src.Domains.Service
                     {
                         case Direction.NORTH: return Direction.WEST;
                         case Direction.SOUTH: return Direction.EAST;
-                        case Direction.EAST: return Direction.NORTH;
-                        case Direction.WEST: return Direction.SOUTH;
+                        case Direction.EAST: return Direction.SOUTH;
+                        case Direction.WEST: return Direction.NORTH;
                         default: throw new IndexOutOfRangeException();
                     }
                 default: throw new IndexOutOfRangeException();
@@ -104,19 +104,22 @@ namespace Assets.Src.Domains.Service
         /// 北を基準に指定方角へ回転させたベクトルを取得する
         /// </summary>
         /// <param name="origin">元のベクトル</param>
-        /// <param name="top">北を上として回転方向</param>
-        /// <param name="_basePoint">回転基準点</param>
+        /// <param name="top">
+        /// 回転量を示す方角
+        /// この方角を北へ向けるよう回転させる
+        /// </param>
+        /// <param name="center">回転基準点</param>
         /// <returns>回転後のベクトル</returns>
-        public static Vector2 Rotate(this Vector2 origin, Direction top, Vector2? _basePoint = null)
+        public static Vector2 Rotate(this Vector2 origin, Direction top, Vector2? center = null)
         {
-            var basePoint = _basePoint ?? Vector2.zero;
+            var basePoint = center ?? Vector2.zero;
             var target = origin - basePoint;
             switch(top)
             {
                 case Direction.NORTH: return basePoint + target;
                 case Direction.SOUTH: return basePoint - target;
-                case Direction.EAST: return basePoint + new Vector2(target.y, -target.x);
-                case Direction.WEST: return basePoint + new Vector2(-target.y, target.x);
+                case Direction.EAST: return basePoint + new Vector2(-target.y, target.x);
+                case Direction.WEST: return basePoint + new Vector2(target.y, -target.x);
                 default: throw new IndexOutOfRangeException();
             }
         }
