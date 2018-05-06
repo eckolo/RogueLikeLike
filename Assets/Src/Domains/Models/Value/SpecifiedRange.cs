@@ -12,6 +12,8 @@ namespace Assets.Src.Domains.Models.Value
     [Serializable]
     public partial class SpecifiedRange
     {
+        const float HALF_MAS = 0.5f;
+
         /// <summary>
         /// その場1マスのみの範囲
         /// </summary>
@@ -24,8 +26,8 @@ namespace Assets.Src.Domains.Models.Value
 
         SpecifiedRange(Dictionary<Vector2, int> target, Dictionary<Vector2, int> exclude = null)
         {
-            _targetPointRadiuses = target;
-            _excludePointRadiuses = exclude ?? new Dictionary<Vector2, int>();
+            _targetRanges = target;
+            _excludeRanges = exclude ?? new Dictionary<Vector2, int>();
         }
 
         /// <summary>
@@ -35,71 +37,81 @@ namespace Assets.Src.Domains.Models.Value
         List<TargetPointRadius> _targetPoints = new List<TargetPointRadius>();
 
         /// <summary>
-        /// (0,0)を起点とした上向きの場合の対象座標と各地点の半径リスト
+        /// (0,0)を起点とした対象座標と各地点の半径リスト
         /// </summary>
-        protected Dictionary<Vector2, int> targetPointRadiuses
-               => _targetPointRadiuses ??
-               (_targetPointRadiuses = _targetPoints.Where(point => !point.exclusion).ToDictionary());
+        protected Dictionary<Vector2, int> GetTargetRanges(Direction direction)
+        {
+            if(_targetRanges == null) _targetRanges = _targetPoints
+                    .Where(point => !point.exclusion)
+                    .ToDictionary();
+
+            return _targetRanges
+                .ToDictionary(range => range.Key.Rotate(direction), range => range.Value);
+        }
         /// <summary>
         /// (0,0)を起点とした上向きの場合の対象座標と各地点の半径リスト
         /// </summary>
-        Dictionary<Vector2, int> _targetPointRadiuses = null;
+        Dictionary<Vector2, int> _targetRanges = null;
 
         /// <summary>
-        /// (0,0)を起点とした上向きの場合の除外対象座標と各地点の半径リスト
+        /// (0,0)を起点とした除外対象座標と各地点の半径リスト
         /// </summary>
-        protected Dictionary<Vector2, int> excludePointRadiuses
-                 => _excludePointRadiuses ??
-                 (_excludePointRadiuses = _targetPoints.Where(point => point.exclusion).ToDictionary());
+        protected Dictionary<Vector2, int> GetExcludeRanges(Direction direction)
+        {
+            if(_excludeRanges == null) _excludeRanges = _targetPoints
+                    .Where(point => point.exclusion)
+                    .ToDictionary();
+
+            return _excludeRanges
+                .ToDictionary(range => range.Key.Rotate(direction), range => range.Value);
+        }
         /// <summary>
         /// (0,0)を起点とした上向きの場合の除外対象座標と各地点の半径リスト
         /// </summary>
-        Dictionary<Vector2, int> _excludePointRadiuses = null;
+        Dictionary<Vector2, int> _excludeRanges = null;
 
         /// <summary>
         /// 対象マスの列挙
         /// </summary>
-        /// <param name="_basePoint">
+        /// <param name="center">
         /// 範囲指定の起点となる座標
         /// 未指定時は(0,0)となる
         /// </param>
+        /// <param name="direction">範囲の回転方向</param>
         /// <returns>対象マス一覧</returns>
-        public List<Vector2> EnumerateTargetPointList(Vector2? _basePoint = null)
-            => targetPointRadiuses
-            .Select(vectorRadius => CalcBasePoint(vectorRadius, _basePoint ?? Vector2.zero))
-            .SelectMany(vectorRadius => GetRoundRange(vectorRadius))
-            .Where(vector => !IsInclude(excludePointRadiuses, vector))
-            .ToList();
+        public IEnumerable<Vector2> EnumerateTargetPoints(Vector2? center = null, Direction direction = Direction.NORTH)
+            => GetTargetRanges(direction)
+            .SelectMany(range => GetRoundRange(range.Key, range.Value))
+            .Where(vector => !IsInclude(GetExcludeRanges(direction), vector))
+            .Select(vector => (center ?? Vector2.zero) + vector);
 
-        KeyValuePair<Vector2, int> CalcBasePoint(KeyValuePair<Vector2, int> origin, Vector2 _basePoint)
-            => new KeyValuePair<Vector2, int>(origin.Key - _basePoint, origin.Value);
-        IEnumerable<Vector2> GetRoundRange(KeyValuePair<Vector2, int> vectorRadius)
-            => GetDiameterLine(vectorRadius.Value)
-            .SelectMany(_ => GetDiameterLine(vectorRadius.Value), (x, y) => new Vector2(x, y))
-            .Where(vector => vector.magnitude <= vectorRadius.Value + 0.5f)
-            .Select(vector => vectorRadius.Key + vector);
+        IEnumerable<Vector2> GetRoundRange(Vector2 center, int radius)
+            => GetDiameterLine(radius)
+            .SelectMany(_ => GetDiameterLine(radius), (x, y) => new Vector2(x, y))
+            .Where(vector => vector.magnitude <= radius + HALF_MAS)
+            .Select(vector => center + vector);
         IEnumerable<int> GetDiameterLine(int radius) => Enumerable.Range(-radius, radius * 2 + 1);
 
         /// <summary>
         /// 指定された座標が範囲に含まれるか否か判定する
         /// </summary>
         /// <param name="_target">指定座標</param>
-        /// <param name="_basePoint">
+        /// <param name="center">
         /// 範囲指定の起点となる座標
         /// 未指定時は(0,0)となる
         /// </param>
+        /// <param name="direction">範囲の回転方向</param>
         /// <returns>指定された座標が範囲に含まれていればTrue</returns>
-        public bool OnTarget(Vector2 _target, Vector2? _basePoint = null)
+        public bool OnTarget(Vector2 _target, Vector2? center = null, Direction direction = Direction.NORTH)
         {
-            var basePoint = _basePoint ?? Vector2.zero;
+            var basePoint = center ?? Vector2.zero;
             var target = _target - basePoint;
 
-            return IsInclude(targetPointRadiuses, target)
-                && !IsInclude(excludePointRadiuses, target);
+            return IsInclude(GetTargetRanges(direction), target)
+                && !IsInclude(GetExcludeRanges(direction), target);
         }
 
-        bool IsInclude(Dictionary<Vector2, int> pointRadiuses, Vector2 target)
-            => pointRadiuses
-            .Any(vectorRadius => (target - vectorRadius.Key).magnitude <= vectorRadius.Value);
+        bool IsInclude(Dictionary<Vector2, int> Ranges, Vector2 target)
+            => Ranges.Any(range => (target - range.Key).magnitude <= range.Value + HALF_MAS);
     }
 }
