@@ -99,5 +99,26 @@ namespace Assets.Src.Domains.Service
                 default: throw new IndexOutOfRangeException();
             }
         }
+
+        /// <summary>
+        /// 北を基準に指定方角へ回転させたベクトルを取得する
+        /// </summary>
+        /// <param name="origin">元のベクトル</param>
+        /// <param name="top">北を上として回転方向</param>
+        /// <param name="_basePoint">回転基準点</param>
+        /// <returns>回転後のベクトル</returns>
+        public static Vector2 Rotation(this Vector2 origin, Direction top, Vector2? _basePoint = null)
+        {
+            var basePoint = _basePoint ?? Vector2.zero;
+            var target = origin - basePoint;
+            switch(top)
+            {
+                case Direction.NORTH: return basePoint + target;
+                case Direction.SOUTH: return basePoint - target;
+                case Direction.EAST: return basePoint + new Vector2(target.y, -target.x);
+                case Direction.WEST: return basePoint + new Vector2(-target.y, target.x);
+                default: throw new IndexOutOfRangeException();
+            }
+        }
     }
 }

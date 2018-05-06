@@ -90,5 +90,27 @@ public static partial class TEST
             Assert.AreEqual(Direction.WEST.Rotation(Direction.EAST), Direction.NORTH);
             Assert.AreEqual(Direction.WEST.Rotation(Direction.WEST), Direction.SOUTH);
         }
+
+        [Test]
+        public static void RotationTest5()
+        {
+            var vector = new Vector2(3, 5);
+
+            Assert.AreEqual(new Vector2(3, 5), vector.Rotation(Direction.NORTH));
+            Assert.AreEqual(new Vector2(-3, -5), vector.Rotation(Direction.SOUTH));
+            Assert.AreEqual(new Vector2(5, -3), vector.Rotation(Direction.EAST));
+            Assert.AreEqual(new Vector2(-5, 3), vector.Rotation(Direction.WEST));
+        }
+        [Test]
+        public static void RotationTest6()
+        {
+            var vector1 = new Vector2(3, 5);
+            var vector2 = new Vector2(-1, 2);
+
+            Assert.AreEqual(new Vector2(3, 5), vector1.Rotation(Direction.NORTH, vector2));
+            Assert.AreEqual(new Vector2(-5, -1), vector1.Rotation(Direction.SOUTH, vector2));
+            Assert.AreEqual(new Vector2(2, -2), vector1.Rotation(Direction.EAST, vector2));
+            Assert.AreEqual(new Vector2(-4, 6), vector1.Rotation(Direction.WEST, vector2));
+        }
     }
 }
