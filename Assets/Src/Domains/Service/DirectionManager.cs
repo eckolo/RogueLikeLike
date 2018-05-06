@@ -56,7 +56,7 @@ namespace Assets.Src.Domains.Service
         /// 元の北方向をこの方角へ回転させる
         /// </param>
         /// <returns>回転された方角</returns>
-        public static Direction Rotation(this Direction origin, Direction top)
+        public static Direction Rotate(this Direction origin, Direction top)
         {
             switch(origin)
             {
@@ -107,7 +107,7 @@ namespace Assets.Src.Domains.Service
         /// <param name="top">北を上として回転方向</param>
         /// <param name="_basePoint">回転基準点</param>
         /// <returns>回転後のベクトル</returns>
-        public static Vector2 Rotation(this Vector2 origin, Direction top, Vector2? _basePoint = null)
+        public static Vector2 Rotate(this Vector2 origin, Direction top, Vector2? _basePoint = null)
         {
             var basePoint = _basePoint ?? Vector2.zero;
             var target = origin - basePoint;
