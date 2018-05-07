@@ -18,8 +18,8 @@ namespace Assets.Src.Domains.Service
         /// <param name="npc">座標確認したいNPC</param>
         /// <returns>座標</returns>
         public static Vector2? GetNpcCoordinate(this Map map, Npc npc)
-            => map.npcList.ContainsValue(npc)
-            ? map.npcList.SingleOrDefault(_npc => _npc.Value == npc).Key
+            => map.npcLayout.ContainsValue(npc)
+            ? map.npcLayout.SingleOrDefault(_npc => _npc.Value == npc).Key
             : (Vector2?)null;
 
         /// <summary>

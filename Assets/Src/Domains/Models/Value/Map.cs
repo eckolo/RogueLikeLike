@@ -41,15 +41,15 @@ namespace Assets.Src.Domains.Models.Value
         /// 座標は中央が(0,0)、東がx+1、北がY+1
         /// </summary>
         [SerializeField]
-        Dictionary<Vector2, Npc> _npcList;
+        Dictionary<Vector2, Npc> _npcLayout;
         /// <summary>
         /// 各マスのNPCリスト
         /// 座標は中央が(0,0)、東がx+1、北がY+1
         /// </summary>
-        public virtual Dictionary<Vector2, Npc> npcList
+        public virtual Dictionary<Vector2, Npc> npcLayout
         {
-            get { return _npcList; }
-            set { _npcList = value; }
+            get { return _npcLayout; }
+            set { _npcLayout = value; }
         }
 
         /// <summary>

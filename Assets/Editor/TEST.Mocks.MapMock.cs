@@ -22,7 +22,7 @@ public static partial class TEST
             }
 
             public Dictionary<Vector2, Npc> _npcList;
-            public override Dictionary<Vector2, Npc> npcList
+            public override Dictionary<Vector2, Npc> npcLayout
             {
                 get { return _npcList; }
                 set { _npcList = value; }

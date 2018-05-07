@@ -56,7 +56,11 @@ namespace Assets.Src.Domains.Models.Entity
         /// <summary>
         /// 現在のマップのNPC配置情報
         /// </summary>
-        public Dictionary<Vector2, Npc> nowNpcList { get { return nowMap.npcList; } set { nowMap.npcList = value; } }
+        public Dictionary<Vector2, Npc> nowNpcLayout
+        {
+            get { return nowMap.npcLayout; }
+            set { nowMap.npcLayout = value; }
+        }
 
         /// <summary>
         /// 画面未反映の行動履歴

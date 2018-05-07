@@ -53,24 +53,24 @@ namespace Assets.Src.Domains.Service
         /// <summary>
         /// 使用アビリティ決定関数
         /// </summary>
-        /// <param name="npc">使用アビリティ決定対象</param>
+        /// <param name="actor">使用アビリティ決定対象</param>
         /// <returns>決定されたアビリティと使用対象を定めた行動パターンオブジェクト</returns>
-        public static Selected DetermineAction(this Npc npc, IGameStates states)
+        public static Selected DetermineAction(this Npc actor, IGameStates states)
         {
-            var applicable = npc.actionAlgorithm
-                .Where(term => term.Judge(npc, states))
-                .Where(action => npc.SearchAbility(action.ability) != null)
+            var applicable = actor.actionAlgorithm
+                .Where(term => term.Judge(actor, states))
+                .Where(action => actor.SearchAbility(action.ability) != null)
                 .Pick(states.seed);
             if(applicable == default(ActionTerm)) return null;
 
-            var ability = npc.SearchAbility(applicable.ability);
+            var ability = actor.SearchAbility(applicable.ability);
 
-            var targetNpc = npc.GetTermedNpc(states, applicable.targetType);
+            var targetNpc = actor.GetTermedNpc(states, applicable.targetType);
             var targetPoint = states.map.GetNpcCoordinate(targetNpc);
 
-            var direction = applicable.CalcTargetDirection(states.map, targetPoint);
+            var direction = actor.CalcTargetDirection(applicable, states.map, targetPoint, states.seed);
 
-            var relativePoint = targetPoint - states.map.GetNpcCoordinate(npc);
+            var relativePoint = targetPoint - states.map.GetNpcCoordinate(actor);
             var movePolicy = applicable.moveType.CalcMovePoint(relativePoint);
 
             return new Selected(ability, targetPoint ?? Vector2.zero, direction, movePolicy);
@@ -138,11 +138,57 @@ namespace Assets.Src.Domains.Service
         /// </summary>
         /// <param name="action">行動パターン</param>
         /// <param name="map">現在のマップ状態</param>
-        /// <param name="targetPoint">目標座標</param>
+        /// <param name="_targetPoint">目標座標</param>
         /// <returns>目標座標からどの方向へ向けてアビリティを使用するか</returns>
-        static Direction CalcTargetDirection(this ActionTerm action, Map map, Vector2? targetPoint)
+        static Direction CalcTargetDirection(this Npc actor, ActionTerm action, Map map, Vector2? _targetPoint, UnityEngine.Random.State seed)
         {
-            throw new NotImplementedException();
+            if(_targetPoint == null) return default(Direction);
+            var targetPoint = _targetPoint ?? Vector2.zero;
+
+            var _myself = map.GetNpcCoordinate(actor);
+            if(_myself == null) return default(Direction);
+            var myselfPoint = _myself ?? Vector2.zero;
+
+            var relative = targetPoint - myselfPoint;
+
+            var directions = new List<Direction>();
+            if(Math.Abs(relative.x) <= relative.y)
+            {
+                if(relative.y >= 0) directions.Add(Direction.NORTH);
+                if(relative.y <= 0) directions.Add(Direction.SOUTH);
+            }
+            if(Math.Abs(relative.y) <= relative.x)
+            {
+                if(relative.x >= 0) directions.Add(Direction.EAST);
+                if(relative.x <= 0) directions.Add(Direction.WEST);
+            }
+
+            if(directions.Count == 1) return directions.Single();
+
+            var targetType = action.targetType;
+            var range = action.ability.behaviorList.FirstOrDefault()?.coverage;
+
+            Func<KeyValuePair<Vector2, Npc>, bool> term = _ => true;
+            switch(targetType.limited)
+            {
+                case TargetType.Limited.NONE:
+                    break;
+                case TargetType.Limited.FRIEND:
+                    term = layout => actor.friendship[layout.Value] > 0;
+                    break;
+                case TargetType.Limited.STRANGER:
+                    term = layout => actor.friendship[layout.Value] < 0;
+                    break;
+                default: throw new IndexOutOfRangeException();
+            }
+
+            var points = map.npcLayout
+                .Where(term)
+                .Where(layout => targetType.includeMyself || layout.Value != actor)
+                .Select(layout => layout.Key);
+            return directions
+                .MaxKeys(direction => points.Count(point => range.OnTarget(point, targetPoint, direction)))
+                .Pick(seed);
         }
 
         /// <summary>

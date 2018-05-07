@@ -118,7 +118,7 @@ namespace Assets.Src.Infrastructure
         /// <summary>
         /// 現在のマップ上に存在するNPC全体のリスト
         /// </summary>
-        public IEnumerable<Npc> npcList => _stateEntity.nowNpcList.Select(npcData => npcData.Value);
+        public IEnumerable<Npc> npcList => _stateEntity.nowNpcLayout.Select(npcData => npcData.Value);
 
         /// <summary>
         /// 乱数の種
