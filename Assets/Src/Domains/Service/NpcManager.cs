@@ -187,7 +187,7 @@ namespace Assets.Src.Domains.Service
                 .Where(layout => targetType.includeMyself || layout.Value != actor)
                 .Select(layout => layout.Key);
             return directions
-                .MaxKeys(direction => points.Count(point => range.OnTarget(point, targetPoint, direction)))
+                .MaxKeys(direction => points.Count(point => range.Move(targetPoint, direction).OnTarget(point)))
                 .Pick(seed);
         }
 

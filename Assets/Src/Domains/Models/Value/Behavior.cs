@@ -25,11 +25,11 @@ namespace Assets.Src.Domains.Models.Value
         /// 対象範囲
         /// </summary>
         [SerializeField]
-        Coverage _coverage = Coverage.zero;
+        List<PointRadius> _coverage = new List<PointRadius>();
         /// <summary>
         /// 対象範囲
         /// </summary>
-        public Coverage coverage => _coverage;
+        public Coverage coverage => new Coverage(_coverage);
 
         /// <summary>
         /// 吹き飛ばし方向・量

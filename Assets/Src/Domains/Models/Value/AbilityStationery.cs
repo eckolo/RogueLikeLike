@@ -45,11 +45,11 @@ namespace Assets.Src.Domains.Models.Value
         /// 移動可能範囲
         /// </summary>
         [SerializeField]
-        Coverage _movement = Coverage.zero;
+        List<PointRadius> _movement = new List<PointRadius>();
         /// <summary>
         /// 移動可能範囲
         /// </summary>
-        public Coverage movement => _movement;
+        public Coverage movement => new Coverage(_movement);
 
         /// <summary>
         /// 挙動定義リスト
