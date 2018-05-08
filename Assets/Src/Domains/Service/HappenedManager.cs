@@ -17,7 +17,7 @@ namespace Assets.Src.Domains.Service
         /// <param name="states">現在のゲーム状態</param>
         /// <param name="happened">行動内容</param>
         /// <returns>行動結果を反映したゲーム状態</returns>
-        public static IGameStates ProcessActually(this IGameStates states, Happened happened)
+        public static IGameFoundation ProcessActually(this IGameFoundation states, Happened happened)
         {
             var result = happened.Predicate(states);
             result.viewQueue.Enqueue(happened);
@@ -31,7 +31,7 @@ namespace Assets.Src.Domains.Service
         /// <param name="actor">起点となる行動者</param>
         /// <param name="selected">行動選択内容</param>
         /// <returns>ターン内行動リスト</returns>
-        public static List<Happened> GenerateHappenedList(this IGameStates states, Npc actor, Selected selected)
+        public static List<Happened> GenerateHappenedList(this IGameFoundation states, Npc actor, Selected selected)
         {
             if(selected == null) return new List<Happened>();
             var ability = selected.ability;

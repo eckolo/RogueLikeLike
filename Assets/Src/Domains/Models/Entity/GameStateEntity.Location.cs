@@ -6,7 +6,7 @@ using System;
 
 namespace Assets.Src.Domains.Models.Entity
 {
-    public partial class GameStateEntity
+    public partial class GameState
     {
         /// <summary>
         /// 所在地情報

@@ -7,12 +7,12 @@ using Assets.Src.Domains.Models.Interface;
 namespace Assets.Src.Domains.Models.Entity
 {
     /// <summary>
-    /// ゲーム状態のメインパラメータ
+    /// ゲーム状態クラス
     /// </summary>
     [Serializable]
-    public partial class GameStateEntity : IDuplicatable<GameStateEntity>
+    public partial class GameState : IDuplicatable<GameState>
     {
-        public GameStateEntity(int seedInt)
+        public GameState(int seedInt)
         {
             UnityEngine.Random.InitState(seedInt);
             _seed = UnityEngine.Random.state;
@@ -87,6 +87,6 @@ namespace Assets.Src.Domains.Models.Entity
         /// シャローコピーメソッド
         /// </summary>
         /// <returns>コピーされたオブジェクト</returns>
-        public GameStateEntity MemberwiseClonePublic() => (GameStateEntity)MemberwiseClone();
+        public GameState MemberwiseClonePublic() => (GameState)MemberwiseClone();
     }
 }

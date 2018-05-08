@@ -16,7 +16,7 @@ namespace Assets.Src.Domains.Service
         /// </summary>
         /// <param name="states">現在のゲーム状態</param>
         /// <returns>実行後のゲーム状態</returns>
-        public static IGameStates PerformTurnByTurn(this IGameStates _states)
+        public static IGameFoundation PerformTurnByTurn(this IGameFoundation _states)
         {
             var states = _states.Duplicate();
             var actor = states.npcList.CalcNextActNpc();
@@ -37,7 +37,7 @@ namespace Assets.Src.Domains.Service
         /// </summary>
         /// <param name="_states">現在のゲーム状態</param>
         /// <returns>反映後のゲーム状態</returns>
-        static IGameStates ReflectHappenedList(this IGameStates _states, List<Happened> happenedList)
+        static IGameFoundation ReflectHappenedList(this IGameFoundation _states, List<Happened> happenedList)
         {
             var states = _states.Duplicate();
             foreach(var happened in happenedList) states = states.ProcessActually(happened);
@@ -49,7 +49,7 @@ namespace Assets.Src.Domains.Service
         /// </summary>
         /// <param name="_states">現在のゲーム状態</param>
         /// <returns>実行後のゲーム状態</returns>
-        static IGameStates ReflectView(this IGameStates _states)
+        static IGameFoundation ReflectView(this IGameFoundation _states)
         {
             var states = _states.Duplicate();
             if(states.viewQueue.Any())

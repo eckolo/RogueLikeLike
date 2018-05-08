@@ -30,7 +30,7 @@ namespace Assets.Src.Domains.Service
         /// <param name="_states"></param>
         /// <param name="nowActor"></param>
         /// <returns></returns>
-        public static IGameStates CalcInitiativeTurnEnd(this IGameStates _states, Npc nowActor)
+        public static IGameFoundation CalcInitiativeTurnEnd(this IGameFoundation _states, Npc nowActor)
         {
             var states = _states.Duplicate();
             var npcList = states.npcList;
@@ -55,7 +55,7 @@ namespace Assets.Src.Domains.Service
         /// </summary>
         /// <param name="actor">使用アビリティ決定対象</param>
         /// <returns>決定されたアビリティと使用対象を定めた行動パターンオブジェクト</returns>
-        public static Selected DetermineAction(this Npc actor, IGameStates states)
+        public static Selected DetermineAction(this Npc actor, IGameFoundation states)
         {
             var applicable = actor.actionAlgorithm
                 .Where(term => term.Judge(actor, states))
@@ -84,7 +84,7 @@ namespace Assets.Src.Domains.Service
         /// <param name="states">指定されたゲーム状態</param>
         /// <param name="targetType">検索条件タイプ</param>
         /// <returns>検索結果NPC</returns>
-        static Npc GetTermedNpc(this Npc myself, IGameStates states, TargetType targetType)
+        static Npc GetTermedNpc(this Npc myself, IGameFoundation states, TargetType targetType)
         {
             var npcs = states.npcList;
             if(!targetType.includeMyself) npcs = npcs.Where(npc => npc != myself);

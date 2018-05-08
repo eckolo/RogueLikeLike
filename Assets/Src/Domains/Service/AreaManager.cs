@@ -16,7 +16,7 @@ namespace Assets.Src.Domains.Service
         /// <param name="states">現在のゲーム状態</param>
         /// <param name="destinationDirection">移動方向</param>
         /// <returns>次のマップ状態</returns>
-        public static IGameStates SetupNextMap(this IGameStates states, Direction? destinationDirection = null)
+        public static IGameFoundation SetupNextMap(this IGameFoundation states, Direction? destinationDirection = null)
         {
             var nextCoordinate = states.mapCondition + destinationDirection.ToVector();
             states.map = states.area.GenerateMap(nextCoordinate);

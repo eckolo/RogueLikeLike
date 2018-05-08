@@ -9,20 +9,20 @@ using Assets.Src.Infrastructure.Repository;
 namespace Assets.Src.Infrastructure
 {
     /// <summary>
-    /// 状態保持クラス
+    /// ゲーム基盤クラス
     /// シングルトンとして中身を保持する
     /// </summary>
-    public partial class GameStates : IGameStates
+    public partial class GameFoundation : IGameFoundation
     {
         /// <summary>
-        /// 現在有効なゲーム状態の実体
+        /// 現在有効なゲーム基盤の実体
         /// </summary>
-        static GameStates myself = null;
+        static GameFoundation myself = null;
 
         /// <summary>
-        /// パラメータ実体
+        /// ゲーム状態
         /// </summary>
-        GameStateEntity _stateEntity = null;
+        GameState _state = null;
 
         /// <summary>
         /// インフラアクセスメソッド群
@@ -32,7 +32,7 @@ namespace Assets.Src.Infrastructure
         /// <summary>
         /// インジェクション用メソッド定義のために初回生成時のみ起動
         /// </summary>
-        static GameStates()
+        static GameFoundation()
         {
             _methods = new InjectedMethods(
                 viewer: new ViewManager(),
@@ -43,29 +43,29 @@ namespace Assets.Src.Infrastructure
         /// <summary>
         /// インスタンス生成用のプライベートなコンストラクタ
         /// </summary>
-        /// <param name="_stateEntity">初期状態</param>
-        GameStates(GameStateEntity _stateEntity)
+        /// <param name="_state">初期ゲーム基盤</param>
+        GameFoundation(GameState _state)
         {
-            this._stateEntity = _stateEntity ?? this._stateEntity.Duplicate();
+            this._state = _state ?? this._state.Duplicate();
         }
 
         /// <summary>
-        /// 新規ゲーム状態生成メソッド
+        /// 新規ゲーム基盤生成メソッド
         /// </summary>
-        /// <param name="_stateEntity">初期状態</param>
-        /// <returns>生成されたゲーム状態</returns>
-        public static GameStates CreateNewState(GameStateEntity _stateEntity)
+        /// <param name="_state">初期状態</param>
+        /// <returns>生成されたゲーム基盤</returns>
+        public static GameFoundation CreateNewState(GameState _state)
         {
-            if(myself == null) return myself = myself ?? new GameStates(_stateEntity);
-            myself._stateEntity = _stateEntity.Duplicate();
+            if(myself == null) return myself = myself ?? new GameFoundation(_state);
+            myself._state = _state.Duplicate();
             return myself;
         }
         /// <summary>
-        /// 新規ゲーム状態生成メソッド
+        /// 新規ゲーム基盤生成メソッド
         /// </summary>
         /// <param name="randamSeed">乱数の種</param>
-        /// <returns>生成されたゲーム状態</returns>
-        public static GameStates CreateNewState(int randamSeed) => CreateNewState(new GameStateEntity(randamSeed));
+        /// <returns>生成されたゲーム基盤</returns>
+        public static GameFoundation CreateNewState(int randamSeed) => CreateNewState(new GameState(randamSeed));
 
         /// <summary>
         /// インフラアクセスメソッド群アクセス用インターフェース
@@ -75,60 +75,60 @@ namespace Assets.Src.Infrastructure
         /// <summary>
         /// パラメータ一括アクセス用プロパティ
         /// </summary>
-        public GameStateEntity stateEntity
+        public GameState state
         {
-            get { return _stateEntity.Duplicate(); }
-            set { _stateEntity = value.Duplicate(); }
+            get { return _state.Duplicate(); }
+            set { _state = value.Duplicate(); }
         }
 
         /// <summary>
         /// 画面反映待ちキュー
         /// </summary>
-        public Queue<Happened> viewQueue => _stateEntity.viewQueue;
+        public Queue<Happened> viewQueue => _state.viewQueue;
 
         /// <summary>
         /// 全エリアデータ
         /// </summary>
-        public List<Area> areaList => _stateEntity.areaList;
+        public List<Area> areaList => _state.areaList;
         /// <summary>
         /// 現在の地域データ
         /// </summary>
         public Area area
         {
-            get { return _stateEntity.nowArea.Duplicate(); }
-            set { _stateEntity.nowArea = value.Duplicate(); }
+            get { return _state.nowArea.Duplicate(); }
+            set { _state.nowArea = value.Duplicate(); }
         }
         /// <summary>
         /// 現在のマップデータ
         /// </summary>
         public Map map
         {
-            get { return _stateEntity.nowMap.Duplicate(); }
-            set { _stateEntity.nowMap = value.Duplicate(); }
+            get { return _state.nowMap.Duplicate(); }
+            set { _state.nowMap = value.Duplicate(); }
         }
         /// <summary>
         /// 所在マップ座標
         /// </summary>
         public Vector2 mapCondition
         {
-            get { return _stateEntity.nowMapCondition; }
-            set { _stateEntity.nowMapCondition = value; }
+            get { return _state.nowMapCondition; }
+            set { _state.nowMapCondition = value; }
         }
 
         /// <summary>
         /// 現在のマップ上に存在するNPC全体のリスト
         /// </summary>
-        public IEnumerable<Npc> npcList => _stateEntity.nowNpcLayout.Select(npcData => npcData.Value);
+        public IEnumerable<Npc> npcList => _state.nowNpcLayout.Select(npcData => npcData.Value);
 
         /// <summary>
         /// 乱数の種
         /// </summary>
-        public Random.State seed => stateEntity.seed;
+        public Random.State seed => state.seed;
 
         /// <summary>
         /// シャローコピーメソッド
         /// </summary>
         /// <returns>コピーされたオブジェクト</returns>
-        public IGameStates MemberwiseClonePublic() => (GameStates)MemberwiseClone();
+        public IGameFoundation MemberwiseClonePublic() => (GameFoundation)MemberwiseClone();
     }
 }

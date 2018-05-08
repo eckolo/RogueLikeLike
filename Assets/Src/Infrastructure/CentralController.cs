@@ -48,10 +48,10 @@ namespace Assets.Src.Infrastructure
         {
             try
             {
-                var gameStates = GameStates.CreateNewState(DateTime.Now.GetHashCode());
+                var gameStates = GameFoundation.CreateNewState(DateTime.Now.GetHashCode());
                 while(true)
                 {
-                    gameStates = (GameStates)gameStates.PerformTurnByTurn();
+                    gameStates = (GameFoundation)gameStates.PerformTurnByTurn();
                 }
             }
             catch(Exception error)

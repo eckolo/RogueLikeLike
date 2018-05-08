@@ -20,17 +20,17 @@ public static partial class TEST
             var seed = 0;
             var index1 = 0;
             var index2 = 3;
-            var stateEntity1 = new GameStateEntity(seed) { upwardDirection = Direction.EAST };
-            var stateEntity2 = new GameStateEntity(seed) { upwardDirection = Direction.NORTH };
+            var state1 = new GameState(seed) { upwardDirection = Direction.EAST };
+            var state2 = new GameState(seed) { upwardDirection = Direction.NORTH };
 
-            GameStates.CreateNewState(stateEntity1).Save(index1);
-            GameStates.CreateNewState(stateEntity2).Save(index2);
+            GameFoundation.CreateNewState(state1).Save(index1);
+            GameFoundation.CreateNewState(state2).Save(index2);
 
-            var result1 = GameStates.CreateNewState(seed).Load(index1);
-            var result2 = GameStates.CreateNewState(seed).Load(index2);
+            var result1 = GameFoundation.CreateNewState(seed).Load(index1);
+            var result2 = GameFoundation.CreateNewState(seed).Load(index2);
 
-            Assert.AreEqual(stateEntity1.upwardDirection, result1.upwardDirection);
-            Assert.AreEqual(stateEntity2.upwardDirection, result2.upwardDirection);
+            Assert.AreEqual(state1.upwardDirection, result1.upwardDirection);
+            Assert.AreEqual(state2.upwardDirection, result2.upwardDirection);
         }
     }
 }

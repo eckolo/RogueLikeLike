@@ -9,7 +9,7 @@ namespace Assets.Src.Domains.Models.Entity
     /// <summary>
     /// 状態保持オブジェクトのインターフェース
     /// </summary>
-    public interface IGameStates : IDuplicatable<IGameStates>
+    public interface IGameFoundation : IDuplicatable<IGameFoundation>
     {
         /// <summary>
         /// インフラアクセスメソッド群アクセス用インターフェース
@@ -19,7 +19,7 @@ namespace Assets.Src.Domains.Models.Entity
         /// <summary>
         /// パラメータ一括アクセス用プロパティ
         /// </summary>
-        GameStateEntity stateEntity { get; set; }
+        GameState state { get; set; }
         /// <summary>
         /// 画面反映待ちキュー
         /// </summary>

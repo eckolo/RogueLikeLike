@@ -21,12 +21,12 @@ namespace Assets.Src.Domains.Service
         /// 0は自動セーブ先
         /// </param>
         /// <returns>保存されたゲーム状態</returns>
-        public static IGameStates Save(this IGameStates states, int dataIndex)
+        public static IGameFoundation Save(this IGameFoundation states, int dataIndex)
         {
             var fileManager = states.methods.fileManager;
-            var stateEntity = states.stateEntity;
+            var state = states.state;
 
-            fileManager.SetClass($"{KEY_PREFIX}{dataIndex}", stateEntity);
+            fileManager.SetClass($"{KEY_PREFIX}{dataIndex}", state);
             fileManager.Save();
             return states;
         }
@@ -39,14 +39,14 @@ namespace Assets.Src.Domains.Service
         /// 0は自動セーブ先
         /// </param>
         /// <returns>ロードされたゲーム状態の実体</returns>
-        public static GameStateEntity Load(this IGameStates _states, int dataIndex)
+        public static GameState Load(this IGameFoundation _states, int dataIndex)
         {
             var states = _states.Duplicate();
             var fileManager = states.methods.fileManager;
-            var stateEntity = states.stateEntity;
+            var state = states.state;
 
             fileManager.Load();
-            return fileManager.GetClass($"{KEY_PREFIX}{dataIndex}", stateEntity);
+            return fileManager.GetClass($"{KEY_PREFIX}{dataIndex}", state);
         }
     }
 }

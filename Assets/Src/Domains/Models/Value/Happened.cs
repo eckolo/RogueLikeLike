@@ -82,7 +82,7 @@ namespace Assets.Src.Domains.Models.Value
         /// </summary>
         /// <param name="states">動作前のゲーム状態</param>
         /// <returns>動作後のゲーム状態</returns>
-        public IGameStates Predicate(IGameStates states)
+        public IGameFoundation Predicate(IGameFoundation states)
         {
             throw new NotImplementedException();
         }

@@ -7,21 +7,21 @@ using UnityEngine;
 public static partial class TEST
 {
     /// <summary>
-    /// <see cref="IGameStates">を利用するテスト用のモック
+    /// <see cref="IGameFoundation">を利用するテスト用のモック
     /// </summary>
-    class GameStatesMock : IGameStates
+    class GameFoundationMock : IGameFoundation
     {
-        public static GameStatesMock GetNpcListMock(IEnumerable<Npc> _npcList)
-            => new GameStatesMock(
-                stateEntity: default(GameStateEntity),
+        public static GameFoundationMock GetNpcListMock(IEnumerable<Npc> _npcList)
+            => new GameFoundationMock(
+                state: default(GameState),
                 area: default(Area),
                 map: default(Map),
                 mapCondition: default(Vector2),
                 npcList: _npcList);
 
-        public GameStatesMock(GameStateEntity stateEntity, Area area, Map map, Vector2 mapCondition, IEnumerable<Npc> npcList)
+        public GameFoundationMock(GameState state, Area area, Map map, Vector2 mapCondition, IEnumerable<Npc> npcList)
         {
-            this.stateEntity = stateEntity;
+            this.state = state;
             this.area = area;
             this.map = map;
             this.mapCondition = mapCondition;
@@ -33,7 +33,7 @@ public static partial class TEST
             get { throw new System.NotImplementedException(); }
         }
 
-        public GameStateEntity stateEntity
+        public GameState state
         {
             get { throw new System.NotImplementedException(); }
             set { }
@@ -85,6 +85,6 @@ public static partial class TEST
             throw new System.NotImplementedException();
         }
 
-        public IGameStates MemberwiseClonePublic() => (GameStatesMock)MemberwiseClone();
+        public IGameFoundation MemberwiseClonePublic() => (GameFoundationMock)MemberwiseClone();
     }
 }

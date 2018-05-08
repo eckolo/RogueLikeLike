@@ -17,7 +17,7 @@ public static partial class TEST
             var npc2 = Mocks.NpcMock.GetSpeedMock(15);
             var npc3 = Mocks.NpcMock.GetSpeedMock(18);
             var list = new List<Npc> { npc1, npc2, npc3 };
-            IGameStates states = GameStatesMock.GetNpcListMock(list);
+            IGameFoundation states = GameFoundationMock.GetNpcListMock(list);
             Npc actor = null;
 
             #region Repetitive processing simulation every turn
