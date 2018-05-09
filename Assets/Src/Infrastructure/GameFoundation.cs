@@ -75,7 +75,7 @@ namespace Assets.Src.Infrastructure
         /// <summary>
         /// パラメータ一括アクセス用プロパティ
         /// </summary>
-        public GameState state
+        public GameState nowState
         {
             get { return _state.Duplicate(); }
             set { _state = value.Duplicate(); }
@@ -93,23 +93,23 @@ namespace Assets.Src.Infrastructure
         /// <summary>
         /// 現在の地域データ
         /// </summary>
-        public Area area
+        public Area nowArea
         {
-            get { return _state.nowArea.Duplicate(); }
-            set { _state.nowArea = value.Duplicate(); }
+            get { return _state.area.Duplicate(); }
+            set { _state.area = value.Duplicate(); }
         }
         /// <summary>
         /// 現在のマップデータ
         /// </summary>
-        public Map map
+        public Map nowMap
         {
-            get { return _state.nowMap.Duplicate(); }
-            set { _state.nowMap = value.Duplicate(); }
+            get { return _state.map.Duplicate(); }
+            set { _state.map = value.Duplicate(); }
         }
         /// <summary>
         /// 所在マップ座標
         /// </summary>
-        public Vector2 mapCondition
+        public Vector2 nowMapCondition
         {
             get { return _state.nowMapCondition; }
             set { _state.nowMapCondition = value; }
@@ -118,12 +118,12 @@ namespace Assets.Src.Infrastructure
         /// <summary>
         /// 現在のマップ上に存在するNPC全体のリスト
         /// </summary>
-        public IEnumerable<Npc> npcList => _state.nowNpcLayout.Select(npcData => npcData.Value);
+        public IEnumerable<Npc> nowNpcList => _state.npcList;
 
         /// <summary>
         /// 乱数の種
         /// </summary>
-        public Random.State seed => state.seed;
+        public Random.State nowSeed => nowState.seed;
 
         /// <summary>
         /// シャローコピーメソッド

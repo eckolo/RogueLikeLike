@@ -13,14 +13,14 @@ namespace Assets.Src.Domains.Service
         /// <summary>
         /// 現在の状態と移動方角から次のマップを生成し、現在のマップ状態を更新する
         /// </summary>
-        /// <param name="states">現在のゲーム状態</param>
+        /// <param name="state">現在のゲーム状態</param>
         /// <param name="destinationDirection">移動方向</param>
         /// <returns>次のマップ状態</returns>
-        public static IGameFoundation SetupNextMap(this IGameFoundation states, Direction? destinationDirection = null)
+        public static GameState SetupNextMap(this GameState state, Direction? destinationDirection = null)
         {
-            var nextCoordinate = states.mapCondition + destinationDirection.ToVector();
-            states.map = states.area.GenerateMap(nextCoordinate);
-            return states;
+            var nextCoordinate = state.nowMapCondition + destinationDirection.ToVector();
+            state.map = state.area.GenerateMap(nextCoordinate);
+            return state;
         }
 
         /// <summary>

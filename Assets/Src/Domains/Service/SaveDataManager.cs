@@ -15,35 +15,30 @@ namespace Assets.Src.Domains.Service
         /// <summary>
         /// セーブ処理
         /// </summary>
-        /// <param name="states">保存したいゲーム状態</param>
+        /// <param name="state">保存したいゲーム状態</param>
         /// <param name="dataIndex">
         /// セーブ先データ番号
         /// 0は自動セーブ先
         /// </param>
         /// <returns>保存されたゲーム状態</returns>
-        public static IGameFoundation Save(this IGameFoundation states, int dataIndex)
+        public static GameState Save(this GameState state, int dataIndex, IFileManager fileManager)
         {
-            var fileManager = states.methods.fileManager;
-            var state = states.state;
-
             fileManager.SetClass($"{KEY_PREFIX}{dataIndex}", state);
             fileManager.Save();
-            return states;
+            return state;
         }
         /// <summary>
         /// ロード処理
         /// </summary>
-        /// <param name="_states">ゲーム状態</param>
+        /// <param name="_state">ゲーム状態</param>
         /// <param name="dataIndex">
         /// ロード対象データ番号
         /// 0は自動セーブ先
         /// </param>
         /// <returns>ロードされたゲーム状態の実体</returns>
-        public static GameState Load(this IGameFoundation _states, int dataIndex)
+        public static GameState Load(this GameState _state, int dataIndex, IFileManager fileManager)
         {
-            var states = _states.Duplicate();
-            var fileManager = states.methods.fileManager;
-            var state = states.state;
+            var state = _state.Duplicate();
 
             fileManager.Load();
             return fileManager.GetClass($"{KEY_PREFIX}{dataIndex}", state);

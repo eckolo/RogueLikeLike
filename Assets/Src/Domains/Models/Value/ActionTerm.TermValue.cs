@@ -58,9 +58,9 @@ namespace Assets.Src.Domains.Models.Value
             /// 指定されたゲーム状態下でこの条件が真か否か判定する
             /// </summary>
             /// <param name="myself">判定者</param>
-            /// <param name="states">ゲーム状態</param>
+            /// <param name="state">ゲーム状態</param>
             /// <returns>条件判定結果</returns>
-            public bool Judge(Npc myself, IGameFoundation states)
+            public bool Judge(Npc myself, GameState state)
             {
                 throw new NotImplementedException();
             }

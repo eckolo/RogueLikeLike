@@ -14,12 +14,12 @@ namespace Assets.Src.Domains.Service
         /// <summary>
         /// 各行動の実処理関数
         /// </summary>
-        /// <param name="states">現在のゲーム状態</param>
+        /// <param name="state">現在のゲーム状態</param>
         /// <param name="happened">行動内容</param>
         /// <returns>行動結果を反映したゲーム状態</returns>
-        public static IGameFoundation ProcessActually(this IGameFoundation states, Happened happened)
+        public static GameState ProcessActually(this GameState state, Happened happened)
         {
-            var result = happened.Predicate(states);
+            var result = happened.Predicate(state);
             result.viewQueue.Enqueue(happened);
             return result;
         }
@@ -27,11 +27,11 @@ namespace Assets.Src.Domains.Service
         /// <summary>
         /// 起点となるNPC、アビリティからそのターンの行動リストを生成する
         /// </summary>
-        /// <param name="states">現在のゲーム状態</param>
+        /// <param name="state">現在のゲーム状態</param>
         /// <param name="actor">起点となる行動者</param>
         /// <param name="selected">行動選択内容</param>
         /// <returns>ターン内行動リスト</returns>
-        public static List<Happened> GenerateHappenedList(this IGameFoundation states, Npc actor, Selected selected)
+        public static List<Happened> GenerateHappenedList(this GameState state, Npc actor, Selected selected)
         {
             if(selected == null) return new List<Happened>();
             var ability = selected.ability;

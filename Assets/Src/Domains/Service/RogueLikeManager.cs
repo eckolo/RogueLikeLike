@@ -16,51 +16,51 @@ namespace Assets.Src.Domains.Service
         /// </summary>
         /// <param name="states">現在のゲーム状態</param>
         /// <returns>実行後のゲーム状態</returns>
-        public static IGameFoundation PerformTurnByTurn(this IGameFoundation _states)
+        public static IGameFoundation PerformTurnByTurn(this IGameFoundation _found)
         {
-            var states = _states.Duplicate();
-            var actor = states.npcList.CalcNextActNpc();
-            var selectedAction = actor.DetermineAction(states);
-            var happenedList = states.GenerateHappenedList(actor, selectedAction);
+            var found = _found.Duplicate();
+            var actor = found.nowNpcList.CalcNextActNpc();
+            var selectedAction = actor.DetermineAction(found.nowState);
+            var happenedList = found.nowState.GenerateHappenedList(actor, selectedAction);
 
-            states = states.ReflectHappenedList(happenedList);
+            found.nowState = found.nowState.ReflectHappenedList(happenedList);
 
-            states = states.SetupNextMap();
-            states = states.CalcInitiativeTurnEnd(actor);
+            found.nowState = found.nowState.SetupNextMap();
+            found.nowState = found.nowState.CalcInitiativeTurnEnd(actor);
 
-            states = states.ReflectView();
-            return states;
+            found.nowState = found.nowState.ReflectView(found.methods.viewer);
+            return found;
         }
 
         /// <summary>
         /// 処理リストをゲーム状態へ反映させる
         /// </summary>
-        /// <param name="_states">現在のゲーム状態</param>
+        /// <param name="_state">現在のゲーム状態</param>
         /// <returns>反映後のゲーム状態</returns>
-        static IGameFoundation ReflectHappenedList(this IGameFoundation _states, List<Happened> happenedList)
+        static GameState ReflectHappenedList(this GameState _state, List<Happened> happenedList)
         {
-            var states = _states.Duplicate();
-            foreach(var happened in happenedList) states = states.ProcessActually(happened);
-            return states;
+            var state = _state.Duplicate();
+            foreach(var happened in happenedList) state = state.ProcessActually(happened);
+            return state;
         }
 
         /// <summary>
         /// 描画待ちキューとマップ状態の反映処理
         /// </summary>
-        /// <param name="_states">現在のゲーム状態</param>
+        /// <param name="_state">現在のゲーム状態</param>
         /// <returns>実行後のゲーム状態</returns>
-        static IGameFoundation ReflectView(this IGameFoundation _states)
+        static GameState ReflectView(this GameState _state, IViewManager viewer)
         {
-            var states = _states.Duplicate();
+            var states = _state.Duplicate();
             if(states.viewQueue.Any())
             {
-                var success = states.methods.viewer.ReflectAction(states.viewQueue.Dequeue());
+                var success = viewer.ReflectAction(states.viewQueue.Dequeue());
                 if(!success) throw new Exception("Drawing view queue process failed.");
-                return states.ReflectView();
+                return states.ReflectView(viewer);
             }
             else
             {
-                var success = states.methods.viewer.ReflectMap(states.map);
+                var success = viewer.ReflectMap(states.map);
                 if(!success) throw new Exception($"Drawing map process failed.");
                 return states;
             }

@@ -27,12 +27,12 @@ namespace Assets.Src.Domains.Service
         /// <summary>
         /// ターンエンド時のイニシアチブ演算
         /// </summary>
-        /// <param name="_states"></param>
-        /// <param name="nowActor"></param>
-        /// <returns></returns>
-        public static IGameFoundation CalcInitiativeTurnEnd(this IGameFoundation _states, Npc nowActor)
+        /// <param name="_state">現在のゲーム状態</param>
+        /// <param name="nowActor">現ターンの行動者</param>
+        /// <returns>イニシアチブ演算後のゲーム状態</returns>
+        public static GameState CalcInitiativeTurnEnd(this GameState _state, Npc nowActor)
         {
-            var states = _states.Duplicate();
+            var states = _state.Duplicate();
             var npcList = states.npcList;
             foreach(var npc in npcList) if(npc != nowActor) npc.nowInitiative += npc.parameters.speed;
             var minInitiative = npcList.Min(npc => npc.nowInitiative);
@@ -55,22 +55,22 @@ namespace Assets.Src.Domains.Service
         /// </summary>
         /// <param name="actor">使用アビリティ決定対象</param>
         /// <returns>決定されたアビリティと使用対象を定めた行動パターンオブジェクト</returns>
-        public static Selected DetermineAction(this Npc actor, IGameFoundation states)
+        public static Selected DetermineAction(this Npc actor, GameState state)
         {
             var applicable = actor.actionAlgorithm
-                .Where(term => term.Judge(actor, states))
+                .Where(term => term.Judge(actor, state))
                 .Where(action => actor.SearchAbility(action.ability) != null)
-                .Pick(states.seed);
+                .Pick(state.seed);
             if(applicable == default(ActionTerm)) return null;
 
             var ability = actor.SearchAbility(applicable.ability);
 
-            var targetNpc = actor.GetTermedNpc(states, applicable.targetType);
-            var targetPoint = states.map.GetNpcCoordinate(targetNpc);
+            var targetNpc = actor.GetTermedNpc(state, applicable.targetType);
+            var targetPoint = state.map.GetNpcCoordinate(targetNpc);
 
-            var direction = actor.CalcTargetDirection(applicable, states.map, targetPoint, states.seed);
+            var direction = actor.CalcTargetDirection(applicable, state.map, targetPoint, state.seed);
 
-            var relativePoint = targetPoint - states.map.GetNpcCoordinate(actor);
+            var relativePoint = targetPoint - state.map.GetNpcCoordinate(actor);
             var movePolicy = applicable.moveType.CalcMovePoint(relativePoint);
 
             return new Selected(ability, targetPoint ?? Vector2.zero, direction, movePolicy);
@@ -81,12 +81,12 @@ namespace Assets.Src.Domains.Service
         /// 該当NPCが存在しなければNullを返す
         /// </summary>
         /// <param name="myself">検索起点となるNPC</param>
-        /// <param name="states">指定されたゲーム状態</param>
+        /// <param name="state">指定されたゲーム状態</param>
         /// <param name="targetType">検索条件タイプ</param>
         /// <returns>検索結果NPC</returns>
-        static Npc GetTermedNpc(this Npc myself, IGameFoundation states, TargetType targetType)
+        static Npc GetTermedNpc(this Npc myself, GameState state, TargetType targetType)
         {
-            var npcs = states.npcList;
+            var npcs = state.npcList;
             if(!targetType.includeMyself) npcs = npcs.Where(npc => npc != myself);
             switch(targetType.limited)
             {
@@ -105,30 +105,30 @@ namespace Assets.Src.Domains.Service
                 case TargetType.Determination.MYSELF:
                     return npcs.SingleOrDefault(npc => npc == myself);
                 case TargetType.Determination.NEAR:
-                    var maxDistance = states.map.size.magnitude;
+                    var maxDistance = state.map.size.magnitude;
                     return npcs
-                        .MinKeys(npc => states.map.GetNpcsDistance(myself, npc) ?? maxDistance)
-                        .Pick(states.seed);
+                        .MinKeys(npc => state.map.GetNpcsDistance(myself, npc) ?? maxDistance)
+                        .Pick(state.seed);
                 case TargetType.Determination.AWAY:
                     return npcs
-                        .MaxKeys(npc => states.map.GetNpcsDistance(myself, npc) ?? 0)
-                        .Pick(states.seed);
+                        .MaxKeys(npc => state.map.GetNpcsDistance(myself, npc) ?? 0)
+                        .Pick(state.seed);
                 case TargetType.Determination.STRONG:
                     return npcs
                         .MaxKeys(npc => npc.parameters.CalcStrong())
-                        .Pick(states.seed);
+                        .Pick(state.seed);
                 case TargetType.Determination.WEAK:
                     return npcs
                         .MinKeys(npc => npc.parameters.CalcStrong())
-                        .Pick(states.seed);
+                        .Pick(state.seed);
                 case TargetType.Determination.LIVELY:
                     return npcs
                         .MaxKeys(npc => npc.CalcLively())
-                        .Pick(states.seed);
+                        .Pick(state.seed);
                 case TargetType.Determination.WEAKENED:
                     return npcs
                         .MinKeys(npc => npc.CalcLively())
-                        .Pick(states.seed);
+                        .Pick(state.seed);
                 default: throw new IndexOutOfRangeException();
             }
         }

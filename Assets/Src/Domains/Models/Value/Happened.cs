@@ -80,9 +80,9 @@ namespace Assets.Src.Domains.Models.Value
         /// <summary>
         /// 動作内容
         /// </summary>
-        /// <param name="states">動作前のゲーム状態</param>
+        /// <param name="state">動作前のゲーム状態</param>
         /// <returns>動作後のゲーム状態</returns>
-        public IGameFoundation Predicate(IGameFoundation states)
+        public GameState Predicate(GameState state)
         {
             throw new NotImplementedException();
         }

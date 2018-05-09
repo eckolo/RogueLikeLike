@@ -22,12 +22,14 @@ public static partial class TEST
             var index2 = 3;
             var state1 = new GameState(seed) { upwardDirection = Direction.EAST };
             var state2 = new GameState(seed) { upwardDirection = Direction.NORTH };
+            var state3 = new GameState(seed) { upwardDirection = Direction.WEST };
+            var fileManager = GameFoundation.CreateNewState(seed).methods.fileManager;
 
-            GameFoundation.CreateNewState(state1).Save(index1);
-            GameFoundation.CreateNewState(state2).Save(index2);
+            state1.Save(index1, fileManager);
+            state2.Save(index2, fileManager);
 
-            var result1 = GameFoundation.CreateNewState(seed).Load(index1);
-            var result2 = GameFoundation.CreateNewState(seed).Load(index2);
+            var result1 = state3.Load(index1, fileManager);
+            var result2 = state3.Load(index2, fileManager);
 
             Assert.AreEqual(state1.upwardDirection, result1.upwardDirection);
             Assert.AreEqual(state2.upwardDirection, result2.upwardDirection);

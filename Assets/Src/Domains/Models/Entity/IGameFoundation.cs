@@ -19,7 +19,7 @@ namespace Assets.Src.Domains.Models.Entity
         /// <summary>
         /// パラメータ一括アクセス用プロパティ
         /// </summary>
-        GameState state { get; set; }
+        GameState nowState { get; set; }
         /// <summary>
         /// 画面反映待ちキュー
         /// </summary>
@@ -28,7 +28,7 @@ namespace Assets.Src.Domains.Models.Entity
         /// <summary>
         /// 乱数の種
         /// </summary>
-        Random.State seed { get; }
+        Random.State nowSeed { get; }
 
         /// <summary>
         /// 全エリアデータ
@@ -37,19 +37,19 @@ namespace Assets.Src.Domains.Models.Entity
         /// <summary>
         /// 現在の地域データ
         /// </summary>
-        Area area { get; set; }
+        Area nowArea { get; set; }
         /// <summary>
         /// 現在のマップデータ
         /// </summary>
-        Map map { get; set; }
+        Map nowMap { get; set; }
         /// <summary>
         /// 所在マップ座標
         /// </summary>
-        Vector2 mapCondition { get; set; }
+        Vector2 nowMapCondition { get; set; }
 
         /// <summary>
         /// 現在のマップ上に存在するNPC全体のリスト
         /// </summary>
-        IEnumerable<Npc> npcList { get; }
+        IEnumerable<Npc> nowNpcList { get; }
     }
 }

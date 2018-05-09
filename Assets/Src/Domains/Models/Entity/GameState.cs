@@ -3,6 +3,7 @@ using UnityEngine;
 using System;
 using Assets.Src.Domains.Models.Value;
 using Assets.Src.Domains.Models.Interface;
+using System.Linq;
 
 namespace Assets.Src.Domains.Models.Entity
 {
@@ -39,27 +40,27 @@ namespace Assets.Src.Domains.Models.Entity
         /// <summary>
         /// 現在のエリア情報
         /// </summary>
-        public Area nowArea { get { return _location.nowArea; } set { _location.nowArea = value; } }
+        public Area area { get { return _location.nowArea; } set { _location.nowArea = value; } }
         /// <summary>
         /// 現在のマップ状態
         /// </summary>
-        public Map nowMap { get { return nowArea.nowMap; } set { nowArea.nowMap = value; } }
+        public Map map { get { return area.nowMap; } set { area.nowMap = value; } }
         /// <summary>
         /// 所在マップ座標
         /// </summary>
         public Vector2 nowMapCondition
         {
-            get { return nowArea.nowMapCondition; }
-            set { nowArea.nowMapCondition = value; }
+            get { return area.nowMapCondition; }
+            set { area.nowMapCondition = value; }
         }
 
         /// <summary>
         /// 現在のマップのNPC配置情報
         /// </summary>
-        public Dictionary<Vector2, Npc> nowNpcLayout
+        public Dictionary<Vector2, Npc> npcLayout
         {
-            get { return nowMap.npcLayout; }
-            set { nowMap.npcLayout = value; }
+            get { return map.npcLayout; }
+            set { map.npcLayout = value; }
         }
 
         /// <summary>
@@ -72,6 +73,10 @@ namespace Assets.Src.Domains.Models.Entity
         /// </summary>
         public Queue<Happened> viewQueue { get { return _viewQueue; } set { _viewQueue = value; } }
 
+        /// <summary>
+        /// 現在のマップ上に存在するNPC全体のリスト
+        /// </summary>
+        public virtual IEnumerable<Npc> npcList => npcLayout.Select(npcData => npcData.Value);
 
         /// <summary>
         /// 乱数の種
