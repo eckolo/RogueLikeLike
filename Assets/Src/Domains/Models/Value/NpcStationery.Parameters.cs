@@ -14,7 +14,7 @@ namespace Assets.Src.Domains.Models.Value
             /// <summary>
             /// 全パラメータが0のパラメータオブジェクト
             /// </summary>
-            public static readonly Parameters zero = new Parameters(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            public static Parameters zero = new Parameters(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
             /// <summary>
             /// コンストラクタ
@@ -57,7 +57,7 @@ namespace Assets.Src.Domains.Models.Value
             /// 最大HP
             /// </summary>
             [SerializeField]
-            readonly int _maxHp;
+            int _maxHp;
             /// <summary>
             /// 最大HP
             /// </summary>
@@ -66,7 +66,7 @@ namespace Assets.Src.Domains.Models.Value
             /// 最大スタミナ
             /// </summary>
             [SerializeField]
-            readonly int _maxEnergy;
+            int _maxEnergy;
             /// <summary>
             /// 最大スタミナ
             /// </summary>
@@ -75,7 +75,7 @@ namespace Assets.Src.Domains.Models.Value
             /// 最大精神力
             /// </summary>
             [SerializeField]
-            readonly int _maxMental;
+            int _maxMental;
             /// <summary>
             /// 最大精神力
             /// </summary>
@@ -84,7 +84,7 @@ namespace Assets.Src.Domains.Models.Value
             /// 物理攻撃力
             /// </summary>
             [SerializeField]
-            readonly int _physicalAttack;
+            int _physicalAttack;
             /// <summary>
             /// 物理攻撃力
             /// </summary>
@@ -93,7 +93,7 @@ namespace Assets.Src.Domains.Models.Value
             /// 物理防御力
             /// </summary>
             [SerializeField]
-            readonly int _physicalDefense;
+            int _physicalDefense;
             /// <summary>
             /// 物理防御力
             /// </summary>
@@ -102,7 +102,7 @@ namespace Assets.Src.Domains.Models.Value
             /// 魔法攻撃力
             /// </summary>
             [SerializeField]
-            readonly int _magicAttack;
+            int _magicAttack;
             /// <summary>
             /// 魔法攻撃力
             /// </summary>
@@ -111,7 +111,7 @@ namespace Assets.Src.Domains.Models.Value
             /// 魔法防御力
             /// </summary>
             [SerializeField]
-            readonly int _magicDefense;
+            int _magicDefense;
             /// <summary>
             /// 魔法防御力
             /// </summary>
@@ -120,7 +120,7 @@ namespace Assets.Src.Domains.Models.Value
             /// 命中率
             /// </summary>
             [SerializeField]
-            readonly int _accuracy;
+            int _accuracy;
             /// <summary>
             /// 命中率
             /// </summary>
@@ -129,7 +129,7 @@ namespace Assets.Src.Domains.Models.Value
             /// 回避率
             /// </summary>
             [SerializeField]
-            readonly int _evasion;
+            int _evasion;
             /// <summary>
             /// 回避率
             /// </summary>
@@ -138,7 +138,7 @@ namespace Assets.Src.Domains.Models.Value
             /// 行動速度
             /// </summary>
             [SerializeField]
-            readonly int _speed;
+            int _speed;
             /// <summary>
             /// 行動速度
             /// </summary>

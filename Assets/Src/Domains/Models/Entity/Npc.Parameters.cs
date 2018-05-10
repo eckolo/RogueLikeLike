@@ -108,16 +108,14 @@ namespace Assets.Src.Domains.Models.Entity
             /// 現在HP
             /// </summary>
             [SerializeField]
-            int? _nowHp = null;
+            int _nowHp;
             /// <summary>
             /// 現在HP
             /// </summary>
             public int nowHp
             {
                 get {
-                    int result = _nowHp ?? maxHp;
-                    _nowHp = result;
-                    return result;
+                    return _nowHp;
                 }
                 set {
                     _nowHp = Mathf.Min(value, maxHp);
@@ -128,16 +126,14 @@ namespace Assets.Src.Domains.Models.Entity
             /// 現在スタミナ
             /// </summary>
             [SerializeField]
-            int? _nowEnergy = null;
+            int _nowEnergy;
             /// <summary>
             /// 現在スタミナ
             /// </summary>
             public int nowEnergy
             {
                 get {
-                    int result = _nowEnergy ?? maxEnergy;
-                    _nowEnergy = result;
-                    return result;
+                    return _nowEnergy;
                 }
                 set {
                     _nowEnergy = Mathf.Min(value, maxEnergy);
@@ -148,16 +144,14 @@ namespace Assets.Src.Domains.Models.Entity
             /// 現在精神力
             /// </summary>
             [SerializeField]
-            int? _nowMental = null;
+            int _nowMental;
             /// <summary>
             /// 現在精神力
             /// </summary>
             public int nowMental
             {
                 get {
-                    int result = _nowMental ?? maxMental;
-                    _nowMental = result;
-                    return result;
+                    return _nowMental;
                 }
                 set {
                     _nowMental = Mathf.Min(value, maxMental);
