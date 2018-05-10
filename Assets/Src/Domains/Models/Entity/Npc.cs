@@ -22,7 +22,7 @@ namespace Assets.Src.Domains.Models.Entity
         /// パラメータ補正値
         /// </summary>
         [SerializeField]
-        Parameters _parametersAdjust = null;
+        Parameters _parametersAdjust = Parameters.zero;
         /// <summary>
         /// パラメータ補正値
         /// </summary>
@@ -36,61 +36,28 @@ namespace Assets.Src.Domains.Models.Entity
         /// <summary>
         /// 現在HP
         /// </summary>
-        [SerializeField]
-        int? _nowHp = null;
-        /// <summary>
-        /// 現在HP
-        /// </summary>
         public int nowHp
         {
-            get {
-                int result = _nowHp ?? parameters.maxHp;
-                _nowHp = result;
-                return result;
-            }
-            set {
-                _nowHp = Mathf.Min(value, parameters.maxHp);
-            }
+            get { return parameters.nowHp; }
+            set { parameters.nowHp = value; }
         }
 
-        /// <summary>
-        /// 現在スタミナ
-        /// </summary>
-        [SerializeField]
-        int? _nowEnergy = null;
         /// <summary>
         /// 現在スタミナ
         /// </summary>
         public int nowEnergy
         {
-            get {
-                int result = _nowEnergy ?? parameters.maxEnergy;
-                _nowEnergy = result;
-                return result;
-            }
-            set {
-                _nowEnergy = Mathf.Min(value, parameters.maxEnergy);
-            }
+            get { return parameters.nowEnergy; }
+            set { parameters.nowEnergy = value; }
         }
 
         /// <summary>
         /// 現在精神力
         /// </summary>
-        [SerializeField]
-        int? _nowMental = null;
-        /// <summary>
-        /// 現在精神力
-        /// </summary>
         public int nowMental
         {
-            get {
-                int result = _nowMental ?? parameters.maxMental;
-                _nowMental = result;
-                return result;
-            }
-            set {
-                _nowMental = Mathf.Min(value, parameters.maxMental);
-            }
+            get { return parameters.nowMental; }
+            set { parameters.nowMental = value; }
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Src.Domains.Models.Value;
+using System;
 using UnityEngine;
 
 namespace Assets.Src.Domains.Models.Entity
@@ -9,8 +10,60 @@ namespace Assets.Src.Domains.Models.Entity
         /// キャラクタの基礎ステータス
         /// </summary>
         [Serializable]
-        public class Parameters
+        public class Parameters : NpcStationery.Parameters
         {
+            /// <summary>
+            /// 全パラメータが0のパラメータオブジェクト
+            /// </summary>
+            public static new readonly Parameters zero = new Parameters(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+            /// <summary>
+            /// コンストラクタ
+            /// </summary>
+            /// <param name="nowHp">現在HP</param>
+            /// <param name="nowEnergy">現在スタミナ</param>
+            /// <param name="nowMental">現在精神力</param>
+            /// <param name="maxHp">最大HP</param>
+            /// <param name="maxEnergy">最大スタミナ</param>
+            /// <param name="maxMental">最大精神力</param>
+            /// <param name="physicalAttack">物理攻撃力</param>
+            /// <param name="physicalDefense">物理防御力</param>
+            /// <param name="magicAttack">魔法攻撃力</param>
+            /// <param name="magicDefense">魔法防御力</param>
+            /// <param name="accuracy">命中率</param>
+            /// <param name="evasion">回避率</param>
+            /// <param name="speed">行動速度</param>
+            public Parameters(
+                int nowHp,
+                int nowEnergy,
+                int nowMental,
+                int maxHp,
+                int maxEnergy,
+                int maxMental,
+                int physicalAttack,
+                int physicalDefense,
+                int magicAttack,
+                int magicDefense,
+                int accuracy,
+                int evasion,
+                int speed)
+                : base(
+                      maxHp: maxHp,
+                      maxEnergy: maxEnergy,
+                      maxMental: maxMental,
+                      physicalAttack: physicalAttack,
+                      physicalDefense: physicalDefense,
+                      magicAttack: magicAttack,
+                      magicDefense: magicDefense,
+                      accuracy: accuracy,
+                      evasion: evasion,
+                      speed: speed)
+            {
+                _nowHp = nowHp;
+                _nowEnergy = nowEnergy;
+                _nowMental = nowMental;
+            }
+
             /// <summary>
             /// コンストラクタ
             /// </summary>
@@ -35,109 +88,81 @@ namespace Assets.Src.Domains.Models.Entity
                 int accuracy,
                 int evasion,
                 int speed)
+                : this(
+                      nowHp: maxHp,
+                      nowEnergy: maxEnergy,
+                      nowMental: maxMental,
+                      maxHp: maxHp,
+                      maxEnergy: maxEnergy,
+                      maxMental: maxMental,
+                      physicalAttack: physicalAttack,
+                      physicalDefense: physicalDefense,
+                      magicAttack: magicAttack,
+                      magicDefense: magicDefense,
+                      accuracy: accuracy,
+                      evasion: evasion,
+                      speed: speed)
+            { }
+
+            /// <summary>
+            /// 現在HP
+            /// </summary>
+            [SerializeField]
+            int? _nowHp = null;
+            /// <summary>
+            /// 現在HP
+            /// </summary>
+            public int nowHp
             {
-                _maxHp = maxHp;
-                _maxEnergy = maxEnergy;
-                _maxMental = maxMental;
-                _physicalAttack = physicalAttack;
-                _physicalDefense = physicalDefense;
-                _magicAttack = magicAttack;
-                _magicDefense = magicDefense;
-                _accuracy = accuracy;
-                _evasion = evasion;
-                _speed = speed;
+                get {
+                    int result = _nowHp ?? maxHp;
+                    _nowHp = result;
+                    return result;
+                }
+                set {
+                    _nowHp = Mathf.Min(value, maxHp);
+                }
             }
 
             /// <summary>
-            /// 最大HP
+            /// 現在スタミナ
             /// </summary>
             [SerializeField]
-            int _maxHp;
+            int? _nowEnergy = null;
             /// <summary>
-            /// 最大HP
+            /// 現在スタミナ
             /// </summary>
-            public int maxHp => _maxHp;
+            public int nowEnergy
+            {
+                get {
+                    int result = _nowEnergy ?? maxEnergy;
+                    _nowEnergy = result;
+                    return result;
+                }
+                set {
+                    _nowEnergy = Mathf.Min(value, maxEnergy);
+                }
+            }
+
             /// <summary>
-            /// 最大スタミナ
-            /// </summary>
-            [SerializeField]
-            int _maxEnergy;
-            /// <summary>
-            /// 最大スタミナ
-            /// </summary>
-            public int maxEnergy => _maxEnergy;
-            /// <summary>
-            /// 最大精神力
-            /// </summary>
-            [SerializeField]
-            int _maxMental;
-            /// <summary>
-            /// 最大精神力
-            /// </summary>
-            public int maxMental => _maxMental;
-            /// <summary>
-            /// 物理攻撃力
+            /// 現在精神力
             /// </summary>
             [SerializeField]
-            int _physicalAttack;
+            int? _nowMental = null;
             /// <summary>
-            /// 物理攻撃力
+            /// 現在精神力
             /// </summary>
-            public int physicalAttack => _physicalAttack;
-            /// <summary>
-            /// 物理防御力
-            /// </summary>
-            [SerializeField]
-            int _physicalDefense;
-            /// <summary>
-            /// 物理防御力
-            /// </summary>
-            public int physicalDefense => _physicalDefense;
-            /// <summary>
-            /// 魔法攻撃力
-            /// </summary>
-            [SerializeField]
-            int _magicAttack;
-            /// <summary>
-            /// 魔法攻撃力
-            /// </summary>
-            public int magicAttack => _magicAttack;
-            /// <summary>
-            /// 魔法防御力
-            /// </summary>
-            [SerializeField]
-            int _magicDefense;
-            /// <summary>
-            /// 魔法防御力
-            /// </summary>
-            public int magicDefense => _magicDefense;
-            /// <summary>
-            /// 命中率
-            /// </summary>
-            [SerializeField]
-            int _accuracy;
-            /// <summary>
-            /// 命中率
-            /// </summary>
-            public int accuracy => _accuracy;
-            /// <summary>
-            /// 回避率
-            /// </summary>
-            [SerializeField]
-            int _evasion;
-            /// <summary>
-            /// 回避率
-            /// </summary>
-            public int evasion => _evasion;
-            /// <summary>
-            /// 行動速度
-            /// </summary>
-            [SerializeField]
-            int _speed;
-            /// <summary>
-            /// 行動速度
-            /// </summary>
-            public int speed => _speed;
+            public int nowMental
+            {
+                get {
+                    int result = _nowMental ?? maxMental;
+                    _nowMental = result;
+                    return result;
+                }
+                set {
+                    _nowMental = Mathf.Min(value, maxMental);
+                }
+            }
 
             /// <summary>
             /// パラメータ補正値計算用の加算処理
@@ -148,6 +173,9 @@ namespace Assets.Src.Domains.Models.Entity
             /// <returns>可算結果のパラメータ</returns>
             public static Parameters operator +(Parameters x, Parameters y)
                 => new Parameters(
+                    nowHp: x.nowHp + y.nowHp,
+                    nowEnergy: x.nowEnergy + y.nowEnergy,
+                    nowMental: x.nowMental + y.nowMental,
                     maxHp: x.maxHp + y.maxHp,
                     maxEnergy: x.maxEnergy + y.maxEnergy,
                     maxMental: x.maxMental + y.maxMental,
