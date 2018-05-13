@@ -1,4 +1,5 @@
 ﻿using Assets.Src.Domains.Models.Interface;
+using Assets.Src.Domains.Service;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,22 +13,22 @@ namespace Assets.Src.Domains.Models.Value
     public partial class AbilityStationery : Named
     {
         /// <summary>
-        /// ベースとなるスキル値リスト
+        /// アビリティ性能判定スキル一覧
         /// </summary>
         [SerializeField]
         List<Skill.Parameters> _baseSkillParameters = new List<Skill.Parameters>();
         /// <summary>
-        /// ベースとなるスキル値リスト
+        /// アビリティ性能判定スキル一覧
         /// </summary>
-        public IEnumerable<Skill.Parameters> baseSkillParameterList => _baseSkillParameters;
+        public Dictionary<Skill.Key, int> baseSkillParameterList => _baseSkillParameters.ToDictionary();
 
         /// <summary>
-        /// アビリティの性能依存先スキル
+        /// アビリティの使用可否依存先部位
         /// </summary>
         [SerializeField]
         List<Parts> _dependentParts = new List<Parts>();
         /// <summary>
-        /// アビリティの性能依存先スキルリスト
+        /// アビリティの使用可否依存先部位
         /// </summary>
         public IEnumerable<Parts> dependentPartsList => _dependentParts;
 
