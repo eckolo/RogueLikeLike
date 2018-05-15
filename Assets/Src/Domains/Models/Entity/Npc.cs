@@ -19,12 +19,12 @@ namespace Assets.Src.Domains.Models.Entity
         public Friendship friendship { get; set; }
 
         /// <summary>
-        /// パラメータ補正値
+        /// パラメータ変動量
         /// </summary>
         [SerializeField]
         Parameters _parametersAdjust = Parameters.zero;
         /// <summary>
-        /// パラメータ補正値
+        /// パラメータ変動量
         /// </summary>
         public Parameters parametersAdjust => _parametersAdjust;
 

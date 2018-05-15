@@ -22,6 +22,26 @@ namespace Assets.Src.Domains.Models.Value
         public Patern patern => _patern;
 
         /// <summary>
+        /// 動作主体ステータス反映度（％）
+        /// </summary>
+        [SerializeField]
+        NpcStationery.Parameters _parameters = null;
+        /// <summary>
+        /// 動作主体ステータス反映度（％）
+        /// </summary>
+        public NpcStationery.Parameters parameters => _parameters;
+
+        /// <summary>
+        /// 動作対象ステータス反映度（％）
+        /// </summary>
+        [SerializeField]
+        NpcStationery.Parameters _targetParameters = null;
+        /// <summary>
+        /// 動作対象ステータス反映度（％）
+        /// </summary>
+        public NpcStationery.Parameters targetParameters => _targetParameters;
+
+        /// <summary>
         /// 対象範囲
         /// </summary>
         [SerializeField]

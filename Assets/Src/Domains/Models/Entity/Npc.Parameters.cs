@@ -34,19 +34,11 @@ namespace Assets.Src.Domains.Models.Entity
             /// <param name="evasion">回避率</param>
             /// <param name="speed">行動速度</param>
             public Parameters(
-                int nowHp,
-                int nowEnergy,
-                int nowMental,
-                int maxHp,
-                int maxEnergy,
-                int maxMental,
-                int physicalAttack,
-                int physicalDefense,
-                int magicAttack,
-                int magicDefense,
-                int accuracy,
-                int evasion,
-                int speed)
+                int nowHp, int nowEnergy, int nowMental,
+                int maxHp, int maxEnergy, int maxMental,
+                int physicalAttack, int physicalDefense,
+                int magicAttack, int magicDefense,
+                int accuracy, int evasion, int speed)
                 : base(
                       maxHp: maxHp,
                       maxEnergy: maxEnergy,
@@ -67,41 +59,46 @@ namespace Assets.Src.Domains.Models.Entity
             /// <summary>
             /// コンストラクタ
             /// </summary>
-            /// <param name="maxHp">最大HP</param>
-            /// <param name="maxEnergy">最大スタミナ</param>
-            /// <param name="maxMental">最大精神力</param>
-            /// <param name="physicalAttack">物理攻撃力</param>
-            /// <param name="physicalDefense">物理防御力</param>
-            /// <param name="magicAttack">魔法攻撃力</param>
-            /// <param name="magicDefense">魔法防御力</param>
-            /// <param name="accuracy">命中率</param>
-            /// <param name="evasion">回避率</param>
-            /// <param name="speed">行動速度</param>
-            public Parameters(
-                int maxHp,
-                int maxEnergy,
-                int maxMental,
-                int physicalAttack,
-                int physicalDefense,
-                int magicAttack,
-                int magicDefense,
-                int accuracy,
-                int evasion,
-                int speed)
+            /// <param name="nowHp">現在HP</param>
+            /// <param name="nowEnergy">現在スタミナ</param>
+            /// <param name="nowMental">現在精神力</param>
+            /// <param name="parameters">元となるパラメータクラス</param>
+            public Parameters(int nowHp, int nowEnergy, int nowMental, NpcStationery.Parameters parameters)
                 : this(
-                      nowHp: maxHp,
-                      nowEnergy: maxEnergy,
-                      nowMental: maxMental,
-                      maxHp: maxHp,
-                      maxEnergy: maxEnergy,
-                      maxMental: maxMental,
-                      physicalAttack: physicalAttack,
-                      physicalDefense: physicalDefense,
-                      magicAttack: magicAttack,
-                      magicDefense: magicDefense,
-                      accuracy: accuracy,
-                      evasion: evasion,
-                      speed: speed)
+                      nowHp: nowHp,
+                      nowEnergy: nowEnergy,
+                      nowMental: nowMental,
+                      maxHp: parameters.maxHp,
+                      maxEnergy: parameters.maxEnergy,
+                      maxMental: parameters.maxMental,
+                      physicalAttack: parameters.physicalAttack,
+                      physicalDefense: parameters.physicalDefense,
+                      magicAttack: parameters.magicAttack,
+                      magicDefense: parameters.magicDefense,
+                      accuracy: parameters.accuracy,
+                      evasion: parameters.evasion,
+                      speed: parameters.speed)
+            { }
+
+            /// <summary>
+            /// コンストラクタ
+            /// </summary>
+            /// <param name="parameters">元となるパラメータクラス</param>
+            public Parameters(NpcStationery.Parameters parameters)
+                : this(
+                      nowHp: 0,
+                      nowEnergy: 0,
+                      nowMental: 0,
+                      maxHp: parameters.maxHp,
+                      maxEnergy: parameters.maxEnergy,
+                      maxMental: parameters.maxMental,
+                      physicalAttack: parameters.physicalAttack,
+                      physicalDefense: parameters.physicalDefense,
+                      magicAttack: parameters.magicAttack,
+                      magicDefense: parameters.magicDefense,
+                      accuracy: parameters.accuracy,
+                      evasion: parameters.evasion,
+                      speed: parameters.speed)
             { }
 
             /// <summary>
@@ -180,6 +177,21 @@ namespace Assets.Src.Domains.Models.Entity
                     accuracy: x.accuracy + y.accuracy,
                     evasion: x.evasion + y.evasion,
                     speed: x.speed + y.speed);
+
+            /// <summary>
+            /// パラメータ補正値計算用の加算処理
+            /// </summary>
+            /// <param name="x">可算されるパラメータ</param>
+            /// <param name="y">可算するパラメータ</param>
+            /// <returns>可算結果のパラメータ</returns>
+            public static Parameters operator +(Parameters x, NpcStationery.Parameters y) => x + new Parameters(y);
+            /// <summary>
+            /// パラメータ補正値計算用の加算処理
+            /// </summary>
+            /// <param name="x">可算されるパラメータ</param>
+            /// <param name="y">可算するパラメータ</param>
+            /// <returns>可算結果のパラメータ</returns>
+            public static Parameters operator +(NpcStationery.Parameters x, Parameters y) => new Parameters(x) + y;
         }
     }
 }
