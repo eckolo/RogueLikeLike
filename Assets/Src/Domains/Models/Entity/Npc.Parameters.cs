@@ -192,6 +192,42 @@ namespace Assets.Src.Domains.Models.Entity
             /// <param name="y">可算するパラメータ</param>
             /// <returns>可算結果のパラメータ</returns>
             public static Parameters operator +(NpcStationery.Parameters x, Parameters y) => new Parameters(x) + y;
+
+            /// <summary>
+            /// パラメータ補正値計算用の乗算処理
+            /// </summary>
+            /// <param name="x">可算されるパラメータ</param>
+            /// <param name="y">可算するパラメータ</param>
+            /// <returns>可算結果のパラメータ</returns>
+            public static Parameters operator *(Parameters x, Parameters y)
+                => new Parameters(
+                    nowHp: x.nowHp * y.nowHp,
+                    nowEnergy: x.nowEnergy * y.nowEnergy,
+                    nowMental: x.nowMental * y.nowMental,
+                    maxHp: x.maxHp * y.maxHp,
+                    maxEnergy: x.maxEnergy * y.maxEnergy,
+                    maxMental: x.maxMental * y.maxMental,
+                    physicalAttack: x.physicalAttack * y.physicalAttack,
+                    physicalDefense: x.physicalDefense * y.physicalDefense,
+                    magicAttack: x.magicAttack * y.magicAttack,
+                    magicDefense: x.magicDefense * y.magicDefense,
+                    accuracy: x.accuracy * y.accuracy,
+                    evasion: x.evasion * y.evasion,
+                    speed: x.speed * y.speed);
+            /// <summary>
+            /// パラメータ補正値計算用の加算処理
+            /// </summary>
+            /// <param name="x">可算されるパラメータ</param>
+            /// <param name="y">可算するパラメータ</param>
+            /// <returns>可算結果のパラメータ</returns>
+            public static Parameters operator *(Parameters x, NpcStationery.Parameters y) => x * new Parameters(y);
+            /// <summary>
+            /// パラメータ補正値計算用の加算処理
+            /// </summary>
+            /// <param name="x">可算されるパラメータ</param>
+            /// <param name="y">可算するパラメータ</param>
+            /// <returns>可算結果のパラメータ</returns>
+            public static Parameters operator *(NpcStationery.Parameters x, Parameters y) => new Parameters(x) * y;
         }
     }
 }

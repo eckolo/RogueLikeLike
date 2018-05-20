@@ -73,5 +73,45 @@ public static partial class TEST
             Assert.AreEqual(result.evasion, parameters.evasion + parametersStationery.evasion);
             Assert.AreEqual(result.speed, parameters.speed + parametersStationery.speed);
         }
+
+        [Test]
+        public static void MultiplyTest1()
+        {
+            var result = parameters * parametersStationery;
+
+            Assert.AreEqual(result.nowHp, 0);
+            Assert.AreEqual(result.nowEnergy, 0);
+            Assert.AreEqual(result.nowMental, 0);
+            Assert.AreEqual(result.maxHp, parameters.maxHp * parametersStationery.maxHp);
+            Assert.AreEqual(result.maxEnergy, parameters.maxEnergy * parametersStationery.maxEnergy);
+            Assert.AreEqual(result.maxMental, parameters.maxMental * parametersStationery.maxMental);
+            Assert.AreEqual(result.physicalAttack, parameters.physicalAttack * parametersStationery.physicalAttack);
+            Assert.AreEqual(result.physicalDefense, parameters.physicalDefense * parametersStationery.physicalDefense);
+            Assert.AreEqual(result.magicAttack, parameters.magicAttack * parametersStationery.magicAttack);
+            Assert.AreEqual(result.magicDefense, parameters.magicDefense * parametersStationery.magicDefense);
+            Assert.AreEqual(result.accuracy, parameters.accuracy * parametersStationery.accuracy);
+            Assert.AreEqual(result.evasion, parameters.evasion * parametersStationery.evasion);
+            Assert.AreEqual(result.speed, parameters.speed * parametersStationery.speed);
+        }
+
+        [Test]
+        public static void MultiplyTest2()
+        {
+            var result = parametersStationery * parameters;
+
+            Assert.AreEqual(result.nowHp, 0);
+            Assert.AreEqual(result.nowEnergy, 0);
+            Assert.AreEqual(result.nowMental, 0);
+            Assert.AreEqual(result.maxHp, parameters.maxHp * parametersStationery.maxHp);
+            Assert.AreEqual(result.maxEnergy, parameters.maxEnergy * parametersStationery.maxEnergy);
+            Assert.AreEqual(result.maxMental, parameters.maxMental * parametersStationery.maxMental);
+            Assert.AreEqual(result.physicalAttack, parameters.physicalAttack * parametersStationery.physicalAttack);
+            Assert.AreEqual(result.physicalDefense, parameters.physicalDefense * parametersStationery.physicalDefense);
+            Assert.AreEqual(result.magicAttack, parameters.magicAttack * parametersStationery.magicAttack);
+            Assert.AreEqual(result.magicDefense, parameters.magicDefense * parametersStationery.magicDefense);
+            Assert.AreEqual(result.accuracy, parameters.accuracy * parametersStationery.accuracy);
+            Assert.AreEqual(result.evasion, parameters.evasion * parametersStationery.evasion);
+            Assert.AreEqual(result.speed, parameters.speed * parametersStationery.speed);
+        }
     }
 }
