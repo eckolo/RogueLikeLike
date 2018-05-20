@@ -35,6 +35,24 @@ public static partial class TEST
               speed: Default.NpcMock.SPEED);
 
         [Test]
+        public static void InnerProductTest()
+        {
+            var result = parametersStationery + parameters;
+
+            Assert.AreEqual(result.innerProduct, parameters.nowHp + parameters.nowEnergy + parameters.nowMental
+                + parameters.maxHp + parametersStationery.maxHp
+                + parameters.maxEnergy + parametersStationery.maxEnergy
+                + parameters.maxMental + parametersStationery.maxMental
+                + parameters.physicalAttack + parametersStationery.physicalAttack
+                + parameters.physicalDefense + parametersStationery.physicalDefense
+                + parameters.magicAttack + parametersStationery.magicAttack
+                + parameters.magicDefense + parametersStationery.magicDefense
+                + parameters.accuracy + parametersStationery.accuracy
+                + parameters.evasion + parametersStationery.evasion
+                + parameters.speed + parametersStationery.speed);
+        }
+
+        [Test]
         public static void AddTest1()
         {
             var result = parameters + parametersStationery;

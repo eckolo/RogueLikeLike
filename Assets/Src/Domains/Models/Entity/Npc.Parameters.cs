@@ -156,6 +156,16 @@ namespace Assets.Src.Domains.Models.Entity
             }
 
             /// <summary>
+            /// パラメータの全合計値
+            /// </summary>
+            public float innerProduct
+                => nowHp + nowEnergy + nowMental
+                + maxHp + maxEnergy + maxMental
+                + physicalAttack + physicalDefense
+                + magicAttack + magicDefense
+                + accuracy + evasion + speed;
+
+            /// <summary>
             /// パラメータ補正値計算用の加算処理
             /// 減算も同じく
             /// </summary>
@@ -177,7 +187,6 @@ namespace Assets.Src.Domains.Models.Entity
                     accuracy: x.accuracy + y.accuracy,
                     evasion: x.evasion + y.evasion,
                     speed: x.speed + y.speed);
-
             /// <summary>
             /// パラメータ補正値計算用の加算処理
             /// </summary>
