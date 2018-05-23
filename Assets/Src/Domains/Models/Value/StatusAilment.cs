@@ -7,7 +7,7 @@ namespace Assets.Src.Domains.Models.Value
     /// 状態異常オブジェクト
     /// </summary>
     [Serializable]
-    public class StatusAilment : Named
+    public partial class StatusAilment : Named
     {
     }
 }
