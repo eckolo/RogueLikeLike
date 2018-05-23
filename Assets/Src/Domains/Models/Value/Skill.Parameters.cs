@@ -7,7 +7,7 @@ namespace Assets.Src.Domains.Models.Value
     public partial class Skill
     {
         /// <summary>
-        /// スキルに対して各エンティティが所持するスキル値のオブジェクト
+        /// スキルに対する数値の疑似辞書型オブジェクト
         /// </summary>
         [Serializable]
         public class Parameters : IKeyValueLike<Key, int>
