@@ -109,5 +109,24 @@ namespace Assets.Src.Domains.Models.Value
         /// モーション精度
         /// </summary>
         public int accuracy => (int)_accuracy;
+
+        /// <summary>
+        /// 状態異常付与量（レベル）
+        /// </summary>
+        [SerializeField]
+        Dictionary<StatusAilment, int> _ailmentAmount;
+        /// <summary>
+        /// 状態異常付与量（レベル）
+        /// </summary>
+        public Dictionary<StatusAilment, int> ailmentAmount => _ailmentAmount;
+        /// <summary>
+        /// 状態異常延長ターン数
+        /// </summary>
+        [SerializeField]
+        Dictionary<StatusAilment, int> _ailmentDuration;
+        /// <summary>
+        /// 状態異常延長ターン数
+        /// </summary>
+        public Dictionary<StatusAilment, int> ailmentDuration => _ailmentDuration;
     }
 }
