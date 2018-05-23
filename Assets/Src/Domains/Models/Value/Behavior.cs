@@ -1,4 +1,5 @@
-﻿using Assets.Src.Domains.Service;
+using Assets.Src.Domains.Models.Entity;
+using Assets.Src.Domains.Service;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,24 +13,42 @@ namespace Assets.Src.Domains.Models.Value
     public partial class Behavior
     {
         /// <summary>
-        /// 動作主体ステータス反映度（％）
+        /// 威力値への動作主体ステータス反映度（％）
         /// </summary>
         [SerializeField]
-        NpcStationery.Parameters _parameters = null;
+        Npc.Parameters _powerParameters = null;
         /// <summary>
-        /// 動作主体ステータス反映度（％）
+        /// 威力値への動作主体ステータス反映度（％）
         /// </summary>
-        public NpcStationery.Parameters parameters => _parameters;
+        public Npc.Parameters powerParameters => _powerParameters;
+        /// <summary>
+        /// 精度への動作主体ステータス反映度（％）
+        /// </summary>
+        [SerializeField]
+        Npc.Parameters _accuracyParameters = null;
+        /// <summary>
+        /// 精度への動作主体ステータス反映度（％）
+        /// </summary>
+        public Npc.Parameters accuracyParameters => _accuracyParameters;
 
         /// <summary>
-        /// 動作対象ステータス反映度（％）
+        /// 威力値への動作対象ステータス反映度（％）
         /// </summary>
         [SerializeField]
-        NpcStationery.Parameters _targetParameters = null;
+        Npc.Parameters _targetPowerParameters = null;
         /// <summary>
-        /// 動作対象ステータス反映度（％）
+        /// 威力値への動作対象ステータス反映度（％）
         /// </summary>
-        public NpcStationery.Parameters targetParameters => _targetParameters;
+        public Npc.Parameters targetPowerParameters => _targetPowerParameters;
+        /// <summary>
+        /// 精度への動作対象ステータス反映度（％）
+        /// </summary>
+        [SerializeField]
+        Npc.Parameters _targetAccuracyParameters = null;
+        /// <summary>
+        /// 精度への動作対象ステータス反映度（％）
+        /// </summary>
+        public Npc.Parameters targetAccuracyParameters => _targetAccuracyParameters;
 
         /// <summary>
         /// 対象範囲
@@ -44,12 +63,12 @@ namespace Assets.Src.Domains.Models.Value
         /// <summary>
         /// 吹き飛ばし方向・量
         /// </summary>
-        [SerializeField]
-        Vector2 _blowing = Vector2.zero;
+        [SerializeField, Tooltip("離れるなら正の値、引き寄せは負の値")]
+        int _blowing = 0;
         /// <summary>
         /// 吹き飛ばし方向・量
         /// </summary>
-        public Vector2 blowing => _blowing;
+        public int blowing => _blowing;
 
         /// <summary>
         /// ターゲットタイプ
@@ -62,15 +81,6 @@ namespace Assets.Src.Domains.Models.Value
         public TargetType targetType => _targetType;
 
         /// <summary>
-        /// 影響を受けるスキルと影響度合い一覧
-        /// </summary>
-        [SerializeField]
-        List<Skill.Parameters> _affectedSkills = new List<Skill.Parameters>();
-        /// <summary>
-        /// 影響を受けるスキルと影響度合いリスト
-        /// </summary>
-        public Dictionary<Skill.Key, int> affectedSkills => _affectedSkills.ToDictionary();
-        /// <summary>
         /// 同時発生エフェクト一覧
         /// </summary>
         [SerializeField]
@@ -81,24 +91,14 @@ namespace Assets.Src.Domains.Models.Value
         public IEnumerable<EffectAnimation> effects => _effects;
 
         /// <summary>
-        /// 付随属性リスト
+        /// 属性毎のモーション威力値
         /// </summary>
         [SerializeField]
-        List<AttributeType> _attributeTypes = new List<AttributeType>();
+        List<AttributeTypeParameters> _powers = new List<AttributeTypeParameters>();
         /// <summary>
-        /// 付随属性リスト
+        /// 属性毎のモーション威力値
         /// </summary>
-        public List<AttributeType> attributeTypes => _attributeTypes;
-
-        /// <summary>
-        /// モーション威力
-        /// </summary>
-        [SerializeField]
-        uint _power = 0;
-        /// <summary>
-        /// モーション威力
-        /// </summary>
-        public int power => (int)_power;
+        public List<AttributeTypeParameters> powers => _powers;
 
         /// <summary>
         /// モーション精度
