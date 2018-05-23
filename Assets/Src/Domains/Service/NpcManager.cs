@@ -1,4 +1,4 @@
-﻿using Assets.Src.Domains.Models.Entity;
+using Assets.Src.Domains.Models.Entity;
 using Assets.Src.Domains.Models.Value;
 using Assets.Src.Domains.Service;
 using System;
@@ -82,13 +82,13 @@ namespace Assets.Src.Domains.Service
         /// </summary>
         /// <param name="myself">検索起点となるNPC</param>
         /// <param name="state">指定されたゲーム状態</param>
-        /// <param name="targetType">検索条件タイプ</param>
+        /// <param name="targetDecisionType">検索条件タイプ</param>
         /// <returns>検索結果NPC</returns>
-        static Npc GetTermedNpc(this Npc myself, GameState state, TargetType targetType)
+        static Npc GetTermedNpc(this Npc myself, GameState state, TargetDecisionType targetDecisionType)
         {
             var npcs = state.npcList;
-            if(!targetType.includeMyself) npcs = npcs.Where(npc => npc != myself);
-            switch(targetType.limited)
+            if(!targetDecisionType.includeMyself) npcs = npcs.Where(npc => npc != myself);
+            switch(targetDecisionType.limited)
             {
                 case TargetType.Limited.NONE:
                     break;
@@ -100,32 +100,32 @@ namespace Assets.Src.Domains.Service
                     break;
                 default: throw new IndexOutOfRangeException();
             }
-            switch(targetType.determination)
+            switch(targetDecisionType.determination)
             {
-                case TargetType.Determination.MYSELF:
+                case TargetDecisionType.Determination.MYSELF:
                     return npcs.SingleOrDefault(npc => npc == myself);
-                case TargetType.Determination.NEAR:
+                case TargetDecisionType.Determination.NEAR:
                     var maxDistance = state.map.size.magnitude;
                     return npcs
                         .MinKeys(npc => state.map.GetNpcsDistance(myself, npc) ?? maxDistance)
                         .Pick(state.seed);
-                case TargetType.Determination.AWAY:
+                case TargetDecisionType.Determination.AWAY:
                     return npcs
                         .MaxKeys(npc => state.map.GetNpcsDistance(myself, npc) ?? 0)
                         .Pick(state.seed);
-                case TargetType.Determination.STRONG:
+                case TargetDecisionType.Determination.STRONG:
                     return npcs
                         .MaxKeys(npc => npc.parameters.CalcStrong())
                         .Pick(state.seed);
-                case TargetType.Determination.WEAK:
+                case TargetDecisionType.Determination.WEAK:
                     return npcs
                         .MinKeys(npc => npc.parameters.CalcStrong())
                         .Pick(state.seed);
-                case TargetType.Determination.LIVELY:
+                case TargetDecisionType.Determination.LIVELY:
                     return npcs
                         .MaxKeys(npc => npc.CalcLively())
                         .Pick(state.seed);
-                case TargetType.Determination.WEAKENED:
+                case TargetDecisionType.Determination.WEAKENED:
                     return npcs
                         .MinKeys(npc => npc.CalcLively())
                         .Pick(state.seed);

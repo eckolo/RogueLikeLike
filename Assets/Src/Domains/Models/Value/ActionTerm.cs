@@ -1,4 +1,4 @@
-﻿using Assets.Src.Domains.Models.Entity;
+using Assets.Src.Domains.Models.Entity;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,11 +25,11 @@ namespace Assets.Src.Domains.Models.Value
         /// 動作対象
         /// </summary>
         [SerializeField]
-        TargetType _targetType = default(TargetType);
+        TargetDecisionType _targetType = default(TargetDecisionType);
         /// <summary>
         /// 動作対象
         /// </summary>
-        public TargetType targetType => _targetType;
+        public TargetDecisionType targetType => _targetType;
 
         /// <summary>
         /// 移動方針

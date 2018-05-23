@@ -1,24 +1,14 @@
-﻿using System;
+using System;
 using UnityEngine;
 
 namespace Assets.Src.Domains.Models.Value
 {
     /// <summary>
-    /// 動作対象の種類
+    /// 動作対象の限定種別
     /// </summary>
     [Serializable]
     public partial class TargetType
     {
-        /// <summary>
-        /// 確定条件
-        /// </summary>
-        [SerializeField]
-        Determination _determination = default(Determination);
-        /// <summary>
-        /// 確定条件
-        /// </summary>
-        public Determination determination => _determination;
-
         /// <summary>
         /// 限定条件
         /// </summary>

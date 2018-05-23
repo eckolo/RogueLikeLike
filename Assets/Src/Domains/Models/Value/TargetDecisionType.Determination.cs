@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 
 namespace Assets.Src.Domains.Models.Value
 {
-    public partial class TargetType
+    public partial class TargetDecisionType
     {
         /// <summary>
         /// 対象を確定するための条件種別
