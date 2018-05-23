@@ -47,7 +47,7 @@ public static partial class TEST
                 _parameters = parameters;
             }
 
-            Parameters _parameters = null;
+            readonly Parameters _parameters = null;
             public override Parameters parameters => _parameters;
         }
     }
