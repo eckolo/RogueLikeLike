@@ -98,6 +98,9 @@ namespace Assets.Src.Domains.Service
                 case TargetType.Limited.STRANGER:
                     npcs = npcs.Where(npc => myself.friendship[npc] < 0);
                     break;
+                case TargetType.Limited.MYSELF:
+                    npcs = npcs.Where(npc => npc == myself);
+                    break;
                 default: throw new IndexOutOfRangeException();
             }
             switch(targetDecisionType.determination)

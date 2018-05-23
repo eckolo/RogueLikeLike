@@ -1,4 +1,4 @@
-﻿namespace Assets.Src.Domains.Models.Value
+namespace Assets.Src.Domains.Models.Value
 {
     public partial class TargetType
     {
@@ -18,7 +18,11 @@
             /// <summary>
             /// 敵対NPC
             /// </summary>
-            STRANGER
+            STRANGER,
+            /// <summary>
+            /// 自身
+            /// </summary>
+            MYSELF
         }
     }
 }

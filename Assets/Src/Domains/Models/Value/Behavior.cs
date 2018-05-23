@@ -12,16 +12,6 @@ namespace Assets.Src.Domains.Models.Value
     public partial class Behavior
     {
         /// <summary>
-        /// 挙動タイプ
-        /// </summary>
-        [SerializeField]
-        Patern _patern = default(Patern);
-        /// <summary>
-        /// 挙動タイプ
-        /// </summary>
-        public Patern patern => _patern;
-
-        /// <summary>
         /// 動作主体ステータス反映度（％）
         /// </summary>
         [SerializeField]
@@ -65,11 +55,11 @@ namespace Assets.Src.Domains.Models.Value
         /// ターゲットタイプ
         /// </summary>
         [SerializeField]
-        TargetableType _targetableType = default(TargetableType);
+        TargetType _targetType = default(TargetType);
         /// <summary>
         /// ターゲットタイプ
         /// </summary>
-        public TargetableType targetableType => _targetableType;
+        public TargetType targetType => _targetType;
 
         /// <summary>
         /// 影響を受けるスキルと影響度合い一覧
