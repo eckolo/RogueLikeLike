@@ -2,6 +2,7 @@ using Assets.Src.Domains.Models.Entity;
 using Assets.Src.Domains.Service;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.Src.Domains.Models.Value
@@ -111,22 +112,19 @@ namespace Assets.Src.Domains.Models.Value
         public int accuracy => (int)_accuracy;
 
         /// <summary>
-        /// 状態異常付与量（レベル）
+        /// 状態異常付与量
         /// </summary>
         [SerializeField]
-        Dictionary<StatusAilment, int> _ailmentAmount;
+        List<StatusAilment.Parameters> _ailments;
         /// <summary>
         /// 状態異常付与量（レベル）
         /// </summary>
-        public Dictionary<StatusAilment, int> ailmentAmount => _ailmentAmount;
+        public Dictionary<StatusAilment, int> ailmentAmount => _ailments.ToDictionary()
+            .ToDictionary(ailment => ailment.Key, ailment => ailment.Value.Key);
         /// <summary>
         /// 状態異常延長ターン数
         /// </summary>
-        [SerializeField]
-        Dictionary<StatusAilment, int> _ailmentDuration;
-        /// <summary>
-        /// 状態異常延長ターン数
-        /// </summary>
-        public Dictionary<StatusAilment, int> ailmentDuration => _ailmentDuration;
+        public Dictionary<StatusAilment, int> ailmentDuration => _ailments.ToDictionary()
+            .ToDictionary(ailment => ailment.Key, ailment => ailment.Value.Value);
     }
 }
