@@ -1,4 +1,4 @@
-﻿using Assets.Src.Domains.Service;
+using Assets.Src.Domains.Service;
 using NUnit.Framework;
 public static partial class TEST
 {
