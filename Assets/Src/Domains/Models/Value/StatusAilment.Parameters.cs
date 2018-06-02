@@ -14,6 +14,19 @@ namespace Assets.Src.Domains.Models.Value
         public class Parameters : IKeyValueLike<StatusAilment, KeyValuePair<int, int>>
         {
             /// <summary>
+            /// コンストラクタ
+            /// </summary>
+            /// <param name="key">状態異常オブジェクト</param>
+            /// <param name="amount">状態異常レベル</param>
+            /// <param name="duration">状態異常継続ターン数</param>
+            public Parameters(StatusAilment key, int amount, int duration)
+            {
+                _key = key;
+                _amount = amount;
+                _duration = duration;
+            }
+
+            /// <summary>
             /// 対応状態異常
             /// </summary>
             [SerializeField]

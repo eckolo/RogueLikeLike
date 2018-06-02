@@ -1,4 +1,4 @@
-﻿using Assets.Src.Domains.Models.Entity;
+using Assets.Src.Domains.Models.Entity;
 using Assets.Src.Domains.Models.Value;
 using System;
 using System.Collections.Generic;
@@ -39,9 +39,7 @@ namespace Assets.Src.Domains.Service
             var direction = selected.direction;
             var movement = selected.movement;
 
-            return ability.behaviorList
-                .Select(behavior => new Happened(actor, behavior, target, direction, movement))
-                .ToList();
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,6 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 using Assets.Src.Domains.Models.Entity;
+using System.Collections.Generic;
+using Assets.Src.Domains.Service;
+using System.Linq;
 
 namespace Assets.Src.Domains.Models.Value
 {
@@ -13,59 +16,68 @@ namespace Assets.Src.Domains.Models.Value
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        /// <param name="actor">動作主体設定値</param>
-        /// <param name="predicate">動作内容</param>
-        /// <param name="target">動作対象地点</param>
-        /// <param name="direction">動作方向</param>
-        /// <param name="movement">動作主体移動量・方向</param>
-        public Happened(Npc actor, Behavior predicate, Vector2 target, Direction direction, Vector2 movement)
+        /// <param name="target"></param>
+        /// <param name="variation"></param>
+        /// <param name="ailments"></param>
+        /// <param name="movement"></param>
+        public Happened(
+            Npc target,
+            Npc.Parameters variation,
+            Dictionary<StatusAilment, int> ailmentAmount,
+            Dictionary<StatusAilment, int> ailmentDuration,
+            Vector2 movement,
+            EffectAnimation animation)
         {
-            _actor = actor;
-            _predicate = predicate;
             _target = target;
-            _direction = direction;
+            _variation = variation;
+            _ailments = ailmentAmount
+                .Join(ailmentDuration,
+                amount => amount,
+                duration => duration,
+                (amount, duration) => new StatusAilment.Parameters(
+                    key: amount.Key,
+                    amount: amount.Value,
+                    duration: duration.Value))
+                .ToList();
             _movement = movement;
+            _animation = animation;
         }
 
         /// <summary>
+        /// 動作対象
+        /// </summary>
+        [SerializeField]
+        Npc _target;
+        /// <summary>
         /// 動作主体
         /// </summary>
-        [SerializeField]
-        Npc _actor;
-        /// <summary>
-        /// 動作主体
-        /// </summary>
-        public Npc actor => _actor;
+        public Npc target => _target;
 
         /// <summary>
-        /// 動作内容
+        /// パラメータ変動量
         /// </summary>
         [SerializeField]
-        Behavior _predicate;
+        Npc.Parameters _variation;
         /// <summary>
-        /// 動作内容
+        /// パラメータ変動量
         /// </summary>
-        public Behavior predicate => _predicate;
+        public Npc.Parameters variation => _variation;
 
         /// <summary>
-        /// 動作対象地点
+        /// 状態異常付与量
         /// </summary>
         [SerializeField]
-        Vector2 _target;
+        List<StatusAilment.Parameters> _ailments;
         /// <summary>
-        /// 動作対象地点
+        /// 状態異常付与量（レベル）
         /// </summary>
-        public Vector2 target => _target;
-
+        public Dictionary<StatusAilment, int> ailmentAmount => _ailments.ToDictionary()
+            .ToDictionary(ailment => ailment.Key, ailment => ailment.Value.Key);
         /// <summary>
-        /// 動作方向
+        /// 状態異常延長ターン数
         /// </summary>
-        [SerializeField]
-        Direction _direction;
-        /// <summary>
-        /// 動作方向
-        /// </summary>
-        public Direction direction => _direction;
+        public Dictionary<StatusAilment, int> ailmentDuration => _ailments.ToDictionary()
+            .ToDictionary(ailment => ailment.Key, ailment => ailment.Value.Value);
 
         /// <summary>
         /// 移動方向・量
@@ -76,6 +88,16 @@ namespace Assets.Src.Domains.Models.Value
         /// 移動方向・量
         /// </summary>
         public Vector2 movement => _movement;
+
+        /// <summary>
+        /// 表示エフェクト情報
+        /// </summary>
+        [SerializeField]
+        EffectAnimation _animation;
+        /// <summary>
+        /// 表示エフェクト情報
+        /// </summary>
+        public EffectAnimation animation => _animation;
 
         /// <summary>
         /// 動作内容
