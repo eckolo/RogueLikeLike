@@ -630,6 +630,7 @@ PlayerSettings:
   XboxOneSplashScreen: {fileID: 0}
   XboxOneAllowedProductIds: []
   XboxOnePersistentLocalStorageSize: 0
+  XboxOneXTitleMemory: 8
   xboxOneScriptCompiler: 0
   vrEditorSettings:
     daydream:
@@ -640,7 +641,7 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 3
-  cloudProjectId: 5a1d98bc-8e10-412c-b3d3-04282e6161d3
+  cloudProjectId: 61d0d888-d0a7-4e44-8e7c-ddb9fa9239b7
   projectName: RogueLikeLike
   organizationId: eckkolo
   cloudEnabled: 0
