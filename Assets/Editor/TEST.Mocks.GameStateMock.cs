@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Assets.Src.Domains.Models.Entity;
 using Assets.Src.Domains.Models.Value;
 using Assets.Src.Domains.Service;
