@@ -20,6 +20,17 @@ namespace Assets.Src.Domains.Models.Entity
         }
 
         /// <summary>
+        /// ゲーム設定
+        /// </summary>
+        [SerializeField]
+        Configs _configs = new Configs();
+
+        /// <summary>
+        /// ゲーム設定
+        /// </summary>
+        public Configs configs { get { return _configs; } set { _configs = value; } }
+
+        /// <summary>
         /// 所在地情報
         /// </summary>
         [SerializeField]
