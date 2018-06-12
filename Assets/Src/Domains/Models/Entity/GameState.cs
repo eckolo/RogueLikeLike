@@ -24,11 +24,20 @@ namespace Assets.Src.Domains.Models.Entity
         /// </summary>
         [SerializeField]
         Configs _configs = new Configs();
-
         /// <summary>
         /// ゲーム設定
         /// </summary>
         public Configs configs { get { return _configs; } set { _configs = value; } }
+
+        /// <summary>
+        /// 現在の外部入力可否
+        /// </summary>
+        [SerializeField]
+        bool _recievable = true;
+        /// <summary>
+        /// 現在の外部入力可否
+        /// </summary>
+        public bool recievable { get { return _recievable; } set { _recievable = value; } }
 
         /// <summary>
         /// 所在地情報

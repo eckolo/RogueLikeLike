@@ -1,3 +1,4 @@
+using Assets.Src.Domains.Value;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -39,11 +40,6 @@ namespace Assets.Src.Domains.Service
         /// boolを整数0,1に変換
         /// </summary>
         public static int ToInt(this bool value) => value ? 1 : 0;
-        /// <summary>
-        /// ボタンの入力状態を整数0,1に変換
-        /// テストはボタン入力エミュレートがよくわからなくて書いてないので注意
-        /// </summary>
-        public static int ToInt(this KeyCode buttom) => ToInt(buttom.Judge(Key.Timing.ON));
 
         /// <summary>
         /// boolを正負符号に変換
