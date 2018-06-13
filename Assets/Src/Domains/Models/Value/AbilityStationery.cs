@@ -53,6 +53,16 @@ namespace Assets.Src.Domains.Models.Value
         public Coverage movement => new Coverage(_movement);
 
         /// <summary>
+        /// 移動時表示エフェクト情報
+        /// </summary>
+        [SerializeField]
+        EffectAnimation _moveAnimation;
+        /// <summary>
+        /// 移動時表示エフェクト情報
+        /// </summary>
+        public EffectAnimation moveAnimation => _moveAnimation;
+
+        /// <summary>
         /// 挙動定義リスト
         /// </summary>
         [SerializeField]

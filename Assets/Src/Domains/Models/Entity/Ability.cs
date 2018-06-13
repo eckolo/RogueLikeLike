@@ -15,5 +15,10 @@ namespace Assets.Src.Domains.Models.Entity
         /// 挙動定義リスト
         /// </summary>
         public List<Behavior> behaviorList => stationery.behaviorList;
+
+        /// <summary>
+        /// 移動時表示エフェクト情報
+        /// </summary>
+        public EffectAnimation moveAnimation => stationery.moveAnimation;
     }
 }
