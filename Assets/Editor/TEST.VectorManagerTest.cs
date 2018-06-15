@@ -1,4 +1,4 @@
-﻿using Assets.Src.Domains.Service;
+using Assets.Src.Domains.Service;
 using NUnit.Framework;
 using UnityEngine;
 using static UnityEngine.TextAnchor;
@@ -170,6 +170,11 @@ public static partial class TEST
             Assert.AreEqual(VectorManager.Invert(vector1), new Vector2(-3, 4));
             Assert.AreEqual(VectorManager.Invert(vector2), new Vector2(4, 5));
             Assert.AreEqual(VectorManager.Invert(vector3), new Vector2(0, 34));
+        }
+        [Test]
+        public static void LinearizationTest()
+        {
+            Assert.Inconclusive();
         }
         [Test]
         public static void Within()

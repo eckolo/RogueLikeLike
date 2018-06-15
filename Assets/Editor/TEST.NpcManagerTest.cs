@@ -1,4 +1,4 @@
-﻿using Assets.Src.Domains.Service;
+using Assets.Src.Domains.Service;
 using NUnit.Framework;
 using System.Collections.Generic;
 using Assets.Src.Domains.Models.Entity;
@@ -101,6 +101,12 @@ public static partial class TEST
 
         [Test]
         public static void CalcLivelyTest()
+        {
+            Assert.Inconclusive();
+        }
+
+        [Test]
+        public static void CorrectMovingTest()
         {
             Assert.Inconclusive();
         }
