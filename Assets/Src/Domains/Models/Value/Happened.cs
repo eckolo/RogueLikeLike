@@ -11,27 +11,34 @@ namespace Assets.Src.Domains.Models.Value
     /// キャラクターの動作の結果発生した事象を表すデータクラス
     /// </summary>
     [Serializable]
-    public class Happened
+    public partial class Happened
     {
+        /// <summary>
+        /// ビルダーの生成
+        /// </summary>
+        public static Builder buider => new Builder();
+
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        /// <param name="target"></param>
-        /// <param name="variation"></param>
-        /// <param name="ailments"></param>
-        /// <param name="movement"></param>
-        public Happened(
-            Npc target,
-            Npc.Parameters variation,
-            Dictionary<StatusAilment, int> ailmentAmount,
-            Dictionary<StatusAilment, int> ailmentDuration,
-            Vector2 movement,
-            EffectAnimation animation)
+        /// <param name="target">事象発生対象</param>
+        /// <param name="variation">パラメータ変動量</param>
+        /// <param name="ailmentAmount">状態異常レベル変動量</param>
+        /// <param name="ailmentDuration">状態異常期間変動量</param>
+        /// <param name="movement">移動方向・量</param>
+        /// <param name="animation">発生エフェクト</param>
+        Happened(
+           Npc target,
+           Npc.Parameters variation,
+           Dictionary<StatusAilment, int> ailmentAmount,
+           Dictionary<StatusAilment, int> ailmentDuration,
+           Vector2 movement,
+           EffectAnimation animation)
         {
             _target = target;
             _variation = variation;
             _ailments = ailmentAmount
-                .Join(ailmentDuration,
+                ?.Join(ailmentDuration,
                 amount => amount,
                 duration => duration,
                 (amount, duration) => new StatusAilment.Parameters(
