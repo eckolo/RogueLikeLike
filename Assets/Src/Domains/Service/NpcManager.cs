@@ -236,5 +236,18 @@ namespace Assets.Src.Domains.Service
         {
             throw new NotImplementedException();
         }
+
+        /// <summary>
+        /// 目標座標に対して移動可能な移動先座標を算出
+        /// </summary>
+        /// <param name="actor">移動者</param>
+        /// <param name="map">マップ情報</param>
+        /// <param name="movement">目標移動先座標</param>
+        /// <param name="slipThrough">移動途中に障害物があった場合にそこで止まるか否か</param>
+        /// <returns></returns>
+        public static Vector2 CorrectMoving(this Npc actor, Map map, Vector2 movement, bool slipThrough = false)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

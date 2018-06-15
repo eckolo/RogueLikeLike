@@ -145,6 +145,16 @@ namespace Assets.Src.Domains.Service
         /// <returns>左右反転されたベクトル</returns>
         public static Vector2 Invert(this Vector2 origin) => new Vector2(origin.x * -1, origin.y);
         /// <summary>
+        /// 始点座標から終点座標まで直線を引いた際に通るマスを始点側から順に列挙
+        /// </summary>
+        /// <param name="start">始点座標</param>
+        /// <param name="end">終点座標</param>
+        /// <returns></returns>
+        public static List<Vector2> Linearization(this Vector2 start, Vector2 end)
+        {
+            throw new NotImplementedException();
+        }
+        /// <summary>
         /// ベクトルを指定枠内に収まる値に補正
         /// </summary>
         /// <param name="origin">元ベクトル</param>
