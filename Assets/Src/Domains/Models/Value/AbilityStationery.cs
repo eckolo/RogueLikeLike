@@ -56,7 +56,7 @@ namespace Assets.Src.Domains.Models.Value
         /// 移動時表示エフェクト情報
         /// </summary>
         [SerializeField]
-        EffectAnimation _moveAnimation;
+        EffectAnimation _moveAnimation = null;
         /// <summary>
         /// 移動時表示エフェクト情報
         /// </summary>

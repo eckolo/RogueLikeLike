@@ -115,7 +115,7 @@ namespace Assets.Src.Domains.Models.Value
         /// 状態異常付与量
         /// </summary>
         [SerializeField]
-        List<StatusAilment.Parameters> _ailments;
+        List<StatusAilment.Parameters> _ailments = new List<StatusAilment.Parameters>();
         /// <summary>
         /// 状態異常付与量（レベル）
         /// </summary>
