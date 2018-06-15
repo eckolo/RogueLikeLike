@@ -15,7 +15,7 @@ public static partial class TEST
         [Test]
         public static void BuildTest()
         {
-            var happened = Happened.buider.Build();
+            var happened = Happened.builder.Build();
 
             Assert.IsNotNull(happened);
 
@@ -40,7 +40,7 @@ public static partial class TEST
             var speed = 4;
             var vector = new Vector2(1, 5);
 
-            var happened = Happened.buider
+            var happened = Happened.builder
                 .Target(Mocks.NpcMock.GetSpeedMock(speed))
                 .Variation(new Npc.Parameters(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, speed: speed))
                 .AilmentAmount(new System.Collections.Generic.Dictionary<StatusAilment, int> { { new StatusAilment(), 0 } })
@@ -74,7 +74,7 @@ public static partial class TEST
         [Test]
         public static void BuildNullTest()
         {
-            var happened = Happened.buider
+            var happened = Happened.builder
                 .Target(null)
                 .Variation(null)
                 .AilmentAmount(null)
@@ -92,7 +92,7 @@ public static partial class TEST
         [Test]
         public static void BuildNullTest2()
         {
-            var happened = Happened.buider
+            var happened = Happened.builder
                 .AilmentDuration(null)
                 .Build();
 

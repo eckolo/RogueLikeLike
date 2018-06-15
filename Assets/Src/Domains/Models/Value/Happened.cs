@@ -16,7 +16,7 @@ namespace Assets.Src.Domains.Models.Value
         /// <summary>
         /// ビルダーの生成
         /// </summary>
-        public static Builder buider => new Builder();
+        public static Builder builder => new Builder();
 
         /// <summary>
         /// コンストラクタ
