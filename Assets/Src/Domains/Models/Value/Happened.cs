@@ -37,15 +37,16 @@ namespace Assets.Src.Domains.Models.Value
         {
             _target = target;
             _variation = variation;
-            _ailments = ailmentAmount
-                ?.Join(ailmentDuration,
-                amount => amount,
-                duration => duration,
-                (amount, duration) => new StatusAilment.Parameters(
-                    key: amount.Key,
-                    amount: amount.Value,
-                    duration: duration.Value))
-                .ToList();
+            if(ailmentAmount == null || ailmentDuration == null) _ailments = null;
+            else _ailments = ailmentAmount
+               .Join(ailmentDuration,
+               amount => amount.Key.name,
+               duration => duration.Key.name,
+               (amount, duration) => new StatusAilment.Parameters(
+                   key: amount.Key,
+                   amount: amount.Value,
+                   duration: duration.Value))
+               .ToList();
             _movement = movement;
             _animation = animation;
         }
@@ -78,12 +79,14 @@ namespace Assets.Src.Domains.Models.Value
         /// <summary>
         /// 状態異常付与量（レベル）
         /// </summary>
-        public Dictionary<StatusAilment, int> ailmentAmount => _ailments.ToDictionary()
+        public Dictionary<StatusAilment, int> ailmentAmount => _ailments
+            ?.ToDictionary()
             .ToDictionary(ailment => ailment.Key, ailment => ailment.Value.Key);
         /// <summary>
         /// 状態異常延長ターン数
         /// </summary>
-        public Dictionary<StatusAilment, int> ailmentDuration => _ailments.ToDictionary()
+        public Dictionary<StatusAilment, int> ailmentDuration => _ailments
+            ?.ToDictionary()
             .ToDictionary(ailment => ailment.Key, ailment => ailment.Value.Value);
 
         /// <summary>
