@@ -1,4 +1,4 @@
-﻿using Assets.Src.Domains.Models.Interface;
+using Assets.Src.Domains.Models.Interface;
 using Assets.Src.Domains.Models.Value;
 using System;
 using System.Collections.Generic;
@@ -74,11 +74,11 @@ namespace Assets.Src.Domains.Models.Entity
         /// 状態異常リスト
         /// </summary>
         [SerializeField]
-        IEnumerable<StatusAilment> _statusAilmentList = new List<StatusAilment>();
+        IEnumerable<Ailment.Stationery> _statusAilmentList = new List<Ailment.Stationery>();
         /// <summary>
         /// 状態異常リスト
         /// </summary>
-        public IEnumerable<StatusAilment> statusAilmentList
+        public IEnumerable<Ailment.Stationery> statusAilmentList
         {
             get { return _statusAilmentList; }
             set { _statusAilmentList = value; }

@@ -13,10 +13,10 @@ namespace Assets.Src.Domains.Models.Value
         {
             Npc _target = null;
             Npc.Parameters _variation = Npc.Parameters.zero;
-            Dictionary<StatusAilment, int> _ailmentAmount
-                = new Dictionary<StatusAilment, int>();
-            Dictionary<StatusAilment, int> _ailmentDuration
-                = new Dictionary<StatusAilment, int>();
+            Dictionary<Ailment.Stationery, int> _ailmentAmount
+                = new Dictionary<Ailment.Stationery, int>();
+            Dictionary<Ailment.Stationery, int> _ailmentDuration
+                = new Dictionary<Ailment.Stationery, int>();
             Vector2 _movement = Vector2.zero;
             EffectAnimation _animation = null;
 
@@ -57,7 +57,7 @@ namespace Assets.Src.Domains.Models.Value
             /// </summary>
             /// <param name="_ailmentAmount">設定値</param>
             /// <returns>値の設定されたビルダー</returns>
-            public Builder AilmentAmount(Dictionary<StatusAilment, int> _ailmentAmount)
+            public Builder AilmentAmount(Dictionary<Ailment.Stationery, int> _ailmentAmount)
             {
                 this._ailmentAmount = _ailmentAmount;
                 return this;
@@ -67,7 +67,7 @@ namespace Assets.Src.Domains.Models.Value
             /// </summary>
             /// <param name="_ailmentDuration">設定値</param>
             /// <returns>値の設定されたビルダー</returns>
-            public Builder AilmentDuration(Dictionary<StatusAilment, int> _ailmentDuration)
+            public Builder AilmentDuration(Dictionary<Ailment.Stationery, int> _ailmentDuration)
             {
                 this._ailmentDuration = _ailmentDuration;
                 return this;
