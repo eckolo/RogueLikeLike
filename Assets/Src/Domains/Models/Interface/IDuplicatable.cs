@@ -1,4 +1,4 @@
-﻿namespace Assets.Src.Domains.Models.Interface
+namespace Assets.Src.Domains.Models.Interface
 {
     /// <summary>
     /// シャローコピー可能オブジェクトインターフェース
