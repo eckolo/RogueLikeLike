@@ -1,3 +1,6 @@
+using System;
+using UnityEngine;
+
 public static partial class TEST
 {
     partial class Mocks
@@ -5,11 +8,28 @@ public static partial class TEST
         /// <summary>
         /// ただ値を持つだけのクラスのモック
         /// </summary>
+        [Serializable]
         public class MockClass
         {
-            public string text1;
-            public string text2;
-            public int number;
+            [SerializeField]
+            public string text1 = "";
+            [SerializeField]
+            public string text2 = "";
+            [SerializeField]
+            public int number = 0;
+            [SerializeField]
+            public InnerMockClass innerClass = new InnerMockClass();
+
+            [Serializable]
+            public class InnerMockClass
+            {
+                [SerializeField]
+                public string text1 = "";
+                [SerializeField]
+                public string text2 = "";
+                [SerializeField]
+                public int number = 0;
+            }
         }
     }
 }
