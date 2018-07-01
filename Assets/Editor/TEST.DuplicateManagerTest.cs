@@ -31,6 +31,7 @@ public static partial class TEST
             Assert.AreEqual(origin.text1, duplicated.text1);
             Assert.AreEqual(origin.text2, duplicated.text2);
             Assert.AreEqual(origin.number, duplicated.number);
+
             Assert.IsNotNull(duplicated.innerClass);
             Assert.AreSame(origin.innerClass, duplicated.innerClass);
             Assert.AreEqual(origin.innerClass.text1, duplicated.innerClass.text1);
@@ -61,6 +62,7 @@ public static partial class TEST
             Assert.AreEqual(origin.text1, duplicated.text1);
             Assert.AreEqual(origin.text2, duplicated.text2);
             Assert.AreEqual(origin.number, duplicated.number);
+
             Assert.IsNotNull(duplicated.innerClass);
             Assert.AreNotSame(origin.innerClass, duplicated.innerClass);
             Assert.AreEqual(origin.innerClass.text1, duplicated.innerClass.text1);

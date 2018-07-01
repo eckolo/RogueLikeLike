@@ -13,23 +13,30 @@ public static partial class TEST
         public class MockClass : IDuplicatable<MockClass>
         {
             [SerializeField]
-            public string text1 = "";
+            private string _text1 = "";
+            public string text1 { get { return _text1; } set { _text1 = value; } }
             [SerializeField]
-            public string text2 = "";
+            private string _text2 = "";
+            public string text2 { get { return _text2; } set { _text2 = value; } }
             [SerializeField]
-            public int number = 0;
+            private int _number = 0;
+            public int number { get { return _number; } set { _number = value; } }
             [SerializeField]
-            public InnerMockClass innerClass = new InnerMockClass();
+            private InnerMockClass _innerClass = new InnerMockClass();
+            public InnerMockClass innerClass { get { return _innerClass; } set { _innerClass = value; } }
 
             [Serializable]
             public class InnerMockClass
             {
                 [SerializeField]
-                public string text1 = "";
+                private string _text1 = "";
+                public string text1 { get { return _text1; } set { _text1 = value; } }
                 [SerializeField]
-                public string text2 = "";
+                private string _text2 = "";
+                public string text2 { get { return _text2; } set { _text2 = value; } }
                 [SerializeField]
-                public int number = 0;
+                private int _number = 0;
+                public int number { get { return _number; } set { _number = value; } }
             }
 
             /// <summary>
