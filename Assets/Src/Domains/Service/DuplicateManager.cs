@@ -28,9 +28,6 @@ namespace Assets.Src.Domains.Service
         /// <param name="origin">複製される雛形オブジェクト</param>
         /// <returns>複製されたオブジェクト</returns>
         public static Duplicated DuplicateFull<Duplicated>(this Duplicated origin)
-        {
-            var json = JsonUtility.ToJson(origin);
-            return JsonUtility.FromJson<Duplicated>(json);
-        }
+            => JsonUtility.FromJson<Duplicated>(JsonUtility.ToJson(origin));
     }
 }

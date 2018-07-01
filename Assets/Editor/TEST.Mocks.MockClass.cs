@@ -1,3 +1,4 @@
+using Assets.Src.Domains.Models.Interface;
 using System;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ public static partial class TEST
         /// ただ値を持つだけのクラスのモック
         /// </summary>
         [Serializable]
-        public class MockClass
+        public class MockClass : IDuplicatable<MockClass>
         {
             [SerializeField]
             public string text1 = "";
@@ -30,6 +31,12 @@ public static partial class TEST
                 [SerializeField]
                 public int number = 0;
             }
+
+            /// <summary>
+            /// シャローコピーメソッド
+            /// </summary>
+            /// <returns>コピーされたオブジェクト</returns>
+            public MockClass MemberwiseClonePublic() => (MockClass)MemberwiseClone();
         }
     }
 }
