@@ -8,22 +8,22 @@ public static partial class TEST
     /// </summary>
     public static class DuplicateManagerTest
     {
+        static Mocks.MockClass origin = new Mocks.MockClass
+        {
+            text1 = "text1",
+            text2 = "text2",
+            number = 3,
+            innerClass = new Mocks.MockClass.InnerMockClass
+            {
+                text1 = "text1-1",
+                text2 = "text1-2",
+                number = 12
+            }
+        };
+
         [Test]
         public static void DuplicateTest()
         {
-            var origin = new Mocks.MockClass
-            {
-                text1 = "text1",
-                text2 = "text2",
-                number = 3,
-                innerClass = new Mocks.MockClass.InnerMockClass
-                {
-                    text1 = "text1-1",
-                    text2 = "text1-2",
-                    number = 12
-                }
-            };
-
             var duplicated = origin.Duplicate();
 
             Assert.IsNotNull(duplicated);
@@ -42,19 +42,6 @@ public static partial class TEST
         [Test]
         public static void DuplicateFullTest()
         {
-            var origin = new Mocks.MockClass
-            {
-                text1 = "text1",
-                text2 = "text2",
-                number = 3,
-                innerClass = new Mocks.MockClass.InnerMockClass
-                {
-                    text1 = "text1-1",
-                    text2 = "text1-2",
-                    number = 12
-                }
-            };
-
             var duplicated = origin.DuplicateFull();
 
             Assert.IsNotNull(duplicated);
