@@ -43,8 +43,8 @@ public static partial class TEST
             var happened = Happened.builder
                 .Target(Mocks.NpcMock.GetSpeedMock(speed))
                 .Variation(new Npc.Parameters(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, speed: speed))
-                .AilmentAmount(new System.Collections.Generic.Dictionary<Ailment.Stationery, int> { { new Ailment.Stationery(), 0 } })
-                .AilmentDuration(new System.Collections.Generic.Dictionary<Ailment.Stationery, int> { { new Ailment.Stationery(), 0 } })
+                .AilmentAmount(new System.Collections.Generic.Dictionary<Ailment, int> { { new Ailment(), 0 } })
+                .AilmentDuration(new System.Collections.Generic.Dictionary<Ailment, int> { { new Ailment(), 0 } })
                 .Movement(vector)
                 .Animation(new EffectAnimation())
                 .Build();

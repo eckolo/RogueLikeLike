@@ -30,8 +30,8 @@ namespace Assets.Src.Domains.Models.Value
         Happened(
            Npc target,
            Npc.Parameters variation,
-           Dictionary<Ailment.Stationery, int> ailmentAmount,
-           Dictionary<Ailment.Stationery, int> ailmentDuration,
+           Dictionary<Ailment, int> ailmentAmount,
+           Dictionary<Ailment, int> ailmentDuration,
            Vector2 movement,
            EffectAnimation animation)
         {
@@ -42,7 +42,7 @@ namespace Assets.Src.Domains.Models.Value
                .Join(ailmentDuration,
                amount => amount.Key.name,
                duration => duration.Key.name,
-               (amount, duration) => new Ailment.Stationery.Parameters(
+               (amount, duration) => new Ailment.Parameters(
                    key: amount.Key,
                    amount: amount.Value,
                    duration: duration.Value))
@@ -75,17 +75,17 @@ namespace Assets.Src.Domains.Models.Value
         /// 状態異常付与量
         /// </summary>
         [SerializeField]
-        List<Ailment.Stationery.Parameters> _ailments;
+        List<Ailment.Parameters> _ailments;
         /// <summary>
         /// 状態異常付与量（レベル）
         /// </summary>
-        public Dictionary<Ailment.Stationery, int> ailmentAmount => _ailments
+        public Dictionary<Ailment, int> ailmentAmount => _ailments
             ?.ToDictionary()
             .ToDictionary(ailment => ailment.Key, ailment => ailment.Value.Key);
         /// <summary>
         /// 状態異常延長ターン数
         /// </summary>
-        public Dictionary<Ailment.Stationery, int> ailmentDuration => _ailments
+        public Dictionary<Ailment, int> ailmentDuration => _ailments
             ?.ToDictionary()
             .ToDictionary(ailment => ailment.Key, ailment => ailment.Value.Value);
 

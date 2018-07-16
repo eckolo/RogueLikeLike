@@ -115,16 +115,16 @@ namespace Assets.Src.Domains.Models.Value
         /// 状態異常付与量
         /// </summary>
         [SerializeField]
-        List<Ailment.Stationery.Parameters> _ailments = new List<Ailment.Stationery.Parameters>();
+        List<Ailment.Parameters> _ailments = new List<Ailment.Parameters>();
         /// <summary>
         /// 状態異常付与量（レベル）
         /// </summary>
-        public Dictionary<Ailment.Stationery, int> ailmentAmount => _ailments.ToDictionary()
+        public Dictionary<Ailment, int> ailmentAmount => _ailments.ToDictionary()
             .ToDictionary(ailment => ailment.Key, ailment => ailment.Value.Key);
         /// <summary>
         /// 状態異常延長ターン数
         /// </summary>
-        public Dictionary<Ailment.Stationery, int> ailmentDuration => _ailments.ToDictionary()
+        public Dictionary<Ailment, int> ailmentDuration => _ailments.ToDictionary()
             .ToDictionary(ailment => ailment.Key, ailment => ailment.Value.Value);
     }
 }

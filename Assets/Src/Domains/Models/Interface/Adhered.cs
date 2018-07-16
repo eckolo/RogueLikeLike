@@ -1,4 +1,4 @@
-﻿using Assets.Src.Domains.Models.Value;
+using Assets.Src.Domains.Models.Value;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,7 +8,8 @@ namespace Assets.Src.Domains.Models.Interface
     /// <summary>
     /// 形容されたオブジェクトの雛形
     /// </summary>
-    public abstract class Adhered<TStationery> where TStationery : Named
+    /// <typeparam name="TStationery">形容対象の型</typeparam>
+    public abstract class Adhered<TStationery> : Substance<TStationery> where TStationery : Named
     {
         /// <summary>
         /// 形容詞リスト
@@ -24,15 +25,5 @@ namespace Assets.Src.Domains.Models.Interface
         /// 主要形容詞
         /// </summary>
         public Adjective mainAdjective => adjectives.First();
-
-        /// <summary>
-        /// 雛形情報
-        /// </summary>
-        [SerializeField]
-        TStationery _stationery = null;
-        /// <summary>
-        /// 雛形情報
-        /// </summary>
-        protected TStationery stationery => _stationery;
     }
 }

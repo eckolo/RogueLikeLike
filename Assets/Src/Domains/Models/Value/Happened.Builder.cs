@@ -13,10 +13,8 @@ namespace Assets.Src.Domains.Models.Value
         {
             Npc _target = null;
             Npc.Parameters _variation = Npc.Parameters.zero;
-            Dictionary<Ailment.Stationery, int> _ailmentAmount
-                = new Dictionary<Ailment.Stationery, int>();
-            Dictionary<Ailment.Stationery, int> _ailmentDuration
-                = new Dictionary<Ailment.Stationery, int>();
+            Dictionary<Ailment, int> _ailmentAmount = new Dictionary<Ailment, int>();
+            Dictionary<Ailment, int> _ailmentDuration = new Dictionary<Ailment, int>();
             Vector2 _movement = Vector2.zero;
             EffectAnimation _animation = null;
 
@@ -33,60 +31,60 @@ namespace Assets.Src.Domains.Models.Value
                 animation: _animation);
 
             /// <summary>
-            /// 値の設定
+            /// 動作対象を設定する
             /// </summary>
-            /// <param name="_target">設定値</param>
-            /// <returns>値の設定されたビルダー</returns>
+            /// <param name="_target">動作対象</param>
+            /// <returns>動作対象の設定されたビルダー</returns>
             public Builder Target(Npc _target)
             {
                 this._target = _target;
                 return this;
             }
             /// <summary>
-            /// 値の設定
+            /// パラメータ変動量を設定する
             /// </summary>
-            /// <param name="_variation">設定値</param>
-            /// <returns>値の設定されたビルダー</returns>
+            /// <param name="_variation">パラメータ変動量</param>
+            /// <returns>パラメータ変動量の設定されたビルダー</returns>
             public Builder Variation(Npc.Parameters _variation)
             {
                 this._variation = _variation;
                 return this;
             }
             /// <summary>
-            /// 値の設定
+            /// 状態異常付与量（レベル）を設定する
             /// </summary>
-            /// <param name="_ailmentAmount">設定値</param>
-            /// <returns>値の設定されたビルダー</returns>
-            public Builder AilmentAmount(Dictionary<Ailment.Stationery, int> _ailmentAmount)
+            /// <param name="_ailmentAmount">状態異常付与量（レベル）</param>
+            /// <returns>状態異常付与量（レベル）の設定されたビルダー</returns>
+            public Builder AilmentAmount(Dictionary<Ailment, int> _ailmentAmount)
             {
                 this._ailmentAmount = _ailmentAmount;
                 return this;
             }
             /// <summary>
-            /// 値の設定
+            /// 状態異常延長ターン数を設定する
             /// </summary>
-            /// <param name="_ailmentDuration">設定値</param>
-            /// <returns>値の設定されたビルダー</returns>
-            public Builder AilmentDuration(Dictionary<Ailment.Stationery, int> _ailmentDuration)
+            /// <param name="_ailmentDuration">状態異常延長ターン数</param>
+            /// <returns>状態異常延長ターン数の設定されたビルダー</returns>
+            public Builder AilmentDuration(Dictionary<Ailment, int> _ailmentDuration)
             {
                 this._ailmentDuration = _ailmentDuration;
                 return this;
             }
             /// <summary>
-            /// 値の設定
+            /// 移動方向・量を設定する
             /// </summary>
-            /// <param name="_movement">設定値</param>
-            /// <returns>値の設定されたビルダー</returns>
+            /// <param name="_movement">移動方向・量</param>
+            /// <returns>移動方向・量の設定されたビルダー</returns>
             public Builder Movement(Vector2 _movement)
             {
                 this._movement = _movement;
                 return this;
             }
             /// <summary>
-            /// 値の設定
+            /// 表示エフェクト情報を設定する
             /// </summary>
-            /// <param name="_animation">設定値</param>
-            /// <returns>値の設定されたビルダー</returns>
+            /// <param name="_animation">表示エフェクト情報</param>
+            /// <returns>表示エフェクト情報の設定されたビルダー</returns>
             public Builder Animation(EffectAnimation _animation)
             {
                 this._animation = _animation;
