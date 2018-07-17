@@ -89,15 +89,18 @@ namespace Assets.Src.Domains.Service
         /// <param name="state">現在のゲーム状態</param>
         /// <param name="actor">移動者</param>
         /// <param name="movement">予定移動量</param>
-        /// <param name="effect">移動エフェクト</param>
+        /// <param name="animations">移動エフェクト</param>
         /// <returns>移動のみの発生事象クラス</returns>
-        static Happened GenerateMoveHappened(this GameState state, Npc actor, Vector2 movement, EffectAnimation effect)
-        {
-            return Happened.builder
+        static ValueTuple<GameState, Happened> GenerateMoveHappened(
+            this GameState state,
+            Npc actor,
+            Vector2 movement,
+            List<EffectAnimation> animations)
+            => Happened.builder
                 .Target(actor)
-                .Movement(actor.CorrectMoving(state.map, movement))
-                .Animation(effect)
-                .Build();
-        }
+                .Movement(movement.CorrectMoving(actor, state.map))
+                .Animations(animations)
+                .Build()
+                .GenerateNextState(state);
     }
 }

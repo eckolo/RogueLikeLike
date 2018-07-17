@@ -56,11 +56,11 @@ namespace Assets.Src.Domains.Models.Value
         /// 移動時表示エフェクト情報
         /// </summary>
         [SerializeField]
-        EffectAnimation _moveAnimation = null;
+        List<EffectAnimation> _moveAnimations = new List<EffectAnimation>();
         /// <summary>
         /// 移動時表示エフェクト情報
         /// </summary>
-        public EffectAnimation moveAnimation => _moveAnimation;
+        public List<EffectAnimation> moveAnimations => _moveAnimations;
 
         /// <summary>
         /// 挙動定義リスト

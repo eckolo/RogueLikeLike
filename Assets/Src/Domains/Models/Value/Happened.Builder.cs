@@ -16,7 +16,7 @@ namespace Assets.Src.Domains.Models.Value
             Dictionary<Ailment, int> _ailmentAmount = new Dictionary<Ailment, int>();
             Dictionary<Ailment, int> _ailmentDuration = new Dictionary<Ailment, int>();
             Vector2 _movement = Vector2.zero;
-            EffectAnimation _animation = null;
+            List<EffectAnimation> _animations = new List<EffectAnimation>();
 
             /// <summary>
             /// クラス生成
@@ -28,7 +28,7 @@ namespace Assets.Src.Domains.Models.Value
                 ailmentAmount: _ailmentAmount,
                 ailmentDuration: _ailmentDuration,
                 movement: _movement,
-                animation: _animation);
+                animations: _animations);
 
             /// <summary>
             /// 動作対象を設定する
@@ -83,11 +83,11 @@ namespace Assets.Src.Domains.Models.Value
             /// <summary>
             /// 表示エフェクト情報を設定する
             /// </summary>
-            /// <param name="_animation">表示エフェクト情報</param>
+            /// <param name="_animations">表示エフェクト情報</param>
             /// <returns>表示エフェクト情報の設定されたビルダー</returns>
-            public Builder Animation(EffectAnimation _animation)
+            public Builder Animations(List<EffectAnimation> _animations)
             {
-                this._animation = _animation;
+                this._animations = _animations;
                 return this;
             }
         }

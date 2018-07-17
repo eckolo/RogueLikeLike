@@ -2,6 +2,7 @@ using Assets.Src.Domains.Models.Entity;
 using Assets.Src.Domains.Models.Value;
 using Assets.Src.Domains.Service;
 using NUnit.Framework;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -32,7 +33,8 @@ public static partial class TEST
 
             Assert.AreEqual(Vector2.zero, happened.movement);
 
-            Assert.IsNull(happened.animation);
+            Assert.IsNotNull(happened.animations);
+            Assert.IsFalse(happened.animations.Any());
         }
         [Test]
         public static void BuildTest2()
@@ -43,10 +45,10 @@ public static partial class TEST
             var happened = Happened.builder
                 .Target(Mocks.NpcMock.GetSpeedMock(speed))
                 .Variation(new Npc.Parameters(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, speed: speed))
-                .AilmentAmount(new System.Collections.Generic.Dictionary<Ailment, int> { { new Ailment(), 0 } })
-                .AilmentDuration(new System.Collections.Generic.Dictionary<Ailment, int> { { new Ailment(), 0 } })
+                .AilmentAmount(new Dictionary<Ailment, int> { { new Ailment(), 0 } })
+                .AilmentDuration(new Dictionary<Ailment, int> { { new Ailment(), 0 } })
                 .Movement(vector)
-                .Animation(new EffectAnimation())
+                .Animations(new List<EffectAnimation> { new EffectAnimation() })
                 .Build();
 
             Assert.IsNotNull(happened);
@@ -69,7 +71,8 @@ public static partial class TEST
 
             Assert.AreEqual(vector, happened.movement);
 
-            Assert.IsNotNull(happened.animation);
+            Assert.IsNotNull(happened.animations);
+            Assert.IsTrue(happened.animations.Any());
         }
         [Test]
         public static void BuildNullTest()
@@ -79,7 +82,7 @@ public static partial class TEST
                 .Variation(null)
                 .AilmentAmount(null)
                 .AilmentDuration(null)
-                .Animation(null)
+                .Animations(null)
                 .Build();
 
             Assert.IsNotNull(happened);
@@ -87,7 +90,7 @@ public static partial class TEST
             Assert.IsNull(happened.variation);
             Assert.IsNull(happened.ailmentAmount);
             Assert.IsNull(happened.ailmentDuration);
-            Assert.IsNull(happened.animation);
+            Assert.IsNull(happened.animations);
         }
         [Test]
         public static void BuildNullTest2()

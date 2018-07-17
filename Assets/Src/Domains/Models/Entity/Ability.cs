@@ -19,6 +19,6 @@ namespace Assets.Src.Domains.Models.Entity
         /// <summary>
         /// 移動時表示エフェクト情報
         /// </summary>
-        public EffectAnimation moveAnimation => stationery.moveAnimation;
+        public List<EffectAnimation> moveAnimations => stationery.moveAnimations;
     }
 }

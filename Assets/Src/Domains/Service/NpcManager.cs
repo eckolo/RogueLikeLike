@@ -245,7 +245,7 @@ namespace Assets.Src.Domains.Service
         /// <param name="movement">目標移動先座標</param>
         /// <param name="slipThrough">移動途中に障害物があった場合にそこで止まるか否か</param>
         /// <returns></returns>
-        public static Vector2 CorrectMoving(this Npc actor, Map map, Vector2 movement, bool slipThrough = false)
+        public static Vector2 CorrectMoving(this Vector2 movement, Npc actor, Map map, bool slipThrough = false)
         {
             throw new NotImplementedException();
         }

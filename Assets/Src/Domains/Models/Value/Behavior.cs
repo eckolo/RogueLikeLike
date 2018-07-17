@@ -85,11 +85,11 @@ namespace Assets.Src.Domains.Models.Value
         /// 同時発生エフェクト一覧
         /// </summary>
         [SerializeField]
-        List<EffectAnimation> _effects = new List<EffectAnimation>();
+        List<EffectAnimation> _animations = new List<EffectAnimation>();
         /// <summary>
         /// 同時発生エフェクト一覧
         /// </summary>
-        public IEnumerable<EffectAnimation> effects => _effects;
+        public List<EffectAnimation> animations => _animations;
 
         /// <summary>
         /// 属性毎のモーション威力値

@@ -26,14 +26,14 @@ namespace Assets.Src.Domains.Models.Value
         /// <param name="ailmentAmount">状態異常レベル変動量</param>
         /// <param name="ailmentDuration">状態異常期間変動量</param>
         /// <param name="movement">移動方向・量</param>
-        /// <param name="animation">発生エフェクト</param>
+        /// <param name="animations">発生エフェクト</param>
         Happened(
            Npc target,
            Npc.Parameters variation,
            Dictionary<Ailment, int> ailmentAmount,
            Dictionary<Ailment, int> ailmentDuration,
            Vector2 movement,
-           EffectAnimation animation)
+           List<EffectAnimation> animations)
         {
             _target = target;
             _variation = variation;
@@ -48,7 +48,7 @@ namespace Assets.Src.Domains.Models.Value
                    duration: duration.Value))
                .ToList();
             _movement = movement;
-            _animation = animation;
+            _animations = animations;
         }
 
         /// <summary>
@@ -100,14 +100,14 @@ namespace Assets.Src.Domains.Models.Value
         public Vector2 movement => _movement;
 
         /// <summary>
-        /// 表示エフェクト情報
+        /// 同時発生エフェクト一覧
         /// </summary>
         [SerializeField]
-        EffectAnimation _animation;
+        List<EffectAnimation> _animations = new List<EffectAnimation>();
         /// <summary>
-        /// 表示エフェクト情報
+        /// 同時発生エフェクト一覧
         /// </summary>
-        public EffectAnimation animation => _animation;
+        public IEnumerable<EffectAnimation> animations => _animations;
 
         /// <summary>
         /// 動作内容

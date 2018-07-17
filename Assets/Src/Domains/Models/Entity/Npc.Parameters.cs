@@ -1,4 +1,4 @@
-﻿using Assets.Src.Domains.Models.Value;
+using Assets.Src.Domains.Models.Value;
 using System;
 using UnityEngine;
 
