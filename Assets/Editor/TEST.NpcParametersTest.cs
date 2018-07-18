@@ -1,4 +1,4 @@
-﻿using Assets.Src.Domains.Models.Entity;
+using Assets.Src.Domains.Models.Entity;
 using Assets.Src.Domains.Models.Value;
 using NUnit.Framework;
 public static partial class TEST
@@ -20,9 +20,9 @@ public static partial class TEST
               evasion: Default.NpcMock.EVASION,
               speed: Default.NpcMock.SPEED);
         static Npc.Parameters parameters = new Npc.Parameters(
-              nowHp: Default.NpcMock.MAX_HP,
-              nowEnergy: Default.NpcMock.MAX_ENERGY,
-              nowMental: Default.NpcMock.MAX_MENTAL,
+              nowHp: Default.NpcMock.NOW_HP,
+              nowEnergy: Default.NpcMock.NOW_ENERGY,
+              nowMental: Default.NpcMock.NOW_MENTAL,
               maxHp: Default.NpcMock.MAX_HP,
               maxEnergy: Default.NpcMock.MAX_ENERGY,
               maxMental: Default.NpcMock.MAX_MENTAL,
@@ -130,6 +130,42 @@ public static partial class TEST
             Assert.AreEqual(result.accuracy, parameters.accuracy * parametersStationery.accuracy);
             Assert.AreEqual(result.evasion, parameters.evasion * parametersStationery.evasion);
             Assert.AreEqual(result.speed, parameters.speed * parametersStationery.speed);
+        }
+
+        [Test]
+        public static void IndexerTest1()
+        {
+            Assert.AreEqual(parametersStationery[ParameterType.NOW_HP], Default.NpcMock.MAX_HP);
+            Assert.AreEqual(parametersStationery[ParameterType.NOW_ENERGY], Default.NpcMock.MAX_ENERGY);
+            Assert.AreEqual(parametersStationery[ParameterType.NOW_MENTAL], Default.NpcMock.MAX_MENTAL);
+            Assert.AreEqual(parametersStationery[ParameterType.MAX_HP], Default.NpcMock.MAX_HP);
+            Assert.AreEqual(parametersStationery[ParameterType.MAX_ENERGY], Default.NpcMock.MAX_ENERGY);
+            Assert.AreEqual(parametersStationery[ParameterType.MAX_MENTAL], Default.NpcMock.MAX_MENTAL);
+            Assert.AreEqual(parametersStationery[ParameterType.PHYSICAL_ATTACK], Default.NpcMock.PHYSICAL_ATTACK);
+            Assert.AreEqual(parametersStationery[ParameterType.PHYSICAL_DEFENSE], Default.NpcMock.PHYSICAL_DEFENSE);
+            Assert.AreEqual(parametersStationery[ParameterType.MAGIC_ATTACK], Default.NpcMock.MAGIC_ATTACK);
+            Assert.AreEqual(parametersStationery[ParameterType.MAGIC_DEFENSE], Default.NpcMock.MAGIC_DEFENSE);
+            Assert.AreEqual(parametersStationery[ParameterType.ACCURACY], Default.NpcMock.ACCURACY);
+            Assert.AreEqual(parametersStationery[ParameterType.EVASION], Default.NpcMock.EVASION);
+            Assert.AreEqual(parametersStationery[ParameterType.SPEED], Default.NpcMock.SPEED);
+        }
+
+        [Test]
+        public static void IndexerTest2()
+        {
+            Assert.AreEqual(parameters[ParameterType.NOW_HP], Default.NpcMock.NOW_HP);
+            Assert.AreEqual(parameters[ParameterType.NOW_ENERGY], Default.NpcMock.NOW_ENERGY);
+            Assert.AreEqual(parameters[ParameterType.NOW_MENTAL], Default.NpcMock.NOW_MENTAL);
+            Assert.AreEqual(parameters[ParameterType.MAX_HP], Default.NpcMock.MAX_HP);
+            Assert.AreEqual(parameters[ParameterType.MAX_ENERGY], Default.NpcMock.MAX_ENERGY);
+            Assert.AreEqual(parameters[ParameterType.MAX_MENTAL], Default.NpcMock.MAX_MENTAL);
+            Assert.AreEqual(parameters[ParameterType.PHYSICAL_ATTACK], Default.NpcMock.PHYSICAL_ATTACK);
+            Assert.AreEqual(parameters[ParameterType.PHYSICAL_DEFENSE], Default.NpcMock.PHYSICAL_DEFENSE);
+            Assert.AreEqual(parameters[ParameterType.MAGIC_ATTACK], Default.NpcMock.MAGIC_ATTACK);
+            Assert.AreEqual(parameters[ParameterType.MAGIC_DEFENSE], Default.NpcMock.MAGIC_DEFENSE);
+            Assert.AreEqual(parameters[ParameterType.ACCURACY], Default.NpcMock.ACCURACY);
+            Assert.AreEqual(parameters[ParameterType.EVASION], Default.NpcMock.EVASION);
+            Assert.AreEqual(parameters[ParameterType.SPEED], Default.NpcMock.SPEED);
         }
     }
 }

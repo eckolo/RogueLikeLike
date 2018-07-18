@@ -1,9 +1,12 @@
-﻿public static partial class TEST
+public static partial class TEST
 {
     partial struct Default
     {
         public struct NpcMock
         {
+            public const int NOW_HP = 8;
+            public const int NOW_ENERGY = 8;
+            public const int NOW_MENTAL = 8;
             public const int MAX_HP = 10;
             public const int MAX_ENERGY = 10;
             public const int MAX_MENTAL = 10;

@@ -163,6 +163,43 @@ namespace Assets.Src.Domains.Models.Value
                     accuracy: x.accuracy + y.accuracy,
                     evasion: x.evasion + y.evasion,
                     speed: x.speed + y.speed);
+            
+            public virtual int this[ParameterType index]
+            {
+                get {
+                    switch(index)
+                    {
+                        case ParameterType.NOW_HP:
+                            return maxHp;
+                        case ParameterType.NOW_ENERGY:
+                            return maxEnergy;
+                        case ParameterType.NOW_MENTAL:
+                            return maxMental;
+                        case ParameterType.MAX_HP:
+                            return maxHp;
+                        case ParameterType.MAX_ENERGY:
+                            return maxEnergy;
+                        case ParameterType.MAX_MENTAL:
+                            return maxMental;
+                        case ParameterType.PHYSICAL_ATTACK:
+                            return physicalAttack;
+                        case ParameterType.PHYSICAL_DEFENSE:
+                            return physicalDefense;
+                        case ParameterType.MAGIC_ATTACK:
+                            return magicAttack;
+                        case ParameterType.MAGIC_DEFENSE:
+                            return magicDefense;
+                        case ParameterType.ACCURACY:
+                            return accuracy;
+                        case ParameterType.EVASION:
+                            return evasion;
+                        case ParameterType.SPEED:
+                            return speed;
+                        default:
+                            throw new IndexOutOfRangeException();
+                    }
+                }
+            }
         }
     }
 }

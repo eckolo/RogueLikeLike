@@ -155,6 +155,23 @@ namespace Assets.Src.Domains.Models.Entity
                 }
             }
 
+            public override int this[ParameterType index]
+            {
+                get {
+                    switch(index)
+                    {
+                        case ParameterType.NOW_HP:
+                            return nowHp;
+                        case ParameterType.NOW_ENERGY:
+                            return nowEnergy;
+                        case ParameterType.NOW_MENTAL:
+                            return nowMental;
+                        default:
+                            return base[index];
+                    }
+                }
+            }
+
             /// <summary>
             /// パラメータの全合計値
             /// </summary>
