@@ -1,4 +1,4 @@
-﻿using Assets.Src.Domains.Models.Interface;
+using Assets.Src.Domains.Models.Interface;
 using Assets.Src.Domains.Models.Value;
 using Assets.Src.Domains.Service;
 using NUnit.Framework;
@@ -104,6 +104,51 @@ public static partial class TEST
             {
                 Assert.Pass(error.ToString());
             }
+        }
+        [Test]
+        public static void GetOrDefaultTest()
+        {
+            var key1 = "test1";
+            var key2 = "test2";
+            var key3 = "test3";
+            var key4 = "test4";
+            var value1 = 0.3f;
+            var value2 = 1.2f;
+            var value3 = 5;
+            var dictionary = new Dictionary<string, float>
+            {
+                { key1, value1},
+                { key2, value2},
+                { key3, value3},
+            };
+
+            Assert.AreEqual(dictionary.GetOrDefault(key1), value1);
+            Assert.AreEqual(dictionary.GetOrDefault(key2), value2);
+            Assert.AreEqual(dictionary.GetOrDefault(key3), value3);
+            Assert.AreEqual(dictionary.GetOrDefault(key4), default(float));
+        }
+        [Test]
+        public static void GetOrDefaultTest2()
+        {
+            var key1 = "test1";
+            var key2 = "test2";
+            var key3 = "test3";
+            var key4 = "test4";
+            var value1 = 0.3f;
+            var value2 = 1.2f;
+            var value3 = 5;
+            var valueDefault = 7.4f;
+            var dictionary = new Dictionary<string, float>
+            {
+                { key1, value1},
+                { key2, value2},
+                { key3, value3},
+            };
+
+            Assert.AreEqual(dictionary.GetOrDefault(key1, valueDefault), value1);
+            Assert.AreEqual(dictionary.GetOrDefault(key2, valueDefault), value2);
+            Assert.AreEqual(dictionary.GetOrDefault(key3, valueDefault), value3);
+            Assert.AreEqual(dictionary.GetOrDefault(key4, valueDefault), valueDefault);
         }
         [Test]
         public static void ContainsIndexTest()

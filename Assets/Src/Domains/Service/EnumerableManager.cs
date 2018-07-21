@@ -51,6 +51,21 @@ namespace Assets.Src.Domains.Service
             => origin.ToDictionary(keyValue => keyValue.key, keyValue => keyValue.value);
 
         /// <summary>
+        /// 辞書型オブジェクトが所定のキーを含んでいればキーに紐づく値、含んでいなければデフォルト値を取得する
+        /// </summary>
+        /// <typeparam name="TKey">キ－型</typeparam>
+        /// <typeparam name="TValue">内容型</typeparam>
+        /// <param name="origin">取得対象の辞書型オブジェクト</param>
+        /// <param name="key">指定のキー</param>
+        /// <param name="defaultValue">デフォルト値</param>
+        /// <returns>所定のキーに紐づく値もしくはデフォルト値</returns>
+        public static TValue GetOrDefault<TKey, TValue>(
+            this Dictionary<TKey, TValue> origin,
+            TKey key,
+            TValue defaultValue = default(TValue))
+            => origin.ContainsKey(key) ? origin[key] : defaultValue;
+
+        /// <summary>
         /// ある数値が<see cref="List{T}">のインデックスとして正当か否か判定する
         /// </summary>
         /// <typeparam name="TValue">内容型</typeparam>
