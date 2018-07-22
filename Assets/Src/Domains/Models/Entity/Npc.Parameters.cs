@@ -1,5 +1,7 @@
 using Assets.Src.Domains.Models.Value;
+using Assets.Src.Domains.Service;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Src.Domains.Models.Entity
@@ -102,6 +104,27 @@ namespace Assets.Src.Domains.Models.Entity
             { }
 
             /// <summary>
+            /// コンストラクタ
+            /// </summary>
+            /// <param name="parameters">元となるパラメータクラス</param>
+            public Parameters(Dictionary<ParameterType, int> parameters)
+                : this(
+                      nowHp: parameters.GetOrDefault(ParameterType.NOW_HP, 0),
+                      nowEnergy: parameters.GetOrDefault(ParameterType.NOW_ENERGY, 0),
+                      nowMental: parameters.GetOrDefault(ParameterType.NOW_MENTAL, 0),
+                      maxHp: parameters.GetOrDefault(ParameterType.MAX_HP, 0),
+                      maxEnergy: parameters.GetOrDefault(ParameterType.MAX_ENERGY, 0),
+                      maxMental: parameters.GetOrDefault(ParameterType.MAX_MENTAL, 0),
+                      physicalAttack: parameters.GetOrDefault(ParameterType.PHYSICAL_ATTACK, 0),
+                      physicalDefense: parameters.GetOrDefault(ParameterType.PHYSICAL_DEFENSE, 0),
+                      magicAttack: parameters.GetOrDefault(ParameterType.MAGIC_ATTACK, 0),
+                      magicDefense: parameters.GetOrDefault(ParameterType.MAGIC_DEFENSE, 0),
+                      accuracy: parameters.GetOrDefault(ParameterType.ACCURACY, 0),
+                      evasion: parameters.GetOrDefault(ParameterType.EVASION, 0),
+                      speed: parameters.GetOrDefault(ParameterType.SPEED, 0))
+            { }
+
+            /// <summary>
             /// 現在HP
             /// </summary>
             [SerializeField]
@@ -175,7 +198,7 @@ namespace Assets.Src.Domains.Models.Entity
             /// <summary>
             /// パラメータの全合計値
             /// </summary>
-            public float innerProduct
+            public int innerProduct
                 => nowHp + nowEnergy + nowMental
                 + maxHp + maxEnergy + maxMental
                 + physicalAttack + physicalDefense

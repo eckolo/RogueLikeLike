@@ -32,18 +32,29 @@ namespace Assets.Src.Domains.Service
         /// <param name="actor">起点となる行動者</param>
         /// <param name="selected">行動選択内容</param>
         /// <returns>ターン内発生事象一覧</returns>
-        public static List<Happened> GenerateHappenedList(this GameState state, Npc actor, Selected selected)
+        public static List<Happened> GenerateHappenedList(this GameState _state, Npc actor, Selected selected)
         {
             if(selected == null) return new List<Happened>();
+            var state = _state.DuplicateFull();
+
             var ability = selected.ability;
             var target = selected.target;
             var direction = selected.direction;
             var movement = selected.movement;
+            var happendList = new List<Happened>();
 
-            return ability.behaviorList
-                .SelectMany(behavior => state.GenerateHappenedList(actor, behavior, target, direction, movement))
-                .Concat(new List<Happened> { state.GenerateMoveHappened(actor, movement, ability.moveAnimation) })
-                .ToList();
+            foreach(var behavior in ability.behaviorList)
+            {
+                var stateHappend = state.GenerateHappenedList(actor, behavior, target, direction, movement);
+                state = stateHappend.Item1;
+                happendList = happendList.Concat(stateHappend.Item2).ToList();
+            }
+
+            var moveStateHappend = state.GenerateMoveHappened(actor, movement, ability.moveAnimations);
+            state = moveStateHappend.Item1;
+            happendList = happendList.Concat(new List<Happened> { moveStateHappend.Item2 }).ToList();
+
+            return happendList;
         }
 
         /// <summary>
@@ -56,7 +67,7 @@ namespace Assets.Src.Domains.Service
         /// <param name="direction">動作方向</param>
         /// <param name="movement">行動に付随する移動量</param>
         /// <returns>発生事象一覧</returns>
-        static List<Happened> GenerateHappenedList(
+        static ValueTuple<GameState, List<Happened>> GenerateHappenedList(
             this GameState state,
             Npc actor,
             Behavior behavior,
@@ -68,8 +79,16 @@ namespace Assets.Src.Domains.Service
             var npcs = state.npcLayout
                 .Where(layout => range.OnTarget(layout.Key))
                 .Select(layout => layout.Value);
+            var happendList = new List<Happened>();
 
-            return npcs.SelectMany(npc => state.GenerateHappenedList(actor, behavior, npc)).ToList();
+            foreach(var target in npcs)
+            {
+                var stateHappend = state.GenerateHappenedList(actor, behavior, target, targetPoint);
+                state = stateHappend.Item1;
+                happendList = happendList.Concat(stateHappend.Item2).ToList();
+            }
+
+            return new ValueTuple<GameState, List<Happened>>(state, happendList);
         }
         /// <summary>
         /// 指定された行動内容の所定の対象への作用を起点とした発生事象一覧を生成
@@ -79,9 +98,59 @@ namespace Assets.Src.Domains.Service
         /// <param name="behavior">起点となる動作内容</param>
         /// <param name="target">動作対象</param>
         /// <returns></returns>
-        static List<Happened> GenerateHappenedList(this GameState state, Npc actor, Behavior behavior, Npc target)
+        static ValueTuple<GameState, List<Happened>> GenerateHappenedList(
+            this GameState state,
+            Npc actor,
+            Behavior behavior,
+            Npc target,
+            Vector2 center)
         {
-            throw new NotImplementedException();
+            var attack = behavior.attackParameters
+                 .Select(parameters => new
+                 {
+                     type = parameters.Key,
+                     value = (actor.parameters * parameters.Value).innerProduct / 100
+                 });
+            var defense = behavior.defenseParameters
+                 .Select(parameters => new
+                 {
+                     type = parameters.Key,
+                     value = (target.parameters * parameters.Value).innerProduct / 100
+                 });
+            var accuracy = (actor.parameters * behavior.accuracyParameters).innerProduct;
+            var evasion = (target.parameters * behavior.evasionParameters).innerProduct;
+
+            var variation = attack.GroupJoin(
+                defense,
+                parameters => parameters.type,
+                parameters => parameters.type,
+                (_attack, defenses) => new
+                {
+                    _attack.type,
+                    attack = _attack.value,
+                    defense = defenses.SingleOrDefault()?.value ?? 0
+                }
+                ).Select(parameters => new
+                {
+                    parameters.type,
+                    value = Mathf.Max(parameters.attack + parameters.defense, 0)
+                }).Select(parameters => new
+                {
+                    parameters.type,
+                    value = parameters.value * (accuracy - evasion) * behavior.power / 100
+                }).ToDictionary(parameters => parameters.type, parameters => parameters.value);
+
+            var movement = (state.map.GetNpcCoordinate(target) ?? center - center).normalized * behavior.blowing;
+
+            var result = Happened.builder
+                  .Target(target)
+                  .Variation(new Npc.Parameters(variation))
+                  .AilmentAmount(behavior.ailmentAmount)
+                  .AilmentDuration(behavior.ailmentDuration)
+                  .Movement(movement)
+                  .Animations(behavior.animations)
+                  .Build();
+            return new ValueTuple<GameState, List<Happened>>(result.Predicate(state), new List<Happened> { result });
         }
         /// <summary>
         /// 移動のみの発生事象クラスを生成
@@ -102,5 +171,14 @@ namespace Assets.Src.Domains.Service
                 .Animations(animations)
                 .Build()
                 .GenerateNextState(state);
+
+        /// <summary>
+        /// ゲーム状態と発生事象から事象発生後の状態と発生事象のセットを生成する
+        /// </summary>
+        /// <param name="happened">発生事象</param>
+        /// <param name="state">元となるゲーム状態</param>
+        /// <returns>事象発生後のゲーム状態と発生事象のセット</returns>
+        public static ValueTuple<GameState, Happened> GenerateNextState(this Happened happened, GameState state)
+            => new ValueTuple<GameState, Happened>(happened.Predicate(state), happened);
     }
 }

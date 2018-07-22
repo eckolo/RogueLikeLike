@@ -14,14 +14,24 @@ namespace Assets.Src.Domains.Models.Value
     public partial class Behavior
     {
         /// <summary>
-        /// 威力値への動作主体ステータス反映度（％）
+        /// 威力基準値
         /// </summary>
         [SerializeField]
-        Npc.Parameters _powerParameters = null;
+        int _power = -1;
+        /// <summary>
+        /// 威力基準値
+        /// </summary>
+        public int power => _power;
+
         /// <summary>
         /// 威力値への動作主体ステータス反映度（％）
         /// </summary>
-        public Npc.Parameters powerParameters => _powerParameters;
+        [SerializeField]
+        List<ParametersSet> _attackParameters = null;
+        /// <summary>
+        /// 威力値への動作主体ステータス反映度（％）
+        /// </summary>
+        public Dictionary<ParameterType, Npc.Parameters> attackParameters => _attackParameters.ToDictionary();
         /// <summary>
         /// 精度への動作主体ステータス反映度（％）
         /// </summary>
@@ -36,20 +46,20 @@ namespace Assets.Src.Domains.Models.Value
         /// 威力値への動作対象ステータス反映度（％）
         /// </summary>
         [SerializeField]
-        Npc.Parameters _targetPowerParameters = null;
+        List<ParametersSet> _defenseParameters = null;
         /// <summary>
         /// 威力値への動作対象ステータス反映度（％）
         /// </summary>
-        public Npc.Parameters targetPowerParameters => _targetPowerParameters;
+        public Dictionary<ParameterType, Npc.Parameters> defenseParameters => _defenseParameters.ToDictionary();
         /// <summary>
         /// 精度への動作対象ステータス反映度（％）
         /// </summary>
         [SerializeField]
-        Npc.Parameters _targetAccuracyParameters = null;
+        Npc.Parameters _evasionParameters = null;
         /// <summary>
         /// 精度への動作対象ステータス反映度（％）
         /// </summary>
-        public Npc.Parameters targetAccuracyParameters => _targetAccuracyParameters;
+        public Npc.Parameters evasionParameters => _evasionParameters;
 
         /// <summary>
         /// 対象範囲
