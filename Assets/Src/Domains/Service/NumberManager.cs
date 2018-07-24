@@ -42,14 +42,14 @@ namespace Assets.Src.Domains.Service
         /// <param name="origin">元の値</param>
         /// <param name="upper">上限値</param>
         /// <returns>上限値以下の元の値</returns>
-        public static int Upper(this int origin, int upper) => Mathf.Min(origin, upper);
+        public static int LimitUpper(this int origin, int upper) => Mathf.Min(origin, upper);
         /// <summary>
         /// 上限値をかける
         /// </summary>
         /// <param name="origin">元の値</param>
         /// <param name="upper">上限値</param>
         /// <returns>上限値以下の元の値</returns>
-        public static float Upper(this float origin, float upper) => Mathf.Min(origin, upper);
+        public static float LimitUpper(this float origin, float upper) => Mathf.Min(origin, upper);
 
         /// <summary>
         /// 下限値をかける
@@ -57,14 +57,14 @@ namespace Assets.Src.Domains.Service
         /// <param name="origin">元の値</param>
         /// <param name="upper">下限値</param>
         /// <returns>下限値以上の元の値</returns>
-        public static int Lower(this int origin, int lower) => Mathf.Max(origin, lower);
+        public static int LimitLower(this int origin, int lower) => Mathf.Max(origin, lower);
         /// <summary>
         /// 下限値をかける
         /// </summary>
         /// <param name="origin">元の値</param>
         /// <param name="upper">下限値</param>
         /// <returns>下限値以上の元の値</returns>
-        public static float Lower(this float origin, float lower) => Mathf.Max(origin, lower);
+        public static float LimitLower(this float origin, float lower) => Mathf.Max(origin, lower);
 
         /// <summary>
         /// boolを整数0,1に変換

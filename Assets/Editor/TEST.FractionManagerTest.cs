@@ -10,16 +10,16 @@ public static partial class TEST
     public static class FractionManagerTest
     {
         [Test]
-        public static void UpperTest1()
+        public static void LimitUpperTest()
         {
-            Assert.AreEqual(new Fraction(17, 3), FractionManager.Upper(new Fraction(17, 3), new Fraction(52, 4)));
-            Assert.AreEqual(new Fraction(54, 6), FractionManager.Upper(new Fraction(102, 5), new Fraction(54, 6)));
+            Assert.AreEqual(new Fraction(17, 3), FractionManager.LimitUpper(new Fraction(17, 3), new Fraction(52, 4)));
+            Assert.AreEqual(new Fraction(54, 6), FractionManager.LimitUpper(new Fraction(102, 5), new Fraction(54, 6)));
         }
         [Test]
-        public static void LowerTest1()
+        public static void LimitLowerTest()
         {
-            Assert.AreEqual(new Fraction(52, 4), FractionManager.Lower(new Fraction(17, 3), new Fraction(52, 4)));
-            Assert.AreEqual(new Fraction(102, 5), FractionManager.Lower(new Fraction(102, 5), new Fraction(54, 6)));
+            Assert.AreEqual(new Fraction(52, 4), FractionManager.LimitLower(new Fraction(17, 3), new Fraction(52, 4)));
+            Assert.AreEqual(new Fraction(92, 5), FractionManager.LimitLower(new Fraction(92, 5), new Fraction(54, 6)));
         }
     }
 }
