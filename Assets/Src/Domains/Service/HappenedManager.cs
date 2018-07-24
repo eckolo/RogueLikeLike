@@ -109,13 +109,13 @@ namespace Assets.Src.Domains.Service
                  .Select(parameters => new
                  {
                      type = parameters.Key,
-                     value = (actor.parameters * parameters.Value).innerProduct / 100
+                     value = new Fraction((actor.parameters * parameters.Value).innerProduct, 100)
                  });
             var defense = behavior.defenseParameters
                  .Select(parameters => new
                  {
                      type = parameters.Key,
-                     value = (target.parameters * parameters.Value).innerProduct / 100
+                     value = new Fraction((target.parameters * parameters.Value).innerProduct, 100)
                  });
             var accuracy = (actor.parameters * behavior.accuracyParameters).innerProduct;
             var evasion = (target.parameters * behavior.evasionParameters).innerProduct;
@@ -128,17 +128,19 @@ namespace Assets.Src.Domains.Service
                 {
                     _attack.type,
                     attack = _attack.value,
-                    defense = defenses.SingleOrDefault()?.value ?? 0
-                }
-                ).Select(parameters => new
+                    defense = defenses.SingleOrDefault()?.value ?? Fraction.zero
+                })
+                .Select(parameters => new
                 {
                     parameters.type,
-                    value = Mathf.Max(parameters.attack + parameters.defense, 0)
-                }).Select(parameters => new
+                    value = (parameters.attack + parameters.defense).LimitLower(Fraction.zero)
+                })
+                .Select(parameters => new
                 {
                     parameters.type,
-                    value = parameters.value * (accuracy - evasion) * behavior.power / 100
-                }).ToDictionary(parameters => parameters.type, parameters => parameters.value);
+                    value = parameters.value * (accuracy - evasion) * new Fraction(behavior.power, 100)
+                })
+                .ToDictionary(parameters => parameters.type, parameters => Mathf.CeilToInt(parameters.value.value));
 
             var movement = (state.map.GetNpcCoordinate(target) ?? center - center).normalized * behavior.blowing;
 
