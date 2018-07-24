@@ -52,6 +52,30 @@ public static partial class TEST
             Assert.AreEqual(NumberManager.ToInt(false), 0);
         }
         [Test]
+        public static void UpperTest1()
+        {
+            Assert.AreEqual(17, NumberManager.Upper(17, 52));
+            Assert.AreEqual(54, NumberManager.Upper(102, 54));
+        }
+        [Test]
+        public static void UpperTest2()
+        {
+            Assert.AreEqual(1.7f, NumberManager.Upper(1.7f, 5.2f));
+            Assert.AreEqual(0.54f, NumberManager.Upper(10.2f, 0.54f));
+        }
+        [Test]
+        public static void LowerTest1()
+        {
+            Assert.AreEqual(52, NumberManager.Lower(17, 52));
+            Assert.AreEqual(102, NumberManager.Lower(102, 54));
+        }
+        [Test]
+        public static void LowerTest2()
+        {
+            Assert.AreEqual(5.2f, NumberManager.Lower(1.7f, 5.2f));
+            Assert.AreEqual(10.2f, NumberManager.Lower(10.2f, 0.54f));
+        }
+        [Test]
         public static void ToSignTest1()
         {
             Assert.AreEqual(NumberManager.ToSign(true), 1);
