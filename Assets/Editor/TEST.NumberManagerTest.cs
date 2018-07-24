@@ -36,7 +36,7 @@ public static partial class TEST
             Assert.AreEqual(1, value5.Euclidean(value5));
         }
         [Test]
-        public static void Correct()
+        public static void CorrectTest()
         {
             var scalar1 = 3f;
             var scalar2 = 5f;
@@ -46,26 +46,26 @@ public static partial class TEST
             Assert.AreEqual(NumberManager.Correct(scalar1, scalar2, 0), 5f);
         }
         [Test]
-        public static void ToInt()
+        public static void ToIntTest()
         {
             Assert.AreEqual(NumberManager.ToInt(true), 1);
             Assert.AreEqual(NumberManager.ToInt(false), 0);
         }
         [Test]
-        public static void ToSign1()
+        public static void ToSignTest1()
         {
             Assert.AreEqual(NumberManager.ToSign(true), 1);
             Assert.AreEqual(NumberManager.ToSign(false), -1);
         }
         [Test]
-        public static void ToSign2()
+        public static void ToSignTest2()
         {
             Assert.AreEqual(NumberManager.ToSign(108), 1);
             Assert.AreEqual(NumberManager.ToSign(-62), -1);
             Assert.AreEqual(NumberManager.ToSign(0), 0);
         }
         [Test]
-        public static void SelectRandom()
+        public static void SelectRandomTest()
         {
             var list1 = new List<float> { 0.5f, 7.8f, 832 };
             var list2 = new List<int> { 1, 2 };
@@ -82,7 +82,7 @@ public static partial class TEST
             }
         }
         [Test]
-        public static void Log1()
+        public static void LogTest1()
         {
             var value1 = Mathf.Exp(11.3f) - 1;
             var value2 = -Mathf.Exp(26.43f) + 1;
@@ -93,7 +93,7 @@ public static partial class TEST
             Assert.AreEqual(value3.Log(), 0);
         }
         [Test]
-        public static void Log2()
+        public static void LogTest2()
         {
             var value1 = Mathf.Pow(2.6f, 11.3f) - 1;
             var value2 = -Mathf.Pow(4.63f, 26.43f) + 1;
