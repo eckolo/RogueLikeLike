@@ -1,4 +1,4 @@
-﻿using Assets.Src.Domains.Service;
+using Assets.Src.Domains.Service;
 using System;
 
 namespace Assets.Src.Domains.Models.Value
@@ -40,6 +40,15 @@ namespace Assets.Src.Domains.Models.Value
         /// 実数値
         /// </summary>
         public float value => _numer / (float)_denom;
+
+        /// <summary>
+        /// ０と同値の分数型
+        /// </summary>
+        public static Fraction zero => new Fraction(0);
+        /// <summary>
+        /// １と同値の分数型
+        /// </summary>
+        public static Fraction one => new Fraction(1);
 
         public static Fraction operator +(Fraction x, Fraction y)
             => new Fraction(x._numer * y._denom + y._numer * x._denom, x._denom * y._denom);

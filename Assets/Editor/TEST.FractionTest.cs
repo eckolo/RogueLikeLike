@@ -1,4 +1,4 @@
-﻿using Assets.Src.Domains.Models.Value;
+using Assets.Src.Domains.Models.Value;
 using NUnit.Framework;
 public static partial class TEST
 {
@@ -7,6 +7,26 @@ public static partial class TEST
     /// </summary>
     public static class FractionTest
     {
+        [Test]
+        public static void ZeroTest()
+        {
+            var fraction1 = new Fraction(0);
+            var fraction2 = Fraction.zero;
+
+            Assert.AreEqual(fraction1.numer, fraction2.numer);
+            Assert.AreEqual(fraction1.denom, fraction2.denom);
+            Assert.AreEqual(fraction1.value, fraction2.value);
+        }
+        [Test]
+        public static void OneTest()
+        {
+            var fraction1 = new Fraction(1);
+            var fraction2 = Fraction.one;
+
+            Assert.AreEqual(fraction1.numer, fraction2.numer);
+            Assert.AreEqual(fraction1.denom, fraction2.denom);
+            Assert.AreEqual(fraction1.value, fraction2.value);
+        }
         [Test]
         public static void NewFractionTest()
         {
