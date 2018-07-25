@@ -174,16 +174,16 @@ public static partial class TEST
             var vector4 = new Vector2(0, -1);
             var list = new List<Vector2> { vector1, vector2, vector3, vector4 };
             var rate = new List<int> { 10, 20, 30, 40 };
-            var norm0 = new Fraction(-1, 100);
-            var norm1 = new Fraction(0, 100);
-            var norm2 = new Fraction(9, 100);
-            var norm3 = new Fraction(10, 100);
-            var norm4 = new Fraction(29, 100);
-            var norm5 = new Fraction(30, 100);
-            var norm6 = new Fraction(59, 100);
-            var norm7 = new Fraction(60, 100);
-            var norm8 = new Fraction(99, 100);
-            var norm9 = new Fraction(100, 100);
+            var norm0 = -1.DividedBy(100);
+            var norm1 = 0.DividedBy(100);
+            var norm2 = 9.DividedBy(100);
+            var norm3 = 10.DividedBy(100);
+            var norm4 = 29.DividedBy(100);
+            var norm5 = 30.DividedBy(100);
+            var norm6 = 59.DividedBy(100);
+            var norm7 = 60.DividedBy(100);
+            var norm8 = 99.DividedBy(100);
+            var norm9 = 100.DividedBy(100);
 
             Assert.AreEqual(default(Vector2), list.Pick(norm0, rate));
             Assert.AreEqual(vector1, list.Pick(norm1, rate));

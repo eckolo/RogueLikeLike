@@ -12,14 +12,14 @@ public static partial class TEST
         [Test]
         public static void LimitUpperTest()
         {
-            Assert.AreEqual(new Fraction(17, 3), FractionManager.LimitUpper(new Fraction(17, 3), new Fraction(52, 4)));
-            Assert.AreEqual(new Fraction(54, 6), FractionManager.LimitUpper(new Fraction(102, 5), new Fraction(54, 6)));
+            Assert.AreEqual(17.DividedBy(3), FractionManager.LimitUpper(17.DividedBy(3), 52.DividedBy(4)));
+            Assert.AreEqual(54.DividedBy(6), FractionManager.LimitUpper(102.DividedBy(5), 54.DividedBy(6)));
         }
         [Test]
         public static void LimitLowerTest()
         {
-            Assert.AreEqual(new Fraction(52, 4), FractionManager.LimitLower(new Fraction(17, 3), new Fraction(52, 4)));
-            Assert.AreEqual(new Fraction(92, 5), FractionManager.LimitLower(new Fraction(92, 5), new Fraction(54, 6)));
+            Assert.AreEqual(52.DividedBy(4), FractionManager.LimitLower(17.DividedBy(3), 52.DividedBy(4)));
+            Assert.AreEqual(92.DividedBy(5), FractionManager.LimitLower(92.DividedBy(5), 54.DividedBy(6)));
         }
     }
 }

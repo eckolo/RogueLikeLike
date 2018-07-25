@@ -1,4 +1,4 @@
-﻿using Assets.Src.Domains.Models.Value;
+using Assets.Src.Domains.Models.Value;
 using UnityEngine;
 
 namespace Assets.Src.Domains.Service
@@ -17,7 +17,7 @@ namespace Assets.Src.Domains.Service
         public static Fraction SetupRandomNorm(this Random.State seed, int radix = 100)
         {
             Random.state = seed;
-            return new Fraction(Random.Range(0, radix - 1), radix);
+            return Random.Range(0, radix - 1).DividedBy(radix);
         }
     }
 }

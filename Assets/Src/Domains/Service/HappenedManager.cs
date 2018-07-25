@@ -109,13 +109,13 @@ namespace Assets.Src.Domains.Service
                  .Select(parameters => new
                  {
                      type = parameters.Key,
-                     value = new Fraction((actor.parameters * parameters.Value).innerProduct, 100)
+                     value = (actor.parameters * parameters.Value).innerProduct.DividedBy(100)
                  });
             var defense = behavior.defenseParameters
                  .Select(parameters => new
                  {
                      type = parameters.Key,
-                     value = new Fraction((target.parameters * parameters.Value).innerProduct, 100)
+                     value = (target.parameters * parameters.Value).innerProduct.DividedBy(100)
                  });
             var accuracy = (actor.parameters * behavior.accuracyParameters).innerProduct;
             var evasion = (target.parameters * behavior.evasionParameters).innerProduct;
@@ -138,7 +138,7 @@ namespace Assets.Src.Domains.Service
                 .Select(parameters => new
                 {
                     parameters.type,
-                    value = parameters.value * (accuracy - evasion) * new Fraction(behavior.power, 100)
+                    value = parameters.value * (accuracy - evasion) * behavior.power.DividedBy(100)
                 })
                 .ToDictionary(parameters => parameters.type, parameters => Mathf.CeilToInt(parameters.value.value));
 

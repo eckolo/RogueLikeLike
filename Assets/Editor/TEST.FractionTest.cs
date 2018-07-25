@@ -1,4 +1,5 @@
 using Assets.Src.Domains.Models.Value;
+using Assets.Src.Domains.Service;
 using NUnit.Framework;
 public static partial class TEST
 {
@@ -10,7 +11,7 @@ public static partial class TEST
         [Test]
         public static void ZeroTest()
         {
-            var fraction1 = new Fraction(0);
+            var fraction1 = Fraction.Of(0);
             var fraction2 = Fraction.zero;
 
             Assert.AreEqual(fraction1.numer, fraction2.numer);
@@ -20,7 +21,7 @@ public static partial class TEST
         [Test]
         public static void OneTest()
         {
-            var fraction1 = new Fraction(1);
+            var fraction1 = Fraction.Of(1);
             var fraction2 = Fraction.one;
 
             Assert.AreEqual(fraction1.numer, fraction2.numer);
@@ -30,10 +31,10 @@ public static partial class TEST
         [Test]
         public static void NewFractionTest()
         {
-            var fraction1 = new Fraction(3);
-            var fraction2 = new Fraction(3, 1);
-            var fraction3 = new Fraction(6, 2);
-            var fraction4 = new Fraction(9, -3);
+            var fraction1 = Fraction.Of(3);
+            var fraction2 = 3.DividedBy(1);
+            var fraction3 = 6.DividedBy(2);
+            var fraction4 = 9.DividedBy(-3);
 
             Assert.AreEqual(fraction1.numer, fraction2.numer);
             Assert.AreEqual(fraction1.denom, fraction2.denom);
@@ -47,10 +48,10 @@ public static partial class TEST
         [Test]
         public static void CompareTest()
         {
-            var fraction1 = new Fraction(4, 5);
-            var fraction2 = new Fraction(7, 2);
-            var fraction3 = new Fraction(3, -8);
-            var fraction4 = new Fraction(4, 5);
+            var fraction1 = 4.DividedBy(5);
+            var fraction2 = 7.DividedBy(2);
+            var fraction3 = 3.DividedBy(-8);
+            var fraction4 = 4.DividedBy(5);
             var value1 = 3f;
             var value2 = -12;
 
@@ -90,11 +91,32 @@ public static partial class TEST
             Assert.IsTrue(fraction1 >= value2);
         }
         [Test]
+        public static void NegativeValueTest()
+        {
+            var fraction1 = 4.DividedBy(5);
+            var fraction2 = 7.DividedBy(2);
+            var fraction3 = 3.DividedBy(-8);
+
+            var result1 = -fraction1;
+            var result2 = -fraction2;
+            var result3 = -fraction3;
+
+            Assert.AreEqual(-4, result1.numer);
+            Assert.AreEqual(5, result1.denom);
+            Assert.AreEqual(-0.8f, result1.value);
+            Assert.AreEqual(-7, result2.numer);
+            Assert.AreEqual(2, result2.denom);
+            Assert.AreEqual(-3.5f, result2.value);
+            Assert.AreEqual(3, result3.numer);
+            Assert.AreEqual(8, result3.denom);
+            Assert.AreEqual(0.375f, result3.value);
+        }
+        [Test]
         public static void AdditionTest()
         {
-            var fraction1 = new Fraction(4, 5);
-            var fraction2 = new Fraction(7, 2);
-            var fraction3 = new Fraction(3, -8);
+            var fraction1 = 4.DividedBy(5);
+            var fraction2 = 7.DividedBy(2);
+            var fraction3 = 3.DividedBy(-8);
             var value1 = 3;
             var value2 = -12;
 
@@ -123,9 +145,9 @@ public static partial class TEST
         [Test]
         public static void SubtractionTest()
         {
-            var fraction1 = new Fraction(4, 5);
-            var fraction2 = new Fraction(7, 2);
-            var fraction3 = new Fraction(3, -8);
+            var fraction1 = 4.DividedBy(5);
+            var fraction2 = 7.DividedBy(2);
+            var fraction3 = 3.DividedBy(-8);
             var value1 = 3;
             var value2 = -12;
 
@@ -154,9 +176,9 @@ public static partial class TEST
         [Test]
         public static void MultiplicationTest()
         {
-            var fraction1 = new Fraction(4, 5);
-            var fraction2 = new Fraction(7, 2);
-            var fraction3 = new Fraction(3, -8);
+            var fraction1 = 4.DividedBy(5);
+            var fraction2 = 7.DividedBy(2);
+            var fraction3 = 3.DividedBy(-8);
             var value1 = 3;
             var value2 = -12;
 
@@ -185,9 +207,9 @@ public static partial class TEST
         [Test]
         public static void DivisionTest()
         {
-            var fraction1 = new Fraction(4, 5);
-            var fraction2 = new Fraction(7, 2);
-            var fraction3 = new Fraction(3, -8);
+            var fraction1 = 4.DividedBy(5);
+            var fraction2 = 7.DividedBy(2);
+            var fraction3 = 3.DividedBy(-8);
             var value1 = 3;
             var value2 = -12;
 

@@ -13,7 +13,7 @@ namespace Assets.Src.Domains.Models.Value
         /// </summary>
         /// <param name="numer">分子</param>
         /// <param name="denom">分母</param>
-        public Fraction(int numer, int denom = 1)
+        Fraction(int numer, int denom = 1)
         {
             if(denom == 0) throw new DivideByZeroException();
             var gcd = (denom < 0 ? -1 : 1) * numer.Euclidean(denom);
@@ -35,6 +35,13 @@ namespace Assets.Src.Domains.Models.Value
         public float value => numer / (float)denom;
 
         /// <summary>
+        /// 分数型の整数を生成する
+        /// </summary>
+        /// <param name="origin">元となる整数</param>
+        /// <returns>元となる整数と同値の分数型の値</returns>
+        public static Fraction Of(int origin) => new Fraction(origin);
+
+        /// <summary>
         /// ０と同値の分数型
         /// </summary>
         public static Fraction zero => new Fraction(0);
@@ -51,6 +58,7 @@ namespace Assets.Src.Domains.Models.Value
             => new Fraction(x.numer * y.numer, x.denom * y.denom);
         public static Fraction operator /(Fraction x, Fraction y)
             => new Fraction(x.numer * y.denom, x.denom * y.numer);
+        public static Fraction operator -(Fraction x) => x * -1;
         public static Fraction operator +(int x, Fraction y) => new Fraction(x) + y;
         public static Fraction operator +(Fraction x, int y) => x + new Fraction(y);
         public static Fraction operator -(int x, Fraction y) => new Fraction(x) - y;
