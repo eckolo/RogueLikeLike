@@ -15,6 +15,7 @@ namespace Assets.Src.Domains.Models.Value
         /// <param name="denom">分母</param>
         public Fraction(int numer, int denom = 1)
         {
+            if(denom == 0) throw new DivideByZeroException();
             var gcd = (denom < 0 ? -1 : 1) * numer.Euclidean(denom);
             this.numer = numer / gcd;
             this.denom = denom / gcd;
