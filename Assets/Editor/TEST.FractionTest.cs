@@ -11,7 +11,7 @@ public static partial class TEST
         [Test]
         public static void ZeroTest()
         {
-            var fraction1 = Fraction.Of(0);
+            var fraction1 = 0.ToFraction();
             var fraction2 = Fraction.zero;
 
             Assert.AreEqual(fraction1.numer, fraction2.numer);
@@ -21,7 +21,7 @@ public static partial class TEST
         [Test]
         public static void OneTest()
         {
-            var fraction1 = Fraction.Of(1);
+            var fraction1 = 1.ToFraction();
             var fraction2 = Fraction.one;
 
             Assert.AreEqual(fraction1.numer, fraction2.numer);
@@ -31,7 +31,7 @@ public static partial class TEST
         [Test]
         public static void NewFractionTest()
         {
-            var fraction1 = Fraction.Of(3);
+            var fraction1 = 3.ToFraction();
             var fraction2 = 3.DividedBy(1);
             var fraction3 = 6.DividedBy(2);
             var fraction4 = 9.DividedBy(-3);

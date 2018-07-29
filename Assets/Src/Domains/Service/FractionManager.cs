@@ -18,7 +18,14 @@ namespace Assets.Src.Domains.Service
         /// <param name="dividend">被除数</param>
         /// <param name="divisor">除数</param>
         /// <returns>被除数を除数で割った結果と同値の分数型の値</returns>
-        public static Fraction DividedBy(this int dividend, int divisor) => Fraction.Of(dividend) / divisor;
+        public static Fraction DividedBy(this int dividend, int divisor) => new Fraction(dividend) / divisor;
+
+        /// <summary>
+        /// 分数型の整数を生成する
+        /// </summary>
+        /// <param name="origin">元となる整数</param>
+        /// <returns>元となる整数と同値の分数型の値</returns>
+        public static Fraction ToFraction(this int origin) => new Fraction(origin);
 
         /// <summary>
         /// 上限値をかける

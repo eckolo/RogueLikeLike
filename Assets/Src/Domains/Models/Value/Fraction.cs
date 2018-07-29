@@ -13,13 +13,19 @@ namespace Assets.Src.Domains.Models.Value
         /// </summary>
         /// <param name="numer">分子</param>
         /// <param name="denom">分母</param>
-        Fraction(int numer, int denom = 1)
+        Fraction(int numer, int denom)
         {
             if(denom == 0) throw new DivideByZeroException();
             var gcd = (denom < 0 ? -1 : 1) * numer.Euclidean(denom);
             this.numer = numer / gcd;
             this.denom = denom / gcd;
         }
+
+        /// <summary>
+        /// 分数の初期化
+        /// </summary>
+        /// <param name="numer">分子</param>
+        public Fraction(int numer) : this(numer, 1) { }
 
         /// <summary>
         /// 分子
@@ -33,13 +39,6 @@ namespace Assets.Src.Domains.Models.Value
         /// 実数値
         /// </summary>
         public float value => numer / (float)denom;
-
-        /// <summary>
-        /// 分数型の整数を生成する
-        /// </summary>
-        /// <param name="origin">元となる整数</param>
-        /// <returns>元となる整数と同値の分数型の値</returns>
-        public static Fraction Of(int origin) => new Fraction(origin);
 
         /// <summary>
         /// ０と同値の分数型
