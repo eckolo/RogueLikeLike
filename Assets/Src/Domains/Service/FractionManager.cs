@@ -33,8 +33,7 @@ namespace Assets.Src.Domains.Service
         /// <param name="origin">元の値</param>
         /// <param name="upper">上限値</param>
         /// <returns>上限値以下の元の値</returns>
-        public static Fraction LimitUpper(this Fraction origin, Fraction upper)
-            => origin.value < upper.value ? origin : upper;
+        public static Fraction LimitUpper(this Fraction origin, Fraction upper) => origin < upper ? origin : upper;
 
         /// <summary>
         /// 下限値をかける
@@ -42,7 +41,6 @@ namespace Assets.Src.Domains.Service
         /// <param name="origin">元の値</param>
         /// <param name="upper">下限値</param>
         /// <returns>下限値以上の元の値</returns>
-        public static Fraction LimitLower(this Fraction origin, Fraction lower)
-            => origin.value > lower.value ? origin : lower;
+        public static Fraction LimitLower(this Fraction origin, Fraction lower) => origin > lower ? origin : lower;
     }
 }
