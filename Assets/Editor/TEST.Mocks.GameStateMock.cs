@@ -15,7 +15,7 @@ public static partial class TEST
         {
             public static GameStateMock GetNpcListMock(IEnumerable<Npc> _npcList)
                 => new GameStateMock(
-                    area: new Area(),
+                    area: new Area(new AreaStationeryMock()),
                     map: new Map(),
                     mapCondition: Vector2.zero,
                     npcList: _npcList,

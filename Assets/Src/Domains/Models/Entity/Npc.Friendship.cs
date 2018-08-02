@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
+using Assets.Src.Domains.Models.Value;
 using UnityEngine;
 
 namespace Assets.Src.Domains.Models.Entity

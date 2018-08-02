@@ -14,6 +14,27 @@ namespace Assets.Src.Domains.Models.Entity
     public partial class Area : Adhered<AreaStationery>, IDuplicatable<Area>
     {
         /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="stationery">元となる雛形</param>
+        /// <param name="adjectives">付与形容詞</param>
+        /// <param name="connectionList">他地域との接続情報</param>
+        /// <param name="includeMapList">内包するマップのリスト</param>
+        /// <param name="nowMapCondition">所在マップ座標</param>
+        public Area(
+            AreaStationery stationery,
+            List<Adjective> adjectives = null,
+            IEnumerable<AreaConnection> connectionList = null,
+            Dictionary<Vector2, Map> includeMapList = null,
+            Vector2? nowMapCondition = null)
+            : base(stationery, adjectives)
+        {
+            this.connectionList = connectionList ?? this.connectionList;
+            this.includeMapList = includeMapList ?? this.includeMapList;
+            this.nowMapCondition = nowMapCondition ?? this.nowMapCondition;
+        }
+
+        /// <summary>
         /// 他地域との接続情報
         /// </summary>
         [SerializeField]

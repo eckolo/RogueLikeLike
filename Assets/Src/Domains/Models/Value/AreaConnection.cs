@@ -1,4 +1,4 @@
-﻿using Assets.Src.Domains.Models.Entity;
+using Assets.Src.Domains.Models.Entity;
 using System;
 using UnityEngine;
 
@@ -24,7 +24,7 @@ namespace Assets.Src.Domains.Models.Value
         /// 接続先地域
         /// </summary>
         [SerializeField]
-        Area _connectArea = new Area();
+        Area _connectArea = null;
         /// <summary>
         /// 接続先地域
         /// </summary>

@@ -13,5 +13,12 @@ namespace Assets.Src.Domains.Models.Value
     /// </summary>
     public partial class Ailment : Substance<Ailment.Stationery>
     {
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="stationery">元となる雛形</param>
+        public Ailment(Stationery stationery) : base(stationery)
+        {
+        }
     }
 }

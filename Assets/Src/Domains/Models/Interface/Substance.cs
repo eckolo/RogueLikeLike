@@ -14,6 +14,15 @@ namespace Assets.Src.Domains.Models.Interface
     public abstract class Substance<TStationery> where TStationery : Named
     {
         /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="stationery">元となる雛形</param>
+        public Substance(TStationery stationery)
+        {
+            _stationery = stationery;
+        }
+
+        /// <summary>
         /// 雛形情報
         /// </summary>
         [SerializeField]

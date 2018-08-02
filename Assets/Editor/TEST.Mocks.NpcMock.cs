@@ -1,4 +1,6 @@
-﻿using Assets.Src.Domains.Models.Entity;
+using System.Collections.Generic;
+using Assets.Src.Domains.Models.Entity;
+using Assets.Src.Domains.Models.Value;
 
 public static partial class TEST
 {
@@ -12,7 +14,7 @@ public static partial class TEST
         /// </summary>
         public class NpcMock : Npc
         {
-            public static NpcMock GetMock() => new NpcMock(new Parameters(
+            public static NpcMock GetMock() => new NpcMock(new NpcStationeryMock(new Parameters(
                 nowHp: Default.NpcMock.MAX_HP,
                 nowEnergy: Default.NpcMock.MAX_ENERGY,
                 nowMental: Default.NpcMock.MAX_MENTAL,
@@ -25,9 +27,9 @@ public static partial class TEST
                 magicDefense: Default.NpcMock.MAGIC_DEFENSE,
                 accuracy: Default.NpcMock.ACCURACY,
                 evasion: Default.NpcMock.EVASION,
-                speed: Default.NpcMock.SPEED));
+                speed: Default.NpcMock.SPEED)));
 
-            public static NpcMock GetSpeedMock(int speed) => new NpcMock(new Parameters(
+            public static NpcMock GetSpeedMock(int speed) => new NpcMock(new NpcStationeryMock(new Parameters(
                 nowHp: Default.NpcMock.MAX_HP,
                 nowEnergy: Default.NpcMock.MAX_ENERGY,
                 nowMental: Default.NpcMock.MAX_MENTAL,
@@ -40,15 +42,16 @@ public static partial class TEST
                 magicDefense: Default.NpcMock.MAGIC_DEFENSE,
                 accuracy: Default.NpcMock.ACCURACY,
                 evasion: Default.NpcMock.EVASION,
-                speed: speed));
+                speed: speed)));
 
-            NpcMock(Parameters parameters)
+            public NpcMock(NpcStationery stationery, List<Adjective> adjectives = null, Friendship friendship = null, Parameters parametersAdjust = null, int? nowHp = null, int? nowEnergy = null, int? nowMental = null, int? nowInitiative = null, IEnumerable<Ailment.Stationery> statusAilmentList = null) : base(stationery)
             {
-                _parameters = parameters;
             }
 
-            readonly Parameters _parameters = null;
-            public override Parameters parameters => _parameters;
+            /// <summary>
+            /// 外部から参照されるスキルパラメータ
+            /// </summary>
+            public override Parameters parameters => stationery.parameters;
         }
     }
 }

@@ -12,11 +12,35 @@ namespace Assets.Src.Domains.Models.Entity
     [Serializable]
     public partial class Npc : Adhered<NpcStationery>
     {
+        public Npc(
+            NpcStationery stationery,
+            List<Adjective> adjectives = null,
+            Friendship friendship = null,
+            Parameters parametersAdjust = null,
+            int? nowHp = null,
+            int? nowEnergy = null,
+            int? nowMental = null,
+            int? nowInitiative = null,
+            IEnumerable<Ailment.Stationery> statusAilmentList = null)
+            : base(stationery, adjectives)
+        {
+            this.friendship = friendship ?? this.friendship;
+            _parametersAdjust = parametersAdjust;
+            this.nowInitiative = nowInitiative ?? this.nowInitiative;
+            this.statusAilmentList = statusAilmentList ?? this.statusAilmentList;
+        }
+
         /// <summary>
         /// 各NPCへの友好度
         /// 0より大きければ友好、0未満なら敵対、0丁度なら無関心
         /// </summary>
-        public Friendship friendship { get; set; }
+        [SerializeField]
+        public Friendship _friendship = new Friendship();
+        /// <summary>
+        /// 各NPCへの友好度
+        /// 0より大きければ友好、0未満なら敵対、0丁度なら無関心
+        /// </summary>
+        public Friendship friendship { get { return _friendship; } set { _friendship = value; } }
 
         /// <summary>
         /// パラメータ変動量
@@ -75,6 +99,7 @@ namespace Assets.Src.Domains.Models.Entity
         /// </summary>
         [SerializeField]
         IEnumerable<Ailment.Stationery> _statusAilmentList = new List<Ailment.Stationery>();
+
         /// <summary>
         /// 状態異常リスト
         /// </summary>
