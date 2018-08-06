@@ -44,7 +44,7 @@ public static partial class TEST
                 evasion: Default.NpcMock.EVASION,
                 speed: speed)));
 
-            public NpcMock(NpcStationery stationery, List<Adjective> adjectives = null, Friendship friendship = null, Parameters parametersAdjust = null, int? nowHp = null, int? nowEnergy = null, int? nowMental = null, int? nowInitiative = null, IEnumerable<Ailment.Stationery> statusAilmentList = null) : base(stationery)
+            public NpcMock(NpcStationery stationery, List<Adjective> adjectives = null, Friendship friendship = null, Parameters parametersAdjust = null, int? nowHp = null, int? nowEnergy = null, int? nowMental = null, int? nowInitiative = null, IEnumerable<Ailment> statusAilmentList = null) : base(stationery)
             {
             }
 

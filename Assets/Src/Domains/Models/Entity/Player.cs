@@ -11,7 +11,7 @@ namespace Assets.Src.Domains.Models.Entity
     [Serializable]
     public class Player : Npc
     {
-        public Player(NpcStationery stationery, List<Adjective> adjectives, Friendship friendship = null, Parameters parametersAdjust = null, int? nowHp = null, int? nowEnergy = null, int? nowMental = null, int? nowInitiative = null, IEnumerable<Ailment.Stationery> statusAilmentList = null) : base(stationery, adjectives, friendship, parametersAdjust, nowHp, nowEnergy, nowMental, nowInitiative, statusAilmentList)
+        public Player(NpcStationery stationery, List<Adjective> adjectives, Friendship friendship = null, Parameters parametersAdjust = null, int? nowHp = null, int? nowEnergy = null, int? nowMental = null, int? nowInitiative = null, IEnumerable<Ailment> statusAilmentList = null) : base(stationery, adjectives, friendship, parametersAdjust, nowHp, nowEnergy, nowMental, nowInitiative, statusAilmentList)
         {
         }
     }

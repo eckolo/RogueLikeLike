@@ -21,7 +21,7 @@ namespace Assets.Src.Domains.Models.Entity
             int? nowEnergy = null,
             int? nowMental = null,
             int? nowInitiative = null,
-            IEnumerable<Ailment.Stationery> statusAilmentList = null)
+            IEnumerable<Ailment> statusAilmentList = null)
             : base(stationery, adjectives)
         {
             this.friendship = friendship ?? this.friendship;
@@ -98,12 +98,12 @@ namespace Assets.Src.Domains.Models.Entity
         /// 状態異常リスト
         /// </summary>
         [SerializeField]
-        IEnumerable<Ailment.Stationery> _statusAilmentList = new List<Ailment.Stationery>();
+        IEnumerable<Ailment> _statusAilmentList = new List<Ailment>();
 
         /// <summary>
         /// 状態異常リスト
         /// </summary>
-        public IEnumerable<Ailment.Stationery> statusAilmentList
+        public IEnumerable<Ailment> statusAilmentList
         {
             get { return _statusAilmentList; }
             set { _statusAilmentList = value; }

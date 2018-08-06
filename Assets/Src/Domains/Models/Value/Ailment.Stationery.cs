@@ -1,5 +1,7 @@
 using Assets.Src.Domains.Models.Interface;
+using Assets.Src.Domains.Service;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Src.Domains.Models.Value
@@ -12,6 +14,15 @@ namespace Assets.Src.Domains.Models.Value
         [Serializable]
         public partial class Stationery : Named
         {
+            /// <summary>
+            /// 動作定義
+            /// </summary>
+            [SerializeField]
+            List<TimingBehavior> _behaviors = new List<TimingBehavior>();
+            /// <summary>
+            /// 動作定義
+            /// </summary>
+            public Dictionary<OperationTiming, List<Behavior>> behaviors => _behaviors.ToDictionary();
         }
     }
 }
