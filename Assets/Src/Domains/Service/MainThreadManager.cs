@@ -1,4 +1,4 @@
-﻿using Assets.Src.Domains.Models.Entity;
+using Assets.Src.Domains.Models.Entity;
 using Assets.Src.Domains.Models.Value;
 using System;
 using System.Collections.Generic;
@@ -7,29 +7,29 @@ using System.Linq;
 namespace Assets.Src.Domains.Service
 {
     /// <summary>
-    /// 各種ローグライク処理統括クラス
+    /// ゲームの進行制御クラス
     /// </summary>
-    public static class RogueLikeManager
+    public static class MainThreadManager
     {
         /// <summary>
         /// ターン毎の処理実施
         /// </summary>
         /// <param name="states">現在のゲーム状態</param>
         /// <returns>実行後のゲーム状態</returns>
-        public static IGameFoundation PerformTurnByTurn(this IGameFoundation _found)
+        public static IGameFoundation PerformTurnByTurn(this IGameFoundation _foundation)
         {
-            var found = _found.Duplicate();
-            var actor = found.nowNpcList.CalcNextActNpc();
-            var selectedAction = actor.DetermineAction(found.nowState);
-            var happenedList = found.nowState.GenerateHappenedList(actor, selectedAction);
+            var foundation = _foundation.Duplicate();
+            var actor = foundation.nowNpcList.CalcNextActNpc();
+            var selectedAction = actor.DetermineAction(foundation.nowState);
+            var happenedList = foundation.nowState.GenerateHappenedList(actor, selectedAction);
 
-            found.nowState = found.nowState.ReflectHappenedList(happenedList);
+            foundation.nowState = foundation.nowState.ReflectHappenedList(happenedList);
 
-            found.nowState = found.nowState.SetupNextMap();
-            found.nowState = found.nowState.CalcInitiativeTurnEnd(actor);
+            foundation.nowState = foundation.nowState.SetupNextMap();
+            foundation.nowState = foundation.nowState.CalcInitiativeTurnEnd(actor);
 
-            found.nowState = found.nowState.ReflectView(found.methods.viewer);
-            return found;
+            foundation.nowState = foundation.nowState.ReflectView(foundation.methods.viewer);
+            return foundation;
         }
 
         /// <summary>

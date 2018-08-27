@@ -1,10 +1,13 @@
-﻿using UnityEngine;
-using System.Collections;
 using Assets.Src.Domains.Service;
 using System;
+using System.Collections;
+using UnityEngine;
 
 namespace Assets.Src.Infrastructure
 {
+    /// <summary>
+    /// システム的なゲーム処理統括
+    /// </summary>
     public class CentralController : MonoBehaviour
     {
         /// <summary>
@@ -28,7 +31,7 @@ namespace Assets.Src.Infrastructure
         }
 
         /// <summary>
-        /// 初期処理
+        /// システム的な初期処理
         /// </summary>
         /// <returns>初期処理正常完了フラグ</returns>
         bool SetUp()
@@ -48,10 +51,11 @@ namespace Assets.Src.Infrastructure
         {
             try
             {
-                var gameStates = GameFoundation.CreateNewState(DateTime.Now.GetHashCode());
+                var gameFoundation = GameFoundation.CreateNewState(DateTime.Now.GetHashCode());
                 while(true)
                 {
-                    gameStates = (GameFoundation)gameStates.PerformTurnByTurn();
+                    gameFoundation = (GameFoundation)gameFoundation.PerformTurnByTurn();
+                    LogHub.DEBUG.LeaveLog($"{gameFoundation.nowState} TurnByTurn", new FileManager());
                 }
             }
             catch(Exception error)
