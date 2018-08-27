@@ -105,48 +105,12 @@ namespace Assets.Src.Domains.Service
             Npc target,
             Vector2 center)
         {
-            var attack = behavior.attackParameters
-                 .Select(parameters => new
-                 {
-                     type = parameters.Key,
-                     value = (actor.parameters * parameters.Value).innerProduct.DividedBy(100)
-                 });
-            var defense = behavior.defenseParameters
-                 .Select(parameters => new
-                 {
-                     type = parameters.Key,
-                     value = (target.parameters * parameters.Value).innerProduct.DividedBy(100)
-                 });
-            var accuracy = (actor.parameters * behavior.accuracyParameters).innerProduct;
-            var evasion = (target.parameters * behavior.evasionParameters).innerProduct;
-
-            var variation = attack.GroupJoin(
-                defense,
-                parameters => parameters.type,
-                parameters => parameters.type,
-                (_attack, defenses) => new
-                {
-                    _attack.type,
-                    attack = _attack.value,
-                    defense = defenses.SingleOrDefault()?.value ?? Fraction.zero
-                })
-                .Select(parameters => new
-                {
-                    parameters.type,
-                    value = (parameters.attack + parameters.defense).LimitLower(Fraction.zero)
-                })
-                .Select(parameters => new
-                {
-                    parameters.type,
-                    value = parameters.value * (accuracy - evasion) * behavior.power.DividedBy(100)
-                })
-                .ToDictionary(parameters => parameters.type, parameters => Mathf.CeilToInt(parameters.value.value));
-
+            var variation = behavior.ToVariation(actor: actor, target: target);
             var movement = (state.map.GetNpcCoordinate(target) ?? center - center).normalized * behavior.blowing;
 
             var result = Happened.builder
                   .Target(target)
-                  .Variation(new Npc.Parameters(variation))
+                  .Variation(variation)
                   .AilmentAmount(behavior.ailmentAmount)
                   .AilmentDuration(behavior.ailmentDuration)
                   .Movement(movement)
