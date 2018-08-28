@@ -1,5 +1,6 @@
 using Assets.Src.Domains.Models.Entity;
 using Assets.Src.Domains.Models.Value;
+using Assets.Src.Domains.Service.Factory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +13,24 @@ namespace Assets.Src.Domains.Service
     public static class MainThreadManager
     {
         /// <summary>
+        /// オープニング処理実施
+        /// </summary>
+        /// <param name="_foundation">現在のゲーム基盤</param>
+        /// <returns>実行後のゲーム基盤</returns>
+        public static IGameFoundation ExecuteOpening(this IGameFoundation _foundation)
+        {
+            var foundation = _foundation.Duplicate();
+            var areaStationery = foundation.methods.areaRepository.GetContests("test");
+            foundation.areaList.Add(areaStationery.ToAdhered<Area, AreaStationery>());
+            return foundation;
+        }
+
+        /// <summary>
         /// ターン毎の処理実施
         /// </summary>
-        /// <param name="states">現在のゲーム状態</param>
-        /// <returns>実行後のゲーム状態</returns>
-        public static IGameFoundation PerformTurnByTurn(this IGameFoundation _foundation)
+        /// <param name="_foundation">現在のゲーム基盤</param>
+        /// <returns>実行後のゲーム基盤</returns>
+        public static IGameFoundation ExecuteTurnByTurn(this IGameFoundation _foundation)
         {
             var foundation = _foundation.Duplicate();
             var actor = foundation.nowNpcList.CalcNextActNpc();

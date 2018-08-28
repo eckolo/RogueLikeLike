@@ -52,9 +52,10 @@ namespace Assets.Src.Infrastructure
             try
             {
                 var gameFoundation = GameFoundation.CreateNewState(DateTime.Now.GetHashCode());
+                gameFoundation = (GameFoundation)gameFoundation.ExecuteOpening();
                 while(true)
                 {
-                    gameFoundation = (GameFoundation)gameFoundation.PerformTurnByTurn();
+                    gameFoundation = (GameFoundation)gameFoundation.ExecuteTurnByTurn();
                     LogHub.DEBUG.LeaveLog($"{gameFoundation.nowState} TurnByTurn", new FileManager());
                 }
             }
