@@ -1,10 +1,9 @@
-using Assets.Src.Domains.Service;
-using Assets.Src.Domains.Models.Value;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
 using Assets.Src.Domains.Models.Entity;
+using Assets.Src.Domains.Models.Value;
+using Assets.Src.Domains.Service;
 using Assets.Src.Infrastructure.Repository;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets.Src.Infrastructure
 {
@@ -37,7 +36,8 @@ namespace Assets.Src.Infrastructure
             _methods = new InjectedMethods(
                 viewer: new ViewManager(),
                 fileManager: new FileManager(),
-                skillRepository: new SkillRepository());
+                skillRepository: new SkillRepository(),
+                areaRepository: new AreaRepository());
         }
 
         /// <summary>

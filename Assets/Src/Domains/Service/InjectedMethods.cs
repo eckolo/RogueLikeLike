@@ -1,4 +1,4 @@
-﻿using Assets.Src.Domains.Models.Value;
+using Assets.Src.Domains.Models.Value;
 using Assets.Src.Domains.Service.Repository;
 
 namespace Assets.Src.Domains.Service
@@ -8,11 +8,16 @@ namespace Assets.Src.Domains.Service
     /// </summary>
     public class InjectedMethods
     {
-        public InjectedMethods(IViewManager viewer, IFileManager fileManager, IRepository<Skill.Key, Skill> skillRepository)
+        public InjectedMethods(
+            IViewManager viewer, 
+            IFileManager fileManager,
+            IRepository<Skill.Key, Skill> skillRepository, 
+            IRepository<string, AreaStationery> areaRepository)
         {
             this.viewer = viewer;
             this.fileManager = fileManager;
             this.skillRepository = skillRepository;
+            this.areaRepository = areaRepository;
         }
 
         /// <summary>
@@ -27,5 +32,9 @@ namespace Assets.Src.Domains.Service
         /// スキルリポジトリ
         /// </summary>
         public IRepository<Skill.Key, Skill> skillRepository { get; }
+        /// <summary>
+        /// エリアリポジトリ
+        /// </summary>
+        public IRepository<string, AreaStationery> areaRepository { get; }
     }
 }
