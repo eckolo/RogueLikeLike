@@ -2,6 +2,7 @@ using Assets.Src.Domains.Models.Interface;
 using Assets.Src.Domains.Models.Value;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.Src.Domains.Models.Entity
@@ -98,7 +99,7 @@ namespace Assets.Src.Domains.Models.Entity
         /// 状態異常リスト
         /// </summary>
         [SerializeField]
-        IEnumerable<Ailment> _statusAilmentList = new List<Ailment>();
+        IEnumerable<Ailment> _statusAilmentList = Enumerable.Empty<Ailment>();
 
         /// <summary>
         /// 状態異常リスト

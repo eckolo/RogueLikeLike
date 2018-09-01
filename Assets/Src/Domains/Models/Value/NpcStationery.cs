@@ -68,7 +68,7 @@ namespace Assets.Src.Domains.Models.Value
         /// 習得ジョブリスト
         /// </summary>
         [SerializeField]
-        IEnumerable<Job> _hadJobList = new List<Job>();
+        IEnumerable<Job> _hadJobList = Enumerable.Empty<Job>();
         /// <summary>
         /// 習得ジョブリスト
         /// </summary>

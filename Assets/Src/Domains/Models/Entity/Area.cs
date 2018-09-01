@@ -38,7 +38,7 @@ namespace Assets.Src.Domains.Models.Entity
         /// 他地域との接続情報
         /// </summary>
         [SerializeField]
-        IEnumerable<AreaConnection> _connectionList = new List<AreaConnection>();
+        IEnumerable<AreaConnection> _connectionList = Enumerable.Empty<AreaConnection>();
         /// <summary>
         /// 他地域との接続情報
         /// </summary>
