@@ -1,5 +1,5 @@
-﻿using Assets.Src.Domains.Service;
-using Assets.Src.Infrastructure;
+using Assets.Src.Domains.Service;
+using Assets.Src.Infrastructure.Service;
 using NUnit.Framework;
 using UnityEngine;
 public static partial class TEST
@@ -9,7 +9,7 @@ public static partial class TEST
     /// </summary>
     public static class MessageManagerTest
     {
-        readonly static IFileManager fileManager = new FileManager();
+        static readonly IFileManager fileManager = new FileManager();
 
         /// <summary>
         /// ログ残すメソッドのテスト

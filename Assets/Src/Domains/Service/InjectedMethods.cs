@@ -1,5 +1,5 @@
 using Assets.Src.Domains.Models.Value;
-using Assets.Src.Domains.Service.Repository;
+using Assets.Src.Domains.Repository;
 
 namespace Assets.Src.Domains.Service
 {

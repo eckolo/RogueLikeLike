@@ -1,7 +1,7 @@
-﻿using Assets.Src.Domains.Models.Entity;
+using Assets.Src.Domains.Models.Entity;
 using Assets.Src.Domains.Models.Value;
 using Assets.Src.Domains.Service;
-using Assets.Src.Infrastructure;
+using Assets.Src.Infrastructure.Models.Entity;
 using NUnit.Framework;
 using UnityEngine;
 

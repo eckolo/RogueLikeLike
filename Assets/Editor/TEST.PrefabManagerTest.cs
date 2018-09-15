@@ -1,4 +1,4 @@
-﻿using Assets.Src.Infrastructure;
+using Assets.Src.Infrastructure.Service;
 using NUnit.Framework;
 using UnityEngine;
 

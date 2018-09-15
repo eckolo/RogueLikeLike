@@ -1,6 +1,6 @@
 using Assets.Src.Domains.Models.Entity;
 using Assets.Src.Domains.Models.Value;
-using Assets.Src.Domains.Service.Factory;
+using Assets.Src.Domains.Factory;
 using System;
 using System.Collections.Generic;
 using System.Linq;

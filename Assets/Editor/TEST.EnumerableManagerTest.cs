@@ -1,4 +1,4 @@
-using Assets.Src.Domains.Models.Interface;
+using Assets.Src.Domains.Models.Abstract;
 using Assets.Src.Domains.Models.Value;
 using Assets.Src.Domains.Service;
 using NUnit.Framework;

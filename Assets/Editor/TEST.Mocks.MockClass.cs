@@ -1,4 +1,4 @@
-using Assets.Src.Domains.Models.Interface;
+using Assets.Src.Domains.Models.Abstract;
 using System;
 using UnityEngine;
 

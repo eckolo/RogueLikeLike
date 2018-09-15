@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Assets.Src.Domains.Models.Value;
-using Assets.Src.Domains.Models.Interface;
+using Assets.Src.Domains.Models.Abstract;
 using System.Linq;
 
 namespace Assets.Src.Domains.Models.Entity

@@ -1,4 +1,5 @@
-﻿using Assets.Src.Domains.Models.Entity;
+using Assets.Src.Domains.Models.Entity;
+using Assets.Src.Domains.Repository;
 
 namespace Assets.Src.Domains.Service
 {

@@ -1,5 +1,5 @@
 ﻿using Assets.Src.Domains.Models.Entity;
-using Assets.Src.Domains.Models.Interface;
+using Assets.Src.Domains.Models.Abstract;
 using Assets.Src.Domains.Service;
 using System;
 using System.Collections.Generic;
