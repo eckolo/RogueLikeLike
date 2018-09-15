@@ -21,7 +21,8 @@ namespace Assets.Src.Domains.Service
         {
             var foundation = _foundation.Duplicate();
             var areaStationery = foundation.methods.areaRepository.GetContests("test");
-            foundation.areaList.Add(areaStationery.ToAdhered<Area, AreaStationery>());
+            var area = new Area(areaStationery);
+            foundation.areaList.Add(area);
             return foundation;
         }
 
