@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1c20f3024dfea44ca3f201dbecbe706, type: 3}
-  m_Name: AreaStationery
+  m_Name: test
   m_EditorClassIdentifier: 
   _description: 
   _setableMapChips: []
