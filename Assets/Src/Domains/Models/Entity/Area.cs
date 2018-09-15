@@ -24,14 +24,10 @@ namespace Assets.Src.Domains.Models.Entity
         public Area(
             AreaStationery stationery,
             List<Adjective> adjectives = null,
-            IEnumerable<AreaConnection> connectionList = null,
-            Dictionary<Vector2, Map> includeMapList = null,
-            Vector2? nowMapCondition = null)
+            IEnumerable<AreaConnection> connectionList = null)
             : base(stationery, adjectives)
         {
             this.connectionList = connectionList ?? this.connectionList;
-            this.includeMapList = includeMapList ?? this.includeMapList;
-            this.nowMapCondition = nowMapCondition ?? this.nowMapCondition;
         }
 
         /// <summary>
