@@ -1,9 +1,9 @@
-using System.Collections.Generic;
-using UnityEngine;
-using System;
-using Assets.Src.Domain.Model.Value;
 using Assets.Src.Domain.Model.Abstract;
+using Assets.Src.Domain.Model.Value;
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace Assets.Src.Domain.Model.Entity
 {
@@ -50,27 +50,27 @@ namespace Assets.Src.Domain.Model.Entity
         /// </summary>
         public Direction upwardDirection
         {
-            get { return _location.upwardDirection; }
+            get { return _location?.upwardDirection ?? default(Direction); }
             set { _location.upwardDirection = value; }
         }
         /// <summary>
         /// 全エリアデータ
         /// </summary>
-        public List<Area> areaList { get { return _location.areaList; } set { _location.areaList = value; } }
+        public List<Area> areaList { get { return _location?.areaList; } set { _location.areaList = value; } }
         /// <summary>
         /// 現在のエリア情報
         /// </summary>
-        public Area area { get { return _location.nowArea; } set { _location.nowArea = value; } }
+        public Area area { get { return _location?.nowArea; } set { _location.nowArea = value; } }
         /// <summary>
         /// 現在のマップ状態
         /// </summary>
-        public Map map { get { return area.nowMap; } set { area.nowMap = value; } }
+        public Map map { get { return area?.nowMap; } set { area.nowMap = value; } }
         /// <summary>
         /// 所在マップ座標
         /// </summary>
         public Vector2 nowMapCondition
         {
-            get { return area.nowMapCondition; }
+            get { return area?.nowMapCondition ?? Vector2.zero; }
             set { area.nowMapCondition = value; }
         }
 
@@ -79,7 +79,7 @@ namespace Assets.Src.Domain.Model.Entity
         /// </summary>
         public Dictionary<Vector2, Npc> npcLayout
         {
-            get { return map.npcLayout; }
+            get { return map?.npcLayout; }
             set { map.npcLayout = value; }
         }
 
@@ -96,7 +96,7 @@ namespace Assets.Src.Domain.Model.Entity
         /// <summary>
         /// 現在のマップ上に存在するNPC全体のリスト
         /// </summary>
-        public virtual IEnumerable<Npc> npcList => npcLayout.Select(npcData => npcData.Value);
+        public virtual IEnumerable<Npc> npcList => npcLayout?.Select(npcData => npcData.Value);
 
         /// <summary>
         /// 乱数の種

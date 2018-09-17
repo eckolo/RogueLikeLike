@@ -22,6 +22,7 @@ namespace Assets.Src.Domain.Service
         public static IEnumerable<TSource> MaxKeys<TSource, TComparable>(this IEnumerable<TSource> source, System.Func<TSource, TComparable> selector)
             where TComparable : System.IComparable<TComparable>
         {
+            if(!source?.Any() ?? true) return new List<TSource>();
             var maxValue = source.Max(selector);
             return source.Where(elem => selector(elem).CompareTo(maxValue) == 0);
         }
@@ -36,6 +37,7 @@ namespace Assets.Src.Domain.Service
         public static IEnumerable<TSource> MinKeys<TSource, TComparable>(this IEnumerable<TSource> source, System.Func<TSource, TComparable> selector)
             where TComparable : System.IComparable<TComparable>
         {
+            if(!source?.Any() ?? true) return new List<TSource>();
             var minValue = source.Min(selector);
             return source.Where(elem => selector(elem).CompareTo(minValue) == 0);
         }

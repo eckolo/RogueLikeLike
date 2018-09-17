@@ -22,7 +22,7 @@ namespace Assets.Src.Domain.Service
         public static Npc CalcNextActNpc(this IEnumerable<Npc> npcList) => npcList
             .MaxKeys(npc => npc.nowInitiative)
             .MaxKeys(npc => npc.parameters.speed)
-            .First();
+            .FirstOrDefault();
 
         /// <summary>
         /// ターンエンド時のイニシアチブ演算
@@ -58,7 +58,7 @@ namespace Assets.Src.Domain.Service
         /// <returns>決定されたアビリティと使用対象を定めた行動パターンオブジェクト</returns>
         public static Selected DetermineAction(this Npc actor, GameState state)
         {
-            var applicable = actor.actionAlgorithm
+            var applicable = actor?.actionAlgorithm
                 .Where(term => term.Judge(actor, state))
                 .Where(action => actor.SearchAbility(action.ability) != null)
                 .Pick(state.seed);
