@@ -52,15 +52,11 @@ namespace Assets.Src.Controller
         /// <returns>イテレータ</returns>
         IEnumerator IntroductionMainRoutine()
         {
+            //デバッグ実行時は原因箇所追いやすくするために直接エラーを投げる
+            if(Debug.isDebugBuild) return ExecuteMainRoutine();
             try
             {
-                var gameFoundation = GameFoundation.CreateNewState(DateTime.Now.GetHashCode());
-                gameFoundation = (GameFoundation)gameFoundation.ExecuteOpening();
-                while(true)
-                {
-                    gameFoundation = (GameFoundation)gameFoundation.ExecuteTurnByTurn();
-                    LogHub.DEBUG.LeaveLog($"{gameFoundation.nowState} TurnByTurn", new FileManager());
-                }
+                return ExecuteMainRoutine();
             }
             catch(Exception error)
             {
@@ -68,6 +64,21 @@ namespace Assets.Src.Controller
                 throw error;
             }
         }
+        /// <summary>
+        /// メインルーチン制御の実行
+        /// </summary>
+        /// <returns>イテレータ</returns>
+        IEnumerator ExecuteMainRoutine()
+        {
+            var gameFoundation = GameFoundation.CreateNewState(DateTime.Now.GetHashCode());
+            gameFoundation = (GameFoundation)gameFoundation.ExecuteOpening();
+            while(true)
+            {
+                gameFoundation = (GameFoundation)gameFoundation.ExecuteTurnByTurn();
+                LogHub.DEBUG.LeaveLog($"{gameFoundation.nowState} TurnByTurn", new FileManager());
+            }
+        }
+
         /// <summary>
         /// メインルーチンがのっているコルーチン保持変数
         /// </summary>

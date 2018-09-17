@@ -1,6 +1,5 @@
 using Assets.Src.Domain.Model.Entity;
 using Assets.Src.Domain.Model.Value;
-using Assets.Src.Domain.Factory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +18,7 @@ namespace Assets.Src.Domain.Service
         /// <returns>実行後のゲーム基盤</returns>
         public static IGameFoundation ExecuteOpening(this IGameFoundation _foundation)
         {
+            //TODO 現在は仮のテスト処理なので正式なOP構築する
             var foundation = _foundation.Duplicate();
             var areaStationery = foundation.methods.areaRepository.GetContests("test");
             var area = new Area(areaStationery);
