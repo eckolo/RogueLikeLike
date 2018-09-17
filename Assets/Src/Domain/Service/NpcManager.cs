@@ -47,6 +47,7 @@ namespace Assets.Src.Domain.Service
         /// <returns>変換されたパラメータ</returns>
         public static Npc.Parameters ToParameters(this Dictionary<Skill.Key, int> skills)
         {
+            //TODO 実装する
             throw new NotImplementedException();
         }
 
@@ -202,6 +203,7 @@ namespace Assets.Src.Domain.Service
         /// <returns>移動方向</returns>
         static Vector2 CalcMovePoint(this ActionTerm.MoveType moveType, Vector2? relativeTarget)
         {
+            //TODO 実装する
             throw new NotImplementedException();
         }
 
@@ -212,6 +214,7 @@ namespace Assets.Src.Domain.Service
         /// <returns>強さの基準値</returns>
         public static int CalcStrong(this Npc.Parameters parameters)
         {
+            //TODO 実装する
             throw new NotImplementedException();
         }
 
@@ -223,6 +226,7 @@ namespace Assets.Src.Domain.Service
         /// <returns>元気さを示す数値</returns>
         public static int CalcLively(this Npc npc)
         {
+            //TODO 実装する
             throw new NotImplementedException();
         }
 
@@ -234,6 +238,7 @@ namespace Assets.Src.Domain.Service
         /// <param name="origin">検索元のアビリティ雛形</param>
         static Ability SearchAbility(this Npc myself, AbilityStationery origin)
         {
+            //TODO 実装する
             throw new NotImplementedException();
         }
 
@@ -247,6 +252,7 @@ namespace Assets.Src.Domain.Service
         /// <returns></returns>
         public static Vector2 CorrectMoving(this Vector2 movement, Npc actor, Map map, bool slipThrough = false)
         {
+            //TODO 実装する
             throw new NotImplementedException();
         }
     }

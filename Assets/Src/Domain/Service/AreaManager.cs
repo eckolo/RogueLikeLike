@@ -31,6 +31,7 @@ namespace Assets.Src.Domain.Service
         /// <returns>アクション実施後マップオブジェクト</returns>
         public static Map UpdateMap(this Map beforeMap, Happened action)
         {
+            //TODO 実装する
             throw new NotImplementedException();
         }
     }

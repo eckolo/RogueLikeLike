@@ -23,6 +23,7 @@ namespace Assets.Src.Domain.Service
             where TAdhered : Adhered<TStationery>, new()
             where TStationery : Named
         {
+            //TODO 実装する
             throw new NotImplementedException();
         }
     }

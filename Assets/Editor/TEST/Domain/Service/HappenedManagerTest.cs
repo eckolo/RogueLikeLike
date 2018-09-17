@@ -9,12 +9,14 @@ namespace TEST.Domain.Service
         [Test]
         public static void ProcessActuallyTest()
         {
+            //TODO テスト書く
             Assert.Inconclusive();
         }
 
         [Test]
         public static void GenerateHappenedListTest()
         {
+            //TODO テスト書く
             Assert.Inconclusive();
         }
     }

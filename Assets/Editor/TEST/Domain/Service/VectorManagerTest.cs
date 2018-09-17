@@ -174,6 +174,7 @@ namespace TEST.Domain.Service
         [Test]
         public static void LinearizationTest()
         {
+            //TODO テスト書く
             Assert.Inconclusive();
         }
         [Test]

@@ -11,11 +11,13 @@ namespace TEST.Domain.Service
         [Test]
         public static void JudgeTest()
         {
+            //TODO テスト書く
             Assert.Inconclusive();
         }
         [Test]
         public static void ToIntTest()
         {
+            //TODO テスト書く
             Assert.Inconclusive();
         }
     }

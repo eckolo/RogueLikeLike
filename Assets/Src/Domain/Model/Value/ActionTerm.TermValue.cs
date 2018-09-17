@@ -1,4 +1,4 @@
-﻿using Assets.Src.Domain.Model.Entity;
+using Assets.Src.Domain.Model.Entity;
 using System;
 using UnityEngine;
 
@@ -62,6 +62,7 @@ namespace Assets.Src.Domain.Model.Value
             /// <returns>条件判定結果</returns>
             public bool Judge(Npc myself, GameState state)
             {
+                //TODO 実装する
                 throw new NotImplementedException();
             }
         }

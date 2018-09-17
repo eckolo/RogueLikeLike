@@ -152,6 +152,7 @@ namespace Assets.Src.Domain.Service
         /// <returns></returns>
         public static List<Vector2> Linearization(this Vector2 start, Vector2 end)
         {
+            //TODO 実装する
             throw new NotImplementedException();
         }
         /// <summary>

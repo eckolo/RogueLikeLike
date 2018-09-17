@@ -17,6 +17,7 @@ namespace Assets.Src.Infrastructure.Service
         /// <returns>更新処理成否</returns>
         public bool ReflectMap(Map map, Direction topDirection = Direction.NORTH)
         {
+            //TODO 実装する
             throw new NotImplementedException();
         }
 
@@ -27,6 +28,7 @@ namespace Assets.Src.Infrastructure.Service
         /// <returns>描画処理成否</returns>
         public bool ReflectAction(Happened happened)
         {
+            //TODO 実装する
             throw new NotImplementedException();
         }
 
@@ -37,6 +39,7 @@ namespace Assets.Src.Infrastructure.Service
         /// <returns>描画処理成否</returns>
         public bool OperateEffect(EffectAnimation effect)
         {
+            //TODO 実装する
             throw new NotImplementedException();
         }
     }

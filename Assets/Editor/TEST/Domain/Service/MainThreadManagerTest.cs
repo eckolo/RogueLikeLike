@@ -9,6 +9,7 @@ namespace TEST.Domain.Service
         [Test]
         public static void PerformTurnByTurnTest()
         {
+            //TODO テスト書く
             Assert.Inconclusive();
         }
     }

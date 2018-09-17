@@ -18,6 +18,7 @@ namespace Assets.Src.Domain.Factory
         /// <returns>生成されたマップ</returns>
         public static Map GenerateMap(this Area originArea, Vector2 coordinate)
         {
+            //TODO 実装する
             throw new NotImplementedException();
         }
     }

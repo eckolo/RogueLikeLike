@@ -116,6 +116,7 @@ namespace Assets.Src.Domain.Model.Value
         /// <returns>動作後のゲーム状態</returns>
         public GameState Predicate(GameState state)
         {
+            //TODO 実装する
             throw new NotImplementedException();
         }
     }

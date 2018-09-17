@@ -85,30 +85,35 @@ namespace TEST.Domain.Service
         [Test]
         public static void ToParametersTest()
         {
+            //TODO テスト書く
             Assert.Inconclusive();
         }
 
         [Test]
         public static void DetermineActionTest()
         {
+            //TODO テスト書く
             Assert.Inconclusive();
         }
 
         [Test]
         public static void CalcStrongTest()
         {
+            //TODO テスト書く
             Assert.Inconclusive();
         }
 
         [Test]
         public static void CalcLivelyTest()
         {
+            //TODO テスト書く
             Assert.Inconclusive();
         }
 
         [Test]
         public static void CorrectMovingTest()
         {
+            //TODO テスト書く
             Assert.Inconclusive();
         }
     }
