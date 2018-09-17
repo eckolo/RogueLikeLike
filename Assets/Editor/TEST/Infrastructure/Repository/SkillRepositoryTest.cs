@@ -1,5 +1,5 @@
-using Assets.Src.Domains.Models.Value;
-using Assets.Src.Domains.Service;
+using Assets.Src.Domain.Model.Value;
+using Assets.Src.Domain.Service;
 using Assets.Src.Infrastructure.Repository;
 using NUnit.Framework;
 using System;

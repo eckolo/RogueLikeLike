@@ -1,6 +1,6 @@
-using Assets.Src.Domains.Models.Abstract;
-using Assets.Src.Domains.Models.Value;
-using Assets.Src.Domains.Service;
+using Assets.Src.Domain.Model.Abstract;
+using Assets.Src.Domain.Model.Value;
+using Assets.Src.Domain.Service;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;

@@ -1,6 +1,6 @@
-using Assets.Src.Domains.Service;
-using Assets.Src.Domains.Models.Value;
-using Assets.Src.Domains.Repository;
+using Assets.Src.Domain.Service;
+using Assets.Src.Domain.Model.Value;
+using Assets.Src.Domain.Repository;
 
 namespace Assets.Src.Infrastructure.Repository
 {

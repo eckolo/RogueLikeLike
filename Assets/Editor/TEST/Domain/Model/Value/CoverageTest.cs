@@ -1,4 +1,4 @@
-using Assets.Src.Domains.Models.Value;
+using Assets.Src.Domain.Model.Value;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,6 +1,6 @@
-using Assets.Src.Domains.Service;
-using Assets.Src.Infrastructure.Models.Entity;
-using Assets.Src.Infrastructure.Models.Value;
+using Assets.Src.Domain.Service;
+using Assets.Src.Infrastructure.Model.Entity;
+using Assets.Src.Infrastructure.Model.Value;
 using Assets.Src.Infrastructure.Service;
 using System;
 using System.Collections;
