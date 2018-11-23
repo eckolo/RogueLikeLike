@@ -1,6 +1,5 @@
 using Assets.Src.Domain.Service;
 using NUnit.Framework;
-using UnityEngine;
 
 namespace TEST.Domain.Service
 {
@@ -12,15 +11,11 @@ namespace TEST.Domain.Service
         [Test]
         public static void ConvertSnakeToPascalTest()
         {
-            Random.InitState(3);
-            var state = Random.state;
             for(int index = 0; index < 10000; index++)
             {
-                var result1 = state.SetupRandomNorm().value;
-                var result2 = state.SetupRandomNorm(21).value;
+                var result = 21.SetupRandomNorm().value;
 
-                Assert.IsTrue(0 <= result1 && result1 < 1);
-                Assert.IsTrue(0 <= result2 && result2 < 1);
+                Assert.IsTrue(0 <= result && result < 1);
             }
         }
     }

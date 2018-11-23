@@ -61,7 +61,7 @@ namespace Assets.Src.Domain.Service
             var applicable = actor?.actionAlgorithm
                 .Where(term => term.Judge(actor, state))
                 .Where(action => actor.SearchAbility(action.ability) != null)
-                .Pick(state.seed);
+                .Pick();
             if(applicable == default(ActionTerm)) return null;
 
             var ability = actor.SearchAbility(applicable.ability);
@@ -69,7 +69,7 @@ namespace Assets.Src.Domain.Service
             var targetNpc = actor.GetTermedNpc(state, applicable.targetType);
             var targetPoint = state.map.GetNpcCoordinate(targetNpc);
 
-            var direction = actor.CalcTargetDirection(applicable, state.map, targetPoint, state.seed);
+            var direction = actor.CalcTargetDirection(applicable, state.map, targetPoint);
 
             var relativePoint = targetPoint - state.map.GetNpcCoordinate(actor);
             var movePolicy = applicable.moveType.CalcMovePoint(relativePoint);
@@ -112,27 +112,27 @@ namespace Assets.Src.Domain.Service
                     var maxDistance = state.map.size.magnitude;
                     return npcs
                         .MinKeys(npc => state.map.GetNpcsDistance(myself, npc) ?? maxDistance)
-                        .Pick(state.seed);
+                        .Pick();
                 case TargetDecisionType.Determination.AWAY:
                     return npcs
                         .MaxKeys(npc => state.map.GetNpcsDistance(myself, npc) ?? 0)
-                        .Pick(state.seed);
+                        .Pick();
                 case TargetDecisionType.Determination.STRONG:
                     return npcs
                         .MaxKeys(npc => npc.parameters.CalcStrong())
-                        .Pick(state.seed);
+                        .Pick();
                 case TargetDecisionType.Determination.WEAK:
                     return npcs
                         .MinKeys(npc => npc.parameters.CalcStrong())
-                        .Pick(state.seed);
+                        .Pick();
                 case TargetDecisionType.Determination.LIVELY:
                     return npcs
                         .MaxKeys(npc => npc.CalcLively())
-                        .Pick(state.seed);
+                        .Pick();
                 case TargetDecisionType.Determination.WEAKENED:
                     return npcs
                         .MinKeys(npc => npc.CalcLively())
-                        .Pick(state.seed);
+                        .Pick();
                 default: throw new IndexOutOfRangeException();
             }
         }
@@ -140,11 +140,12 @@ namespace Assets.Src.Domain.Service
         /// <summary>
         /// アビリティ使用時の使用方向を決定する
         /// </summary>
+        /// <param name="actor">行動者</param>
         /// <param name="action">行動パターン</param>
         /// <param name="map">現在のマップ状態</param>
         /// <param name="_targetPoint">目標座標</param>
         /// <returns>目標座標からどの方向へ向けてアビリティを使用するか</returns>
-        static Direction CalcTargetDirection(this Npc actor, ActionTerm action, Map map, Vector2? _targetPoint, UnityEngine.Random.State seed)
+        static Direction CalcTargetDirection(this Npc actor, ActionTerm action, Map map, Vector2? _targetPoint)
         {
             if(_targetPoint == null) return default(Direction);
             var targetPoint = _targetPoint ?? Vector2.zero;
@@ -192,7 +193,7 @@ namespace Assets.Src.Domain.Service
                 .Select(layout => layout.Key);
             return directions
                 .MaxKeys(direction => points.Count(point => range.Move(targetPoint, direction).OnTarget(point)))
-                .Pick(seed);
+                .Pick();
         }
 
         /// <summary>

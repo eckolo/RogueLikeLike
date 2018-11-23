@@ -122,11 +122,6 @@ namespace Assets.Src.Infrastructure.Model.Entity
         public IEnumerable<Npc> nowNpcList => _state.npcList;
 
         /// <summary>
-        /// 乱数の種
-        /// </summary>
-        public Random.State nowSeed => nowState.seed;
-
-        /// <summary>
         /// シャローコピーメソッド
         /// </summary>
         /// <returns>コピーされたオブジェクト</returns>

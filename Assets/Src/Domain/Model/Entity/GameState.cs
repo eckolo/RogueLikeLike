@@ -102,11 +102,7 @@ namespace Assets.Src.Domain.Model.Entity
         /// 乱数の種
         /// </summary>
         [SerializeField]
-        readonly UnityEngine.Random.State _seed = default(UnityEngine.Random.State);
-        /// <summary>
-        /// 乱数の種
-        /// </summary>
-        public UnityEngine.Random.State seed => _seed;
+        readonly UnityEngine.Random.State _seed;
 
         /// <summary>
         /// シャローコピーメソッド

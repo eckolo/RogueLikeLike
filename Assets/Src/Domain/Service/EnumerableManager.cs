@@ -103,10 +103,9 @@ namespace Assets.Src.Domain.Service
         /// </summary>
         /// <typeparam name="TValue">リストの要素型</typeparam>
         /// <param name="values">選択されるリストのセット</param>
-        /// <param name="seed">乱数シード値</param>
         /// <param name="rates">確率分布</param>
         /// <returns>選択された値</returns>
-        public static TValue Pick<TValue>(this IEnumerable<TValue> values, Random.State seed, List<int> rates = null)
-            => values.Pick(seed.SetupRandomNorm(rates?.Sum() ?? values.Count()), rates);
+        public static TValue Pick<TValue>(this IEnumerable<TValue> values, List<int> rates = null)
+            => values.Pick((rates?.Sum() ?? values.Count()).SetupRandomNorm(), rates);
     }
 }
