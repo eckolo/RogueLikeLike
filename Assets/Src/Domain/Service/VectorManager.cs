@@ -1,8 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.Src.Domain.Service
@@ -144,6 +141,24 @@ namespace Assets.Src.Domain.Service
         /// <param name="origin">元ベクトル</param>
         /// <returns>左右反転されたベクトル</returns>
         public static Vector2 Invert(this Vector2 origin) => new Vector2(origin.x * -1, origin.y);
+        /// <summary>
+        /// ベクトルのX値を整数切り捨てで取得
+        /// </summary>
+        /// <param name="origin">元ベクトル</param>
+        /// <returns>整数のX座標値</returns>
+        public static int GetIntX(this Vector2 origin)
+            => origin.x > 0
+                ? Mathf.FloorToInt(origin.x)
+                : Mathf.CeilToInt(origin.x);
+        /// <summary>
+        /// ベクトルのY値を整数切り捨てで取得
+        /// </summary>
+        /// <param name="origin">元ベクトル</param>
+        /// <returns>整数のY座標値</returns>
+        public static int GetIntY(this Vector2 origin)
+            => origin.y > 0
+                ? Mathf.FloorToInt(origin.y)
+                : Mathf.CeilToInt(origin.y);
         /// <summary>
         /// 始点座標から終点座標まで直線を引いた際に通るマスを始点側から順に列挙
         /// </summary>

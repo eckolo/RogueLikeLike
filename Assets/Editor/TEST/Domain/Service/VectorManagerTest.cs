@@ -172,6 +172,26 @@ namespace TEST.Domain.Service
             Assert.AreEqual(VectorManager.Invert(vector3), new Vector2(0, 34));
         }
         [Test]
+        public static void GetIntXTest()
+        {
+            Assert.AreEqual(3, new Vector2(3, 4).GetIntX());
+            Assert.AreEqual(-4, new Vector2(-4, 5).GetIntX());
+            Assert.AreEqual(3, new Vector2(3.4f, 0).GetIntX());
+            Assert.AreEqual(7, new Vector2(7.6f, 0).GetIntX());
+            Assert.AreEqual(-37, new Vector2(-37.4f, 3.4f).GetIntX());
+            Assert.AreEqual(-45, new Vector2(-45.8f, 3.4f).GetIntX());
+        }
+        [Test]
+        public static void GetIntYTest()
+        {
+            Assert.AreEqual(4, new Vector2(3, 4).GetIntY());
+            Assert.AreEqual(-5, new Vector2(4, -5).GetIntY());
+            Assert.AreEqual(3, new Vector2(3.4f, 3.4f).GetIntY());
+            Assert.AreEqual(7, new Vector2(3.4f, 7.6f).GetIntY());
+            Assert.AreEqual(-37, new Vector2(-4.3f, -37.4f).GetIntY());
+            Assert.AreEqual(-45, new Vector2(-4.3f, -45.8f).GetIntY());
+        }
+        [Test]
         public static void LinearizationTest()
         {
             //TODO テスト書く
