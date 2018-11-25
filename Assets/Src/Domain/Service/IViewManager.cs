@@ -1,4 +1,5 @@
-﻿using Assets.Src.Domain.Model.Value;
+using Assets.Src.Domain.Model.Entity;
+using Assets.Src.Domain.Model.Value;
 
 namespace Assets.Src.Domain.Service
 {

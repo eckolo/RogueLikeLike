@@ -1,3 +1,4 @@
+using Assets.Src.Domain.Model.Entity;
 using Assets.Src.Domain.Model.Value;
 using Assets.Src.Domain.Service;
 using System;

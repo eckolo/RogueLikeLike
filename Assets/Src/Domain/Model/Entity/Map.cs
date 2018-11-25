@@ -1,10 +1,10 @@
-using Assets.Src.Domain.Model.Entity;
 using Assets.Src.Domain.Model.Abstract;
+using Assets.Src.Domain.Model.Value;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Src.Domain.Model.Value
+namespace Assets.Src.Domain.Model.Entity
 {
     /// <summary>
     /// マップオブジェクト
