@@ -81,31 +81,35 @@ namespace Assets.Src.Domain.Service
         /// リストから選択基準値に基づき1要素を抜き出す
         /// </summary>
         /// <typeparam name="TValue">リストの要素型</typeparam>
-        /// <param name="values">選択されるリストのセット</param>
+        /// <param name="valueList">選択されるリストのセット</param>
         /// <param name="norm">選択基準値</param>
-        /// <param name="rates">確率分布</param>
+        /// <param name="rateList">確率分布</param>
         /// <returns>選択された値</returns>
-        public static TValue Pick<TValue>(this IEnumerable<TValue> values, Fraction norm, List<int> rates = null)
+        public static TValue Pick<TValue>(
+            this IEnumerable<TValue> valueList,
+            Fraction norm,
+            List<int> rateList = null)
         {
-            rates = rates ?? values.Select(_ => 1).ToList();
-            var ratevalues = rates.Zip(values, (rate, value) => new KeyValuePair<int, TValue>(rate, value));
-            var selection = ratevalues.Sum(ratevalue => Mathf.Max(ratevalue.Key, 0)) * norm;
+            var actualRates = rateList?.Select(rate => Mathf.Max(rate, 0)) ?? valueList.Select(_ => 1);
+            var ratevalues = actualRates.Zip(valueList, (rate, value) => new { rate, value });
+            var selection = ratevalues.Sum(ratevalue => ratevalue.rate) * norm;
             if(selection < 0) return default(TValue);
+
             foreach(var ratevalue in ratevalues)
             {
-                selection -= ratevalue.Key;
-                if(selection < 0) return ratevalue.Value;
+                selection -= ratevalue.rate;
+                if(selection < 0) return ratevalue.value;
             }
             return default(TValue);
         }
         /// <summary>
-        /// リストから乱数シード値に基づき無作為1要素を抜き出す
+        /// リストからランダムに1要素を抜き出す
         /// </summary>
         /// <typeparam name="TValue">リストの要素型</typeparam>
-        /// <param name="values">選択されるリストのセット</param>
-        /// <param name="rates">確率分布</param>
+        /// <param name="valueList">選択されるリストのセット</param>
+        /// <param name="rateList">確率分布</param>
         /// <returns>選択された値</returns>
-        public static TValue Pick<TValue>(this IEnumerable<TValue> values, List<int> rates = null)
-            => values.Pick((rates?.Sum() ?? values.Count()).SetupRandomNorm(), rates);
+        public static TValue Pick<TValue>(this IEnumerable<TValue> valueList, List<int> rateList = null)
+            => valueList.Pick((rateList?.Sum() ?? valueList.Count()).SetupRandomNorm(), rateList);
     }
 }

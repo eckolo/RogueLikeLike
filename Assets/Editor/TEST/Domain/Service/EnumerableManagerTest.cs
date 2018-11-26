@@ -1,5 +1,4 @@
 using Assets.Src.Domain.Model.Abstract;
-using Assets.Src.Domain.Model.Value;
 using Assets.Src.Domain.Service;
 using NUnit.Framework;
 using System;
@@ -166,15 +165,14 @@ namespace TEST.Domain.Service
             Assert.IsFalse(list.ContainsIndex(4));
         }
         [Test]
-        public static void PickTest()
+        public static void PickTest_正常系()
         {
-            var vector1 = new Vector2(2, 2);
-            var vector2 = new Vector2(6, -8);
-            var vector3 = new Vector2(-6, 8);
-            var vector4 = new Vector2(0, -1);
+            var vector1 = new Vector2(1, 2);
+            var vector2 = new Vector2(2, -8);
+            var vector3 = new Vector2(3, 8);
+            var vector4 = new Vector2(4, -1);
             var list = new List<Vector2> { vector1, vector2, vector3, vector4 };
             var rate = new List<int> { 10, 20, 30, 40 };
-            var norm0 = -1.DividedBy(100);
             var norm1 = 0.DividedBy(100);
             var norm2 = 9.DividedBy(100);
             var norm3 = 10.DividedBy(100);
@@ -183,9 +181,7 @@ namespace TEST.Domain.Service
             var norm6 = 59.DividedBy(100);
             var norm7 = 60.DividedBy(100);
             var norm8 = 99.DividedBy(100);
-            var norm9 = 100.DividedBy(100);
 
-            Assert.AreEqual(default(Vector2), list.Pick(norm0, rate));
             Assert.AreEqual(vector1, list.Pick(norm1, rate));
             Assert.AreEqual(vector1, list.Pick(norm2, rate));
             Assert.AreEqual(vector2, list.Pick(norm3, rate));
@@ -194,7 +190,59 @@ namespace TEST.Domain.Service
             Assert.AreEqual(vector3, list.Pick(norm6, rate));
             Assert.AreEqual(vector4, list.Pick(norm7, rate));
             Assert.AreEqual(vector4, list.Pick(norm8, rate));
-            Assert.AreEqual(default(Vector2), list.Pick(norm9, rate));
+        }
+        [Test]
+        public static void PickTest_基準値が閾値外()
+        {
+            var vector1 = new Vector2(1, 2);
+            var vector2 = new Vector2(2, -8);
+            var vector3 = new Vector2(3, 8);
+            var vector4 = new Vector2(4, -1);
+            var list = new List<Vector2> { vector1, vector2, vector3, vector4 };
+            var rate = new List<int> { 10, 20, 30, 40 };
+            var norm1 = -1.DividedBy(100);
+            var norm2 = 100.DividedBy(100);
+
+            Assert.AreEqual(default(Vector2), list.Pick(norm1, rate));
+            Assert.AreEqual(default(Vector2), list.Pick(norm2, rate));
+        }
+        [Test]
+        public static void PickTest_確率分布が負の値()
+        {
+            var vector1 = new Vector2(1, 2);
+            var vector2 = new Vector2(2, -8);
+            var vector3 = new Vector2(3, 8);
+            var vector4 = new Vector2(4, -1);
+            var list = new List<Vector2> { vector1, vector2, vector3, vector4 };
+            var rate = new List<int> { 10, -20, 30, 40 };
+            var norm1 = 0.DividedBy(80);
+            var norm2 = 9.DividedBy(80);
+            var norm3 = 10.DividedBy(80);
+            var norm4 = 39.DividedBy(80);
+            var norm5 = 40.DividedBy(80);
+            var norm6 = 79.DividedBy(80);
+
+            Assert.AreEqual(vector1, list.Pick(norm1, rate));
+            Assert.AreEqual(vector1, list.Pick(norm2, rate));
+            Assert.AreEqual(vector3, list.Pick(norm3, rate));
+            Assert.AreEqual(vector3, list.Pick(norm4, rate));
+            Assert.AreEqual(vector4, list.Pick(norm5, rate));
+            Assert.AreEqual(vector4, list.Pick(norm6, rate));
+        }
+        [Test]
+        public static void PickTest_基準値が閾値外かつ確率分布が負の値()
+        {
+            var vector1 = new Vector2(1, 2);
+            var vector2 = new Vector2(2, -8);
+            var vector3 = new Vector2(3, 8);
+            var vector4 = new Vector2(4, -1);
+            var list = new List<Vector2> { vector1, vector2, vector3, vector4 };
+            var rate = new List<int> { 10, -20, 30, 40 };
+            var norm1 = -1.DividedBy(80);
+            var norm2 = 80.DividedBy(80);
+
+            Assert.AreEqual(default(Vector2), list.Pick(norm1, rate));
+            Assert.AreEqual(default(Vector2), list.Pick(norm2, rate));
         }
     }
 }
