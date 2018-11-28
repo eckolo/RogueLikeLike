@@ -1,9 +1,4 @@
 using Assets.Src.Domain.Model.Value;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Assets.Src.Domain.Service
 {
@@ -42,5 +37,12 @@ namespace Assets.Src.Domain.Service
         /// <param name="upper">下限値</param>
         /// <returns>下限値以上の元の値</returns>
         public static Fraction LimitLower(this Fraction origin, Fraction lower) => origin > lower ? origin : lower;
+
+        /// <summary>
+        /// 百分率の数値を生成する
+        /// </summary>
+        /// <param name="origin">元となる整数</param>
+        /// <returns>元となる整数パーセントの百分率</returns>
+        public static Percentage ToPercentage(this int origin) => new Percentage(origin);
     }
 }

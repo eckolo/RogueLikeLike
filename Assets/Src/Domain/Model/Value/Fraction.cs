@@ -30,11 +30,11 @@ namespace Assets.Src.Domain.Model.Value
         /// <summary>
         /// 分子
         /// </summary>
-        public int numer { get; }
+        public virtual int numer { get; }
         /// <summary>
         /// 分母
         /// </summary>
-        public int denom { get; }
+        public virtual int denom { get; }
         /// <summary>
         /// 実数値
         /// </summary>
