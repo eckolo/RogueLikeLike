@@ -150,6 +150,176 @@ namespace TEST.Domain.Service
             Assert.AreEqual(dictionary.GetOrDefault(key4, valueDefault), valueDefault);
         }
         [Test]
+        public static void UpdateOrInsertTest_1要素_正常系()
+        {
+            var key1 = "test1";
+            var key2 = "test2";
+            var key3 = "test3";
+            var key4 = "test4";
+            var value1 = 0.3f;
+            var value2 = 1.2f;
+            var value3 = 5;
+            var value4 = 7.4f;
+            var dictionary = new Dictionary<string, float>
+            {
+                { key1, value1},
+                { key2, value2},
+                { key3, value3},
+            };
+
+            {
+                var result = dictionary.UpdateOrInsert(key2, value4);
+                Assert.AreEqual(3, result.Count);
+                Assert.True(result.ContainsKey(key1));
+                Assert.AreEqual(value1, result[key1]);
+                Assert.True(result.ContainsKey(key2));
+                Assert.AreEqual(value4, result[key2]);
+                Assert.True(result.ContainsKey(key3));
+                Assert.AreEqual(value3, result[key3]);
+            }
+            {
+                var result = dictionary.UpdateOrInsert(key4, value4);
+                Assert.AreEqual(4, result.Count);
+                Assert.True(result.ContainsKey(key1));
+                Assert.AreEqual(value1, result[key1]);
+                Assert.True(result.ContainsKey(key2));
+                Assert.AreEqual(value2, result[key2]);
+                Assert.True(result.ContainsKey(key3));
+                Assert.AreEqual(value3, result[key3]);
+                Assert.True(result.ContainsKey(key4));
+                Assert.AreEqual(value4, result[key4]);
+            }
+        }
+        [Test]
+        public static void UpdateOrInsertTest_1要素_Nullの値()
+        {
+            var key1 = "test1";
+            var key2 = "test2";
+            var key3 = "test3";
+            var key4 = "test4";
+            var value1 = 0.3f;
+            var value2 = 1.2f;
+            var value3 = 5;
+            float? value4 = null;
+            var dictionary = new Dictionary<string, float?>
+            {
+                { key1, value1},
+                { key2, value2},
+                { key3, value3},
+            };
+
+            {
+                var result = dictionary.UpdateOrInsert(key2, value4);
+                Assert.AreEqual(3, result.Count);
+                Assert.True(result.ContainsKey(key1));
+                Assert.AreEqual(value1, result[key1]);
+                Assert.True(result.ContainsKey(key2));
+                Assert.AreEqual(value4, result[key2]);
+                Assert.True(result.ContainsKey(key3));
+                Assert.AreEqual(value3, result[key3]);
+            }
+            {
+                var result = dictionary.UpdateOrInsert(key4, value4);
+                Assert.AreEqual(4, result.Count);
+                Assert.True(result.ContainsKey(key1));
+                Assert.AreEqual(value1, result[key1]);
+                Assert.True(result.ContainsKey(key2));
+                Assert.AreEqual(value2, result[key2]);
+                Assert.True(result.ContainsKey(key3));
+                Assert.AreEqual(value3, result[key3]);
+                Assert.True(result.ContainsKey(key4));
+                Assert.AreEqual(value4, result[key4]);
+            }
+        }
+        [Test]
+        public static void UpdateOrInsertTest_1要素_Nullのキー()
+        {
+            var key1 = "test1";
+            var key2 = "test2";
+            var key3 = "test3";
+            string key4 = null;
+            var value1 = 0.3f;
+            var value2 = 1.2f;
+            var value3 = 5;
+            var value4 = 7.4f;
+            var dictionary = new Dictionary<string, float?>
+            {
+                { key1, value1},
+                { key2, value2},
+                { key3, value3},
+            };
+
+            Assert.Throws<ArgumentNullException>(() => dictionary.UpdateOrInsert(key4, value4));
+        }
+        [Test]
+        public static void UpdateOrInsertTest_複数要素_正常系()
+        {
+            var key1 = "test1";
+            var key2 = "test2";
+            var key3 = "test3";
+            var key4 = "test4";
+            var value1 = 0.3f;
+            var value2 = 1.2f;
+            var value3 = 5;
+            var value4 = 7.4f;
+            var value5 = -72.65f;
+            var dictionary = new Dictionary<string, float>
+            {
+                { key1, value1},
+                { key2, value2},
+                { key3, value3},
+            };
+            var update = new Dictionary<string, float>
+            {
+                { key4, value4},
+                { key1, value5}
+            };
+
+            var result = dictionary.UpdateOrInsert(update);
+            Assert.AreEqual(4, result.Count);
+            Assert.True(result.ContainsKey(key1));
+            Assert.AreEqual(value5, result[key1]);
+            Assert.True(result.ContainsKey(key2));
+            Assert.AreEqual(value2, result[key2]);
+            Assert.True(result.ContainsKey(key3));
+            Assert.AreEqual(value3, result[key3]);
+            Assert.True(result.ContainsKey(key4));
+            Assert.AreEqual(value4, result[key4]);
+        }
+        [Test]
+        public static void UpdateOrInsertTest_複数要素_Nullの値()
+        {
+            var key1 = "test1";
+            var key2 = "test2";
+            var key3 = "test3";
+            var key4 = "test4";
+            var value1 = 0.3f;
+            var value2 = 1.2f;
+            var value3 = 5;
+            var dictionary = new Dictionary<string, float?>
+            {
+                { key1, value1},
+                { key2, value2},
+                { key3, value3},
+            };
+            var update = new Dictionary<string, float?>
+            {
+                { key4, null},
+                { key1, null}
+            };
+
+            var result = dictionary.UpdateOrInsert(update);
+            Assert.AreEqual(4, result.Count);
+            Assert.True(result.ContainsKey(key1));
+            Assert.AreEqual(null, result[key1]);
+            Assert.True(result.ContainsKey(key2));
+            Assert.AreEqual(value2, result[key2]);
+            Assert.True(result.ContainsKey(key3));
+            Assert.AreEqual(value3, result[key3]);
+            Assert.True(result.ContainsKey(key4));
+            Assert.AreEqual(null, result[key4]);
+        }
+        [Test]
         public static void ContainsIndexTest()
         {
             var list = new List<Vector2> {

@@ -68,6 +68,44 @@ namespace Assets.Src.Domain.Service
             => origin.ContainsKey(key) ? origin[key] : defaultValue;
 
         /// <summary>
+        /// 辞書型オブジェクト1要素を上書き、もしくは追加する
+        /// </summary>
+        /// <typeparam name="TKey">キ－型</typeparam>
+        /// <typeparam name="TValue">内容型</typeparam>
+        /// <param name="origin">上書き対象の辞書型オブジェクト</param>
+        /// <param name="key">上書き対象となるキー値</param>
+        /// <param name="updateValue">上書きする値</param>
+        /// <returns>1要素を上書きもしくは追加された辞書型オブジェクト</returns>
+        public static Dictionary<TKey, TValue> UpdateOrInsert<TKey, TValue>(
+            this Dictionary<TKey, TValue> origin,
+            TKey key,
+            TValue updateValue)
+            => origin.UpdateOrInsert(new Dictionary<TKey, TValue> { { key, updateValue } });
+        /// <summary>
+        /// 辞書型オブジェクトの要素を一部上書き、もしくは追加する
+        /// </summary>
+        /// <typeparam name="TKey">キ－型</typeparam>
+        /// <typeparam name="TValue">内容型</typeparam>
+        /// <param name="origin">上書き対象の辞書型オブジェクト</param>
+        /// <param name="updateMap">上書き対象のキーと上書きする値のセット</param>
+        /// <returns>一部の要素を上書きもしくは追加された辞書型オブジェクト</returns>
+        public static Dictionary<TKey, TValue> UpdateOrInsert<TKey, TValue>(
+            this Dictionary<TKey, TValue> origin,
+            Dictionary<TKey, TValue> updateMap)
+        {
+            var addMap = updateMap
+                .Where(update => !origin.ContainsKey(update.Key))
+                .Select(update => new { update.Key, update.Value });
+
+            var resultMap = origin
+                .Select(elem => new { elem.Key, Value = updateMap.GetOrDefault(elem.Key, elem.Value) })
+                .Concat(addMap)
+                .ToDictionary(elem => elem.Key, elem => elem.Value);
+
+            return resultMap;
+        }
+
+        /// <summary>
         /// ある数値が<see cref="List{T}">のインデックスとして正当か否か判定する
         /// </summary>
         /// <typeparam name="TValue">内容型</typeparam>
