@@ -13,7 +13,7 @@ namespace TEST.Domain.Model.Mock
         public static GameStateMock GetNpcListMock(IEnumerable<Npc> _npcList)
             => new GameStateMock(
                 area: new Area(new AreaStationeryMock()),
-                map: new Map(),
+                map: MapMock.GetMock(),
                 mapCondition: Vector2.zero,
                 npcList: _npcList,
                 seed: 0);

@@ -12,6 +12,11 @@ namespace Assets.Src.Domain.Model.Entity
     [Serializable]
     public class Map : IDuplicatable<Map>
     {
+        public Map(Dictionary<Vector2, MapChip> mapchipList = null)
+        {
+            _mapchipList = mapchipList ?? _mapchipList;
+        }
+
         /// <summary>
         /// マップの縦横座標絶対値の最大値
         /// </summary>
@@ -58,13 +63,13 @@ namespace Assets.Src.Domain.Model.Entity
         /// z座標が大きいほど手前に表示
         /// </summary>
         [SerializeField]
-        Dictionary<Vector3, MapChip> _mapchipList;
+        Dictionary<Vector2, MapChip> _mapchipList;
         /// <summary>
         /// 各マスのマップチップリスト
         /// 座標は中央が(0,0)、東がx+1、北がY+1
         /// z座標が大きいほど手前に表示
         /// </summary>
-        public Dictionary<Vector3, MapChip> mapchipList { get { return _mapchipList; } set { _mapchipList = value; } }
+        public Dictionary<Vector2, MapChip> mapchipList => _mapchipList;
 
         /// <summary>
         /// マップが初期状態であるか否か

@@ -11,10 +11,13 @@ namespace TEST.Domain.Model.Mock
     /// </summary>
     public class MapMock : Map
     {
+        public static MapMock GetMock() => new MapMock(new Dictionary<Vector2, Npc>());
+
         public static MapMock GetNpcsMock(List<Vector2> coordinates)
             => new MapMock(coordinates.ToDictionary(cod => cod, _ => (Npc)NpcMock.GetMock()));
 
         MapMock(Dictionary<Vector2, Npc> _npcList)
+            : base(new Dictionary<Vector2, MapChip>())
         {
             this._npcList = _npcList;
         }
