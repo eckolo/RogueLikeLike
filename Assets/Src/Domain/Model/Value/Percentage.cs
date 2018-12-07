@@ -20,5 +20,14 @@ namespace Assets.Src.Domain.Model.Value
         public override int numer => _numer;
 
         public override int denom => 100;
+
+        /// <summary>
+        /// ０と同値の分数型
+        /// </summary>
+        public new static Percentage zero => new Percentage(0);
+        /// <summary>
+        /// １と同値の分数型
+        /// </summary>
+        public new static Percentage one => new Percentage(1);
     }
 }
