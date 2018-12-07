@@ -14,8 +14,11 @@ namespace Assets.Src.Domain.Model.Entity
     [Serializable]
     public class Map : IDuplicatable<Map>
     {
-        public Map(Dictionary<Vector2, MapChip> mapchipList = null)
+        public Map(
+            Dictionary<Vector2, Npc> npcLayout = null,
+            Dictionary<Vector2, MapChip> mapchipList = null)
         {
+            _npcLayout = npcLayout ?? _npcLayout;
             _mapchipList = mapchipList ?? _mapchipList;
         }
 
@@ -53,11 +56,7 @@ namespace Assets.Src.Domain.Model.Entity
         /// 各マスのNPCリスト
         /// 座標は中央が(0,0)、東がx+1、北がY+1
         /// </summary>
-        public virtual Dictionary<Vector2, Npc> npcLayout
-        {
-            get { return _npcLayout; }
-            set { _npcLayout = value; }
-        }
+        public virtual Dictionary<Vector2, Npc> npcLayout => _npcLayout;
 
         /// <summary>
         /// 各マスのマップチップリスト

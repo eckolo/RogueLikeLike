@@ -77,11 +77,7 @@ namespace Assets.Src.Domain.Model.Entity
         /// <summary>
         /// 現在のマップのNPC配置情報
         /// </summary>
-        public Dictionary<Vector2, Npc> npcLayout
-        {
-            get { return map?.npcLayout; }
-            set { map.npcLayout = value; }
-        }
+        public Dictionary<Vector2, Npc> npcLayout => map?.npcLayout;
 
         /// <summary>
         /// 画面未反映の行動履歴

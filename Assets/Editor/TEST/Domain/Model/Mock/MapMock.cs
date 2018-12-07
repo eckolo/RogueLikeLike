@@ -17,16 +17,12 @@ namespace TEST.Domain.Model.Mock
             => new MapMock(coordinates.ToDictionary(cod => cod, _ => (Npc)NpcMock.GetMock()));
 
         MapMock(Dictionary<Vector2, Npc> _npcList)
-            : base(new Dictionary<Vector2, MapChip>())
+            : base(_npcList, new Dictionary<Vector2, MapChip>())
         {
             this._npcList = _npcList;
         }
 
         public Dictionary<Vector2, Npc> _npcList;
-        public override Dictionary<Vector2, Npc> npcLayout
-        {
-            get { return _npcList; }
-            set { _npcList = value; }
-        }
+        public override Dictionary<Vector2, Npc> npcLayout => _npcList;
     }
 }
