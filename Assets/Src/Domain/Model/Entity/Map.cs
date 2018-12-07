@@ -15,9 +15,11 @@ namespace Assets.Src.Domain.Model.Entity
     public class Map : IDuplicatable<Map>
     {
         public Map(
+            Vector2 coordinateLimit,
             Dictionary<Vector2, Npc> npcLayout = null,
             Dictionary<Vector2, MapChip> mapchipList = null)
         {
+            _coordinateLimit = coordinateLimit;
             _npcLayout = npcLayout ?? _npcLayout;
             _mapchipList = mapchipList ?? _mapchipList;
         }
@@ -97,14 +99,15 @@ namespace Assets.Src.Domain.Model.Entity
         }
 
         /// <summary>
-        /// マップが初期状態であるか否か
+        /// マップがイベントが発生済みであるか否か
         /// </summary>
         [SerializeField]
-        bool _isInitialState = true;
+        bool _eventOccurred = false;
+
         /// <summary>
-        /// マップが初期状態であるか否か
+        /// マップがイベントが発生済みであるか否か
         /// </summary>
-        public bool isInitialState { get { return _isInitialState; } set { _isInitialState = value; } }
+        public bool eventOccurred => _eventOccurred;
 
         /// <summary>
         /// シャローコピーメソッド
