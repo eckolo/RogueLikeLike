@@ -14,8 +14,6 @@ namespace Assets.Src.Domain.Service
         /// <param name="radix">基準値の母数値</param>
         /// <returns>選択基準値</returns>
         public static Fraction SetupRandomNorm(this int radix)
-        {
-            return Random.Range(0, radix - 1).DividedBy(radix);
-        }
+            => Random.Range(0, radix - 1).DividedBy(radix);
     }
 }
