@@ -17,7 +17,7 @@ namespace TEST.Domain.Model.Mock
             => new MapMock(coordinates.ToDictionary(cod => cod, _ => (Npc)NpcMock.GetMock()));
 
         MapMock(Dictionary<Vector2, Npc> _npcList)
-            : base(Vector2.zero, _npcList, new Dictionary<Vector2, MapChip>())
+            : base(Vector2.zero, new MapEvent(), _npcList, new Dictionary<Vector2, MapChip>())
         {
             this._npcList = _npcList;
         }

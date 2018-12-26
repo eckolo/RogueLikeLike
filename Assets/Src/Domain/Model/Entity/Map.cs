@@ -16,10 +16,12 @@ namespace Assets.Src.Domain.Model.Entity
     {
         public Map(
             Vector2 coordinateLimit,
+            MapEvent occurEvent = null,
             Dictionary<Vector2, Npc> npcLayout = null,
             Dictionary<Vector2, MapChip> mapchipList = null)
         {
             _coordinateLimit = coordinateLimit;
+            _occurEvent = occurEvent;
             _npcLayout = npcLayout ?? _npcLayout;
             _mapchipList = mapchipList ?? _mapchipList;
         }
@@ -46,7 +48,7 @@ namespace Assets.Src.Domain.Model.Entity
         /// <summary>
         /// 発生イベント
         /// </summary>
-        public MapEvent occurEvent { get { return _occurEvent; } set { _occurEvent = value; } }
+        public MapEvent occurEvent => _occurEvent;
 
         /// <summary>
         /// 各マスのNPCリスト
