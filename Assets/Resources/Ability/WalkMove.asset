@@ -21,7 +21,7 @@ MonoBehaviour:
   - _patern: 0
     _coverage:
       _targetPoints: []
-    _blowing: {x: 0, y: 0}
+    _blowing: 1
     _targetableType: 0
     _affectedSkills:
     - _skill: 0
