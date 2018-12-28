@@ -2,7 +2,7 @@ using Assets.Src.Infrastructure.Service;
 using NUnit.Framework;
 using UnityEngine;
 
-namespace TEST.Infrastructure.Service
+namespace Assets.Editor.TEST.Infrastructure.Service
 {
     /// <summary>
     /// プレファブなどの実体化されたオブジェクト類の管理クラスのテストモジュール

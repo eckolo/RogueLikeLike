@@ -1,9 +1,9 @@
+using Assets.Editor.TEST.Domain.Model.Mock;
 using Assets.Src.Domain.Model.Entity;
 using Assets.Src.Domain.Model.Value;
 using NUnit.Framework;
-using TEST.Domain.Model.Mock;
 
-namespace TEST.Domain.Model.Entity
+namespace Assets.Editor.TEST.Domain.Model.Entity
 {
     /// <summary>
     /// <see cref="Npc.Parameters"/>のテスト

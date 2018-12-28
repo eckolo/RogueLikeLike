@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace TEST.Domain.Service
+namespace Assets.Editor.TEST.Domain.Service
 {
     /// <summary>
     /// <see cref="EnumerableManager">クラスのテスト

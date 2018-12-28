@@ -1,5 +1,5 @@
 using NUnit.Framework;
-namespace TEST.Domain.Service
+namespace Assets.Editor.TEST.Domain.Service
 {
     /// <summary>
     /// アクション関連の制御に関するサービスのテスト

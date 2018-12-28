@@ -4,7 +4,7 @@ using Assets.Src.Infrastructure.Repository;
 using NUnit.Framework;
 using System;
 
-namespace TEST.Infrastructure.Repository
+namespace Assets.Editor.TEST.Infrastructure.Repository
 {
     /// <summary>
     /// スキルリポジトリのテスト

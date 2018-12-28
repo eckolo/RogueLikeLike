@@ -1,10 +1,10 @@
+using Assets.Editor.TEST.Domain.Model.Mock;
 using Assets.Src.Domain.Service;
 using NUnit.Framework;
 using System.Collections.Generic;
-using TEST.Domain.Model.Mock;
 using UnityEngine;
 
-namespace TEST.Infrastructure.Service
+namespace Assets.Editor.TEST.Infrastructure.Service
 {
     /// <summary>
     /// <see cref="NumberManager"/>クラスのテスト

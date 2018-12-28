@@ -1,5 +1,5 @@
 using NUnit.Framework;
-namespace TEST.Domain.Service
+namespace Assets.Editor.TEST.Domain.Service
 {
     /// <summary>
     /// ゲームの進行制御クラスのテスト

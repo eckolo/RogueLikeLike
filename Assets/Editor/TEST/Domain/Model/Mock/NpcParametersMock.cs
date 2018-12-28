@@ -1,4 +1,4 @@
-namespace TEST.Domain.Model.Mock
+namespace Assets.Editor.TEST.Domain.Model.Mock
 {
     public struct NpcParametersMock
     {

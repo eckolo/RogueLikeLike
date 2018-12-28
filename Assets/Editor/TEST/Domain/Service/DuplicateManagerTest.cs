@@ -1,8 +1,8 @@
+using Assets.Editor.TEST.Domain.Model.Mock;
 using Assets.Src.Domain.Service;
 using NUnit.Framework;
-using TEST.Domain.Model.Mock;
 
-namespace TEST.Domain.Service
+namespace Assets.Editor.TEST.Domain.Service
 {
     /// <summary>
     /// <see cref="DuplicateManager"/>のテスト

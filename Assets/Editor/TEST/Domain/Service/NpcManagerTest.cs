@@ -1,10 +1,10 @@
+using Assets.Editor.TEST.Domain.Model.Mock;
+using Assets.Src.Domain.Model.Entity;
 using Assets.Src.Domain.Service;
 using NUnit.Framework;
 using System.Collections.Generic;
-using Assets.Src.Domain.Model.Entity;
-using TEST.Domain.Model.Mock;
 
-namespace TEST.Domain.Service
+namespace Assets.Editor.TEST.Domain.Service
 {
     /// <summary>
     /// NPC系オブジェクト管理サービスのテスト

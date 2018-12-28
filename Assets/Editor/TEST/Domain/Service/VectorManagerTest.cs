@@ -3,7 +3,7 @@ using NUnit.Framework;
 using UnityEngine;
 using static UnityEngine.TextAnchor;
 
-namespace TEST.Domain.Service
+namespace Assets.Editor.TEST.Domain.Service
 {
     /// <summary>
     /// <see cref="VectorManager"/>クラスのテスト

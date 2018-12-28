@@ -2,7 +2,7 @@ using Assets.Src.Domain.Model.Abstract;
 using System;
 using UnityEngine;
 
-namespace TEST.Domain.Model.Mock
+namespace Assets.Editor.TEST.Domain.Model.Mock
 {
     /// <summary>
     /// ただ値を持つだけのクラスのモック

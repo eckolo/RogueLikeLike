@@ -2,7 +2,7 @@ using Assets.Src.Domain.Model.Value;
 using Assets.Src.Domain.Service;
 using NUnit.Framework;
 
-namespace TEST.Domain.Model.Value
+namespace Assets.Editor.TEST.Domain.Model.Value
 {
     /// <summary>
     /// <see cref="Fraction"/>クラスのテスト

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
-namespace TEST.Domain.Model.Value
+namespace Assets.Editor.TEST.Domain.Model.Value
 {
     /// <summary>
     /// <see cref="Coverage"/>サービスのテスト

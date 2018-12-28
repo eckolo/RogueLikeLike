@@ -3,7 +3,7 @@ using Assets.Src.Domain.Model.Value;
 using NUnit.Framework;
 using UnityEngine;
 
-namespace TEST.Domain.Service
+namespace Assets.Editor.TEST.Domain.Service
 {
     /// <summary>
     /// 方角関係のユーティリティクラスのテスト

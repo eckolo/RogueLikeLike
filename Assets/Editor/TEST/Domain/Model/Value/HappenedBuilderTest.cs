@@ -1,12 +1,12 @@
+using Assets.Editor.TEST.Domain.Model.Mock;
 using Assets.Src.Domain.Model.Entity;
 using Assets.Src.Domain.Model.Value;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
-using TEST.Domain.Model.Mock;
 using UnityEngine;
 
-namespace TEST.Domain.Model.Value
+namespace Assets.Editor.TEST.Domain.Model.Value
 {
     /// <summary>
     /// <see cref="Happened"/>クラスのビルダーの動作テスト

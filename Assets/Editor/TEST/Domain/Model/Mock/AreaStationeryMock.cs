@@ -1,6 +1,6 @@
 using Assets.Src.Domain.Model.Value;
 
-namespace TEST.Domain.Model.Mock
+namespace Assets.Editor.TEST.Domain.Model.Mock
 {
     /// <summary>
     /// <see cref="Area">を利用するテスト用のモック

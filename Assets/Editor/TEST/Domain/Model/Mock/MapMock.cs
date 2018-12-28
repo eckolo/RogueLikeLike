@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace TEST.Domain.Model.Mock
+namespace Assets.Editor.TEST.Domain.Model.Mock
 {
     /// <summary>
     /// <see cref="Map"/>クラスのモック

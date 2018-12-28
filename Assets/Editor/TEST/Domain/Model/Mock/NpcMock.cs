@@ -2,7 +2,7 @@ using Assets.Src.Domain.Model.Entity;
 using Assets.Src.Domain.Model.Value;
 using System.Collections.Generic;
 
-namespace TEST.Domain.Model.Mock
+namespace Assets.Editor.TEST.Domain.Model.Mock
 {
     /// <summary>
     /// <summary>

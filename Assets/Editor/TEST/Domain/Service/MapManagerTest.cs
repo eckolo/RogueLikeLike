@@ -1,11 +1,11 @@
+using Assets.Editor.TEST.Domain.Model.Mock;
 using Assets.Src.Domain.Service;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
-using TEST.Domain.Model.Mock;
 using UnityEngine;
 
-namespace TEST.Domain.Service
+namespace Assets.Editor.TEST.Domain.Service
 {
     /// <summary>
     /// <see cref="MapManager"/>サービスのテスト

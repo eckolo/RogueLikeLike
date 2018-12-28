@@ -5,7 +5,7 @@ using Assets.Src.Infrastructure.Model.Entity;
 using NUnit.Framework;
 using UnityEngine;
 
-namespace TEST.Domain.Service
+namespace Assets.Editor.TEST.Domain.Service
 {
     /// <summary>
     /// セーブデータを管理するクラスのテストモジュール

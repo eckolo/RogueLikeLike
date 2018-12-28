@@ -3,7 +3,7 @@ using Assets.Src.Domain.Model.Value;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace TEST.Domain.Model.Mock
+namespace Assets.Editor.TEST.Domain.Model.Mock
 {
     /// <summary>
     /// <see cref="IGameFoundation">を利用するテスト用のモック

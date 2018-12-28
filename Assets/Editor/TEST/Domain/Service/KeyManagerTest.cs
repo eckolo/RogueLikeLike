@@ -1,7 +1,7 @@
 using Assets.Src.Domain.Service;
 using NUnit.Framework;
 
-namespace TEST.Domain.Service
+namespace Assets.Editor.TEST.Domain.Service
 {
     /// <summary>
     /// <see cref="KeyManager"/>サービスのテスト

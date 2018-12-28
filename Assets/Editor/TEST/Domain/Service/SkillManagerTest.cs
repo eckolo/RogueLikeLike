@@ -2,7 +2,7 @@ using Assets.Src.Domain.Service;
 using Assets.Src.Domain.Model.Value;
 using NUnit.Framework;
 
-namespace TEST.Domain.Service
+namespace Assets.Editor.TEST.Domain.Service
 {
     /// <summary>
     /// スキル関連サービスのテスト

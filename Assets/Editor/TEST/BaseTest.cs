@@ -3,7 +3,7 @@ using UnityEngine;
 /// <summary>
 /// ユニットテストモジュール
 /// </summary>
-namespace TEST
+namespace Assets.Editor.TEST
 {
     /// <summary>
     /// 各種機能に関係しない基盤テスト

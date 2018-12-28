@@ -2,7 +2,7 @@ using Assets.Src.Domain.Model.Value;
 using Assets.Src.Domain.Service;
 using NUnit.Framework;
 using UnityEngine;
-namespace TEST.Domain.Service
+namespace Assets.Editor.TEST.Domain.Service
 {
     /// <summary>
     /// <see cref="AngleManager"/>サービスのテスト
