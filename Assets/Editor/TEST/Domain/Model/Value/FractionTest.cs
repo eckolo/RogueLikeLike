@@ -15,9 +15,9 @@ namespace Assets.Editor.TEST.Domain.Model.Value
             var fraction1 = 0.ToFraction();
             var fraction2 = Fraction.zero;
 
-            Assert.AreEqual(fraction1.numer, fraction2.numer);
-            Assert.AreEqual(fraction1.denom, fraction2.denom);
-            Assert.AreEqual(fraction1.value, fraction2.value);
+            fraction1.numer.Is(fraction2.numer);
+            fraction1.denom.Is(fraction2.denom);
+            fraction1.value.Is(fraction2.value);
         }
         [Test]
         public static void OneTest()
@@ -25,9 +25,9 @@ namespace Assets.Editor.TEST.Domain.Model.Value
             var fraction1 = 1.ToFraction();
             var fraction2 = Fraction.one;
 
-            Assert.AreEqual(fraction1.numer, fraction2.numer);
-            Assert.AreEqual(fraction1.denom, fraction2.denom);
-            Assert.AreEqual(fraction1.value, fraction2.value);
+            fraction1.numer.Is(fraction2.numer);
+            fraction1.denom.Is(fraction2.denom);
+            fraction1.value.Is(fraction2.value);
         }
         [Test]
         public static void NewFractionTest()
@@ -37,14 +37,14 @@ namespace Assets.Editor.TEST.Domain.Model.Value
             var fraction3 = 6.DividedBy(2);
             var fraction4 = 9.DividedBy(-3);
 
-            Assert.AreEqual(fraction1.numer, fraction2.numer);
-            Assert.AreEqual(fraction1.denom, fraction2.denom);
-            Assert.AreEqual(fraction3.numer, fraction2.numer);
-            Assert.AreEqual(fraction3.denom, fraction2.denom);
-            Assert.AreEqual(3, fraction1.value);
-            Assert.AreEqual(3, fraction2.value);
-            Assert.AreEqual(3, fraction3.value);
-            Assert.AreEqual(-3, fraction4.value);
+            fraction1.numer.Is(fraction2.numer);
+            fraction1.denom.Is(fraction2.denom);
+            fraction3.numer.Is(fraction2.numer);
+            fraction3.denom.Is(fraction2.denom);
+            fraction1.value.Is(3);
+            fraction2.value.Is(3);
+            fraction3.value.Is(3);
+            fraction4.value.Is(-3);
         }
         [Test]
         public static void CompareTest()
@@ -56,40 +56,40 @@ namespace Assets.Editor.TEST.Domain.Model.Value
             var value1 = 3f;
             var value2 = -12;
 
-            Assert.IsFalse(fraction1 == fraction2);
-            Assert.IsTrue(fraction1 != fraction2);
-            Assert.IsTrue(fraction1 < fraction2);
-            Assert.IsFalse(fraction1 > fraction2);
-            Assert.IsTrue(fraction1 <= fraction2);
-            Assert.IsFalse(fraction1 >= fraction2);
+            (fraction1 == fraction2).IsFalse();
+            (fraction1 != fraction2).IsTrue();
+            (fraction1 < fraction2).IsTrue();
+            (fraction1 > fraction2).IsFalse();
+            (fraction1 <= fraction2).IsTrue();
+            (fraction1 >= fraction2).IsFalse();
 
-            Assert.IsFalse(fraction1 == fraction3);
-            Assert.IsTrue(fraction1 != fraction3);
-            Assert.IsFalse(fraction1 < fraction3);
-            Assert.IsTrue(fraction1 > fraction3);
-            Assert.IsFalse(fraction1 <= fraction3);
-            Assert.IsTrue(fraction1 >= fraction3);
+            (fraction1 == fraction3).IsFalse();
+            (fraction1 != fraction3).IsTrue();
+            (fraction1 < fraction3).IsFalse();
+            (fraction1 > fraction3).IsTrue();
+            (fraction1 <= fraction3).IsFalse();
+            (fraction1 >= fraction3).IsTrue();
 
-            Assert.IsTrue(fraction1 == fraction4);
-            Assert.IsFalse(fraction1 != fraction4);
-            Assert.IsFalse(fraction1 < fraction4);
-            Assert.IsFalse(fraction1 > fraction4);
-            Assert.IsTrue(fraction1 <= fraction4);
-            Assert.IsTrue(fraction1 >= fraction4);
+            (fraction1 == fraction4).IsTrue();
+            (fraction1 != fraction4).IsFalse();
+            (fraction1 < fraction4).IsFalse();
+            (fraction1 > fraction4).IsFalse();
+            (fraction1 <= fraction4).IsTrue();
+            (fraction1 >= fraction4).IsTrue();
 
-            Assert.IsFalse(fraction1 == value1);
-            Assert.IsTrue(fraction1 != value1);
-            Assert.IsTrue(fraction1 < value1);
-            Assert.IsFalse(fraction1 > value1);
-            Assert.IsTrue(fraction1 <= value1);
-            Assert.IsFalse(fraction1 >= value1);
+            (fraction1 == value1).IsFalse();
+            (fraction1 != value1).IsTrue();
+            (fraction1 < value1).IsTrue();
+            (fraction1 > value1).IsFalse();
+            (fraction1 <= value1).IsTrue();
+            (fraction1 >= value1).IsFalse();
 
-            Assert.IsFalse(fraction1 == value2);
-            Assert.IsTrue(fraction1 != value2);
-            Assert.IsFalse(fraction1 < value2);
-            Assert.IsTrue(fraction1 > value2);
-            Assert.IsFalse(fraction1 <= value2);
-            Assert.IsTrue(fraction1 >= value2);
+            (fraction1 == value2).IsFalse();
+            (fraction1 != value2).IsTrue();
+            (fraction1 < value2).IsFalse();
+            (fraction1 > value2).IsTrue();
+            (fraction1 <= value2).IsFalse();
+            (fraction1 >= value2).IsTrue();
         }
         [Test]
         public static void NegativeValueTest()
@@ -102,15 +102,15 @@ namespace Assets.Editor.TEST.Domain.Model.Value
             var result2 = -fraction2;
             var result3 = -fraction3;
 
-            Assert.AreEqual(-4, result1.numer);
-            Assert.AreEqual(5, result1.denom);
-            Assert.AreEqual(-0.8f, result1.value);
-            Assert.AreEqual(-7, result2.numer);
-            Assert.AreEqual(2, result2.denom);
-            Assert.AreEqual(-3.5f, result2.value);
-            Assert.AreEqual(3, result3.numer);
-            Assert.AreEqual(8, result3.denom);
-            Assert.AreEqual(0.375f, result3.value);
+            result1.numer.Is(-4);
+            result1.denom.Is(5);
+            result1.value.Is(-0.8f);
+            result2.numer.Is(-7);
+            result2.denom.Is(2);
+            result2.value.Is(-3.5f);
+            result3.numer.Is(3);
+            result3.denom.Is(8);
+            result3.value.Is(0.375f);
         }
         [Test]
         public static void AdditionTest()
@@ -127,21 +127,21 @@ namespace Assets.Editor.TEST.Domain.Model.Value
             var result4 = fraction1 + value2;
             var result5 = value2 + fraction1;
 
-            Assert.AreEqual(43, result1.numer);
-            Assert.AreEqual(10, result1.denom);
-            Assert.AreEqual(4.3f, result1.value);
-            Assert.AreEqual(17, result2.numer);
-            Assert.AreEqual(40, result2.denom);
-            Assert.AreEqual(0.425f, result2.value);
-            Assert.AreEqual(19, result3.numer);
-            Assert.AreEqual(5, result3.denom);
-            Assert.AreEqual(3.8f, result3.value);
-            Assert.AreEqual(-56, result4.numer);
-            Assert.AreEqual(5, result4.denom);
-            Assert.AreEqual(-11.2f, result4.value);
-            Assert.AreEqual(-56, result5.numer);
-            Assert.AreEqual(5, result5.denom);
-            Assert.AreEqual(-11.2f, result5.value);
+            result1.numer.Is(43);
+            result1.denom.Is(10);
+            result1.value.Is(4.3f);
+            result2.numer.Is(17);
+            result2.denom.Is(40);
+            result2.value.Is(0.425f);
+            result3.numer.Is(19);
+            result3.denom.Is(5);
+            result3.value.Is(3.8f);
+            result4.numer.Is(-56);
+            result4.denom.Is(5);
+            result4.value.Is(-11.2f);
+            result5.numer.Is(-56);
+            result5.denom.Is(5);
+            result5.value.Is(-11.2f);
         }
         [Test]
         public static void SubtractionTest()
@@ -158,21 +158,21 @@ namespace Assets.Editor.TEST.Domain.Model.Value
             var result4 = fraction1 - value2;
             var result5 = value2 - fraction1;
 
-            Assert.AreEqual(-27, result1.numer);
-            Assert.AreEqual(10, result1.denom);
-            Assert.AreEqual(-2.7f, result1.value);
-            Assert.AreEqual(47, result2.numer);
-            Assert.AreEqual(40, result2.denom);
-            Assert.AreEqual(47f / 40f, result2.value);
-            Assert.AreEqual(-11, result3.numer);
-            Assert.AreEqual(5, result3.denom);
-            Assert.AreEqual(-2.2f, result3.value);
-            Assert.AreEqual(64, result4.numer);
-            Assert.AreEqual(5, result4.denom);
-            Assert.AreEqual(12.8f, result4.value);
-            Assert.AreEqual(-64, result5.numer);
-            Assert.AreEqual(5, result5.denom);
-            Assert.AreEqual(-12.8f, result5.value);
+            result1.numer.Is(-27);
+            result1.denom.Is(10);
+            result1.value.Is(-2.7f);
+            result2.numer.Is(47);
+            result2.denom.Is(40);
+            result2.value.Is(47f / 40f);
+            result3.numer.Is(-11);
+            result3.denom.Is(5);
+            result3.value.Is(-2.2f);
+            result4.numer.Is(64);
+            result4.denom.Is(5);
+            result4.value.Is(12.8f);
+            result5.numer.Is(-64);
+            result5.denom.Is(5);
+            result5.value.Is(-12.8f);
         }
         [Test]
         public static void MultiplicationTest()
@@ -189,21 +189,21 @@ namespace Assets.Editor.TEST.Domain.Model.Value
             var result4 = fraction1 * value2;
             var result5 = value2 * fraction1;
 
-            Assert.AreEqual(14, result1.numer);
-            Assert.AreEqual(5, result1.denom);
-            Assert.AreEqual(2.8f, result1.value);
-            Assert.AreEqual(-3, result2.numer);
-            Assert.AreEqual(10, result2.denom);
-            Assert.AreEqual(-0.3f, result2.value);
-            Assert.AreEqual(12, result3.numer);
-            Assert.AreEqual(5, result3.denom);
-            Assert.AreEqual(2.4f, result3.value);
-            Assert.AreEqual(-48, result4.numer);
-            Assert.AreEqual(5, result4.denom);
-            Assert.AreEqual(-9.6f, result4.value);
-            Assert.AreEqual(-48, result5.numer);
-            Assert.AreEqual(5, result5.denom);
-            Assert.AreEqual(-9.6f, result5.value);
+            result1.numer.Is(14);
+            result1.denom.Is(5);
+            result1.value.Is(2.8f);
+            result2.numer.Is(-3);
+            result2.denom.Is(10);
+            result2.value.Is(-0.3f);
+            result3.numer.Is(12);
+            result3.denom.Is(5);
+            result3.value.Is(2.4f);
+            result4.numer.Is(-48);
+            result4.denom.Is(5);
+            result4.value.Is(-9.6f);
+            result5.numer.Is(-48);
+            result5.denom.Is(5);
+            result5.value.Is(-9.6f);
         }
         [Test]
         public static void DivisionTest()
@@ -220,21 +220,21 @@ namespace Assets.Editor.TEST.Domain.Model.Value
             var result4 = fraction1 / value2;
             var result5 = value2 / fraction1;
 
-            Assert.AreEqual(8, result1.numer);
-            Assert.AreEqual(35, result1.denom);
-            Assert.AreEqual(8f / 35f, result1.value);
-            Assert.AreEqual(-32, result2.numer);
-            Assert.AreEqual(15, result2.denom);
-            Assert.AreEqual(-32f / 15f, result2.value);
-            Assert.AreEqual(4, result3.numer);
-            Assert.AreEqual(15, result3.denom);
-            Assert.AreEqual(4f / 15f, result3.value);
-            Assert.AreEqual(-1, result4.numer);
-            Assert.AreEqual(15, result4.denom);
-            Assert.AreEqual(-1f / 15f, result4.value);
-            Assert.AreEqual(-15, result5.numer);
-            Assert.AreEqual(1, result5.denom);
-            Assert.AreEqual(-15, result5.value);
+            result1.numer.Is(8);
+            result1.denom.Is(35);
+            result1.value.Is(8f / 35f);
+            result2.numer.Is(-32);
+            result2.denom.Is(15);
+            result2.value.Is(-32f / 15f);
+            result3.numer.Is(4);
+            result3.denom.Is(15);
+            result3.value.Is(4f / 15f);
+            result4.numer.Is(-1);
+            result4.denom.Is(15);
+            result4.value.Is(-1f / 15f);
+            result5.numer.Is(-15);
+            result5.denom.Is(1);
+            result5.value.Is(-15);
         }
     }
 }

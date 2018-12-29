@@ -22,15 +22,15 @@ namespace Assets.Editor.TEST.Infrastructure.Service
 
             fileManager.Write(path, filename, text1);
             var result1 = fileManager.Read(path, filename);
-            Assert.AreEqual(result1, $"{text1}\r\n");
+            result1.Is($"{text1}\r\n");
 
             fileManager.Write(path, filename, text2);
             var result2 = fileManager.Read(path, filename);
-            Assert.AreEqual(result2, $"{text2}\r\n");
+            result2.Is($"{text2}\r\n");
 
             fileManager.Write(path, filename, text3, true);
             var result3 = fileManager.Read(path, filename);
-            Assert.AreEqual(result3, $"{text2}\r\n{text3}\r\n");
+            result3.Is($"{text2}\r\n{text3}\r\n");
         }
     }
 }

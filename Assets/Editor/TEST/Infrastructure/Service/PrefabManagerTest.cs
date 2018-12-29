@@ -25,10 +25,10 @@ namespace Assets.Editor.TEST.Infrastructure.Service
             var object2 = GameObject.Find(name1).GetComponent<TestMonoBehaviour>();
             var object3 = PrefabManager.SetObject<TestMonoBehaviour>(null);
 
-            Assert.IsTrue(object1 == object2);
-            Assert.AreEqual(name1, object1.name);
-            Assert.AreEqual(name1, object2.name);
-            Assert.AreEqual(PrefabManager.ANONYMOUS_NAME, object3.name);
+            object1.IsSameReferenceAs(object2);
+            object1.name.Is(name1);
+            object2.name.Is(name1);
+            object3.name.Is(PrefabManager.ANONYMOUS_NAME);
         }
         [Test]
         public static void SetObjectTest2()
@@ -37,9 +37,9 @@ namespace Assets.Editor.TEST.Infrastructure.Service
             var object1 = PrefabManager.SetObject<TestMonoBehaviour>();
             var object2 = GameObject.Find(name1).GetComponent<TestMonoBehaviour>();
 
-            Assert.IsTrue(object1 == object2);
-            Assert.AreEqual(name1, object1.name);
-            Assert.AreEqual(name1, object2.name);
+            object1.IsSameReferenceAs(object2);
+            object1.name.Is(name1);
+            object2.name.Is(name1);
         }
         [Test]
         public static void SetParentTest()
@@ -48,9 +48,9 @@ namespace Assets.Editor.TEST.Infrastructure.Service
             var object2 = new GameObject("object2", typeof(TestMonoBehaviour)).GetComponent<TestMonoBehaviour>();
             var object3 = object1.SetParent(object2);
 
-            Assert.IsTrue(object1 == object3);
-            Assert.IsTrue(object1.transform.parent == object2.transform);
-            Assert.IsTrue(object3.transform.parent == object2.transform);
+            object1.IsSameReferenceAs(object3);
+            object1.transform.parent.IsSameReferenceAs(object2.transform);
+            object3.transform.parent.IsSameReferenceAs(object2.transform);
         }
     }
 }

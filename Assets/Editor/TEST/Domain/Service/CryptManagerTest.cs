@@ -14,8 +14,8 @@ namespace Assets.Editor.TEST.Domain.Service
             var result1 = text.EncodeCrypt();
             var result2 = result1.DecodeCrypt();
 
-            Assert.AreNotEqual(text, result1);
-            Assert.AreEqual(text, result2);
+            result1.IsNot(text);
+            result2.Is(text);
         }
     }
 }

@@ -15,8 +15,8 @@ namespace Assets.Editor.TEST.Domain.Service
             var snakeCase2 = "TEST_TEXT";
             var pascalCase = "TestText";
 
-            Assert.AreEqual(snakeCase1.ConvertSnakeToPascal(), pascalCase);
-            Assert.AreEqual(snakeCase2.ConvertSnakeToPascal(), pascalCase);
+            snakeCase1.ConvertSnakeToPascal().Is(pascalCase);
+            snakeCase2.ConvertSnakeToPascal().Is(pascalCase);
         }
     }
 }

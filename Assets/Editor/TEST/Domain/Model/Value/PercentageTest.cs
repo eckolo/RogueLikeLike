@@ -15,9 +15,9 @@ namespace Assets.Editor.TEST.Domain.Model.Value
             var percentage1 = 0.ToPercentage();
             var percentage2 = Percentage.zero;
 
-            Assert.AreEqual(percentage1.numer, percentage2.numer);
-            Assert.AreEqual(percentage1.denom, percentage2.denom);
-            Assert.AreEqual(percentage1.value, percentage2.value);
+            percentage1.numer.Is(percentage2.numer);
+            percentage1.denom.Is(percentage2.denom);
+            percentage1.value.Is(percentage2.value);
         }
         [Test]
         public static void OneTest()
@@ -25,9 +25,9 @@ namespace Assets.Editor.TEST.Domain.Model.Value
             var percentage1 = 1.ToPercentage();
             var percentage2 = Percentage.one;
 
-            Assert.AreEqual(percentage1.numer, percentage2.numer);
-            Assert.AreEqual(percentage1.denom, percentage2.denom);
-            Assert.AreEqual(percentage1.value, percentage2.value);
+            percentage1.numer.Is(percentage2.numer);
+            percentage1.denom.Is(percentage2.denom);
+            percentage1.value.Is(percentage2.value);
         }
         [Test]
         public static void NewPercentageTest()
@@ -37,10 +37,10 @@ namespace Assets.Editor.TEST.Domain.Model.Value
             var percentage3 = 6.ToPercentage();
             var percentage4 = 109.ToPercentage();
 
-            Assert.AreEqual(0.03f, percentage1.value);
-            Assert.AreEqual(-0.03f, percentage2.value);
-            Assert.AreEqual(0.06f, percentage3.value);
-            Assert.AreEqual(1.09f, percentage4.value);
+            percentage1.value.Is(0.03f);
+            percentage2.value.Is(-0.03f);
+            percentage3.value.Is(0.06f);
+            percentage4.value.Is(1.09f);
         }
     }
 }

@@ -17,8 +17,8 @@ namespace Assets.Editor.TEST.Domain.Service
             var fileName1 = "20307_DarkAptitude";
             var fileName2 = "00000_Indomitable";
 
-            Assert.AreEqual(skillKey1.ToFileName(), fileName1);
-            Assert.AreEqual(skillKey2.ToFileName(), fileName2);
+            skillKey1.ToFileName().Is(fileName1);
+            skillKey2.ToFileName().Is(fileName2);
         }
 
         [Test]
@@ -28,9 +28,9 @@ namespace Assets.Editor.TEST.Domain.Service
             var skillKey2 = Skill.Key.COMMAND;
             var skillKey3 = Skill.Key.DARK_APTITUDE;
 
-            Assert.AreEqual(skillKey1.ToSection(), Skill.Section.SPIRIT);
-            Assert.AreEqual(skillKey2.ToSection(), Skill.Section.TECHNIQUE);
-            Assert.AreEqual(skillKey3.ToSection(), Skill.Section.BODY);
+            skillKey1.ToSection().Is(Skill.Section.SPIRIT);
+            skillKey2.ToSection().Is(Skill.Section.TECHNIQUE);
+            skillKey3.ToSection().Is(Skill.Section.BODY);
         }
     }
 }

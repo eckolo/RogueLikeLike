@@ -18,23 +18,23 @@ namespace Assets.Editor.TEST.Domain.Model.Value
         {
             var happened = Happened.builder.Build();
 
-            Assert.IsNotNull(happened);
+            happened.IsNotNull();
 
-            Assert.IsNull(happened.target);
+            happened.target.IsNull();
 
-            Assert.IsNotNull(happened.variation);
-            Assert.AreSame(Npc.Parameters.zero, happened.variation);
+            happened.variation.IsNotNull();
+            happened.variation.IsSameReferenceAs(Npc.Parameters.zero);
 
-            Assert.IsNotNull(happened.ailmentAmount);
-            Assert.IsFalse(happened.ailmentAmount.Any());
+            happened.ailmentAmount.IsNotNull();
+            happened.ailmentAmount.Any().IsFalse();
 
-            Assert.IsNotNull(happened.ailmentDuration);
-            Assert.IsFalse(happened.ailmentDuration.Any());
+            happened.ailmentDuration.IsNotNull();
+            happened.ailmentDuration.Any().IsFalse();
 
-            Assert.AreEqual(Vector2.zero, happened.movement);
+            happened.movement.Is(Vector2.zero);
 
-            Assert.IsNotNull(happened.animations);
-            Assert.IsFalse(happened.animations.Any());
+            happened.animations.IsNotNull();
+            happened.animations.Any().IsFalse();
         }
         [Test]
         public static void BuildTest2()
@@ -46,33 +46,34 @@ namespace Assets.Editor.TEST.Domain.Model.Value
                 .Target(NpcMock.GetSpeedMock(speed))
                 .Variation(new Npc.Parameters(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, speed: speed))
                 .AilmentAmount(new Dictionary<Ailment, int> { { new Ailment(new AilmentStationeryMock()), 0 } })
-                .AilmentDuration(new Dictionary<Ailment, int> { { new Ailment(new AilmentStationeryMock()), 0 } })
+                .AilmentDuration(new Dictionary<Ailment, int> { { new Ailment(new AilmentStationeryMock()), 1 } })
                 .Movement(vector)
                 .Animations(new List<EffectAnimation> { new EffectAnimation() })
                 .Build();
 
-            Assert.IsNotNull(happened);
+            happened.IsNotNull();
 
-            Assert.IsNotNull(happened.target);
-            Assert.AreEqual(speed, happened.target.parameters.speed);
+            happened.target.IsNotNull();
+            happened.target.parameters.IsNotNull();
+            happened.target.parameters.speed.Is(speed);
 
-            Assert.IsNotNull(happened.variation);
-            Assert.AreEqual(speed, happened.variation.speed);
+            happened.variation.IsNotNull();
+            happened.variation.speed.Is(speed);
 
-            Assert.IsNotNull(happened.ailmentAmount);
-            Assert.IsTrue(happened.ailmentAmount.Any());
-            Assert.NotNull(happened.ailmentAmount.First().Key);
-            Assert.AreEqual(0, happened.ailmentAmount.First().Value);
+            happened.ailmentAmount.IsNotNull();
+            happened.ailmentAmount.Count().Is(1);
+            happened.ailmentAmount.First().Key.IsNotNull();
+            happened.ailmentAmount.First().Value.Is(0);
 
-            Assert.IsNotNull(happened.ailmentDuration);
-            Assert.IsTrue(happened.ailmentDuration.Any());
-            Assert.NotNull(happened.ailmentDuration.First().Key);
-            Assert.AreEqual(0, happened.ailmentDuration.First().Value);
+            happened.ailmentDuration.IsNotNull();
+            happened.ailmentDuration.Count().Is(1);
+            happened.ailmentDuration.First().Key.IsNotNull();
+            happened.ailmentDuration.First().Value.Is(1);
 
-            Assert.AreEqual(vector, happened.movement);
+            happened.movement.Is(vector);
 
-            Assert.IsNotNull(happened.animations);
-            Assert.IsTrue(happened.animations.Any());
+            happened.animations.IsNotNull();
+            happened.animations.Count().Is(1);
         }
         [Test]
         public static void BuildNullTest()
@@ -85,12 +86,12 @@ namespace Assets.Editor.TEST.Domain.Model.Value
                 .Animations(null)
                 .Build();
 
-            Assert.IsNotNull(happened);
-            Assert.IsNull(happened.target);
-            Assert.IsNull(happened.variation);
-            Assert.IsNull(happened.ailmentAmount);
-            Assert.IsNull(happened.ailmentDuration);
-            Assert.IsNull(happened.animations);
+            happened.IsNotNull();
+            happened.target.IsNull();
+            happened.variation.IsNull();
+            happened.ailmentAmount.IsNull();
+            happened.ailmentDuration.IsNull();
+            happened.animations.IsNull();
         }
         [Test]
         public static void BuildNullTest2()
@@ -99,9 +100,9 @@ namespace Assets.Editor.TEST.Domain.Model.Value
                 .AilmentDuration(null)
                 .Build();
 
-            Assert.IsNotNull(happened);
-            Assert.IsNull(happened.ailmentAmount);
-            Assert.IsNull(happened.ailmentDuration);
+            happened.IsNotNull();
+            happened.ailmentAmount.IsNull();
+            happened.ailmentDuration.IsNull();
         }
     }
 }

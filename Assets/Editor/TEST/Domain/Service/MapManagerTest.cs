@@ -21,7 +21,7 @@ namespace Assets.Editor.TEST.Domain.Service
 
             var result = map.GetNpcCoordinate(npc);
 
-            Assert.AreEqual(vector, result);
+            result.Is(vector);
         }
         [Test]
         public static void GetNpcsDistanceTest()
@@ -34,7 +34,7 @@ namespace Assets.Editor.TEST.Domain.Service
 
             var result = map.GetNpcsDistance(npc1, npc2);
 
-            Assert.AreEqual((vector1 - vector2).magnitude, result);
+            result.Is((vector1 - vector2).magnitude);
         }
     }
 }

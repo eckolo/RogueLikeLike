@@ -16,9 +16,9 @@ namespace Assets.Editor.TEST.Domain.Service
             var angle2 = 60;
             var angle3 = -120;
 
-            Assert.AreEqual(AngleManager.MaxAngle(angle1, angle2), 60);
-            Assert.AreEqual(AngleManager.MaxAngle(angle2, angle3), -120);
-            Assert.AreEqual(AngleManager.MaxAngle(angle1, angle3), -120);
+            AngleManager.MaxAngle(angle1, angle2).Is(60);
+            AngleManager.MaxAngle(angle2, angle3).Is(-120);
+            AngleManager.MaxAngle(angle1, angle3).Is(-120);
         }
         [Test]
         public static void Min()
@@ -27,9 +27,9 @@ namespace Assets.Editor.TEST.Domain.Service
             var angle2 = 60;
             var angle3 = -120;
 
-            Assert.AreEqual(AngleManager.MinAngle(angle1, angle2), 405);
-            Assert.AreEqual(AngleManager.MinAngle(angle2, angle3), 60);
-            Assert.AreEqual(AngleManager.MinAngle(angle1, angle3), 405);
+            AngleManager.MinAngle(angle1, angle2).Is(405);
+            AngleManager.MinAngle(angle2, angle3).Is(60);
+            AngleManager.MinAngle(angle1, angle3).Is(405);
         }
         [Test]
         public static void Acute()
@@ -38,9 +38,9 @@ namespace Assets.Editor.TEST.Domain.Service
             var angle2 = 60;
             var angle3 = -120;
 
-            Assert.AreEqual(AngleManager.Acute(angle1), 45);
-            Assert.AreEqual(AngleManager.Acute(angle2), 60);
-            Assert.AreEqual(AngleManager.Acute(angle3), 120);
+            AngleManager.Acute(angle1).Is(45);
+            AngleManager.Acute(angle2).Is(60);
+            AngleManager.Acute(angle3).Is(120);
         }
         [Test]
         public static void Correct()
@@ -48,9 +48,9 @@ namespace Assets.Editor.TEST.Domain.Service
             var angle1 = 405;
             var angle2 = 60;
 
-            Assert.AreEqual(AngleManager.CorrectAngle(angle1, angle2), 52.5f);
-            Assert.AreEqual(AngleManager.CorrectAngle(angle1, angle2, 1), 45);
-            Assert.AreEqual(AngleManager.CorrectAngle(angle1, angle2, 0), 60);
+            AngleManager.CorrectAngle(angle1, angle2).Is(52.5f);
+            AngleManager.CorrectAngle(angle1, angle2, 1).Is(45);
+            AngleManager.CorrectAngle(angle1, angle2, 0).Is(60);
         }
         [Test]
         public static void Compile()
@@ -59,9 +59,9 @@ namespace Assets.Editor.TEST.Domain.Service
             var angle2 = 60;
             var angle3 = -120;
 
-            Assert.AreEqual(AngleManager.Compile(angle1), 45);
-            Assert.AreEqual(AngleManager.Compile(angle2), 60);
-            Assert.AreEqual(AngleManager.Compile(angle3), 240);
+            AngleManager.Compile(angle1).Is(45);
+            AngleManager.Compile(angle2).Is(60);
+            AngleManager.Compile(angle3).Is(240);
         }
         [Test]
         public static void ToAngle()
@@ -72,24 +72,24 @@ namespace Assets.Editor.TEST.Domain.Service
             var vector4 = new Vector2(12.3f, -12.3f);
 
             //どうしても有効桁数下2桁あたりで検算側に誤差が出るため手動で丸める
-            Assert.AreEqual(Mathf.Round(AngleManager.ToAngle(vector1) * 1000) / 1000, 45);
-            Assert.AreEqual(Mathf.Round(AngleManager.ToAngle(vector2) * 1000) / 1000, 120);
-            Assert.AreEqual(Mathf.Round(AngleManager.ToAngle(vector3) * 1000) / 1000, 210);
-            Assert.AreEqual(Mathf.Round(AngleManager.ToAngle(vector4) * 1000) / 1000, 315);
+            (Mathf.Round(AngleManager.ToAngle(vector1) * 1000) / 1000).Is(45);
+            (Mathf.Round(AngleManager.ToAngle(vector2) * 1000) / 1000).Is(120);
+            (Mathf.Round(AngleManager.ToAngle(vector3) * 1000) / 1000).Is(210);
+            (Mathf.Round(AngleManager.ToAngle(vector4) * 1000) / 1000).Is(315);
         }
         [Test]
         public static void ToAngle2()
         {
             var rotation = Quaternion.AngleAxis(120, Vector3.forward);
 
-            Assert.AreEqual(Mathf.Round(AngleManager.ToAngle(rotation) * 1000) / 1000, 120);
+            (Mathf.Round(AngleManager.ToAngle(rotation) * 1000) / 1000).Is(120);
         }
         [Test]
         public static void ToRotation()
         {
             var angle = 120f;
 
-            Assert.AreEqual(AngleManager.ToRotation(angle), Quaternion.AngleAxis(120, Vector3.forward));
+            AngleManager.ToRotation(angle).Is(Quaternion.AngleAxis(120, Vector3.forward));
         }
         [Test]
         public static void ToRotation2()
@@ -99,17 +99,17 @@ namespace Assets.Editor.TEST.Domain.Service
             var direction3 = Direction.EAST;
             var direction4 = Direction.WEST;
 
-            Assert.AreEqual(AngleManager.ToRotation(direction1), Quaternion.AngleAxis(0, Vector3.forward));
-            Assert.AreEqual(AngleManager.ToRotation(direction2), Quaternion.AngleAxis(180, Vector3.forward));
-            Assert.AreEqual(AngleManager.ToRotation(direction3), Quaternion.AngleAxis(270, Vector3.forward));
-            Assert.AreEqual(AngleManager.ToRotation(direction4), Quaternion.AngleAxis(90, Vector3.forward));
+            AngleManager.ToRotation(direction1).Is(Quaternion.AngleAxis(0, Vector3.forward));
+            AngleManager.ToRotation(direction2).Is(Quaternion.AngleAxis(180, Vector3.forward));
+            AngleManager.ToRotation(direction3).Is(Quaternion.AngleAxis(270, Vector3.forward));
+            AngleManager.ToRotation(direction4).Is(Quaternion.AngleAxis(90, Vector3.forward));
         }
         [Test]
         public static void ToRotation3()
         {
             var vector = new Vector2(5, 5);
 
-            Assert.AreEqual(AngleManager.ToRotation(vector), Quaternion.AngleAxis(45, Vector3.forward));
+            AngleManager.ToRotation(vector).Is(Quaternion.AngleAxis(45, Vector3.forward));
         }
         [Test]
         public static void Invert()
@@ -118,9 +118,9 @@ namespace Assets.Editor.TEST.Domain.Service
             var angle2 = 60;
             var angle3 = -120;
 
-            Assert.AreEqual(AngleManager.Invert(angle1), 135f);
-            Assert.AreEqual(AngleManager.Invert(angle2), 120f);
-            Assert.AreEqual(AngleManager.Invert(angle3), 300f);
+            AngleManager.Invert(angle1).Is(135f);
+            AngleManager.Invert(angle2).Is(120f);
+            AngleManager.Invert(angle3).Is(300f);
         }
         [Test]
         public static void Invert2()
@@ -129,9 +129,9 @@ namespace Assets.Editor.TEST.Domain.Service
             var rotation2 = Quaternion.AngleAxis(60, Vector3.forward);
             var rotation3 = Quaternion.AngleAxis(-120, Vector3.forward);
 
-            Assert.AreEqual(AngleManager.Invert(rotation1), Quaternion.AngleAxis(135, Vector3.forward));
-            Assert.AreEqual(AngleManager.Invert(rotation2), Quaternion.AngleAxis(120, Vector3.forward));
-            Assert.AreEqual(AngleManager.Invert(rotation3), Quaternion.AngleAxis(300, Vector3.forward));
+            AngleManager.Invert(rotation1).Is(Quaternion.AngleAxis(135, Vector3.forward));
+            AngleManager.Invert(rotation2).Is(Quaternion.AngleAxis(120, Vector3.forward));
+            AngleManager.Invert(rotation3).Is(Quaternion.AngleAxis(300, Vector3.forward));
         }
     }
 }

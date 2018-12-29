@@ -15,7 +15,7 @@ namespace Assets.Editor.TEST.Domain.Service
             {
                 var result = 21.SetupRandomNorm().value;
 
-                Assert.IsTrue(0 <= result && result < 1);
+                (0 <= result && result < 1).IsTrue();
             }
         }
     }

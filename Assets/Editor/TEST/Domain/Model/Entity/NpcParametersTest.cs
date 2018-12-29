@@ -41,7 +41,7 @@ namespace Assets.Editor.TEST.Domain.Model.Entity
         {
             var result = parametersStationery + parameters;
 
-            Assert.AreEqual(result.innerProduct, parameters.nowHp + parameters.nowEnergy + parameters.nowMental
+            result.innerProduct.Is(parameters.nowHp + parameters.nowEnergy + parameters.nowMental
                 + parameters.maxHp + parametersStationery.maxHp
                 + parameters.maxEnergy + parametersStationery.maxEnergy
                 + parameters.maxMental + parametersStationery.maxMental
@@ -59,19 +59,19 @@ namespace Assets.Editor.TEST.Domain.Model.Entity
         {
             var result = parameters + parametersStationery;
 
-            Assert.AreEqual(result.nowHp, parameters.nowHp);
-            Assert.AreEqual(result.nowEnergy, parameters.nowEnergy);
-            Assert.AreEqual(result.nowMental, parameters.nowMental);
-            Assert.AreEqual(result.maxHp, parameters.maxHp + parametersStationery.maxHp);
-            Assert.AreEqual(result.maxEnergy, parameters.maxEnergy + parametersStationery.maxEnergy);
-            Assert.AreEqual(result.maxMental, parameters.maxMental + parametersStationery.maxMental);
-            Assert.AreEqual(result.physicalAttack, parameters.physicalAttack + parametersStationery.physicalAttack);
-            Assert.AreEqual(result.physicalDefense, parameters.physicalDefense + parametersStationery.physicalDefense);
-            Assert.AreEqual(result.magicAttack, parameters.magicAttack + parametersStationery.magicAttack);
-            Assert.AreEqual(result.magicDefense, parameters.magicDefense + parametersStationery.magicDefense);
-            Assert.AreEqual(result.accuracy, parameters.accuracy + parametersStationery.accuracy);
-            Assert.AreEqual(result.evasion, parameters.evasion + parametersStationery.evasion);
-            Assert.AreEqual(result.speed, parameters.speed + parametersStationery.speed);
+            result.nowHp.Is(parameters.nowHp);
+            result.nowEnergy.Is(parameters.nowEnergy);
+            result.nowMental.Is(parameters.nowMental);
+            result.maxHp.Is(parameters.maxHp + parametersStationery.maxHp);
+            result.maxEnergy.Is(parameters.maxEnergy + parametersStationery.maxEnergy);
+            result.maxMental.Is(parameters.maxMental + parametersStationery.maxMental);
+            result.physicalAttack.Is(parameters.physicalAttack + parametersStationery.physicalAttack);
+            result.physicalDefense.Is(parameters.physicalDefense + parametersStationery.physicalDefense);
+            result.magicAttack.Is(parameters.magicAttack + parametersStationery.magicAttack);
+            result.magicDefense.Is(parameters.magicDefense + parametersStationery.magicDefense);
+            result.accuracy.Is(parameters.accuracy + parametersStationery.accuracy);
+            result.evasion.Is(parameters.evasion + parametersStationery.evasion);
+            result.speed.Is(parameters.speed + parametersStationery.speed);
         }
 
         [Test]
@@ -79,19 +79,19 @@ namespace Assets.Editor.TEST.Domain.Model.Entity
         {
             var result = parametersStationery + parameters;
 
-            Assert.AreEqual(result.nowHp, parameters.nowHp);
-            Assert.AreEqual(result.nowEnergy, parameters.nowEnergy);
-            Assert.AreEqual(result.nowMental, parameters.nowMental);
-            Assert.AreEqual(result.maxHp, parameters.maxHp + parametersStationery.maxHp);
-            Assert.AreEqual(result.maxEnergy, parameters.maxEnergy + parametersStationery.maxEnergy);
-            Assert.AreEqual(result.maxMental, parameters.maxMental + parametersStationery.maxMental);
-            Assert.AreEqual(result.physicalAttack, parameters.physicalAttack + parametersStationery.physicalAttack);
-            Assert.AreEqual(result.physicalDefense, parameters.physicalDefense + parametersStationery.physicalDefense);
-            Assert.AreEqual(result.magicAttack, parameters.magicAttack + parametersStationery.magicAttack);
-            Assert.AreEqual(result.magicDefense, parameters.magicDefense + parametersStationery.magicDefense);
-            Assert.AreEqual(result.accuracy, parameters.accuracy + parametersStationery.accuracy);
-            Assert.AreEqual(result.evasion, parameters.evasion + parametersStationery.evasion);
-            Assert.AreEqual(result.speed, parameters.speed + parametersStationery.speed);
+            result.nowHp.Is(parameters.nowHp);
+            result.nowEnergy.Is(parameters.nowEnergy);
+            result.nowMental.Is(parameters.nowMental);
+            result.maxHp.Is(parameters.maxHp + parametersStationery.maxHp);
+            result.maxEnergy.Is(parameters.maxEnergy + parametersStationery.maxEnergy);
+            result.maxMental.Is(parameters.maxMental + parametersStationery.maxMental);
+            result.physicalAttack.Is(parameters.physicalAttack + parametersStationery.physicalAttack);
+            result.physicalDefense.Is(parameters.physicalDefense + parametersStationery.physicalDefense);
+            result.magicAttack.Is(parameters.magicAttack + parametersStationery.magicAttack);
+            result.magicDefense.Is(parameters.magicDefense + parametersStationery.magicDefense);
+            result.accuracy.Is(parameters.accuracy + parametersStationery.accuracy);
+            result.evasion.Is(parameters.evasion + parametersStationery.evasion);
+            result.speed.Is(parameters.speed + parametersStationery.speed);
         }
 
         [Test]
@@ -99,19 +99,19 @@ namespace Assets.Editor.TEST.Domain.Model.Entity
         {
             var result = parameters * parametersStationery;
 
-            Assert.AreEqual(result.nowHp, 0);
-            Assert.AreEqual(result.nowEnergy, 0);
-            Assert.AreEqual(result.nowMental, 0);
-            Assert.AreEqual(result.maxHp, parameters.maxHp * parametersStationery.maxHp);
-            Assert.AreEqual(result.maxEnergy, parameters.maxEnergy * parametersStationery.maxEnergy);
-            Assert.AreEqual(result.maxMental, parameters.maxMental * parametersStationery.maxMental);
-            Assert.AreEqual(result.physicalAttack, parameters.physicalAttack * parametersStationery.physicalAttack);
-            Assert.AreEqual(result.physicalDefense, parameters.physicalDefense * parametersStationery.physicalDefense);
-            Assert.AreEqual(result.magicAttack, parameters.magicAttack * parametersStationery.magicAttack);
-            Assert.AreEqual(result.magicDefense, parameters.magicDefense * parametersStationery.magicDefense);
-            Assert.AreEqual(result.accuracy, parameters.accuracy * parametersStationery.accuracy);
-            Assert.AreEqual(result.evasion, parameters.evasion * parametersStationery.evasion);
-            Assert.AreEqual(result.speed, parameters.speed * parametersStationery.speed);
+            result.nowHp.Is(0);
+            result.nowEnergy.Is(0);
+            result.nowMental.Is(0);
+            result.maxHp.Is(parameters.maxHp * parametersStationery.maxHp);
+            result.maxEnergy.Is(parameters.maxEnergy * parametersStationery.maxEnergy);
+            result.maxMental.Is(parameters.maxMental * parametersStationery.maxMental);
+            result.physicalAttack.Is(parameters.physicalAttack * parametersStationery.physicalAttack);
+            result.physicalDefense.Is(parameters.physicalDefense * parametersStationery.physicalDefense);
+            result.magicAttack.Is(parameters.magicAttack * parametersStationery.magicAttack);
+            result.magicDefense.Is(parameters.magicDefense * parametersStationery.magicDefense);
+            result.accuracy.Is(parameters.accuracy * parametersStationery.accuracy);
+            result.evasion.Is(parameters.evasion * parametersStationery.evasion);
+            result.speed.Is(parameters.speed * parametersStationery.speed);
         }
 
         [Test]
@@ -119,55 +119,55 @@ namespace Assets.Editor.TEST.Domain.Model.Entity
         {
             var result = parametersStationery * parameters;
 
-            Assert.AreEqual(result.nowHp, 0);
-            Assert.AreEqual(result.nowEnergy, 0);
-            Assert.AreEqual(result.nowMental, 0);
-            Assert.AreEqual(result.maxHp, parameters.maxHp * parametersStationery.maxHp);
-            Assert.AreEqual(result.maxEnergy, parameters.maxEnergy * parametersStationery.maxEnergy);
-            Assert.AreEqual(result.maxMental, parameters.maxMental * parametersStationery.maxMental);
-            Assert.AreEqual(result.physicalAttack, parameters.physicalAttack * parametersStationery.physicalAttack);
-            Assert.AreEqual(result.physicalDefense, parameters.physicalDefense * parametersStationery.physicalDefense);
-            Assert.AreEqual(result.magicAttack, parameters.magicAttack * parametersStationery.magicAttack);
-            Assert.AreEqual(result.magicDefense, parameters.magicDefense * parametersStationery.magicDefense);
-            Assert.AreEqual(result.accuracy, parameters.accuracy * parametersStationery.accuracy);
-            Assert.AreEqual(result.evasion, parameters.evasion * parametersStationery.evasion);
-            Assert.AreEqual(result.speed, parameters.speed * parametersStationery.speed);
+            result.nowHp.Is(0);
+            result.nowEnergy.Is(0);
+            result.nowMental.Is(0);
+            result.maxHp.Is(parameters.maxHp * parametersStationery.maxHp);
+            result.maxEnergy.Is(parameters.maxEnergy * parametersStationery.maxEnergy);
+            result.maxMental.Is(parameters.maxMental * parametersStationery.maxMental);
+            result.physicalAttack.Is(parameters.physicalAttack * parametersStationery.physicalAttack);
+            result.physicalDefense.Is(parameters.physicalDefense * parametersStationery.physicalDefense);
+            result.magicAttack.Is(parameters.magicAttack * parametersStationery.magicAttack);
+            result.magicDefense.Is(parameters.magicDefense * parametersStationery.magicDefense);
+            result.accuracy.Is(parameters.accuracy * parametersStationery.accuracy);
+            result.evasion.Is(parameters.evasion * parametersStationery.evasion);
+            result.speed.Is(parameters.speed * parametersStationery.speed);
         }
 
         [Test]
         public static void IndexerTest1()
         {
-            Assert.AreEqual(parametersStationery[ParameterType.NOW_HP], NpcParametersMock.MAX_HP);
-            Assert.AreEqual(parametersStationery[ParameterType.NOW_ENERGY], NpcParametersMock.MAX_ENERGY);
-            Assert.AreEqual(parametersStationery[ParameterType.NOW_MENTAL], NpcParametersMock.MAX_MENTAL);
-            Assert.AreEqual(parametersStationery[ParameterType.MAX_HP], NpcParametersMock.MAX_HP);
-            Assert.AreEqual(parametersStationery[ParameterType.MAX_ENERGY], NpcParametersMock.MAX_ENERGY);
-            Assert.AreEqual(parametersStationery[ParameterType.MAX_MENTAL], NpcParametersMock.MAX_MENTAL);
-            Assert.AreEqual(parametersStationery[ParameterType.PHYSICAL_ATTACK], NpcParametersMock.PHYSICAL_ATTACK);
-            Assert.AreEqual(parametersStationery[ParameterType.PHYSICAL_DEFENSE], NpcParametersMock.PHYSICAL_DEFENSE);
-            Assert.AreEqual(parametersStationery[ParameterType.MAGIC_ATTACK], NpcParametersMock.MAGIC_ATTACK);
-            Assert.AreEqual(parametersStationery[ParameterType.MAGIC_DEFENSE], NpcParametersMock.MAGIC_DEFENSE);
-            Assert.AreEqual(parametersStationery[ParameterType.ACCURACY], NpcParametersMock.ACCURACY);
-            Assert.AreEqual(parametersStationery[ParameterType.EVASION], NpcParametersMock.EVASION);
-            Assert.AreEqual(parametersStationery[ParameterType.SPEED], NpcParametersMock.SPEED);
+            parametersStationery[ParameterType.NOW_HP].Is(NpcParametersMock.MAX_HP);
+            parametersStationery[ParameterType.NOW_ENERGY].Is(NpcParametersMock.MAX_ENERGY);
+            parametersStationery[ParameterType.NOW_MENTAL].Is(NpcParametersMock.MAX_MENTAL);
+            parametersStationery[ParameterType.MAX_HP].Is(NpcParametersMock.MAX_HP);
+            parametersStationery[ParameterType.MAX_ENERGY].Is(NpcParametersMock.MAX_ENERGY);
+            parametersStationery[ParameterType.MAX_MENTAL].Is(NpcParametersMock.MAX_MENTAL);
+            parametersStationery[ParameterType.PHYSICAL_ATTACK].Is(NpcParametersMock.PHYSICAL_ATTACK);
+            parametersStationery[ParameterType.PHYSICAL_DEFENSE].Is(NpcParametersMock.PHYSICAL_DEFENSE);
+            parametersStationery[ParameterType.MAGIC_ATTACK].Is(NpcParametersMock.MAGIC_ATTACK);
+            parametersStationery[ParameterType.MAGIC_DEFENSE].Is(NpcParametersMock.MAGIC_DEFENSE);
+            parametersStationery[ParameterType.ACCURACY].Is(NpcParametersMock.ACCURACY);
+            parametersStationery[ParameterType.EVASION].Is(NpcParametersMock.EVASION);
+            parametersStationery[ParameterType.SPEED].Is(NpcParametersMock.SPEED);
         }
 
         [Test]
         public static void IndexerTest2()
         {
-            Assert.AreEqual(parameters[ParameterType.NOW_HP], NpcParametersMock.NOW_HP);
-            Assert.AreEqual(parameters[ParameterType.NOW_ENERGY], NpcParametersMock.NOW_ENERGY);
-            Assert.AreEqual(parameters[ParameterType.NOW_MENTAL], NpcParametersMock.NOW_MENTAL);
-            Assert.AreEqual(parameters[ParameterType.MAX_HP], NpcParametersMock.MAX_HP);
-            Assert.AreEqual(parameters[ParameterType.MAX_ENERGY], NpcParametersMock.MAX_ENERGY);
-            Assert.AreEqual(parameters[ParameterType.MAX_MENTAL], NpcParametersMock.MAX_MENTAL);
-            Assert.AreEqual(parameters[ParameterType.PHYSICAL_ATTACK], NpcParametersMock.PHYSICAL_ATTACK);
-            Assert.AreEqual(parameters[ParameterType.PHYSICAL_DEFENSE], NpcParametersMock.PHYSICAL_DEFENSE);
-            Assert.AreEqual(parameters[ParameterType.MAGIC_ATTACK], NpcParametersMock.MAGIC_ATTACK);
-            Assert.AreEqual(parameters[ParameterType.MAGIC_DEFENSE], NpcParametersMock.MAGIC_DEFENSE);
-            Assert.AreEqual(parameters[ParameterType.ACCURACY], NpcParametersMock.ACCURACY);
-            Assert.AreEqual(parameters[ParameterType.EVASION], NpcParametersMock.EVASION);
-            Assert.AreEqual(parameters[ParameterType.SPEED], NpcParametersMock.SPEED);
+            parameters[ParameterType.NOW_HP].Is(NpcParametersMock.NOW_HP);
+            parameters[ParameterType.NOW_ENERGY].Is(NpcParametersMock.NOW_ENERGY);
+            parameters[ParameterType.NOW_MENTAL].Is(NpcParametersMock.NOW_MENTAL);
+            parameters[ParameterType.MAX_HP].Is(NpcParametersMock.MAX_HP);
+            parameters[ParameterType.MAX_ENERGY].Is(NpcParametersMock.MAX_ENERGY);
+            parameters[ParameterType.MAX_MENTAL].Is(NpcParametersMock.MAX_MENTAL);
+            parameters[ParameterType.PHYSICAL_ATTACK].Is(NpcParametersMock.PHYSICAL_ATTACK);
+            parameters[ParameterType.PHYSICAL_DEFENSE].Is(NpcParametersMock.PHYSICAL_DEFENSE);
+            parameters[ParameterType.MAGIC_ATTACK].Is(NpcParametersMock.MAGIC_ATTACK);
+            parameters[ParameterType.MAGIC_DEFENSE].Is(NpcParametersMock.MAGIC_DEFENSE);
+            parameters[ParameterType.ACCURACY].Is(NpcParametersMock.ACCURACY);
+            parameters[ParameterType.EVASION].Is(NpcParametersMock.EVASION);
+            parameters[ParameterType.SPEED].Is(NpcParametersMock.SPEED);
         }
     }
 }

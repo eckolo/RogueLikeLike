@@ -20,21 +20,21 @@ namespace Assets.Editor.TEST.Infrastructure.Service
             var value4 = 1;
             var value5 = 0;
 
-            Assert.AreEqual(value1, value1.Euclidean(value1));
-            Assert.AreEqual(4, value1.Euclidean(value2));
-            Assert.AreEqual(33, value1.Euclidean(value3));
-            Assert.AreEqual(1, value1.Euclidean(value4));
-            Assert.AreEqual(1, value1.Euclidean(value5));
-            Assert.AreEqual(value2, value2.Euclidean(value2));
-            Assert.AreEqual(5, value2.Euclidean(value3));
-            Assert.AreEqual(1, value2.Euclidean(value4));
-            Assert.AreEqual(1, value2.Euclidean(value5));
-            Assert.AreEqual(value3, value3.Euclidean(value3));
-            Assert.AreEqual(1, value3.Euclidean(value4));
-            Assert.AreEqual(1, value3.Euclidean(value5));
-            Assert.AreEqual(value4, value4.Euclidean(value4));
-            Assert.AreEqual(1, value4.Euclidean(value5));
-            Assert.AreEqual(1, value5.Euclidean(value5));
+            value1.Euclidean(value1).Is(value1);
+            value1.Euclidean(value2).Is(4);
+            value1.Euclidean(value3).Is(33);
+            value1.Euclidean(value4).Is(1);
+            value1.Euclidean(value5).Is(1);
+            value2.Euclidean(value2).Is(value2);
+            value2.Euclidean(value3).Is(5);
+            value2.Euclidean(value4).Is(1);
+            value2.Euclidean(value5).Is(1);
+            value3.Euclidean(value3).Is(value3);
+            value3.Euclidean(value4).Is(1);
+            value3.Euclidean(value5).Is(1);
+            value4.Euclidean(value4).Is(value4);
+            value4.Euclidean(value5).Is(1);
+            value5.Euclidean(value5).Is(1);
         }
         [Test]
         public static void CorrectTest()
@@ -42,52 +42,52 @@ namespace Assets.Editor.TEST.Infrastructure.Service
             var scalar1 = 3f;
             var scalar2 = 5f;
 
-            Assert.AreEqual(NumberManager.Correct(scalar1, scalar2), 4f);
-            Assert.AreEqual(NumberManager.Correct(scalar1, scalar2, 1), 3f);
-            Assert.AreEqual(NumberManager.Correct(scalar1, scalar2, 0), 5f);
+            NumberManager.Correct(scalar1, scalar2).Is(4f);
+            NumberManager.Correct(scalar1, scalar2, 1).Is(3f);
+            NumberManager.Correct(scalar1, scalar2, 0).Is(5f);
         }
         [Test]
         public static void ToIntTest()
         {
-            Assert.AreEqual(NumberManager.ToInt(true), 1);
-            Assert.AreEqual(NumberManager.ToInt(false), 0);
+            NumberManager.ToInt(true).Is(1);
+            NumberManager.ToInt(false).Is(0);
         }
         [Test]
         public static void LimitUpperTest1()
         {
-            Assert.AreEqual(17, NumberManager.LimitUpper(17, 52));
-            Assert.AreEqual(54, NumberManager.LimitUpper(102, 54));
+            NumberManager.LimitUpper(17, 52).Is(17);
+            NumberManager.LimitUpper(102, 54).Is(54);
         }
         [Test]
         public static void LimitUpperTest2()
         {
-            Assert.AreEqual(1.7f, NumberManager.LimitUpper(1.7f, 5.2f));
-            Assert.AreEqual(0.54f, NumberManager.LimitUpper(10.2f, 0.54f));
+            NumberManager.LimitUpper(1.7f, 5.2f).Is(1.7f);
+            NumberManager.LimitUpper(10.2f, 0.54f).Is(0.54f);
         }
         [Test]
         public static void LimitLowerTest1()
         {
-            Assert.AreEqual(52, NumberManager.LimitLower(17, 52));
-            Assert.AreEqual(102, NumberManager.LimitLower(102, 54));
+            NumberManager.LimitLower(17, 52).Is(52);
+            NumberManager.LimitLower(102, 54).Is(102);
         }
         [Test]
         public static void LimitLowerTest2()
         {
-            Assert.AreEqual(5.2f, NumberManager.LimitLower(1.7f, 5.2f));
-            Assert.AreEqual(10.2f, NumberManager.LimitLower(10.2f, 0.54f));
+            NumberManager.LimitLower(1.7f, 5.2f).Is(5.2f);
+            NumberManager.LimitLower(10.2f, 0.54f).Is(10.2f);
         }
         [Test]
         public static void ToSignTest1()
         {
-            Assert.AreEqual(NumberManager.ToSign(true), 1);
-            Assert.AreEqual(NumberManager.ToSign(false), -1);
+            NumberManager.ToSign(true).Is(1);
+            NumberManager.ToSign(false).Is(-1);
         }
         [Test]
         public static void ToSignTest2()
         {
-            Assert.AreEqual(NumberManager.ToSign(108), 1);
-            Assert.AreEqual(NumberManager.ToSign(-62), -1);
-            Assert.AreEqual(NumberManager.ToSign(0), 0);
+            NumberManager.ToSign(108).Is(1);
+            NumberManager.ToSign(-62).Is(-1);
+            NumberManager.ToSign(0).Is(0);
         }
         [Test]
         public static void SelectRandomTest()
@@ -98,12 +98,12 @@ namespace Assets.Editor.TEST.Infrastructure.Service
             for(int i = 0; i < 120; i++)
             {
                 var result = NumberManager.SelectRandom(list1);
-                Assert.IsTrue(result == 0.5f || result == 7.8f || result == 832);
+                (result == 0.5f || result == 7.8f || result == 832).IsTrue();
             }
             for(int i = 0; i < 120; i++)
             {
                 var result = NumberManager.SelectRandom(list1, list2);
-                Assert.IsTrue(result == 0.5f || result == 7.8f || result == 832);
+                (result == 0.5f || result == 7.8f || result == 832).IsTrue();
             }
         }
         [Test]
@@ -113,9 +113,9 @@ namespace Assets.Editor.TEST.Infrastructure.Service
             var value2 = -Mathf.Exp(26.43f) + 1;
             var value3 = 0f;
 
-            Assert.AreEqual(value1.Log(), 11.3f);
-            Assert.AreEqual(value2.Log(), -26.43f);
-            Assert.AreEqual(value3.Log(), 0);
+            value1.Log().Is(11.3f);
+            value2.Log().Is(-26.43f);
+            value3.Log().Is(0);
         }
         [Test]
         public static void LogTest2()
@@ -124,14 +124,14 @@ namespace Assets.Editor.TEST.Infrastructure.Service
             var value2 = -Mathf.Pow(4.63f, 26.43f) + 1;
             var value3 = 0f;
 
-            Assert.AreEqual(value1.Log(2.6f), 11.3f);
-            Assert.AreEqual(value2.Log(4.63f), -26.43f);
-            Assert.AreEqual(value3.Log(2.6f), 0);
+            value1.Log(2.6f).Is(11.3f);
+            value2.Log(4.63f).Is(-26.43f);
+            value3.Log(2.6f).Is(0);
         }
         [Test]
         public static void Copy()
         {
-            var objects1 = new List<ClassMock>{
+            var list1 = new List<ClassMock>{
                 new ClassMock
                 {
                     text1 = "test1",
@@ -145,7 +145,7 @@ namespace Assets.Editor.TEST.Infrastructure.Service
                     number = 5
                 }
             };
-            var objects2 = new List<ClassMock>{
+            var list2 = new List<ClassMock>{
                 new ClassMock
                 {
                     text1 = "test5",
@@ -159,21 +159,24 @@ namespace Assets.Editor.TEST.Infrastructure.Service
                     number = 9
                 }
             };
-            var objects3 = new List<ClassMock> { };
-            List<ClassMock> objects4 = null;
+            var list3 = new List<ClassMock> { };
+            List<ClassMock> list4 = null;
 
-            Assert.AreEqual(objects1, objects1.Copy());
-            Assert.AreNotSame(objects1, objects1.Copy());
-            Assert.AreEqual(objects1[0], objects1.Copy()[0]);
-            Assert.AreEqual(objects1[1], objects1.Copy()[1]);
-            Assert.AreSame(objects1[0], objects1.Copy()[0]);
-            Assert.AreSame(objects1[1], objects1.Copy()[1]);
+            var list1Copied = list1.Copy();
 
-            Assert.AreNotEqual(objects2[0], objects1.Copy()[0]);
-            Assert.AreNotEqual(objects2[1], objects1.Copy()[1]);
+            list1Copied.Is(list1);
+            list1Copied.IsNotSameReferenceAs(list1);
+            list1Copied.Count.Is(list1.Count);
+            list1Copied[0].Is(list1[0]);
+            list1Copied[1].Is(list1[1]);
+            list1Copied[0].IsSameReferenceAs(list1[0]);
+            list1Copied[1].IsSameReferenceAs(list1[1]);
 
-            Assert.AreEqual(objects3, objects3.Copy());
-            Assert.AreEqual(objects4, objects4.Copy());
+            list1Copied[0].IsNot(list2[0]);
+            list1Copied[1].IsNot(list2[1]);
+
+            list3.Copy().Is(list3);
+            list4.Copy().Is(list4);
         }
         [Test]
         public static void ToPercentage()
@@ -183,10 +186,10 @@ namespace Assets.Editor.TEST.Infrastructure.Service
             float? number3 = 5f;
             float? number4 = null;
 
-            Assert.AreEqual(number1.ToPercentage(), "1.31");
-            Assert.AreEqual(number2.ToPercentage(), "0.01");
-            Assert.AreEqual(number3.ToPercentage(), "5.00");
-            Assert.AreEqual(number4.ToPercentage(), "-");
+            number1.ToPercentage().Is("1.31");
+            number2.ToPercentage().Is("0.01");
+            number3.ToPercentage().Is("5.00");
+            number4.ToPercentage().Is("-");
         }
     }
 }

@@ -24,18 +24,18 @@ namespace Assets.Editor.TEST.Infrastructure.Service
 
             var file1 = LogHub.TRACE.LeaveLog(text1, fileManager);
             var result1 = fileManager.Read(path, file1);
-            Assert.IsTrue(result1.Contains("【TRACE】"));
-            Assert.IsTrue(result1.Contains(text1));
+            result1.Contains("【TRACE】").IsTrue();
+            result1.Contains(text1).IsTrue();
 
             var file2 = LogHub.DEBUG.LeaveLog(text2, fileManager);
             var result2 = fileManager.Read(path, file2);
-            Assert.IsTrue(result2.Contains("【DEBUG】"));
-            Assert.IsTrue(result2.Contains(text2));
+            result2.Contains("【DEBUG】").IsTrue();
+            result2.Contains(text2).IsTrue();
 
             var file3 = LogHub.ERROR.LeaveLog(text3, fileManager);
             var result3 = fileManager.Read(path, file3);
-            Assert.IsTrue(result3.Contains("【ERROR】"));
-            Assert.IsTrue(result3.Contains(text3));
+            result3.Contains("【ERROR】").IsTrue();
+            result3.Contains(text3).IsTrue();
         }
     }
 }

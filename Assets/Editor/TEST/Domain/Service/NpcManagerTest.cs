@@ -25,59 +25,59 @@ namespace Assets.Editor.TEST.Domain.Service
 
             state = state.CalcInitiativeTurnEnd(actor);
             actor = list.CalcNextActNpc();
-            Assert.AreEqual(actor, npc3);
-            Assert.AreEqual(npc1.nowInitiative, 0);
-            Assert.AreEqual(npc2.nowInitiative, 5);
-            Assert.AreEqual(npc3.nowInitiative, 8);
+            actor.Is(npc3);
+            npc1.nowInitiative.Is(0);
+            npc2.nowInitiative.Is(5);
+            npc3.nowInitiative.Is(8);
 
             state = state.CalcInitiativeTurnEnd(actor);
             actor = list.CalcNextActNpc();
-            Assert.AreEqual(actor, npc2);
-            Assert.AreEqual(npc1.nowInitiative, 2);
-            Assert.AreEqual(npc2.nowInitiative, 12);
-            Assert.AreEqual(npc3.nowInitiative, 0);
+            actor.Is(npc2);
+            npc1.nowInitiative.Is(2);
+            npc2.nowInitiative.Is(12);
+            npc3.nowInitiative.Is(0);
 
             state = state.CalcInitiativeTurnEnd(actor);
             actor = list.CalcNextActNpc();
-            Assert.AreEqual(actor, npc3);
-            Assert.AreEqual(npc1.nowInitiative, 0);
-            Assert.AreEqual(npc2.nowInitiative, 0);
-            Assert.AreEqual(npc3.nowInitiative, 6);
+            actor.Is(npc3);
+            npc1.nowInitiative.Is(0);
+            npc2.nowInitiative.Is(0);
+            npc3.nowInitiative.Is(6);
 
             state = state.CalcInitiativeTurnEnd(actor);
             actor = list.CalcNextActNpc();
-            Assert.AreEqual(actor, npc2);
-            Assert.AreEqual(npc1.nowInitiative, 4);
-            Assert.AreEqual(npc2.nowInitiative, 9);
-            Assert.AreEqual(npc3.nowInitiative, 0);
+            actor.Is(npc2);
+            npc1.nowInitiative.Is(4);
+            npc2.nowInitiative.Is(9);
+            npc3.nowInitiative.Is(0);
 
             state = state.CalcInitiativeTurnEnd(actor);
             actor = list.CalcNextActNpc();
-            Assert.AreEqual(actor, npc3);
-            Assert.AreEqual(npc1.nowInitiative, 5);
-            Assert.AreEqual(npc2.nowInitiative, 0);
-            Assert.AreEqual(npc3.nowInitiative, 9);
+            actor.Is(npc3);
+            npc1.nowInitiative.Is(5);
+            npc2.nowInitiative.Is(0);
+            npc3.nowInitiative.Is(9);
 
             state = state.CalcInitiativeTurnEnd(actor);
             actor = list.CalcNextActNpc();
-            Assert.AreEqual(actor, npc2);
-            Assert.AreEqual(npc1.nowInitiative, 6);
-            Assert.AreEqual(npc2.nowInitiative, 6);
-            Assert.AreEqual(npc3.nowInitiative, 0);
+            actor.Is(npc2);
+            npc1.nowInitiative.Is(6);
+            npc2.nowInitiative.Is(6);
+            npc3.nowInitiative.Is(0);
 
             state = state.CalcInitiativeTurnEnd(actor);
             actor = list.CalcNextActNpc();
-            Assert.AreEqual(actor, npc3);
-            Assert.AreEqual(npc1.nowInitiative, 10);
-            Assert.AreEqual(npc2.nowInitiative, 0);
-            Assert.AreEqual(npc3.nowInitiative, 12);
+            actor.Is(npc3);
+            npc1.nowInitiative.Is(10);
+            npc2.nowInitiative.Is(0);
+            npc3.nowInitiative.Is(12);
 
             state = state.CalcInitiativeTurnEnd(actor);
             actor = list.CalcNextActNpc();
-            Assert.AreEqual(actor, npc1);
-            Assert.AreEqual(npc1.nowInitiative, 8);
-            Assert.AreEqual(npc2.nowInitiative, 3);
-            Assert.AreEqual(npc3.nowInitiative, 0);
+            actor.Is(npc1);
+            npc1.nowInitiative.Is(8);
+            npc2.nowInitiative.Is(3);
+            npc3.nowInitiative.Is(0);
 
             #endregion
         }

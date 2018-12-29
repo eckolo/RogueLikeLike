@@ -31,8 +31,8 @@ namespace Assets.Editor.TEST.Domain.Service
             var result1 = state3.Load(index1, fileManager);
             var result2 = state3.Load(index2, fileManager);
 
-            Assert.AreEqual(state1.upwardDirection, result1.upwardDirection);
-            Assert.AreEqual(state2.upwardDirection, result2.upwardDirection);
+            result1.upwardDirection.Is(state1.upwardDirection);
+            result2.upwardDirection.Is(state2.upwardDirection);
         }
     }
 }

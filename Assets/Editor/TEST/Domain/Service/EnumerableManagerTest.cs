@@ -20,14 +20,12 @@ namespace Assets.Editor.TEST.Domain.Service
         {
             public KeyValueLikeTest(string key, float value)
             {
-                _key = key;
-                _value = value;
+                this.key = key;
+                this.value = value;
             }
 
-            string _key = "";
-            public string key => _key;
-            float _value = 0f;
-            public float value => _value;
+            public string key { get; } = "";
+            public float value { get; } = 0f;
         }
 
         [Test]
@@ -41,14 +39,14 @@ namespace Assets.Editor.TEST.Domain.Service
             };
 
             var result = list.MaxKeys(elem => elem.magnitude);
-            Assert.AreEqual(result.Count(), 2);
+            result.Count().Is(2);
 
             var resultFirst = result.Single(elem => elem.x > 0);
             var resultSecond = result.Single(elem => elem.x < 0);
-            Assert.AreEqual(resultFirst.x, 6);
-            Assert.AreEqual(resultFirst.y, -8);
-            Assert.AreEqual(resultSecond.x, -6);
-            Assert.AreEqual(resultSecond.y, 8);
+            resultFirst.x.Is(6);
+            resultFirst.y.Is(-8);
+            resultSecond.x.Is(-6);
+            resultSecond.y.Is(8);
         }
         [Test]
         public static void MinKeysTest()
@@ -61,14 +59,14 @@ namespace Assets.Editor.TEST.Domain.Service
             };
 
             var result = list.MinKeys(elem => elem.magnitude);
-            Assert.AreEqual(result.Count(), 2);
+            result.Count().Is(2);
 
             var resultFirst = result.Single(elem => elem.x > 0);
             var resultSecond = result.Single(elem => elem.x < 0);
-            Assert.AreEqual(resultFirst.x, 3);
-            Assert.AreEqual(resultFirst.y, -4);
-            Assert.AreEqual(resultSecond.x, -3);
-            Assert.AreEqual(resultSecond.y, 4);
+            resultFirst.x.Is(3);
+            resultFirst.y.Is(-4);
+            resultSecond.x.Is(-3);
+            resultSecond.y.Is(4);
         }
         [Test]
         public static void ToDictionaryTest()
@@ -90,19 +88,11 @@ namespace Assets.Editor.TEST.Domain.Service
             };
 
             var result1 = list1.ToDictionary();
-            Assert.AreEqual(result1[key1], value1);
-            Assert.AreEqual(result1[key2], value2);
-            Assert.AreEqual(result1[key3], value3);
+            result1[key1].Is(value1);
+            result1[key2].Is(value2);
+            result1[key3].Is(value3);
 
-            try
-            {
-                list2.ToDictionary();
-                Assert.Fail();
-            }
-            catch(Exception error)
-            {
-                Assert.Pass(error.ToString());
-            }
+            Assert.Throws<ArgumentException>(() => list2.ToDictionary());
         }
         [Test]
         public static void GetOrDefaultTest()
@@ -121,10 +111,10 @@ namespace Assets.Editor.TEST.Domain.Service
                 { key3, value3},
             };
 
-            Assert.AreEqual(dictionary.GetOrDefault(key1), value1);
-            Assert.AreEqual(dictionary.GetOrDefault(key2), value2);
-            Assert.AreEqual(dictionary.GetOrDefault(key3), value3);
-            Assert.AreEqual(dictionary.GetOrDefault(key4), default(float));
+            dictionary.GetOrDefault(key1).Is(value1);
+            dictionary.GetOrDefault(key2).Is(value2);
+            dictionary.GetOrDefault(key3).Is(value3);
+            dictionary.GetOrDefault(key4).Is(default(float));
         }
         [Test]
         public static void GetOrDefaultTest2()
@@ -144,10 +134,10 @@ namespace Assets.Editor.TEST.Domain.Service
                 { key3, value3},
             };
 
-            Assert.AreEqual(dictionary.GetOrDefault(key1, valueDefault), value1);
-            Assert.AreEqual(dictionary.GetOrDefault(key2, valueDefault), value2);
-            Assert.AreEqual(dictionary.GetOrDefault(key3, valueDefault), value3);
-            Assert.AreEqual(dictionary.GetOrDefault(key4, valueDefault), valueDefault);
+            dictionary.GetOrDefault(key1, valueDefault).Is(value1);
+            dictionary.GetOrDefault(key2, valueDefault).Is(value2);
+            dictionary.GetOrDefault(key3, valueDefault).Is(value3);
+            dictionary.GetOrDefault(key4, valueDefault).Is(valueDefault);
         }
         [Test]
         public static void UpdateOrInsertTest_1要素_正常系()
@@ -169,25 +159,25 @@ namespace Assets.Editor.TEST.Domain.Service
 
             {
                 var result = dictionary.UpdateOrInsert(key2, value4);
-                Assert.AreEqual(3, result.Count);
-                Assert.True(result.ContainsKey(key1));
-                Assert.AreEqual(value1, result[key1]);
-                Assert.True(result.ContainsKey(key2));
-                Assert.AreEqual(value4, result[key2]);
-                Assert.True(result.ContainsKey(key3));
-                Assert.AreEqual(value3, result[key3]);
+                result.Count.Is(3);
+                result.ContainsKey(key1).IsTrue();
+                result[key1].Is(value1);
+                result.ContainsKey(key2).IsTrue();
+                result[key2].Is(value4);
+                result.ContainsKey(key3).IsTrue();
+                result[key3].Is(value3);
             }
             {
                 var result = dictionary.UpdateOrInsert(key4, value4);
-                Assert.AreEqual(4, result.Count);
-                Assert.True(result.ContainsKey(key1));
-                Assert.AreEqual(value1, result[key1]);
-                Assert.True(result.ContainsKey(key2));
-                Assert.AreEqual(value2, result[key2]);
-                Assert.True(result.ContainsKey(key3));
-                Assert.AreEqual(value3, result[key3]);
-                Assert.True(result.ContainsKey(key4));
-                Assert.AreEqual(value4, result[key4]);
+                result.Count.Is(4);
+                result.ContainsKey(key1).IsTrue();
+                result[key1].Is(value1);
+                result.ContainsKey(key2).IsTrue();
+                result[key2].Is(value2);
+                result.ContainsKey(key3).IsTrue();
+                result[key3].Is(value3);
+                result.ContainsKey(key4).IsTrue();
+                result[key4].Is(value4);
             }
         }
         [Test]
@@ -210,25 +200,25 @@ namespace Assets.Editor.TEST.Domain.Service
 
             {
                 var result = dictionary.UpdateOrInsert(key2, value4);
-                Assert.AreEqual(3, result.Count);
-                Assert.True(result.ContainsKey(key1));
-                Assert.AreEqual(value1, result[key1]);
-                Assert.True(result.ContainsKey(key2));
-                Assert.AreEqual(value4, result[key2]);
-                Assert.True(result.ContainsKey(key3));
-                Assert.AreEqual(value3, result[key3]);
+                result.Count.Is(3);
+                result.ContainsKey(key1).IsTrue();
+                result[key1].Is(value1);
+                result.ContainsKey(key2).IsTrue();
+                result[key2].Is(value4);
+                result.ContainsKey(key3).IsTrue();
+                result[key3].Is(value3);
             }
             {
                 var result = dictionary.UpdateOrInsert(key4, value4);
-                Assert.AreEqual(4, result.Count);
-                Assert.True(result.ContainsKey(key1));
-                Assert.AreEqual(value1, result[key1]);
-                Assert.True(result.ContainsKey(key2));
-                Assert.AreEqual(value2, result[key2]);
-                Assert.True(result.ContainsKey(key3));
-                Assert.AreEqual(value3, result[key3]);
-                Assert.True(result.ContainsKey(key4));
-                Assert.AreEqual(value4, result[key4]);
+                result.Count.Is(4);
+                result.ContainsKey(key1).IsTrue();
+                result[key1].Is(value1);
+                result.ContainsKey(key2).IsTrue();
+                result[key2].Is(value2);
+                result.ContainsKey(key3).IsTrue();
+                result[key3].Is(value3);
+                result.ContainsKey(key4).IsTrue();
+                result[key4].Is(value4);
             }
         }
         [Test]
@@ -276,15 +266,15 @@ namespace Assets.Editor.TEST.Domain.Service
             };
 
             var result = dictionary.UpdateOrInsert(update);
-            Assert.AreEqual(4, result.Count);
-            Assert.True(result.ContainsKey(key1));
-            Assert.AreEqual(value5, result[key1]);
-            Assert.True(result.ContainsKey(key2));
-            Assert.AreEqual(value2, result[key2]);
-            Assert.True(result.ContainsKey(key3));
-            Assert.AreEqual(value3, result[key3]);
-            Assert.True(result.ContainsKey(key4));
-            Assert.AreEqual(value4, result[key4]);
+            result.Count.Is(4);
+            result.ContainsKey(key1).IsTrue();
+            result[key1].Is(value5);
+            result.ContainsKey(key2).IsTrue();
+            result[key2].Is(value2);
+            result.ContainsKey(key3).IsTrue();
+            result[key3].Is(value3);
+            result.ContainsKey(key4).IsTrue();
+            result[key4].Is(value4);
         }
         [Test]
         public static void UpdateOrInsertTest_複数要素_Nullの値()
@@ -309,15 +299,15 @@ namespace Assets.Editor.TEST.Domain.Service
             };
 
             var result = dictionary.UpdateOrInsert(update);
-            Assert.AreEqual(4, result.Count);
-            Assert.True(result.ContainsKey(key1));
-            Assert.AreEqual(null, result[key1]);
-            Assert.True(result.ContainsKey(key2));
-            Assert.AreEqual(value2, result[key2]);
-            Assert.True(result.ContainsKey(key3));
-            Assert.AreEqual(value3, result[key3]);
-            Assert.True(result.ContainsKey(key4));
-            Assert.AreEqual(null, result[key4]);
+            result.Count.Is(4);
+            result.ContainsKey(key1).IsTrue();
+            result[key1].Is(null);
+            result.ContainsKey(key2).IsTrue();
+            result[key2].Is(value2);
+            result.ContainsKey(key3).IsTrue();
+            result[key3].Is(value3);
+            result.ContainsKey(key4).IsTrue();
+            result[key4].Is(null);
         }
         [Test]
         public static void ContainsIndexTest()
@@ -329,10 +319,10 @@ namespace Assets.Editor.TEST.Domain.Service
                 new Vector2(0, -1)
             };
 
-            Assert.IsFalse(list.ContainsIndex(-1));
-            Assert.IsTrue(list.ContainsIndex(0));
-            Assert.IsTrue(list.ContainsIndex(3));
-            Assert.IsFalse(list.ContainsIndex(4));
+            list.ContainsIndex(-1).IsFalse();
+            list.ContainsIndex(0).IsTrue();
+            list.ContainsIndex(3).IsTrue();
+            list.ContainsIndex(4).IsFalse();
         }
         [Test]
         public static void PickTest_正常系()
@@ -352,14 +342,14 @@ namespace Assets.Editor.TEST.Domain.Service
             var norm7 = 60.DividedBy(100);
             var norm8 = 99.DividedBy(100);
 
-            Assert.AreEqual(vector1, list.Pick(norm1, rate));
-            Assert.AreEqual(vector1, list.Pick(norm2, rate));
-            Assert.AreEqual(vector2, list.Pick(norm3, rate));
-            Assert.AreEqual(vector2, list.Pick(norm4, rate));
-            Assert.AreEqual(vector3, list.Pick(norm5, rate));
-            Assert.AreEqual(vector3, list.Pick(norm6, rate));
-            Assert.AreEqual(vector4, list.Pick(norm7, rate));
-            Assert.AreEqual(vector4, list.Pick(norm8, rate));
+            list.Pick(norm1, rate).Is(vector1);
+            list.Pick(norm2, rate).Is(vector1);
+            list.Pick(norm3, rate).Is(vector2);
+            list.Pick(norm4, rate).Is(vector2);
+            list.Pick(norm5, rate).Is(vector3);
+            list.Pick(norm6, rate).Is(vector3);
+            list.Pick(norm7, rate).Is(vector4);
+            list.Pick(norm8, rate).Is(vector4);
         }
         [Test]
         public static void PickTest_基準値が閾値外()
@@ -373,8 +363,8 @@ namespace Assets.Editor.TEST.Domain.Service
             var norm1 = -1.DividedBy(100);
             var norm2 = 100.DividedBy(100);
 
-            Assert.AreEqual(default(Vector2), list.Pick(norm1, rate));
-            Assert.AreEqual(default(Vector2), list.Pick(norm2, rate));
+            list.Pick(norm1, rate).Is(default);
+            list.Pick(norm2, rate).Is(default);
         }
         [Test]
         public static void PickTest_確率分布が負の値()
@@ -392,12 +382,12 @@ namespace Assets.Editor.TEST.Domain.Service
             var norm5 = 40.DividedBy(80);
             var norm6 = 79.DividedBy(80);
 
-            Assert.AreEqual(vector1, list.Pick(norm1, rate));
-            Assert.AreEqual(vector1, list.Pick(norm2, rate));
-            Assert.AreEqual(vector3, list.Pick(norm3, rate));
-            Assert.AreEqual(vector3, list.Pick(norm4, rate));
-            Assert.AreEqual(vector4, list.Pick(norm5, rate));
-            Assert.AreEqual(vector4, list.Pick(norm6, rate));
+            list.Pick(norm1, rate).Is(vector1);
+            list.Pick(norm2, rate).Is(vector1);
+            list.Pick(norm3, rate).Is(vector3);
+            list.Pick(norm4, rate).Is(vector3);
+            list.Pick(norm5, rate).Is(vector4);
+            list.Pick(norm6, rate).Is(vector4);
         }
         [Test]
         public static void PickTest_基準値が閾値外かつ確率分布が負の値()
@@ -411,8 +401,8 @@ namespace Assets.Editor.TEST.Domain.Service
             var norm1 = -1.DividedBy(80);
             var norm2 = 80.DividedBy(80);
 
-            Assert.AreEqual(default(Vector2), list.Pick(norm1, rate));
-            Assert.AreEqual(default(Vector2), list.Pick(norm2, rate));
+            list.Pick(norm1, rate).Is(default);
+            list.Pick(norm2, rate).Is(default);
         }
     }
 }

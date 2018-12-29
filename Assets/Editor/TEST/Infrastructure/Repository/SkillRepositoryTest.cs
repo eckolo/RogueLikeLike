@@ -19,10 +19,10 @@ namespace Assets.Editor.TEST.Infrastructure.Repository
             {
                 var skill = skillRepository.GetContests(key);
 
-                Assert.IsNotNull(skill, key.ToFileName());
-                Assert.AreEqual(skill.name, key.ToFileName(), key.ToFileName());
-                Assert.AreEqual(skill.section, key.ToSection(), key.ToFileName());
-                Assert.AreEqual(skill.key, key, key.ToFileName());
+                skill.IsNotNull();
+                skill.name.Is(key.ToFileName());
+                skill.section.Is(key.ToSection());
+                skill.key.Is(key);
             }
         }
     }

@@ -16,7 +16,7 @@ namespace Assets.Editor.TEST.Domain.Service
             var bigVector = new Vector2(5, 5);
             var smallVector = new Vector2(3, 4);
 
-            Assert.AreEqual(VectorManager.Max(smallVector, bigVector), new Vector2(5, 5));
+            VectorManager.Max(smallVector, bigVector).Is(new Vector2(5, 5));
         }
         [Test]
         public static void Max2()
@@ -25,8 +25,8 @@ namespace Assets.Editor.TEST.Domain.Service
             var smallScalar = 4f;
             var bigScalar = 10f;
 
-            Assert.AreEqual(VectorManager.Max(vector, smallScalar), new Vector2(3, 4));
-            Assert.AreEqual(VectorManager.Max(vector, bigScalar), new Vector2(6, 8));
+            VectorManager.Max(vector, smallScalar).Is(new Vector2(3, 4));
+            VectorManager.Max(vector, bigScalar).Is(new Vector2(6, 8));
         }
         [Test]
         public static void Min()
@@ -34,7 +34,7 @@ namespace Assets.Editor.TEST.Domain.Service
             var bigVector = new Vector2(5, 5);
             var smallVector = new Vector2(3, 4);
 
-            Assert.AreEqual(VectorManager.Min(smallVector, bigVector), new Vector2(3, 4));
+            VectorManager.Min(smallVector, bigVector).Is(new Vector2(3, 4));
         }
         [Test]
         public static void Min2()
@@ -43,15 +43,15 @@ namespace Assets.Editor.TEST.Domain.Service
             var smallScalar = 5f;
             var bigScalar = 12f;
 
-            Assert.AreEqual(VectorManager.Min(vector, smallScalar), new Vector2(3, 4));
-            Assert.AreEqual(VectorManager.Min(vector, bigScalar), new Vector2(6, 8));
+            VectorManager.Min(vector, smallScalar).Is(new Vector2(3, 4));
+            VectorManager.Min(vector, bigScalar).Is(new Vector2(6, 8));
         }
         [Test]
         public static void Abs()
         {
             var vector = new Vector2(-3, -4);
 
-            Assert.AreEqual(VectorManager.Abs(vector), new Vector2(3, 4));
+            VectorManager.Abs(vector).Is(new Vector2(3, 4));
         }
         [Test]
         public static void Correct()
@@ -59,9 +59,9 @@ namespace Assets.Editor.TEST.Domain.Service
             var vector1 = new Vector2(3, 4);
             var vector2 = new Vector2(5, 5);
 
-            Assert.AreEqual(VectorManager.Correct(vector1, vector2), new Vector2(4, 4.5f));
-            Assert.AreEqual(VectorManager.Correct(vector1, vector2, 1), new Vector2(3, 4));
-            Assert.AreEqual(VectorManager.Correct(vector1, vector2, 0), new Vector2(5, 5));
+            VectorManager.Correct(vector1, vector2).Is(new Vector2(4, 4.5f));
+            VectorManager.Correct(vector1, vector2, 1).Is(new Vector2(3, 4));
+            VectorManager.Correct(vector1, vector2, 0).Is(new Vector2(5, 5));
         }
         [Test]
         public static void Scaling()
@@ -69,7 +69,7 @@ namespace Assets.Editor.TEST.Domain.Service
             var vector1 = new Vector2(3, 4);
             var vector2 = new Vector2(5, 5);
 
-            Assert.AreEqual(VectorManager.Scaling(vector1, vector2), new Vector2(15, 20));
+            VectorManager.Scaling(vector1, vector2).Is(new Vector2(15, 20));
         }
         [Test]
         public static void Scaling2()
@@ -78,7 +78,7 @@ namespace Assets.Editor.TEST.Domain.Service
             var scalar1 = 3f;
             var scalar2 = 7f;
 
-            Assert.AreEqual(VectorManager.Scaling(vector, scalar1, scalar2), new Vector2(9, 28));
+            VectorManager.Scaling(vector, scalar1, scalar2).Is(new Vector2(9, 28));
         }
         [Test]
         public static void Rescaling()
@@ -86,7 +86,7 @@ namespace Assets.Editor.TEST.Domain.Service
             var vector1 = new Vector2(3, 4);
             var vector2 = new Vector2(5, 5);
 
-            Assert.AreEqual(VectorManager.Rescaling(vector1, vector2), new Vector2(0.6f, 0.8f));
+            VectorManager.Rescaling(vector1, vector2).Is(new Vector2(0.6f, 0.8f));
         }
         [Test]
         public static void Rescaling2()
@@ -95,7 +95,7 @@ namespace Assets.Editor.TEST.Domain.Service
             var scalar1 = 3f;
             var scalar2 = 10f;
 
-            Assert.AreEqual(VectorManager.Rescaling(vector, scalar1, scalar2), new Vector2(1, 0.4f));
+            VectorManager.Rescaling(vector, scalar1, scalar2).Is(new Vector2(1, 0.4f));
         }
         [Test]
         public static void Rotate()
@@ -107,14 +107,14 @@ namespace Assets.Editor.TEST.Domain.Service
             var angle2 = -90;
 
             //どうしても有効桁数下2桁あたりで検算側に誤差が出るため手動で丸める
-            Assert.AreEqual(Mathf.Round(VectorManager.Rotate(vector1, pivot1, angle1).x * 1000) / 1000, 3);
-            Assert.AreEqual(Mathf.Round(VectorManager.Rotate(vector1, pivot1, angle1).y * 1000) / 1000, 6);
-            Assert.AreEqual(Mathf.Round(VectorManager.Rotate(vector1, pivot1, angle2).x * 1000) / 1000, 1);
-            Assert.AreEqual(Mathf.Round(VectorManager.Rotate(vector1, pivot1, angle2).y * 1000) / 1000, 4);
-            Assert.AreEqual(Mathf.Round(VectorManager.Rotate(vector1, pivot2, angle1).x * 1000) / 1000, -8);
-            Assert.AreEqual(Mathf.Round(VectorManager.Rotate(vector1, pivot2, angle1).y * 1000) / 1000, 7);
-            Assert.AreEqual(Mathf.Round(VectorManager.Rotate(vector1, pivot2, angle2).x * 1000) / 1000, 0);
-            Assert.AreEqual(Mathf.Round(VectorManager.Rotate(vector1, pivot2, angle2).y * 1000) / 1000, -7);
+            (Mathf.Round(VectorManager.Rotate(vector1, pivot1, angle1).x * 1000) / 1000).Is(3);
+            (Mathf.Round(VectorManager.Rotate(vector1, pivot1, angle1).y * 1000) / 1000).Is(6);
+            (Mathf.Round(VectorManager.Rotate(vector1, pivot1, angle2).x * 1000) / 1000).Is(1);
+            (Mathf.Round(VectorManager.Rotate(vector1, pivot1, angle2).y * 1000) / 1000).Is(4);
+            (Mathf.Round(VectorManager.Rotate(vector1, pivot2, angle1).x * 1000) / 1000).Is(-8);
+            (Mathf.Round(VectorManager.Rotate(vector1, pivot2, angle1).y * 1000) / 1000).Is(7);
+            (Mathf.Round(VectorManager.Rotate(vector1, pivot2, angle2).x * 1000) / 1000).Is(0);
+            (Mathf.Round(VectorManager.Rotate(vector1, pivot2, angle2).y * 1000) / 1000).Is(-7);
         }
         [Test]
         public static void ToVector1()
@@ -122,9 +122,9 @@ namespace Assets.Editor.TEST.Domain.Service
             var vector = new Vector2(3, 4);
             var scalar = 3f;
 
-            Assert.AreEqual(VectorManager.ToVector(vector), new Vector2(0.6f, 0.8f));
-            Assert.AreEqual(VectorManager.ToVector(vector, scalar), new Vector2(1.8f, 2.4f));
-            Assert.AreEqual(VectorManager.ToVector(Vector2.zero, scalar), Vector2.zero);
+            VectorManager.ToVector(vector).Is(new Vector2(0.6f, 0.8f));
+            VectorManager.ToVector(vector, scalar).Is(new Vector2(1.8f, 2.4f));
+            VectorManager.ToVector(Vector2.zero, scalar).Is(Vector2.zero);
         }
         [Test]
         public static void ToVector2()
@@ -132,7 +132,7 @@ namespace Assets.Editor.TEST.Domain.Service
             var vector1 = new Vector2(3, 4);
             var vector2 = new Vector2(5, 12);
 
-            Assert.AreEqual(VectorManager.ToVector(vector1, vector2), new Vector2(7.8f, 10.4f));
+            VectorManager.ToVector(vector1, vector2).Is(new Vector2(7.8f, 10.4f));
         }
         [Test]
         public static void ToVector3()
@@ -140,8 +140,8 @@ namespace Assets.Editor.TEST.Domain.Service
             var rotation = Quaternion.AngleAxis(60, Vector3.forward);
             var scalar = 3f;
 
-            Assert.AreEqual(VectorManager.ToVector(rotation), new Vector2(0.5f, 0.5f * Mathf.Sqrt(3)));
-            Assert.AreEqual(VectorManager.ToVector(rotation, scalar), new Vector2(1.5f, 1.5f * Mathf.Sqrt(3)));
+            VectorManager.ToVector(rotation).Is(new Vector2(0.5f, 0.5f * Mathf.Sqrt(3)));
+            VectorManager.ToVector(rotation, scalar).Is(new Vector2(1.5f, 1.5f * Mathf.Sqrt(3)));
         }
         [Test]
         public static void ToVector4()
@@ -149,8 +149,8 @@ namespace Assets.Editor.TEST.Domain.Service
             var angle = 60f;
             var scalar = 3f;
 
-            Assert.AreEqual(VectorManager.ToVector(angle), new Vector2(0.5f, 0.5f * Mathf.Sqrt(3)));
-            Assert.AreEqual(VectorManager.ToVector(angle, scalar), new Vector2(1.5f, 1.5f * Mathf.Sqrt(3)));
+            VectorManager.ToVector(angle).Is(new Vector2(0.5f, 0.5f * Mathf.Sqrt(3)));
+            VectorManager.ToVector(angle, scalar).Is(new Vector2(1.5f, 1.5f * Mathf.Sqrt(3)));
         }
         [Test]
         public static void ToVector5()
@@ -158,7 +158,7 @@ namespace Assets.Editor.TEST.Domain.Service
             var angle = 60f;
             var vector = new Vector2(3, 4);
 
-            Assert.AreEqual(VectorManager.ToVector(angle, vector), new Vector2(2.5f, 2.5f * Mathf.Sqrt(3)));
+            VectorManager.ToVector(angle, vector).Is(new Vector2(2.5f, 2.5f * Mathf.Sqrt(3)));
         }
         [Test]
         public static void Invert()
@@ -167,29 +167,29 @@ namespace Assets.Editor.TEST.Domain.Service
             var vector2 = new Vector2(-4, 5);
             var vector3 = new Vector2(0, 34);
 
-            Assert.AreEqual(VectorManager.Invert(vector1), new Vector2(-3, 4));
-            Assert.AreEqual(VectorManager.Invert(vector2), new Vector2(4, 5));
-            Assert.AreEqual(VectorManager.Invert(vector3), new Vector2(0, 34));
+            VectorManager.Invert(vector1).Is(new Vector2(-3, 4));
+            VectorManager.Invert(vector2).Is(new Vector2(4, 5));
+            VectorManager.Invert(vector3).Is(new Vector2(0, 34));
         }
         [Test]
         public static void GetIntXTest()
         {
-            Assert.AreEqual(3, new Vector2(3, 4).GetIntX());
-            Assert.AreEqual(-4, new Vector2(-4, 5).GetIntX());
-            Assert.AreEqual(3, new Vector2(3.4f, 0).GetIntX());
-            Assert.AreEqual(7, new Vector2(7.6f, 0).GetIntX());
-            Assert.AreEqual(-37, new Vector2(-37.4f, 3.4f).GetIntX());
-            Assert.AreEqual(-45, new Vector2(-45.8f, 3.4f).GetIntX());
+            new Vector2(3, 4).GetIntX().Is(3);
+            new Vector2(-4, 5).GetIntX().Is(-4);
+            new Vector2(3.4f, 0).GetIntX().Is(3);
+            new Vector2(7.6f, 0).GetIntX().Is(7);
+            new Vector2(-37.4f, 3.4f).GetIntX().Is(-37);
+            new Vector2(-45.8f, 3.4f).GetIntX().Is(-45);
         }
         [Test]
         public static void GetIntYTest()
         {
-            Assert.AreEqual(4, new Vector2(3, 4).GetIntY());
-            Assert.AreEqual(-5, new Vector2(4, -5).GetIntY());
-            Assert.AreEqual(3, new Vector2(3.4f, 3.4f).GetIntY());
-            Assert.AreEqual(7, new Vector2(3.4f, 7.6f).GetIntY());
-            Assert.AreEqual(-37, new Vector2(-4.3f, -37.4f).GetIntY());
-            Assert.AreEqual(-45, new Vector2(-4.3f, -45.8f).GetIntY());
+            new Vector2(3, 4).GetIntY().Is(4);
+            new Vector2(4, -5).GetIntY().Is(-5);
+            new Vector2(3.4f, 3.4f).GetIntY().Is(3);
+            new Vector2(3.4f, 7.6f).GetIntY().Is(7);
+            new Vector2(-4.3f, -37.4f).GetIntY().Is(-37);
+            new Vector2(-4.3f, -45.8f).GetIntY().Is(-45);
         }
         [Test]
         public static void LinearizationTest()
@@ -212,118 +212,118 @@ namespace Assets.Editor.TEST.Domain.Service
             var underLeft = new Vector2(-1, -2);
             var upperRight = new Vector2(5, 12);
 
-            Assert.AreEqual(VectorManager.Within(vector1, underLeft, upperRight), new Vector2(-1, -2));
-            Assert.AreEqual(VectorManager.Within(vector2, underLeft, upperRight), new Vector2(3, -2));
-            Assert.AreEqual(VectorManager.Within(vector3, underLeft, upperRight), new Vector2(5, -2));
-            Assert.AreEqual(VectorManager.Within(vector4, underLeft, upperRight), new Vector2(-1, 7));
-            Assert.AreEqual(VectorManager.Within(vector5, underLeft, upperRight), new Vector2(3, 7));
-            Assert.AreEqual(VectorManager.Within(vector6, underLeft, upperRight), new Vector2(5, 7));
-            Assert.AreEqual(VectorManager.Within(vector7, underLeft, upperRight), new Vector2(-1, 12));
-            Assert.AreEqual(VectorManager.Within(vector8, underLeft, upperRight), new Vector2(3, 12));
-            Assert.AreEqual(VectorManager.Within(vector9, underLeft, upperRight), new Vector2(5, 12));
+            VectorManager.Within(vector1, underLeft, upperRight).Is(new Vector2(-1, -2));
+            VectorManager.Within(vector2, underLeft, upperRight).Is(new Vector2(3, -2));
+            VectorManager.Within(vector3, underLeft, upperRight).Is(new Vector2(5, -2));
+            VectorManager.Within(vector4, underLeft, upperRight).Is(new Vector2(-1, 7));
+            VectorManager.Within(vector5, underLeft, upperRight).Is(new Vector2(3, 7));
+            VectorManager.Within(vector6, underLeft, upperRight).Is(new Vector2(5, 7));
+            VectorManager.Within(vector7, underLeft, upperRight).Is(new Vector2(-1, 12));
+            VectorManager.Within(vector8, underLeft, upperRight).Is(new Vector2(3, 12));
+            VectorManager.Within(vector9, underLeft, upperRight).Is(new Vector2(5, 12));
         }
         [Test]
         public static void GetAxis()
         {
-            Assert.AreEqual(VectorManager.GetAxis(LowerLeft), new Vector2(0, 0));
-            Assert.AreEqual(VectorManager.GetAxis(LowerCenter), new Vector2(0.5f, 0));
-            Assert.AreEqual(VectorManager.GetAxis(LowerRight), new Vector2(1, 0));
-            Assert.AreEqual(VectorManager.GetAxis(MiddleLeft), new Vector2(0, 0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(MiddleCenter), new Vector2(0.5f, 0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(MiddleRight), new Vector2(1, 0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(UpperLeft), new Vector2(0, 1));
-            Assert.AreEqual(VectorManager.GetAxis(UpperCenter), new Vector2(0.5f, 1));
-            Assert.AreEqual(VectorManager.GetAxis(UpperRight), new Vector2(1, 1));
+            VectorManager.GetAxis(LowerLeft).Is(new Vector2(0, 0));
+            VectorManager.GetAxis(LowerCenter).Is(new Vector2(0.5f, 0));
+            VectorManager.GetAxis(LowerRight).Is(new Vector2(1, 0));
+            VectorManager.GetAxis(MiddleLeft).Is(new Vector2(0, 0.5f));
+            VectorManager.GetAxis(MiddleCenter).Is(new Vector2(0.5f, 0.5f));
+            VectorManager.GetAxis(MiddleRight).Is(new Vector2(1, 0.5f));
+            VectorManager.GetAxis(UpperLeft).Is(new Vector2(0, 1));
+            VectorManager.GetAxis(UpperCenter).Is(new Vector2(0.5f, 1));
+            VectorManager.GetAxis(UpperRight).Is(new Vector2(1, 1));
 
-            Assert.AreEqual(VectorManager.GetAxis(LowerLeft, LowerLeft), new Vector2(0, 0));
-            Assert.AreEqual(VectorManager.GetAxis(LowerCenter, LowerLeft), new Vector2(0.5f, 0));
-            Assert.AreEqual(VectorManager.GetAxis(LowerRight, LowerLeft), new Vector2(1, 0));
-            Assert.AreEqual(VectorManager.GetAxis(MiddleLeft, LowerLeft), new Vector2(0, 0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(MiddleCenter, LowerLeft), new Vector2(0.5f, 0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(MiddleRight, LowerLeft), new Vector2(1, 0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(UpperLeft, LowerLeft), new Vector2(0, 1));
-            Assert.AreEqual(VectorManager.GetAxis(UpperCenter, LowerLeft), new Vector2(0.5f, 1));
-            Assert.AreEqual(VectorManager.GetAxis(UpperRight, LowerLeft), new Vector2(1, 1));
+            VectorManager.GetAxis(LowerLeft, LowerLeft).Is(new Vector2(0, 0));
+            VectorManager.GetAxis(LowerCenter, LowerLeft).Is(new Vector2(0.5f, 0));
+            VectorManager.GetAxis(LowerRight, LowerLeft).Is(new Vector2(1, 0));
+            VectorManager.GetAxis(MiddleLeft, LowerLeft).Is(new Vector2(0, 0.5f));
+            VectorManager.GetAxis(MiddleCenter, LowerLeft).Is(new Vector2(0.5f, 0.5f));
+            VectorManager.GetAxis(MiddleRight, LowerLeft).Is(new Vector2(1, 0.5f));
+            VectorManager.GetAxis(UpperLeft, LowerLeft).Is(new Vector2(0, 1));
+            VectorManager.GetAxis(UpperCenter, LowerLeft).Is(new Vector2(0.5f, 1));
+            VectorManager.GetAxis(UpperRight, LowerLeft).Is(new Vector2(1, 1));
 
-            Assert.AreEqual(VectorManager.GetAxis(LowerLeft, LowerCenter), new Vector2(-0.5f, 0));
-            Assert.AreEqual(VectorManager.GetAxis(LowerCenter, LowerCenter), new Vector2(0, 0));
-            Assert.AreEqual(VectorManager.GetAxis(LowerRight, LowerCenter), new Vector2(0.5f, 0));
-            Assert.AreEqual(VectorManager.GetAxis(MiddleLeft, LowerCenter), new Vector2(-0.5f, 0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(MiddleCenter, LowerCenter), new Vector2(0, 0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(MiddleRight, LowerCenter), new Vector2(0.5f, 0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(UpperLeft, LowerCenter), new Vector2(-0.5f, 1));
-            Assert.AreEqual(VectorManager.GetAxis(UpperCenter, LowerCenter), new Vector2(0, 1));
-            Assert.AreEqual(VectorManager.GetAxis(UpperRight, LowerCenter), new Vector2(0.5f, 1));
+            VectorManager.GetAxis(LowerLeft, LowerCenter).Is(new Vector2(-0.5f, 0));
+            VectorManager.GetAxis(LowerCenter, LowerCenter).Is(new Vector2(0, 0));
+            VectorManager.GetAxis(LowerRight, LowerCenter).Is(new Vector2(0.5f, 0));
+            VectorManager.GetAxis(MiddleLeft, LowerCenter).Is(new Vector2(-0.5f, 0.5f));
+            VectorManager.GetAxis(MiddleCenter, LowerCenter).Is(new Vector2(0, 0.5f));
+            VectorManager.GetAxis(MiddleRight, LowerCenter).Is(new Vector2(0.5f, 0.5f));
+            VectorManager.GetAxis(UpperLeft, LowerCenter).Is(new Vector2(-0.5f, 1));
+            VectorManager.GetAxis(UpperCenter, LowerCenter).Is(new Vector2(0, 1));
+            VectorManager.GetAxis(UpperRight, LowerCenter).Is(new Vector2(0.5f, 1));
 
-            Assert.AreEqual(VectorManager.GetAxis(LowerLeft, LowerRight), new Vector2(-1, 0));
-            Assert.AreEqual(VectorManager.GetAxis(LowerCenter, LowerRight), new Vector2(-0.5f, 0));
-            Assert.AreEqual(VectorManager.GetAxis(LowerRight, LowerRight), new Vector2(0, 0));
-            Assert.AreEqual(VectorManager.GetAxis(MiddleLeft, LowerRight), new Vector2(-1, 0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(MiddleCenter, LowerRight), new Vector2(-0.5f, 0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(MiddleRight, LowerRight), new Vector2(0, 0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(UpperLeft, LowerRight), new Vector2(-1, 1));
-            Assert.AreEqual(VectorManager.GetAxis(UpperCenter, LowerRight), new Vector2(-0.5f, 1));
-            Assert.AreEqual(VectorManager.GetAxis(UpperRight, LowerRight), new Vector2(0, 1));
+            VectorManager.GetAxis(LowerLeft, LowerRight).Is(new Vector2(-1, 0));
+            VectorManager.GetAxis(LowerCenter, LowerRight).Is(new Vector2(-0.5f, 0));
+            VectorManager.GetAxis(LowerRight, LowerRight).Is(new Vector2(0, 0));
+            VectorManager.GetAxis(MiddleLeft, LowerRight).Is(new Vector2(-1, 0.5f));
+            VectorManager.GetAxis(MiddleCenter, LowerRight).Is(new Vector2(-0.5f, 0.5f));
+            VectorManager.GetAxis(MiddleRight, LowerRight).Is(new Vector2(0, 0.5f));
+            VectorManager.GetAxis(UpperLeft, LowerRight).Is(new Vector2(-1, 1));
+            VectorManager.GetAxis(UpperCenter, LowerRight).Is(new Vector2(-0.5f, 1));
+            VectorManager.GetAxis(UpperRight, LowerRight).Is(new Vector2(0, 1));
 
-            Assert.AreEqual(VectorManager.GetAxis(LowerLeft, MiddleLeft), new Vector2(0, -0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(LowerCenter, MiddleLeft), new Vector2(0.5f, -0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(LowerRight, MiddleLeft), new Vector2(1, -0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(MiddleLeft, MiddleLeft), new Vector2(0, 0));
-            Assert.AreEqual(VectorManager.GetAxis(MiddleCenter, MiddleLeft), new Vector2(0.5f, 0));
-            Assert.AreEqual(VectorManager.GetAxis(MiddleRight, MiddleLeft), new Vector2(1, 0));
-            Assert.AreEqual(VectorManager.GetAxis(UpperLeft, MiddleLeft), new Vector2(0, 0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(UpperCenter, MiddleLeft), new Vector2(0.5f, 0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(UpperRight, MiddleLeft), new Vector2(1, 0.5f));
+            VectorManager.GetAxis(LowerLeft, MiddleLeft).Is(new Vector2(0, -0.5f));
+            VectorManager.GetAxis(LowerCenter, MiddleLeft).Is(new Vector2(0.5f, -0.5f));
+            VectorManager.GetAxis(LowerRight, MiddleLeft).Is(new Vector2(1, -0.5f));
+            VectorManager.GetAxis(MiddleLeft, MiddleLeft).Is(new Vector2(0, 0));
+            VectorManager.GetAxis(MiddleCenter, MiddleLeft).Is(new Vector2(0.5f, 0));
+            VectorManager.GetAxis(MiddleRight, MiddleLeft).Is(new Vector2(1, 0));
+            VectorManager.GetAxis(UpperLeft, MiddleLeft).Is(new Vector2(0, 0.5f));
+            VectorManager.GetAxis(UpperCenter, MiddleLeft).Is(new Vector2(0.5f, 0.5f));
+            VectorManager.GetAxis(UpperRight, MiddleLeft).Is(new Vector2(1, 0.5f));
 
-            Assert.AreEqual(VectorManager.GetAxis(LowerLeft, MiddleCenter), new Vector2(-0.5f, -0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(LowerCenter, MiddleCenter), new Vector2(0, -0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(LowerRight, MiddleCenter), new Vector2(0.5f, -0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(MiddleLeft, MiddleCenter), new Vector2(-0.5f, 0));
-            Assert.AreEqual(VectorManager.GetAxis(MiddleCenter, MiddleCenter), new Vector2(0, 0));
-            Assert.AreEqual(VectorManager.GetAxis(MiddleRight, MiddleCenter), new Vector2(0.5f, 0));
-            Assert.AreEqual(VectorManager.GetAxis(UpperLeft, MiddleCenter), new Vector2(-0.5f, 0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(UpperCenter, MiddleCenter), new Vector2(0, 0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(UpperRight, MiddleCenter), new Vector2(0.5f, 0.5f));
+            VectorManager.GetAxis(LowerLeft, MiddleCenter).Is(new Vector2(-0.5f, -0.5f));
+            VectorManager.GetAxis(LowerCenter, MiddleCenter).Is(new Vector2(0, -0.5f));
+            VectorManager.GetAxis(LowerRight, MiddleCenter).Is(new Vector2(0.5f, -0.5f));
+            VectorManager.GetAxis(MiddleLeft, MiddleCenter).Is(new Vector2(-0.5f, 0));
+            VectorManager.GetAxis(MiddleCenter, MiddleCenter).Is(new Vector2(0, 0));
+            VectorManager.GetAxis(MiddleRight, MiddleCenter).Is(new Vector2(0.5f, 0));
+            VectorManager.GetAxis(UpperLeft, MiddleCenter).Is(new Vector2(-0.5f, 0.5f));
+            VectorManager.GetAxis(UpperCenter, MiddleCenter).Is(new Vector2(0, 0.5f));
+            VectorManager.GetAxis(UpperRight, MiddleCenter).Is(new Vector2(0.5f, 0.5f));
 
-            Assert.AreEqual(VectorManager.GetAxis(LowerLeft, MiddleRight), new Vector2(-1, -0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(LowerCenter, MiddleRight), new Vector2(-0.5f, -0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(LowerRight, MiddleRight), new Vector2(0, -0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(MiddleLeft, MiddleRight), new Vector2(-1, 0));
-            Assert.AreEqual(VectorManager.GetAxis(MiddleCenter, MiddleRight), new Vector2(-0.5f, 0));
-            Assert.AreEqual(VectorManager.GetAxis(MiddleRight, MiddleRight), new Vector2(0, 0));
-            Assert.AreEqual(VectorManager.GetAxis(UpperLeft, MiddleRight), new Vector2(-1, 0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(UpperCenter, MiddleRight), new Vector2(-0.5f, 0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(UpperRight, MiddleRight), new Vector2(0, 0.5f));
+            VectorManager.GetAxis(LowerLeft, MiddleRight).Is(new Vector2(-1, -0.5f));
+            VectorManager.GetAxis(LowerCenter, MiddleRight).Is(new Vector2(-0.5f, -0.5f));
+            VectorManager.GetAxis(LowerRight, MiddleRight).Is(new Vector2(0, -0.5f));
+            VectorManager.GetAxis(MiddleLeft, MiddleRight).Is(new Vector2(-1, 0));
+            VectorManager.GetAxis(MiddleCenter, MiddleRight).Is(new Vector2(-0.5f, 0));
+            VectorManager.GetAxis(MiddleRight, MiddleRight).Is(new Vector2(0, 0));
+            VectorManager.GetAxis(UpperLeft, MiddleRight).Is(new Vector2(-1, 0.5f));
+            VectorManager.GetAxis(UpperCenter, MiddleRight).Is(new Vector2(-0.5f, 0.5f));
+            VectorManager.GetAxis(UpperRight, MiddleRight).Is(new Vector2(0, 0.5f));
 
-            Assert.AreEqual(VectorManager.GetAxis(LowerLeft, UpperLeft), new Vector2(0, -1));
-            Assert.AreEqual(VectorManager.GetAxis(LowerCenter, UpperLeft), new Vector2(0.5f, -1));
-            Assert.AreEqual(VectorManager.GetAxis(LowerRight, UpperLeft), new Vector2(1, -1));
-            Assert.AreEqual(VectorManager.GetAxis(MiddleLeft, UpperLeft), new Vector2(0, -0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(MiddleCenter, UpperLeft), new Vector2(0.5f, -0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(MiddleRight, UpperLeft), new Vector2(1, -0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(UpperLeft, UpperLeft), new Vector2(0, 0));
-            Assert.AreEqual(VectorManager.GetAxis(UpperCenter, UpperLeft), new Vector2(0.5f, 0));
-            Assert.AreEqual(VectorManager.GetAxis(UpperRight, UpperLeft), new Vector2(1, 0));
+            VectorManager.GetAxis(LowerLeft, UpperLeft).Is(new Vector2(0, -1));
+            VectorManager.GetAxis(LowerCenter, UpperLeft).Is(new Vector2(0.5f, -1));
+            VectorManager.GetAxis(LowerRight, UpperLeft).Is(new Vector2(1, -1));
+            VectorManager.GetAxis(MiddleLeft, UpperLeft).Is(new Vector2(0, -0.5f));
+            VectorManager.GetAxis(MiddleCenter, UpperLeft).Is(new Vector2(0.5f, -0.5f));
+            VectorManager.GetAxis(MiddleRight, UpperLeft).Is(new Vector2(1, -0.5f));
+            VectorManager.GetAxis(UpperLeft, UpperLeft).Is(new Vector2(0, 0));
+            VectorManager.GetAxis(UpperCenter, UpperLeft).Is(new Vector2(0.5f, 0));
+            VectorManager.GetAxis(UpperRight, UpperLeft).Is(new Vector2(1, 0));
 
-            Assert.AreEqual(VectorManager.GetAxis(LowerLeft, UpperCenter), new Vector2(-0.5f, -1));
-            Assert.AreEqual(VectorManager.GetAxis(LowerCenter, UpperCenter), new Vector2(0, -1));
-            Assert.AreEqual(VectorManager.GetAxis(LowerRight, UpperCenter), new Vector2(0.5f, -1));
-            Assert.AreEqual(VectorManager.GetAxis(MiddleLeft, UpperCenter), new Vector2(-0.5f, -0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(MiddleCenter, UpperCenter), new Vector2(0, -0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(MiddleRight, UpperCenter), new Vector2(0.5f, -0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(UpperLeft, UpperCenter), new Vector2(-0.5f, 0));
-            Assert.AreEqual(VectorManager.GetAxis(UpperCenter, UpperCenter), new Vector2(0, 0));
-            Assert.AreEqual(VectorManager.GetAxis(UpperRight, UpperCenter), new Vector2(0.5f, 0));
+            VectorManager.GetAxis(LowerLeft, UpperCenter).Is(new Vector2(-0.5f, -1));
+            VectorManager.GetAxis(LowerCenter, UpperCenter).Is(new Vector2(0, -1));
+            VectorManager.GetAxis(LowerRight, UpperCenter).Is(new Vector2(0.5f, -1));
+            VectorManager.GetAxis(MiddleLeft, UpperCenter).Is(new Vector2(-0.5f, -0.5f));
+            VectorManager.GetAxis(MiddleCenter, UpperCenter).Is(new Vector2(0, -0.5f));
+            VectorManager.GetAxis(MiddleRight, UpperCenter).Is(new Vector2(0.5f, -0.5f));
+            VectorManager.GetAxis(UpperLeft, UpperCenter).Is(new Vector2(-0.5f, 0));
+            VectorManager.GetAxis(UpperCenter, UpperCenter).Is(new Vector2(0, 0));
+            VectorManager.GetAxis(UpperRight, UpperCenter).Is(new Vector2(0.5f, 0));
 
-            Assert.AreEqual(VectorManager.GetAxis(LowerLeft, UpperRight), new Vector2(-1, -1));
-            Assert.AreEqual(VectorManager.GetAxis(LowerCenter, UpperRight), new Vector2(-0.5f, -1));
-            Assert.AreEqual(VectorManager.GetAxis(LowerRight, UpperRight), new Vector2(0, -1));
-            Assert.AreEqual(VectorManager.GetAxis(MiddleLeft, UpperRight), new Vector2(-1, -0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(MiddleCenter, UpperRight), new Vector2(-0.5f, -0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(MiddleRight, UpperRight), new Vector2(0, -0.5f));
-            Assert.AreEqual(VectorManager.GetAxis(UpperLeft, UpperRight), new Vector2(-1, 0));
-            Assert.AreEqual(VectorManager.GetAxis(UpperCenter, UpperRight), new Vector2(-0.5f, 0));
-            Assert.AreEqual(VectorManager.GetAxis(UpperRight, UpperRight), new Vector2(0, 0));
+            VectorManager.GetAxis(LowerLeft, UpperRight).Is(new Vector2(-1, -1));
+            VectorManager.GetAxis(LowerCenter, UpperRight).Is(new Vector2(-0.5f, -1));
+            VectorManager.GetAxis(LowerRight, UpperRight).Is(new Vector2(0, -1));
+            VectorManager.GetAxis(MiddleLeft, UpperRight).Is(new Vector2(-1, -0.5f));
+            VectorManager.GetAxis(MiddleCenter, UpperRight).Is(new Vector2(-0.5f, -0.5f));
+            VectorManager.GetAxis(MiddleRight, UpperRight).Is(new Vector2(0, -0.5f));
+            VectorManager.GetAxis(UpperLeft, UpperRight).Is(new Vector2(-1, 0));
+            VectorManager.GetAxis(UpperCenter, UpperRight).Is(new Vector2(-0.5f, 0));
+            VectorManager.GetAxis(UpperRight, UpperRight).Is(new Vector2(0, 0));
         }
         [Test]
         public static void Log1()
@@ -331,9 +331,9 @@ namespace Assets.Editor.TEST.Domain.Service
             var vector1 = Vector2.one.normalized * (Mathf.Exp(11.3f) - 1);
             var vector2 = new Vector2(-Mathf.Exp(26.43f) + 1, 0);
 
-            Assert.AreEqual(vector1.Log().magnitude, 11.3f);
-            Assert.AreEqual(vector1.Log().normalized, Vector2.one.normalized);
-            Assert.AreEqual(vector2.Log(), new Vector2(-26.43f, 0));
+            vector1.Log().magnitude.Is(11.3f);
+            vector1.Log().normalized.Is(Vector2.one.normalized);
+            vector2.Log().Is(new Vector2(-26.43f, 0));
         }
         [Test]
         public static void Log2()
@@ -341,8 +341,8 @@ namespace Assets.Editor.TEST.Domain.Service
             var vector1 = Vector2.one.normalized * (Mathf.Pow(2.6f, 11.3f) - 1);
             var vector2 = new Vector2(-Mathf.Pow(4.63f, 26.43f) + 1, 0);
 
-            Assert.AreEqual(vector1.Log(2.6f), Vector2.one.normalized * 11.3f);
-            Assert.AreEqual(vector2.Log(4.63f), new Vector2(-26.43f, 0));
+            vector1.Log(2.6f).Is(Vector2.one.normalized * 11.3f);
+            vector2.Log(4.63f).Is(new Vector2(-26.43f, 0));
         }
         [Test]
         public static void EasingElliptical()
@@ -351,8 +351,8 @@ namespace Assets.Editor.TEST.Domain.Service
             var now = 60f;
             var max = 90f;
 
-            Assert.AreEqual(VectorManager.EasingV.Elliptical(destination, now, max, true).y, 4.5f * Mathf.Sqrt(3));
-            Assert.AreEqual(VectorManager.EasingV.Elliptical(destination, now, max, false).x, 3 * Mathf.Sqrt(3));
+            VectorManager.EasingV.Elliptical(destination, now, max, true).y.Is(4.5f * Mathf.Sqrt(3));
+            VectorManager.EasingV.Elliptical(destination, now, max, false).x.Is(3 * Mathf.Sqrt(3));
         }
         [Test]
         public static void EasingElliptical2()
@@ -362,8 +362,8 @@ namespace Assets.Editor.TEST.Domain.Service
             var now = 60f;
             var max = 90f;
 
-            Assert.AreEqual(VectorManager.EasingV.Elliptical(start, destination, now, max, true).y, 4.5f * Mathf.Sqrt(3) - 3);
-            Assert.AreEqual(VectorManager.EasingV.Elliptical(start, destination, now, max, false).x, 3 * Mathf.Sqrt(3) - 2);
+            VectorManager.EasingV.Elliptical(start, destination, now, max, true).y.Is(4.5f * Mathf.Sqrt(3) - 3);
+            VectorManager.EasingV.Elliptical(start, destination, now, max, false).x.Is(3 * Mathf.Sqrt(3) - 2);
         }
     }
 }
