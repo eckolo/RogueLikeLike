@@ -137,43 +137,9 @@ namespace Assets.Editor.TEST
     public static class ChainingAssertion
     {
         /// <summary>Assert.AreEqual, if T is IEnumerable then compare value equality</summary>
-        public static void Is<T>(this T actual, T expected)
+        public static void Is<T>(this T actual, T expected, string message = "")
         {
-            if(typeof(T) != typeof(string) && typeof(IEnumerable).IsAssignableFrom(typeof(T)))
-            {
-                Assert.AreEqual(
-                    ((IEnumerable)expected).Cast<object>().ToArray(),
-                    ((IEnumerable)actual).Cast<object>().ToArray());
-                return;
-            }
-
-            Assert.AreEqual(expected, actual);
-        }
-
-        /// <summary>Assert.True(predicate(value))</summary>
-        public static void Is<T>(this T value, Expression<Func<T, bool>> predicate, string message = "")
-        {
-            var condition = predicate.Compile().Invoke(value);
-
-            var paramName = predicate.Parameters.First().Name;
-            string msg = "";
-            try
-            {
-                var dumper = new ExpressionDumper<T>(value, predicate.Parameters.Single());
-                dumper.Visit(predicate);
-                var dump = string.Join(", ", dumper.Members.Select(kvp => kvp.Key + " = " + kvp.Value));
-                msg = string.Format("\r\n{0} = {1}\r\n{2}\r\n{3}{4}",
-                    paramName, value, dump, predicate,
-                    string.IsNullOrEmpty(message) ? "" : ", " + message);
-            }
-            catch
-            {
-                msg = string.Format("{0} = {1}, {2}{3}",
-                    paramName, value, predicate,
-                    string.IsNullOrEmpty(message) ? "" : ", " + message);
-            }
-
-            Assert.True(condition, msg);
+            Assert.AreEqual(expected, actual, message: message);
         }
 
         /// <summary>Assert.AreEqual(sequence value compare)</summary>
@@ -201,17 +167,9 @@ namespace Assets.Editor.TEST
         }
 
         /// <summary>Assert.AreNotEqual, if T is IEnumerable then check value equality</summary>
-        public static void IsNot<T>(this T actual, T notExpected)
+        public static void IsNot<T>(this T actual, T notExpected, string message = "")
         {
-            if(typeof(T) != typeof(string) && typeof(IEnumerable).IsAssignableFrom(typeof(T)))
-            {
-                Assert.AreNotEqual(
-                    ((IEnumerable)actual).Cast<object>().ToArray(),
-                    ((IEnumerable)notExpected).Cast<object>().ToArray());
-                return;
-            }
-
-            Assert.AreNotEqual(notExpected, actual);
+            Assert.AreNotEqual(notExpected, actual, message: message);
         }
 
         /// <summary>Assert.AreNotEqual(sequence value compare)</summary>
@@ -236,6 +194,32 @@ namespace Assets.Editor.TEST
         public static void IsNot<T>(this IEnumerable<T> actual, IEnumerable<T> notExpected, Func<T, T, bool> equalityComparison)
         {
             Assert.False(actual.SequenceEqual(notExpected, new EqualityComparer<T>(equalityComparison)));
+        }
+
+        /// <summary>Assert.True(predicate(value))</summary>
+        public static void IsHolds<T>(this T value, Expression<Func<T, bool>> predicate, string message = "")
+        {
+            var condition = predicate.Compile().Invoke(value);
+
+            var paramName = predicate.Parameters.First().Name;
+            string msg = "";
+            try
+            {
+                var dumper = new ExpressionDumper<T>(value, predicate.Parameters.Single());
+                dumper.Visit(predicate);
+                var dump = string.Join(", ", dumper.Members.Select(kvp => kvp.Key + " = " + kvp.Value));
+                msg = string.Format("\r\n{0} = {1}\r\n{2}\r\n{3}{4}",
+                    paramName, value, dump, predicate,
+                    string.IsNullOrEmpty(message) ? "" : ", " + message);
+            }
+            catch
+            {
+                msg = string.Format("{0} = {1}, {2}{3}",
+                    paramName, value, predicate,
+                    string.IsNullOrEmpty(message) ? "" : ", " + message);
+            }
+
+            Assert.True(condition, msg);
         }
 
         /// <summary>Assert.Null</summary>
