@@ -1,6 +1,7 @@
 using Assets.Src.Domain.Service;
 using Assets.Src.Infrastructure.Service;
 using NUnit.Framework;
+using System;
 using UnityEngine;
 namespace Assets.Editor.TEST.Infrastructure.Service
 {
@@ -22,15 +23,15 @@ namespace Assets.Editor.TEST.Infrastructure.Service
 
             fileManager.Write(path, filename, text1);
             var result1 = fileManager.Read(path, filename);
-            result1.Is($"{text1}\r\n");
+            result1.Is($"{text1}{Environment.NewLine}");
 
             fileManager.Write(path, filename, text2);
             var result2 = fileManager.Read(path, filename);
-            result2.Is($"{text2}\r\n");
+            result2.Is($"{text2}{Environment.NewLine}");
 
             fileManager.Write(path, filename, text3, true);
             var result3 = fileManager.Read(path, filename);
-            result3.Is($"{text2}\r\n{text3}\r\n");
+            result3.Is($"{text2}{Environment.NewLine}{text3}{Environment.NewLine}");
         }
     }
 }
