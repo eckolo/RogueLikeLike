@@ -8,7 +8,7 @@ namespace Assets.Editor.TEST.Domain.Model.Mock
     /// ただ値を持つだけのクラスのモック
     /// </summary>
     [Serializable]
-    public class ClassMock : IDuplicatable<ClassMock>
+    public class ClassMock : IDuplicatable<ClassMock>, IComparable<ClassMock>
     {
         [SerializeField]
         private string _text1 = "";
@@ -42,5 +42,7 @@ namespace Assets.Editor.TEST.Domain.Model.Mock
         /// </summary>
         /// <returns>コピーされたオブジェクト</returns>
         public ClassMock MemberwiseClonePublic() => (ClassMock)MemberwiseClone();
+
+        public int CompareTo(ClassMock other) => number.CompareTo(other.number);
     }
 }

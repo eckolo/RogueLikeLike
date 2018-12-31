@@ -14,7 +14,7 @@ namespace Assets.Editor.TEST.Domain.Model.Value
     public static class HappenedBuilderTest
     {
         [Test]
-        public static void BuildTest()
+        public static void HappenedBuilderTest_値を未設定でビルド()
         {
             var happened = Happened.builder.Build();
 
@@ -37,7 +37,7 @@ namespace Assets.Editor.TEST.Domain.Model.Value
             happened.animations.Any().IsFalse();
         }
         [Test]
-        public static void BuildTest2()
+        public static void HappenedBuilderTest_値を設定してビルド()
         {
             var speed = 4;
             var vector = new Vector2(1, 5);
@@ -76,7 +76,7 @@ namespace Assets.Editor.TEST.Domain.Model.Value
             happened.animations.Count().Is(1);
         }
         [Test]
-        public static void BuildNullTest()
+        public static void HappenedBuilderTest_値を全てNullに設定してビルド()
         {
             var happened = Happened.builder
                 .Target(null)
@@ -94,7 +94,7 @@ namespace Assets.Editor.TEST.Domain.Model.Value
             happened.animations.IsNull();
         }
         [Test]
-        public static void BuildNullTest2()
+        public static void HappenedBuilderTest_値をひとつだけNullに設定してビルド()
         {
             var happened = Happened.builder
                 .AilmentDuration(null)
