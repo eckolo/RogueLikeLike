@@ -19,8 +19,6 @@ namespace Assets.Src.Domain.Model.Entity
         /// <param name="stationery">元となる雛形</param>
         /// <param name="adjectives">付与形容詞</param>
         /// <param name="connectionList">他地域との接続情報</param>
-        /// <param name="includeMapList">内包するマップのリスト</param>
-        /// <param name="nowMapCondition">所在マップ座標</param>
         public Area(
             AreaStationery stationery,
             List<Adjective> adjectives = null,
@@ -29,6 +27,16 @@ namespace Assets.Src.Domain.Model.Entity
         {
             this.connectionList = connectionList ?? this.connectionList;
         }
+
+        /// <summary>
+        /// エリアの広さ（マップ数単位）
+        /// </summary>
+        [SerializeField]
+        Vector2 _areaRange = default;
+        /// <summary>
+        /// エリアの広さ（マップ数単位）
+        /// </summary>
+        public Vector2 areaRange => _areaRange;
 
         /// <summary>
         /// 他地域との接続情報
